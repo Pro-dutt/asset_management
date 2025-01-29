@@ -188,10 +188,10 @@ const Sidebar = ({ userRole = "admin" }) => {
         <div className={isSidebarOpen ? styles.overlay : ""} onClick={toggleSidebar}>
             <div onClick={(event) => event.stopPropagation()} className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed}`}>
                 <div className={styles.logo}>
-                    {/* <img src={logo} alt="Logo" width={35} height={25} /> */}
+                    <img src={logo} alt="Logo" width={35} height={25} />
                     {isSidebarOpen && (
                         <span onClick={toggleSidebar} className={styles.logoText}>
-                            ASSETS {ICONS.CIRCLE_DOT}
+                            Asset {ICONS.CIRCLE_DOT}
                         </span>
                     )}
                 </div>
