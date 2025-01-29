@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    margin-top: 1rem;
+    position: relative;
+    width: calc(100% + 10rem) !important;
+    left: -1rem;
+    max-width: unset;
+}
+.container p {
+    font-size: 0.9rem !important;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    margin-left: 1rem;
+    padding-inline: 0.2rem;
+    color: var(--black-color);
+}
+.border {
+    position: absolute;
+    width: calc(100% + 1.5rem);
+    height: 100%;
+    background-color: transparent;
+    top: 0.65rem;
+    border-radius: 5rem;
+    border-top: 1px solid rgb(83, 82, 82);
+}
