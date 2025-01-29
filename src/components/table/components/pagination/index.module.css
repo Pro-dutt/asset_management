@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.3rem;
+}
+.container > div:nth-child(1) p {
+    font-size: 0.93rem;
+    color: rgb(47, 43, 61, 0.4);
+    line-height: 1.5;
+
+    font-weight: 400;
+}
+.container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.pagination li a {
+    cursor: pointer;
+    padding-block: 0.52rem;
+    width: 2.2rem;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    color: rgba(47, 43, 61, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+.pagination li:first-of-type a,
+.pagination li:last-of-type a {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 0.38rem;
+}
+.pagination li:last-of-type a:hover,
+.pagination li:first-of-type a:hover,
+.container > div:nth-child(2) > button:hover {
+    background-color: #e7e7e7;
+}
+
+.pagination li a:hover {
+    background-color: rgba(115, 103, 240, 0.3);
+}
+
+.pagination li.active a {
+    background-color: var(--table-active-color);
+    color: white;
+    box-shadow: 0 2px 6px rgba(115, 103, 240, 0.3);
+}
+
+.container > div > p {
+    font-size: 0.9rem;
+}
+
+.container > div:nth-child(2) > button {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    color: rgba(47, 43, 61, 0.8);
+    padding: 0.38rem 0.45rem;
+    cursor: pointer;
+}

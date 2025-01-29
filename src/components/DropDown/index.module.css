@@ -1,0 +1,49 @@
+/* Dropdown Component CSS */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_trigger {
+    cursor: pointer;
+}
+
+.dropdown_content {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    border-radius: 5px;
+    padding: 0.5rem;
+    right: 1rem;
+    white-space: nowrap;
+    /* padding: 0.4rem; */
+}
+
+.dropdown_content p {
+    display: flex;
+    font-size: 13px;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    padding-block: 0.5rem;
+    color: black;
+    padding-inline: 0.8rem;
+    border-radius: 0.3rem;
+}
+
+.dropdown_content p svg {
+    width: 20px;
+}
+
+.dropdown_content p:hover {
+    background-color: #ebe8e885;
+}
+
+@media screen and (max-width: 1000px) {
+    .dropdown_content {
+        left: 0rem !important;
+        width: fit-content;
+    }
+}
