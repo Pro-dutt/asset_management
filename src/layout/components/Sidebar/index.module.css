@@ -15,9 +15,14 @@
 .logo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0.8rem;
     padding-left: 1.25rem;
     padding-top: 0.9rem;
+}
+.logo img {
+    width: 85px;
+    height: auto;
 }
 
 .logoText {
@@ -29,7 +34,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    width: 100%;
     cursor: pointer;
 }
 .taskManager {
@@ -57,7 +61,7 @@
 .nav li {
     display: flex;
     align-items: center;
-    padding: 7px 12px;
+    padding: 5px 12px;
     cursor: pointer;
     color: var(--text-color);
     margin: 0 0.75rem;
@@ -91,7 +95,7 @@
 }
 .nav .menuItem.active {
     border-radius: 0.375rem;
-    background-color: var(--primary-color);
+    background: linear-gradient(270deg, rgb(var(--theme-primary) / 70%) 0%, rgb(var(--theme-primary)) 100%) !important;
     box-shadow: 0 2px 6px var(--primary-box-shadow);
     color: var(--text-active-color);
 }
@@ -197,6 +201,12 @@
 .circle_icon svg {
     width: 18px !important;
 }
+.sidebar_icon {
+    display: flex;
+}
 .sidebar_icon svg {
     width: 22px !important;
+}
+.child_menu {
+    margin-left: 0.7rem !important;
 }

@@ -80,7 +80,6 @@ body {
 :root {
     --backgrounColor: #f8f8fa;
     --v-global-theme-primary: 115, 103, 240;
-    --primary-color: rgba(115, 103, 240);
     --primary-hover-color: rgba(211, 206, 207, 0.2);
     --primary-active-group-menu: rgba(211, 206, 207, 0.3);
     --primary-active-color: #ff4c51;
@@ -108,5 +107,5 @@ body {
 
     --theme-error: 255, 76, 81;
     --theme-success: 40, 199, 111;
-    --theme-primary: 115, 103, 240;
+    --theme-primary: 4 13 244;
 }

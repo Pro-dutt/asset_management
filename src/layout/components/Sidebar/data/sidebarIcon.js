@@ -7,6 +7,111 @@ const SidebarIcons = {
             </g>
         </svg>
     ),
+    WEBSITE: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-world"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path d="M3.6 9h16.8" />
+            <path d="M3.6 15h16.8" />
+            <path d="M11.5 3a17 17 0 0 0 0 18" />
+            <path d="M12.5 3a17 17 0 0 1 0 18" />
+        </svg>
+    ),
+    DATA_CENTER: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-server-bolt"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+            <path d="M15 20h-9a3 3 0 0 1 -3 -3v-2a3 3 0 0 1 3 -3h12" />
+            <path d="M7 8v.01" />
+            <path d="M7 16v.01" />
+            <path d="M20 15l-2 3h3l-2 3" />
+        </svg>
+    ),
+    LAPTOP: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-device-laptop"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 19l18 0" />
+            <path d="M5 6m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
+        </svg>
+    ),
+    NETWORKING_DEVICE: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-topology-star"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M8 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+            <path d="M20 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+            <path d="M8 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+            <path d="M20 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+            <path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+            <path d="M7.5 7.5l3 3" />
+            <path d="M7.5 16.5l3 -3" />
+            <path d="M13.5 13.5l3 3" />
+            <path d="M16.5 7.5l-3 3" />
+        </svg>
+    ),
+    DESKTOP: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-device-desktop"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z" />
+            <path d="M7 20h10" />
+            <path d="M9 16v4" />
+            <path d="M15 16v4" />
+        </svg>
+    ),
     FRONT: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">

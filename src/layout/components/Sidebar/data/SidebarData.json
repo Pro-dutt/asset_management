@@ -3,178 +3,48 @@
         "name": "dashboard",
         "link": "/dashboard",
         "permission": ["admin", "employee", "reporting officer", "auditor"],
-        "className": "dashboard_menu_item",
-        "child": [
-            {
-                "name": "Analytics",
-                "link": "/anal"
-            },
-            {
-                "name": "CRM",
-                "link": "#"
-            },
-            {
-                "name": "Ecommerce",
-                "link": "#"
-            },
-            {
-                "name": "Academy",
-                "link": "#"
-            },
-            {
-                "name": "Logistics",
-                "link": "#"
-            }
-        ]
+        "icon": "dashboard"
     },
     {
-        "name": "Front Pages",
-        "link": "/user",
+        "name": "End Points",
+        "link": "/endpoints",
         "icon": "front",
         "permission": ["admin", "employee", "reporting officer", "auditor"],
         "child": [
             {
-                "name": "Landing",
-                "link": "#"
+                "name": "Desktops",
+                "link": "/desktops",
+                "icon": "desktop"
             },
             {
-                "name": "Pricing",
-                "link": "#"
+                "name": "Laptops",
+                "link": "/laptops",
+                "icon": "laptop"
             }
         ]
     },
     {
-        "name": "Ecommerce",
-        "link": "/ecommerce",
-        "child": [
-            {
-                "name": "Dashboard",
-                "link": "#"
-            },
-            {
-                "name": "Settings",
-                "link": "#"
-            }
-        ],
-        "permission": ["admin", "auditor"]
-    },
-    {
-        "name": "Academy",
-        "link": "/academy",
-        "child": [
-            {
-                "name": "Dashboard",
-                "link": "#"
-            },
-            {
-                "name": "My Course",
-                "link": "#"
-            },
-            {
-                "name": "Course Details",
-                "link": "#"
-            }
-        ],
-        "permission": ["admin", "auditor"]
-    },
-    {
-        "name": "Logistics",
-        "link": "/logistics",
-        "child": [
-            {
-                "name": "Dashboard",
-                "link": "#"
-            },
-            {
-                "name": "Fleet",
-                "link": "#"
-            }
-        ],
-        "permission": ["admin", "auditor"]
-    },
-    {
-        "name": "Email",
-        "link": "/email",
+        "name": "Data Center",
+        "link": "/data-center",
         "permission": ["admin", "auditor"],
-        "icon": "email"
+        "icon": "data_center"
     },
     {
-        "name": "chat",
-        "link": "/chart",
-        "icon": "chat"
+        "name": "Networking Devices",
+        "link": "/networking-devices",
+        "permission": ["admin", "auditor"],
+        "icon": "networking_device"
     },
     {
-        "name": "calendar",
-        "link": "/calendar",
-        "icon": "calendar"
+        "name": "Virtual Machines",
+        "link": "/virtual-machines",
+        "permission": ["admin", "auditor"],
+        "icon": "desktop"
     },
     {
-        "name": "kanban",
-        "link": "/kanban",
-        "icon": "kanban"
-    },
-    {
-        "name": "invoice",
-        "link": "/invoice",
-        "icon": "invoice",
-        "child": [
-            {
-                "name": "list",
-                "link": "#"
-            },
-            {
-                "name": "preview",
-                "link": "#"
-            },
-            {
-                "name": "edit",
-                "link": "#"
-            }
-        ]
-    },
-    {
-        "name": "user",
-        "link": "/user",
-        "icon": "user",
-        "child": [
-            {
-                "name": "view",
-                "link": "#"
-            },
-            {
-                "name": "list",
-                "link": "/user/list"
-            }
-        ]
-    },
-    {
-        "name": "Roles & Permissions",
-        "link": "/Roles-Permissions",
-        "icon": "lock",
-        "child": [
-            {
-                "name": "Roles",
-                "link": "#"
-            },
-            {
-                "name": "Permission",
-                "link": "#"
-            }
-        ]
-    },
-    {
-        "name": "Access Control",
-        "link": "/access-control",
-        "icon": "access"
-    },
-    {
-        "name": "Raise Support",
-        "link": "/raise-support",
-        "icon": "support"
-    },
-    {
-        "name": "Documentation",
-        "link": "/documentation",
-        "icon": "documentation"
+        "name": "Web Applications",
+        "link": "/web-applications",
+        "permission": ["admin", "auditor"],
+        "icon": "website"
     }
 ]

@@ -47,8 +47,7 @@ const DynamicForm = ({ formData, onSubmit, formButtons, formId = "main", respons
             onSubmit(formValues);
         }
     };
-    console.log(formValues);
-    console.log(errors);
+
     const getGridClass = (gridValue) => {
         const gridClasses = {
             1: styles.col1,

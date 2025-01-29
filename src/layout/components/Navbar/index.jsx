@@ -19,16 +19,6 @@ const Navbar = () => {
                 <ul className={styles.left_icon}>
                     <li>
                         <Dropdown
-                            trigger={<p className={styles.menu_list_icon}>{ICONS.LANGUAGE}</p>}
-                            content={
-                                <div>
-                                    <div className={styles.menuLinksContainer}>Language</div>
-                                </div>
-                            }
-                        />
-                    </li>
-                    <li>
-                        <Dropdown
                             trigger={<p className={styles.menu_list_icon}>{ICONS.THEME}</p>}
                             content={
                                 <div>

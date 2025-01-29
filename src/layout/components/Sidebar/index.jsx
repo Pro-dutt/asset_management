@@ -135,12 +135,9 @@ const Sidebar = ({ userRole = "admin" }) => {
                     <React.Fragment key={item.name}>
                         {isSidebarOpen && !isChildMenu && (
                             <li
-                                className={`
-                                ${styles.group_menu} 
-                                ${isGroupExpanded ? styles.active_group_menu : ""} 
-                                ${isGroupActive ? styles.active : ""}
-                                ${item.className ? styles[item.className] : ""}
-                            `}
+                                className={`${styles.group_menu} ${isGroupExpanded ? styles.active_group_menu : ""} ${isGroupActive ? styles.active : ""} ${
+                                    item.className ? styles[item.className] : ""
+                                }`}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     toggleMenuGroup(item.name);
@@ -164,12 +161,9 @@ const Sidebar = ({ userRole = "admin" }) => {
                 <li
                     key={item.name}
                     onClick={() => handleMenuItemClick(item.link ? item.link : "")}
-                    className={`
-                    ${styles.menuItem}
-                    ${isItemActive(item) ? styles.active : ""}
-                    ${!isSidebarOpen ? styles.collapsedMenuItem : ""}
-                    ${item.className ? styles[item.className] : ""}
-                `}
+                    className={`${styles.menuItem} ${isItemActive(item) ? styles.active : ""} ${!isSidebarOpen ? styles.collapsedMenuItem : ""} ${item.className ? styles[item.className] : ""} ${
+                        isChildMenu ? styles.child_menu : ""
+                    }`}
                     title={item.name}
                 >
                     {item.icon ? (
@@ -188,10 +182,10 @@ const Sidebar = ({ userRole = "admin" }) => {
         <div className={isSidebarOpen ? styles.overlay : ""} onClick={toggleSidebar}>
             <div onClick={(event) => event.stopPropagation()} className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed}`}>
                 <div className={styles.logo}>
-                    <img src={logo} alt="Logo" width={35} height={25} />
+                    <img src={logo} alt="Logo" />
                     {isSidebarOpen && (
                         <span onClick={toggleSidebar} className={styles.logoText}>
-                            Asset {ICONS.CIRCLE_DOT}
+                            {ICONS.CIRCLE_DOT}
                         </span>
                     )}
                 </div>
