@@ -7,7 +7,13 @@ const apiConstants = {
         CURRENT_ONBOARDED_USER: "/current-onboarded-user",
         SETUP_BASE_INFO: "/setup/basic-info",
     },
+    virtualMachines: {
+        BASE_ROUTE: "/virtual-machines",
+        CREATE: "/",
+        GET_LIST: "/",
+    },
     loadingStateKeys: {
+        CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         SIGN_UP: "signup",
         VERIFY_EMAIL: "verifyEmail",
         SETUP_BASE_INFO: "setupBaseInfo",
