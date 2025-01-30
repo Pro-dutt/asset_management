@@ -8,11 +8,8 @@ import endPointsICONS from "../../utils/icons";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "@/modules/VirtualMachines";
-<<<<<<< HEAD
 import GlobalICONS from "@/lib/utils/icons";
-=======
 import desktopTableData from "./data";
->>>>>>> 7d3bd278e78e2cff34a443d8293cc01ac2acefcf
 
 const EndPointsTable = () => {
     const [show, setShow] = useState({});
@@ -174,7 +171,14 @@ const EndPointsTable = () => {
         <div className={styles.container}>
             {<Table tableData={tableData} />}
 
-            <Modal show={show.add} onClose={closeModel} title={"Add Desktop"} maxWidth={"1600px"} icon={GlobalICONS.DESKTOP} description="Add Virtual Machine Configuration">
+            <Modal
+                show={show.add}
+                onClose={closeModel}
+                title={"Add Desktop"}
+                maxWidth={"1600px"}
+                icon={GlobalICONS.DESKTOP}
+                description="Provide the required details to configure and register a new desktop"
+            >
                 <VirtualMachine />
             </Modal>
             <Modal show={show.edit} onClose={closeModel} title={"Edit User"} maxWidth={"800px"}>

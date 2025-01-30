@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-    --backgrounColor: #f8f8fa;
+    --backgroundColor: #f8f8fa;
     --foreground: #171717;
     --v-global-theme-primary: 115, 103, 240;
     --primary-hover-color: rgba(211, 206, 207, 0.2);
@@ -58,7 +58,7 @@
 
 body {
     color: var(--foreground);
-    background: var(--backgrounColor);
+    background: var(--backgroundColor);
     font-family: var(--primary-font-family);
 }
 .card {

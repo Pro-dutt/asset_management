@@ -11,9 +11,9 @@ const Modal = ({ show, onClose, title, icon, description, children, maxWidth, st
                 <div className={styles.modal_header}>
                     <h5 className={styles.modal_title}>
                         {icon && <span> {icon}</span>}
-                        <span>
+                        <p>
                             {title} {description && <p className={styles.modal_description}>{description}</p>}
-                        </span>
+                        </p>
                     </h5>
                     <span className={styles.modal_close_icon} onClick={onClose} aria-label="Close">
                         {GlobalICONS.CLOSE}
