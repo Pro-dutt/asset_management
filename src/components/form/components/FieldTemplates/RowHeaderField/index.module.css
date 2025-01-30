@@ -1,20 +1,20 @@
 .container {
     display: flex;
-    margin-top: 1rem;
-    position: relative;
-    width: calc(100% + 10rem) !important;
-    left: -1rem;
-    max-width: unset;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #bbb9b959;
+    padding-block: 0.6rem;
 }
-.container p {
-    font-size: 0.9rem !important;
-    background-color: white;
-    position: relative;
-    z-index: 1;
-    margin-left: 1rem;
-    padding-inline: 0.2rem;
-    color: var(--black-color);
+.rowHeader {
+    font-weight: 500;
 }
+.container svg {
+    width: 30px;
+    height: 30px;
+}
+
 .border {
     position: absolute;
     width: calc(100% + 1.5rem);
@@ -23,4 +23,8 @@
     top: 0.65rem;
     border-radius: 5rem;
     border-top: 1px solid rgb(83, 82, 82);
+}
+.description {
+    font-size: 11px;
+    color: gray;
 }

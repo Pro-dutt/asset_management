@@ -1,3 +1,5 @@
+import GlobalICONS from "@/lib/utils/icons";
+import virtualMachineConstants from "./constants";
 import boardingConstants from "./constants";
 
 class VirtualMachineUtils {
@@ -22,88 +24,274 @@ class VirtualMachineUtils {
     }
 
     static getStatusOptions() {
-        return Object.values(boardingConstants.INSTITUTE_TYPES || {}).map((instituteType) => ({ value: instituteType, label: this.capitalizeSentence(instituteType) }));
+        return Object.values(virtualMachineConstants.INSTITUTE_TYPES || {}).map((instituteType) => ({ value: instituteType, label: this.capitalizeSentence(instituteType) }));
     }
     static getGenericOptions() {
         return Object.values(boardingConstants.GENDER_TYPE || {}).map((genderType) => ({ value: genderType, label: this.capitalizeSentence(genderType) }));
     }
 
-    /**
-     * Validates and handles navigation between wizard steps
-     * @param {string} currentStatus - User's current completion status
-     * @param {string} targetStep - Step user is trying to navigate to
-     * @param {string} baseUrl - Base URL for navigation (default: 'http://localhost:3000/boarding')
-     * @returns {object} Navigation result with redirect URL and validation status
-     */
-
-    static handleWizardNavigation = (currentStatus, baseUrl) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const targetStep = urlParams.get("wizardStep");
-        if (!baseUrl) {
-            const url = new URL(window.location.href);
-            baseUrl = `${url.origin}${url.pathname}`;
-        }
-        try {
-            // Validate inputs
-            if (!boardingConstants.WIZARD_STEP.hasOwnProperty(currentStatus) || !boardingConstants.WIZARD_STEP.hasOwnProperty(targetStep)) {
-                throw new Error("Invalid status or target step provided");
-            }
-
-            const currentStepValue = boardingConstants.WIZARD_STEP[currentStatus];
-            const targetStepValue = boardingConstants.WIZARD_STEP[targetStep];
-
-            // Special case: If user has completed a later step, allow navigation to previous steps
-            if (currentStepValue > targetStepValue) {
-                return {
-                    isAllowed: true,
-                    redirectUrl: `${baseUrl}?wizardStep=${targetStep}`,
-                    message: "Navigation allowed - accessing previous step",
-                };
-            }
-
-            // Don't allow skipping steps
-            if (targetStepValue > currentStepValue + 1) {
-                return {
-                    isAllowed: false,
-                    redirectUrl: `${baseUrl}?wizardStep=${currentStatus}`,
-                    message: "Cannot skip steps - redirecting to current step",
-                };
-            }
-
-            // Allow navigation to next immediate step
-            if (targetStepValue === currentStepValue + 1) {
-                return {
-                    isAllowed: true,
-                    redirectUrl: `${baseUrl}?wizardStep=${targetStep}`,
-                    message: "Navigation allowed - proceeding to next step",
-                };
-            }
-
-            // Allow staying on current step
-            if (targetStepValue === currentStepValue) {
-                return {
-                    isAllowed: true,
-                    redirectUrl: `${baseUrl}?wizardStep=${targetStep}`,
-                    message: "Navigation allowed - remaining on current step",
-                };
-            }
-
-            // Default case - shouldn't reach here but handle it gracefully
-            return {
-                isAllowed: false,
-                redirectUrl: `${baseUrl}?wizardStep=${currentStatus}`,
-                message: "Invalid navigation attempt - redirecting to current step",
-            };
-        } catch (error) {
-            // Handle any errors and return to a safe state
-            console.error("Navigation error:", error);
-            return {
-                isAllowed: false,
-                redirectUrl: `${baseUrl}?wizardStep=SIGNUP`,
-                message: "Error occurred - redirecting to beginning",
-            };
-        }
+    static formFieldHandlers = {
+        [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS]: this.getVMDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS]: this.getHostDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION]: this.getResourceAllocationFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY]: this.getNetworkFormFields,
     };
+
+    static getFormFieldsBySection(section, data) {
+        const handler = this.formFieldHandlers[section];
+        return handler ? handler(data) : [];
+    }
+
+    static createFormSection(section, data) {
+        const { title, icon, description } = section;
+
+        return [
+            {
+                type: "rowHeader",
+                label: title,
+                icon: GlobalICONS[icon],
+                description,
+            },
+            ...this.getFormFieldsBySection(section, data),
+            { type: "divider" },
+        ];
+    }
+
+    static getVMDetailsFormFields(data) {
+        return [
+            {
+                type: "text",
+                name: "vmName",
+                label: "VM Name",
+                grid: 4,
+                defaultValue: data?.vmName,
+                placeholder: "Ubuntu",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "select",
+                name: "status",
+                label: "VM Status",
+                grid: 4,
+                defaultValue: data?.status,
+                options: virtualMachineConstants.STATUS_OPTIONS,
+                validateOnChange: true,
+                validationRules: {
+                    required: true,
+                },
+            },
+            {
+                type: "text",
+                name: "osVersion",
+                label: "Operating System (with version)",
+                grid: 4,
+                defaultValue: data?.osVersion,
+                placeholder: "V.19.0.1",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "select",
+                name: "environment",
+                label: "Environment",
+                grid: 4,
+                defaultValue: data?.environment,
+                options: virtualMachineConstants.ENVIRONMENT_OPTIONS,
+                validateOnChange: true,
+                validationRules: {
+                    required: true,
+                },
+            },
+            {
+                type: "text",
+                name: "assetId",
+                label: "VM Asset ID",
+                grid: 4,
+                defaultValue: data?.assetId,
+                placeholder: "123",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "select",
+                name: "virtualizationPlatform",
+                label: "Hypervisor Platform",
+                grid: 4,
+                defaultValue: data?.virtualizationPlatform,
+                options: virtualMachineConstants.VIRTUALIZATION_PLATFORM_OPTIONS,
+                validateOnChange: true,
+                validationRules: {
+                    required: true,
+                },
+            },
+            {
+                type: "select",
+                name: "businessImpact",
+                label: "Business Impact",
+                grid: 4,
+                defaultValue: data?.businessImpact,
+                options: virtualMachineConstants.BUSINESS_IMPACT_OPTIONS,
+                validateOnChange: true,
+                validationRules: {
+                    required: true,
+                },
+            },
+        ];
+    }
+
+    static getHostDetailsFormFields(data) {
+        return [
+            {
+                type: "text",
+                name: "hostServerID",
+                label: "Host Machine Asset ID",
+                grid: 4,
+                defaultValue: data?.hostServerID,
+                placeholder: "123",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "hostIpAddress",
+                label: "Host IP Address",
+                grid: 4,
+                defaultValue: data?.hostIpAddress,
+                placeholder: "192.168.90.43",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "hostPhysicalLocation",
+                label: "Host Physical Location",
+                grid: 4,
+                defaultValue: data?.hostPhysicalLocation,
+                placeholder: "Banglore",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+        ];
+    }
+
+    static getResourceAllocationFormFields(data) {
+        return [
+            {
+                type: "text",
+                name: "storage",
+                label: "Disk Space (GB)",
+                grid: 4,
+                defaultValue: data?.storage,
+                placeholder: "128",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "memory",
+                label: "RAM (GB)",
+                grid: 4,
+                defaultValue: data?.memory,
+                placeholder: "16",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "cpuCores",
+                label: "CPU Core Count",
+                grid: 4,
+                defaultValue: data?.cpuCores,
+                placeholder: "4",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+        ];
+    }
+
+    static getNetworkFormFields(data) {
+        return [
+            {
+                type: "text",
+                name: "ipAddress",
+                label: "IP Address",
+                grid: 4,
+                defaultValue: data?.ipAddress,
+                placeholder: "128",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "ipType",
+                label: "IP Allocation Type",
+                grid: 4,
+                defaultValue: data?.ipType,
+                placeholder: "16",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "macAddress",
+                label: "MAC Address",
+                grid: 4,
+                defaultValue: data?.macAddress,
+                placeholder: "4",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "runningServices.serviceName",
+                label: "Running Services",
+                grid: 4,
+                defaultValue: data?.runningServices?.serviceName,
+                placeholder: "4",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "text",
+                name: "runningServices.port",
+                label: "Service Ports",
+                grid: 4,
+                defaultValue: data?.runningServices?.port,
+                placeholder: "4",
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+        ];
+    }
 }
 
-export default BoardingUtils;
+export default VirtualMachineUtils;

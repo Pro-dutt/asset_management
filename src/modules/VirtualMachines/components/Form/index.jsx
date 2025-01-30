@@ -1,6 +1,7 @@
 import DynamicForm from "@/components/form";
 import { useVirtualMachineInfoForm } from "../../hooks/useForm";
 import GlobalICONS from "@/lib/utils/icons";
+import styles from "./styles/index.module.css";
 
 export const VirtualMachineInfoForm = () => {
     const { formConfig, handleFormSubmit, isLoading, virtualMachineInfoFormErrors } = useVirtualMachineInfoForm();
@@ -26,7 +27,7 @@ export const VirtualMachineInfoForm = () => {
     };
 
     return (
-        <div>
+        <div className={styles.container}>
             <DynamicForm
                 key="virtual-machine-form"
                 formId="virtual-machine"

@@ -1,3 +1,5 @@
+import GlobalICONS from "@/lib/utils/icons";
+
 const virtualMachineConstants = {
     STATUS: Object.freeze({
         RUNNING: 1,
@@ -28,6 +30,29 @@ const virtualMachineConstants = {
         AFFECTS_USER: 3,
         MEDIUM: 4,
         LOW: 5,
+    }),
+
+    FORM_SECTIONS: Object.freeze({
+        VM_DETAILS: {
+            title: "VM Details",
+            icon: GlobalICONS.DESKTOP,
+            description: "Configure the basic details of your virtual machine",
+        },
+        HOST_DETAILS: {
+            title: "Host Details",
+            icon: GlobalICONS.WEBSITE,
+            description: "Configure the host machine details",
+        },
+        RESOURCE_ALLOCATION: {
+            title: "Resource Allocation",
+            icon: GlobalICONS.DATA_CENTER,
+            description: "Configure resource allocation for your virtual machine",
+        },
+        NETWORK_CONNECTIVITY: {
+            title: "Network & Connectivity",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure network and connectivity settings",
+        },
     }),
 };
 

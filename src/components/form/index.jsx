@@ -17,6 +17,7 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "./styles/root.css";
 import CustomSelectField from "./components/FieldTemplates/CustomSelectField";
 import FormUtils from "./utils";
+import Divider from "./components/FieldTemplates/DividerField";
 
 const DynamicForm = ({ formData, onSubmit, formButtons, formId = "main", responseErrors }) => {
     const {
@@ -179,6 +180,8 @@ const DynamicForm = ({ formData, onSubmit, formButtons, formId = "main", respons
                 return <FileUploadField formField={field} groupPreviewUrls={groupPreviewUrls} previewUrl={previewUrl} errors={errors} />;
             case "rowHeader":
                 return <RowHeaderField formField={field} />;
+            case "divider":
+                return <Divider />;
             default:
                 return <InputField errors={errors} setErrors={setErrors} formField={field} formValues={formValues} maskedValues={maskedValues} />;
         }
