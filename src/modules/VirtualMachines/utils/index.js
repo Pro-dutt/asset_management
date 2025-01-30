@@ -20,7 +20,8 @@ class VirtualMachineUtils {
             return trimmedSentence[0].toUpperCase() + trimmedSentence.slice(1).toLowerCase();
         }
     }
-    static getInstituteOptions() {
+
+    static getStatusOptions() {
         return Object.values(boardingConstants.INSTITUTE_TYPES || {}).map((instituteType) => ({ value: instituteType, label: this.capitalizeSentence(instituteType) }));
     }
     static getGenericOptions() {
