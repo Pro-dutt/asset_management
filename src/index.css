@@ -27,14 +27,17 @@
     --blue-color: #00bad1;
     --blue-light-color: #d6f4f8;
     --orange-color: #ff9f43;
-    --orange-text-color: #f77f10;
-    --orange-light-color: #fff0e1;
+    /* --orange-light-color: #ff9f43;
+    rgb(255, 240, 224) */
+    --orange-text-color: rgb(247, 127, 16);
+    --orange-light-color: rgb(255, 240, 225);
     --disabled-bg-color: #d3d3d3;
     --disabled-text-color: #a0a0a0;
 
     --theme-error: 255, 76, 81;
     --theme-success: 40, 199, 111;
     --theme-primary: 245, 134, 52;
+    --theme-orange: 247, 127, 16;
 
     --max-width: 1800px;
     --white-color: #ffffff;

@@ -36,11 +36,12 @@ h6{
 }
 
 .sub_title{
-    font-size: .875rem!important;
-    font-weight: 400;
+    font-size: .775rem!important;
+    font-weight: 300;
     display: block;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    color: var(--disabled-text-color);
 }
 
 .icon_container {
@@ -72,8 +73,9 @@ h6{
     color: rgb(40, 199, 11);
 }
 .orange{
-    background-color: rgb(255, 240, 224);
-    color: rgb(255, 160, 66);
+    background-color: rgb(var(--theme-orange), 0.15);
+    color: rgb(var(--theme-orange));
+    /* color: rgb(255, 160, 66); */
 }
 
 
