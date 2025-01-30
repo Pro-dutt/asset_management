@@ -11,21 +11,20 @@ export const VirtualMachineInfoForm = () => {
             {
                 label: "Cancel",
                 onClick: () => {},
-                variant: "secondary",
+                variant: "danger",
                 flat: true,
                 outlined: true,
             },
             {
                 label: "Submit",
                 type: "Submit",
-                iconPosition: "right",
                 loading: isLoading,
             },
         ].filter(Boolean);
     };
 
     return (
-        <div className={styles.container}>
+        <div className="card">
             <DynamicForm
                 key="virtual-machine-form"
                 formId="virtual-machine"

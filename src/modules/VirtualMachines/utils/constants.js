@@ -53,6 +53,31 @@ const virtualMachineConstants = {
             icon: GlobalICONS.NETWORKING_DEVICE,
             description: "Configure network and connectivity settings",
         },
+        AUTHENTICATION_ACCESS: {
+            title: "Authentication & Access",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure authentication & access settings",
+        },
+        BACKUP_RESTORATION: {
+            title: "Backup & Restoration",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure Backup & Restoration settings",
+        },
+        COMPLIANCE_SECURITY: {
+            title: "Compliance and Security",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure Compliance and Security settings",
+        },
+        ACCOUNTABILITY_CONTACT: {
+            title: "Accountability & Contact",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure Accountability & Contact settings",
+        },
+        ASSOCIATED_FILES: {
+            title: "Associated Files",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure Associated Files settings",
+        },
     }),
 };
 
