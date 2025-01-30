@@ -4,12 +4,10 @@ import SelectField from "@/components/form/components/FieldTemplates/SelectField
 import InputField from "@/components/form/components/FieldTemplates/InputField";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
 import ICON from "../../utils/icon";
-import { useSearchParams } from "next/navigation";
 import DynamicForm from "@/components/form";
 
-const TableSearch = ({ data, initialValues, router }) => {
+const TableSearch = ({ data, initialValues, router, searchParams }) => {
     const [formValues, setFormValues] = useState(initialValues);
-    const searchParams = useSearchParams();
 
     const setQueryParam = (key, value) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -43,6 +41,7 @@ const TableSearch = ({ data, initialValues, router }) => {
                 setQueryParam(name, value);
             },
             defaultValue: formValues?.[item.name],
+            inputStyle: { paddingBlock: "0.65rem",marginTop:"0.1rem" },
         }));
     };
 

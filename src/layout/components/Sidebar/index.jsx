@@ -11,9 +11,21 @@ import { useNavigate } from "react-router";
 
 const Sidebar = ({ userRole = "admin" }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isLockedOpen, setIsLockedOpen] = useState(false); // New state to track if sidebar is locked open
+
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
+
+    const lockSidebar = () => {
+        setIsLockedOpen(true);
+        setIsSidebarOpen(true);
+    };
+
+    const unlockSidebar = () => {
+        setIsLockedOpen(false);
+    };
+
     const navigate = useNavigate();
     const [expandedGroups, setExpandedGroups] = useState({});
 
@@ -121,6 +133,7 @@ const Sidebar = ({ userRole = "admin" }) => {
         },
         [fullPath]
     );
+
     const renderMenuItem = useCallback(
         (item, index) => {
             const isChildMenu = typeof index === "boolean" ? index : false;
@@ -143,7 +156,6 @@ const Sidebar = ({ userRole = "admin" }) => {
                                     toggleMenuGroup(item.name);
                                 }}
                             >
-                                {/* <i data-feather={isGroupActive ? item.activeIcon || item.icon : item.icon}></i> */}
                                 {SidebarIcons?.[item.activeIcon?.toUpperCase() || item.icon?.toUpperCase() || item.name.toUpperCase()]}
                                 <p>
                                     {" "}
@@ -180,12 +192,17 @@ const Sidebar = ({ userRole = "admin" }) => {
 
     return (
         <div className={isSidebarOpen ? styles.overlay : ""} onClick={toggleSidebar}>
-            <div onClick={(event) => event.stopPropagation()} className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed}`}>
+            <div
+                onClick={(event) => event.stopPropagation()}
+                className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed} ${!isLockedOpen ? styles.lock_open : ""}`}
+                onMouseEnter={() => !isLockedOpen && setIsSidebarOpen(true)}
+                onMouseLeave={() => !isLockedOpen && setIsSidebarOpen(false)}
+            >
                 <div className={styles.logo}>
                     <img src={logo} alt="Logo" />
                     {isSidebarOpen && (
-                        <span onClick={toggleSidebar} className={styles.logoText}>
-                            {ICONS.CIRCLE_DOT}
+                        <span onClick={isLockedOpen ? unlockSidebar : lockSidebar} className={styles.logoText}>
+                            {isLockedOpen ? ICONS.SIDEBAR_LOCK : ICONS.SIDEBAR_UNLOCK}
                         </span>
                     )}
                 </div>

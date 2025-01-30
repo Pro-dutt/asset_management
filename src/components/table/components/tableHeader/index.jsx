@@ -2,15 +2,12 @@ import React, { useCallback, useState } from "react";
 import styles from "./index.module.css";
 import CheckBoxField from "@/components/form/components/FieldTemplates/CheckBoxField";
 import ICON from "../../utils/icon";
-import { useSearchParams } from "next/navigation";
 
-const TableHeader = ({ data, setCheckboxState, checkboxState, initialValues, router }) => {
+const TableHeader = ({ data, setCheckboxState, checkboxState, initialValues, router, searchParams }) => {
     const [sort, setSort] = useState({
         sortBy: initialValues?.sortBy || data?.sort?.initialSort || null,
         sortOrder: initialValues?.sortOrder || data?.sort?.initialSortOrder || "asc",
     });
-
-    const searchParams = useSearchParams();
 
     if (!data?.rows?.length) {
         return null;
