@@ -6,10 +6,10 @@ const useCustomRouter = () => {
 
     return {
         replace: (searchParams) => {
-            navigate(`?${searchParams}`, { replace: true });
+            navigate(`${searchParams}`, { replace: true });
         },
         push: (searchParams) => {
-            navigate(`?${searchParams}`);
+            navigate(`${searchParams}`);
         },
         // Add more methods as needed
     };
