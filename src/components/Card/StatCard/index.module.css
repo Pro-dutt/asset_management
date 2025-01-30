@@ -1,0 +1,85 @@
+/* Dropdown Component CSS */
+.main_container {
+   max-width: 600px;
+   padding: 1.4rem;
+   box-shadow: 0 3px 12px rgba(47, 43, 61, 0.14), 0 0 transparent, 0 0 transparent;
+   background-color: white;
+   border-radius: 0.3rem;
+   width: 100%;
+}
+
+.inner_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+h4 {
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    line-height: 2.375rem;
+    letter-spacing: normal !important;
+    font-family: Public Sans, sans-serif, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol;
+    text-transform: none !important;
+    color: rgb(67, 64, 80);
+    display: block;
+    margin-block-start: 0.4rem;
+    margin-block-end: 0.4rem;
+    font-size: 1.5rem;
+}
+
+h6{
+    font-size: .9375rem!important;
+    font-weight: 400;
+    display: block;
+}
+
+.sub_title{
+    font-size: .875rem!important;
+    font-weight: 400;
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.icon_container {
+    flex: none;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    line-height: normal;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    transition: .2s cubic-bezier(.4,0,.2,1);
+    transition-property: width, height;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.blue{
+    background-color: rgb(232, 230, 253);
+    color: rgb(115, 103, 240);
+}
+.red{
+    background-color: rgb(255, 226, 227);
+    color: rgb(255, 76, 81);
+}
+.green{
+    background-color: rgb(220, 246, 232);
+    color: rgb(40, 199, 11);
+}
+.orange{
+    background-color: rgb(255, 240, 224);
+    color: rgb(255, 160, 66);
+}
+
+
+/* @media screen and (max-width: 1000px) {
+    .dropdown_content {
+        left: 0rem !important;
+        width: fit-content;
+    }
+} */

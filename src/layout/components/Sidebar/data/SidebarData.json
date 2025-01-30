@@ -1,7 +1,7 @@
 [
     {
         "name": "dashboard",
-        "link": "/dashboard",
+        "link": "/",
         "permission": ["admin", "employee", "reporting officer", "auditor"],
         "icon": "dashboard"
     },
