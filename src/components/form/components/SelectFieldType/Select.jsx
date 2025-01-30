@@ -66,7 +66,7 @@ const getStyles = (style, error) => {
             borderColor: error ? "var(--error-color)" : state.isFocused ? "var(--active-border-color)" : "lightgray",
             boxShadow: state.isFocused && error ? "0 0 0 1px var(--error-color)" : state.isFocused ? `0 0 0 1px var(--active-border-color)` : "none",
             "&:hover": {
-                borderColor: error ? "0" : "var(--hover-border-color)",
+                borderColor: error ? "0" : state.isFocused ? "" : "var(--hover-border-color)",
             },
             "&:focus": {
                 borderColor: error ? "0px" : "var(--active-border-color)",
