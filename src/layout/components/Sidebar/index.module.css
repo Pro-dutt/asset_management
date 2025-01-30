@@ -11,6 +11,7 @@
 
 .sidebar.collapsed {
     width: 68px;
+    /* position: static !important; */
 }
 .logo {
     display: flex;
@@ -141,7 +142,7 @@
     gap: 0.5rem;
 }
 .sidebar.lock_open {
-    position: fixed !important;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 100;

@@ -35,6 +35,8 @@
     --theme-error: 255, 76, 81;
     --theme-success: 40, 199, 111;
     --theme-primary: 245 134 52;
+
+    --max-width: 1800px;
 }
 /* :root {
     --background: #ffffff;
