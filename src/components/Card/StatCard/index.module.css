@@ -61,16 +61,16 @@ h6{
 }
 
 .blue{
-    background-color: rgb(232, 230, 253);
-    color: rgb(115, 103, 240);
+    background-color: rgb(var(--theme-violet), 0.15);
+    color: rgb(var(--theme-violet));
 }
 .red{
-    background-color: rgb(255, 226, 227);
-    color: rgb(255, 76, 81);
+    background-color: rgb(var(--theme-red), 0.15);
+    color: rgb(var(--theme-red));
 }
 .green{
-    background-color: rgb(220, 246, 232);
-    color: rgb(40, 199, 11);
+    background-color: rgb(var(--theme-green), 0.15);
+    color: rgb(var(--theme-green));
 }
 .orange{
     background-color: rgb(var(--theme-orange), 0.15);
