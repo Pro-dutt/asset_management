@@ -8,6 +8,7 @@ import endPointsICONS from "../../utils/icons";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "@/modules/VirtualMachines";
+import GlobalICONS from "@/lib/utils/icons";
 
 const EndPointsTable = () => {
     const [show, setShow] = useState({});
@@ -608,7 +609,7 @@ const EndPointsTable = () => {
         <div className={styles.container}>
             {<Table tableData={tableData} />}
 
-            <Modal show={show.add} onClose={closeModel} title={"Add Desktop"} maxWidth={"1600px"}>
+            <Modal show={show.add} onClose={closeModel} title={"Add Desktop"} maxWidth={"1600px"} icon={GlobalICONS.DESKTOP} description="Add Virtual Machine Configuration">
                 <VirtualMachine />
             </Modal>
             <Modal show={show.edit} onClose={closeModel} title={"Edit User"} maxWidth={"800px"}>
