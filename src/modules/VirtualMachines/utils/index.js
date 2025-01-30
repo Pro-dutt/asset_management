@@ -31,10 +31,10 @@ class VirtualMachineUtils {
     }
 
     static formFieldHandlers = {
-        [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS]: this.getVMDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS]: this.getHostDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION]: this.getResourceAllocationFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY]: this.getNetworkFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS.title]: this.getVMDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS.title]: this.getHostDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION.title]: this.getResourceAllocationFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,
     };
 
     static getFormFieldsBySection(section, data) {
@@ -49,10 +49,10 @@ class VirtualMachineUtils {
             {
                 type: "rowHeader",
                 label: title,
-                icon: GlobalICONS[icon],
+                icon: icon,
                 description,
             },
-            ...this.getFormFieldsBySection(section, data),
+            ...this.getFormFieldsBySection(section.title, data),
             { type: "divider" },
         ];
     }
@@ -66,9 +66,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.vmName,
                 placeholder: "Ubuntu",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -79,9 +77,7 @@ class VirtualMachineUtils {
                 defaultValue: data?.status,
                 options: virtualMachineConstants.STATUS_OPTIONS,
                 validateOnChange: true,
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
             },
             {
                 type: "text",
@@ -90,9 +86,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.osVersion,
                 placeholder: "V.19.0.1",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -103,9 +97,7 @@ class VirtualMachineUtils {
                 defaultValue: data?.environment,
                 options: virtualMachineConstants.ENVIRONMENT_OPTIONS,
                 validateOnChange: true,
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
             },
             {
                 type: "text",
@@ -114,9 +106,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.assetId,
                 placeholder: "123",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -127,9 +117,7 @@ class VirtualMachineUtils {
                 defaultValue: data?.virtualizationPlatform,
                 options: virtualMachineConstants.VIRTUALIZATION_PLATFORM_OPTIONS,
                 validateOnChange: true,
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
             },
             {
                 type: "select",
@@ -139,9 +127,7 @@ class VirtualMachineUtils {
                 defaultValue: data?.businessImpact,
                 options: virtualMachineConstants.BUSINESS_IMPACT_OPTIONS,
                 validateOnChange: true,
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
             },
         ];
     }
@@ -155,9 +141,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.hostServerID,
                 placeholder: "123",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -167,9 +151,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.hostIpAddress,
                 placeholder: "192.168.90.43",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -179,9 +161,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.hostPhysicalLocation,
                 placeholder: "Banglore",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
         ];
@@ -196,9 +176,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.storage,
                 placeholder: "128",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -208,9 +186,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.memory,
                 placeholder: "16",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -220,9 +196,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.cpuCores,
                 placeholder: "4",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
         ];
@@ -237,9 +211,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.ipAddress,
                 placeholder: "128",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -249,9 +221,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.ipType,
                 placeholder: "16",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -261,9 +231,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.macAddress,
                 placeholder: "4",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -273,9 +241,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.runningServices?.serviceName,
                 placeholder: "4",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
             {
@@ -285,9 +251,7 @@ class VirtualMachineUtils {
                 grid: 4,
                 defaultValue: data?.runningServices?.port,
                 placeholder: "4",
-                validationRules: {
-                    required: true,
-                },
+                validationRules: {},
                 validateOnChange: true,
             },
         ];

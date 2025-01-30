@@ -5,7 +5,7 @@ const RowHeaderField = ({ formField }) => {
     const { label, fontSize = "15px", className = "", icon = "", description = "" } = formField;
     return (
         <div className={`${styles.container} ${className}`}>
-            {icon}
+            <div className={styles.icon}>{icon}</div>
             <div className={styles.header_wrapper}>
                 <p className={styles.rowHeader} style={{ fontSize }}>
                     {label}

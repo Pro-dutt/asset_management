@@ -14,12 +14,10 @@ export const VirtualMachineInfoForm = () => {
                 variant: "secondary",
                 flat: true,
                 outlined: true,
-                icon: GlobalICONS.LEFT_ARROW,
             },
             {
                 label: "Submit",
                 type: "Submit",
-                icon: GlobalICONS.NEXT_ARROW,
                 iconPosition: "right",
                 loading: isLoading,
             },
