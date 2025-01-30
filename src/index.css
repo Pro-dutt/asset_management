@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-    --backgrounColor: #f8f8fa;
+    --backgroundColor: #f8f8fa;
     --foreground: #171717;
     --v-global-theme-primary: 115, 103, 240;
     --primary-hover-color: rgba(211, 206, 207, 0.2);
@@ -34,9 +34,10 @@
 
     --theme-error: 255, 76, 81;
     --theme-success: 40, 199, 111;
-    --theme-primary: 245 134 52;
+    --theme-primary: 245, 134, 52;
 
     --max-width: 1800px;
+    --white-color: #ffffff;
 }
 /* :root {
     --background: #ffffff;
@@ -58,7 +59,7 @@
 
 body {
     color: var(--foreground);
-    background: var(--backgrounColor);
+    background: var(--backgroundColor);
     font-family: var(--primary-font-family);
 }
 .card {

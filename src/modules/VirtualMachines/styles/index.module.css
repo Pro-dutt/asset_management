@@ -1,5 +1,11 @@
-.container {
-}
 .breadcrumbWrapper {
     padding-bottom: 1rem;
+}
+.container {
+    background-color: var(--white-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    padding-block: 0.8rem;
+    border: 1px solid #f0f0f0;
+    /* box-shadow: 0 3px 12px rgba(47, 43, 61, 0.14), 0 0 transparent, 0 0 transparent; */
 }

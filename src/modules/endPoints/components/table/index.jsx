@@ -5,6 +5,7 @@ import TableIcon from "@/components/table/utils/icon";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "@/modules/VirtualMachines";
+import GlobalICONS from "@/lib/utils/icons";
 import desktopTableData from "./data";
 
 const FILTER_OPTIONS = {
@@ -128,9 +129,17 @@ const EndPointsTable = () => {
 
     return (
         <div className={styles.container}>
-            <Table tableData={tableData} />
-            <Modal show={show.add} onClose={closeModal} title="Add Desktop" maxWidth="1600px">
-                <VirtualMachine data={desktopDetails} />
+            {<Table tableData={tableData} />}
+
+            <Modal
+                show={show.add}
+                onClose={() => setShow({})}
+                title={"Add Desktop"}
+                maxWidth={"1600px"}
+                icon={GlobalICONS.DESKTOP}
+                description="Provide the required details to configure and register a new desktop"
+            >
+                <VirtualMachine />
             </Modal>
             <Modal show={show.edit} onClose={closeModal} title="Edit User" maxWidth="800px">
                 <VirtualMachine data={desktopDetails} />

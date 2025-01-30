@@ -22,7 +22,7 @@ export const VirtualMachineInfoForm = () => {
     };
 
     return (
-        <div className="card">
+        <div className="" style={{ paddingInline: "1rem" }}>
             <DynamicForm
                 key="virtual-machine-form"
                 formId="virtual-machine"
