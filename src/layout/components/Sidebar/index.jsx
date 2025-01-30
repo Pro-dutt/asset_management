@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 
 const Sidebar = ({ userRole = "admin" }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const [isLockedOpen, setIsLockedOpen] = useState(false); // New state to track if sidebar is locked open
+    const [isLockedOpen, setIsLockedOpen] = useState(true); // New state to track if sidebar is locked open
 
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
