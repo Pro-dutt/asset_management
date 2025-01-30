@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "./styles/index.module.css";
-import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter, useSearchParams } from "next/navigation";
 import DataNotFound from "../DataNotFound";
 import apiClient from "@/services/api/config";
 import "./styles/index.css";
@@ -10,9 +10,17 @@ import TableSearch from "./components/searches";
 import TablePagination from "./components/pagination";
 import TableError from "./components/tableError";
 import TableView from "./components/tableView";
+import { useLocation } from "react-router-dom";
+import useCustomRouter from "./hooks/useCustomRouter";
+
+// Custom hook to replicate Next.js useSearchParams
+export const useSearchParams = () => {
+    const location = useLocation();
+    return new URLSearchParams(location.search);
+};
 
 const Table = ({ tableData }) => {
-    const router = useRouter();
+    const router = useCustomRouter(); // Instead of useRouter
     const searchParams = useSearchParams();
     const initialValues = React.useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams]);
 
@@ -28,8 +36,8 @@ const Table = ({ tableData }) => {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await apiClient.get(data.url, { params: payload });
-                const newData = data.getTableData(response.data);
+                // const response = await apiClient.get(data.url, { params: payload });
+                // const newData = data.getTableData(response.data);
                 setData(newData);
             } catch (err) {
                 console.error("Error fetching data:", err);
@@ -52,13 +60,11 @@ const Table = ({ tableData }) => {
         fetchData(initialValues);
     }, [initialValues]);
 
-    
-
     return (
         <div className={styles.table_container}>
             {/* Filters and Search */}
-            <TableFilter router={router} initialValues={initialValues} data={data.externalFilters} />
-            <TableSearch initialValues={initialValues} router={router} data={data.tableHeader} />
+            <TableFilter router={router} initialValues={initialValues} data={data.externalFilters} searchParams={searchParams} />
+            <TableSearch initialValues={initialValues} router={router} data={data.tableHeader} searchParams={searchParams} />
 
             <TableError error={error} />
 
@@ -71,7 +77,7 @@ const Table = ({ tableData }) => {
                     data={data}
                     router={router}
                     initialValues={initialValues}
-                    
+                    searchParams={searchParams}
                 />
             )}
 
@@ -82,7 +88,7 @@ const Table = ({ tableData }) => {
             {dataView.kanban && <div className={styles.grid_view_container}>{data.rows?.length > 0 ? data.kanbanComponent() : <DataNotFound message="Empty List" />}</div>}
 
             {/* Pagination */}
-            <TablePagination data={data} router={router} initialValues={initialValues} />
+            <TablePagination data={data} router={router} initialValues={initialValues} searchParams={searchParams} />
         </div>
     );
 };

@@ -1,13 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
 import DynamicForm from "@/components/form";
 import ICON from "../../utils/icon";
-import { useSearchParams } from "next/navigation";
 
-const TableFilter = ({ data, initialValues, router }) => {
+const TableFilter = ({ data, initialValues, router, searchParams }) => {
     const [formValues, setFormValues] = useState(initialValues);
     const [isBodyVisible, setIsBodyVisible] = useState(false);
-    const searchParams = useSearchParams();
 
     const setQueryParam = (key, value) => {
         const params = new URLSearchParams(searchParams.toString());

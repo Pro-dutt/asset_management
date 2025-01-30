@@ -1,10 +1,13 @@
 import "./App.css";
 import Layout from "./layout";
+import EndPointsTable from "./modules/endPoints/components/table";
 
 function App() {
     return (
         <div className="App">
-            <Layout />
+            <Layout>
+                <EndPointsTable />
+            </Layout>
         </div>
     );
 }

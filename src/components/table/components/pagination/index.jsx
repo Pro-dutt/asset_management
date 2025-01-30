@@ -2,10 +2,8 @@ import React, { useCallback, useMemo, useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import styles from "./index.module.css";
 import ICON from "../../utils/icon";
-import { useSearchParams } from "next/navigation";
 
-const TablePagination = ({ initialValues, router, data }) => {
-    const searchParams = useSearchParams();
+const TablePagination = ({ initialValues, router, data, searchParams }) => {
     const urlPage = Number(searchParams.get("page")) || initialValues?.page || 1;
     const itemsPerPage = initialValues?.limit || 10;
 

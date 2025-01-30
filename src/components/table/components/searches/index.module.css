@@ -19,10 +19,8 @@
 .container > div:nth-child(2) > form:first-of-type {
     width: 50%;
     margin-right: 0.4rem;
-    
 }
-.container > div:nth-child(2) > form > div
-{
+.container > div:nth-child(2) > form > div {
     justify-content: end;
 }
 .container > div:nth-child(2) > form > div > div {
@@ -35,3 +33,6 @@
     padding-inline: 0.95rem !important;
     padding-block: 0.55rem !important;
 }
+/* .container input {
+    padding-block: 0.7rem !important;
+} */

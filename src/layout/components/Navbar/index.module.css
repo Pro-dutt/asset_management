@@ -186,6 +186,8 @@
     font-size: 0.9rem;
     color: #a9a9ab;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .search_bar p span {
     color: #a9a9ab;
