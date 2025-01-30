@@ -63,22 +63,22 @@
 
 @keyframes slideInFromBottom {
     from {
-        transform: translateY(100%); 
+        transform: translateY(100%);
         opacity: 0;
     }
     to {
-        transform: translateY(0); 
+        transform: translateY(0);
         opacity: 1;
     }
 }
 
 @keyframes slideInFromCenter {
     from {
-        transform: scale(0); 
-        opacity: 0; 
+        transform: scale(0);
+        opacity: 0;
     }
     to {
-        transform: scale(1); 
+        transform: scale(1);
         opacity: 1;
     }
 }
@@ -131,22 +131,23 @@
 
 .modal_title {
     display: flex;
+    gap: 0.5rem;
     align-items: center;
-    margin: 0;
-    line-height: 1.5;
-    width: 100%;
-    font-weight: 500;
+    font-weight: 550;
+    font-size: 1rem;
+    line-height: 1.3;
 }
 
-.modal-title > span {
-    display: flex;
-    gap: 0.3rem;
+.modal_title svg {
+    width: 27px;
+    height: 27px;
 }
 
 /* Modal Body */
 .modal_body {
     position: relative;
     padding: 1rem;
+    background-color: var(--backgroundColor);
     /* padding-bottom: 0px; */
 }
 
@@ -160,4 +161,10 @@
 
 .modal_close_icon {
     cursor: pointer;
+}
+
+.modal_description {
+    font-size: 13px;
+    color: var(--disabled-text-color);
+    font-weight: normal;
 }

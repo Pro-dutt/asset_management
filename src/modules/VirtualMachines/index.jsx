@@ -1,9 +1,20 @@
+import Breadcrumb from "@/components/Breadcrumb";
+import styles from "./styles/index.module.css";
+
 const { VirtualMachineInfoForm } = require("./components/Form");
-const { useVirtualMachineInfoForm } = require("./hooks/useForm");
 
 const VirtualMachine = () => {
+    // const breadcrumbItems = [
+    //     { label: "Dashoard", url: "/" },
+    //     { label: "Virtual Machines", url: "/virtual-machines" },
+    //     { label: "Create", url: "" },
+    // ];
     return (
-        <div>
+        <div className={styles.container}>
+            {/* <div className={styles.breadcrumbWrapper}>
+                <Breadcrumb items={breadcrumbItems} title="Virtual Machine Managment" />
+            </div> */}
+
             <VirtualMachineInfoForm />
         </div>
     );

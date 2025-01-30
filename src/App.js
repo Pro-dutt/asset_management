@@ -5,11 +5,20 @@ import Layout from "./layout";
 import VirtualMachine from "./modules/VirtualMachines";
 import EndPointsTable from "./modules/endPoints/components/table";
 import Dashboard from "./modules/dashboard";
+import Endpoints from "./modules/endPoints";
 
 function App() {
     return (
         <Layout>
             <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <Dashboard />
+                        </React.Suspense>
+                    }
+                />
                 <Route
                     path="/virtual-machines"
                     element={
@@ -27,10 +36,10 @@ function App() {
                     }
                 />
                 <Route
-                    path="/"
+                    path="/endpoints"
                     element={
                         <React.Suspense fallback={""}>
-                            <Dashboard />
+                            <Endpoints />
                         </React.Suspense>
                     }
                 />
