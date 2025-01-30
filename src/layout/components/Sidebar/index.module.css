@@ -10,18 +10,18 @@
 }
 
 .sidebar.collapsed {
-    width: 80px;
+    width: 68px;
 }
 .logo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem;
-    padding-left: 1.25rem;
+    padding-left: 0.6rem;
     padding-top: 0.9rem;
 }
 .logo img {
-    width: 85px;
+    width: 50px;
     height: auto;
 }
 
@@ -35,13 +35,6 @@
     justify-content: space-between;
     gap: 0.5rem;
     cursor: pointer;
-}
-.taskManager {
-    display: block;
-    font-size: 12px;
-    color: #8e8e8e;
-    margin-top: 4px;
-    font-weight: normal;
 }
 
 .nav {
