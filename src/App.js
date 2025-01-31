@@ -8,6 +8,7 @@ import Dashboard from "./modules/dashboard";
 import Endpoints from "./modules/endPoints";
 import WebApplication from "./modules/webApplications";
 import NetworkDevice from "./modules/networkDevices";
+import DataCenter from "./modules/dataCenter";
 
 function App() {
     return (
@@ -42,6 +43,14 @@ function App() {
                     element={
                         <React.Suspense fallback={""}>
                             <NetworkDevice />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path="/data-center"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <DataCenter />
                         </React.Suspense>
                     }
                 />

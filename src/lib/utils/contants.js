@@ -74,7 +74,26 @@ const globalConstants = {
         { key: "NO", value: 0, label: "No" },
     ]),
 
-    FORM_SECTIONS: {
+    STATUS_CATEGORIES: createEnum([
+        { key: "IN_STORE", value: 1, label: "In-Store" },
+        { key: "IN_USE", value: 2, label: "In-Use" },
+        { key: "IN_MAINTENANCE", value: 3, label: "In-Maintenance" },
+        { key: "DISPOSED", value: 4, label: "Disposed" },
+        { key: "MISSING", value: 5, label: "Missing" },
+        { key: "RESERVED", value: 6, label: "Reserved" },
+    ]),
+
+    DEVICE_STATES: createEnum([
+        { key: "ACTIVE", value: 1, label: "Active" },
+        { key: "ACTIVE_UNSUPPORTED", value: 2, label: "Active (Unsupported)" },
+        { key: "INACTIVE", value: 3, label: "In-Active" },
+        { key: "STANDBY", value: 4, label: "Standby" },
+        { key: "DISCONNECTED", value: 5, label: "Disconnected" },
+        { key: "TEST_MODE", value: 6, label: "Test Mode" },
+        { key: "EXPIRED", value: 7, label: "Expired" },
+    ]),
+
+    CONFIGURATION_FORM_SECTIONS: {
         AUTHENTICATION_ACCESS: {
             title: "Authentication & Access",
             icon: GlobalICONS.AUTHENTICATION,
@@ -106,6 +125,44 @@ const globalConstants = {
             description: "Manage and link associated files to configurations",
         },
     },
+
+    DEVICE_MANAGEMENT_FORM_SECTIONS: Object.freeze({
+        DEVICE_PROPERTIES: {
+            title: "Device Properties",
+            icon: GlobalICONS.PROPERTY,
+            description: "Specify key properties and configurations of the device",
+        },
+        LIFECYCLE_MANAGEMENT: {
+            title: "Lifecycle Management",
+            icon: GlobalICONS.LIFE_CYCLE,
+            description: "Manage the device lifecycle from procurement to decommissioning",
+        },
+        NETWORK_DETAILS: {
+            title: "Network & Connectivity",
+            icon: GlobalICONS.NETWORKING_DEVICE,
+            description: "Configure network settings and connectivity information",
+        },
+        ASSIGNMENT_DETAILS: {
+            title: "Assignment Details",
+            icon: GlobalICONS.ASSIGNMENT,
+            description: "Assign devices to users, teams, or departments as required",
+        },
+        PROCUREMENT_DETAILS: {
+            title: "Procurement & Financial Details",
+            icon: GlobalICONS.PROCUREMENT,
+            description: "Record procurement, cost, and financial details of the device",
+        },
+        OPERATION_DETAILS: {
+            title: "Operations Details",
+            icon: GlobalICONS.OPERATION,
+            description: "Track operational status, maintenance schedules, and usage",
+        },
+        ASSOCIATED_FILES: {
+            title: "Associated Files",
+            icon: GlobalICONS.ATTACHMENT,
+            description: "Attach and manage files related to the device",
+        },
+    }),
 };
 
 export default globalConstants;
