@@ -2,37 +2,6 @@ import globalConstants from "@/lib/utils/contants";
 import webApplicationConstants from "./constants";
 
 class WebApplicationUtils {
-    static formFieldHandlers = {
-        [webApplicationConstants.FORM_SECTIONS.GENERAL_INFORMATION.title]: this.getGeneralInfoFormFields,
-        [webApplicationConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS.title]: this.getAuthenticationDetailsFormFields,
-        [webApplicationConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,
-        [webApplicationConstants.FORM_SECTIONS.ENVIRONMENT_DETAILS.title]: this.getEnvironmentDetailsFormFields,
-        [webApplicationConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT.title]: this.getAccountabilityDetailsFormFields,
-        [webApplicationConstants.FORM_SECTIONS.COMPLIANCE_SECURITY.title]: this.getComplianceDetailsFormFields,
-        [webApplicationConstants.FORM_SECTIONS.BACKUP_RESTORATION.title]: this.getBackupRestorationDetailsFormFields,
-        [webApplicationConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
-    };
-
-    static getFormFieldsBySection(section, data) {
-        const handler = this.formFieldHandlers[section];
-        return handler ? handler(data) : [];
-    }
-
-    static createFormSection(section, data) {
-        const { title, icon, description } = section;
-
-        return [
-            {
-                type: "rowHeader",
-                label: title,
-                icon: icon,
-                description,
-            },
-            ...this.getFormFieldsBySection(section.title, data),
-            { type: "divider" },
-        ];
-    }
-
     static getGeneralInfoFormFields(data) {
         return [
             {
@@ -346,6 +315,37 @@ class WebApplicationUtils {
                 validationRules: {},
                 validateOnChange: true,
             },
+        ];
+    }
+
+    static formFieldHandlers = {
+        [webApplicationConstants.FORM_SECTIONS.GENERAL_INFORMATION.title]: this.getGeneralInfoFormFields,
+        [webApplicationConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS.title]: this.getAuthenticationDetailsFormFields,
+        [webApplicationConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,
+        [webApplicationConstants.FORM_SECTIONS.ENVIRONMENT_DETAILS.title]: this.getEnvironmentDetailsFormFields,
+        [webApplicationConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT.title]: this.getAccountabilityDetailsFormFields,
+        [webApplicationConstants.FORM_SECTIONS.COMPLIANCE_SECURITY.title]: this.getComplianceDetailsFormFields,
+        [webApplicationConstants.FORM_SECTIONS.BACKUP_RESTORATION.title]: this.getBackupRestorationDetailsFormFields,
+        [webApplicationConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
+    };
+
+    static getFormFieldsBySection(section, data) {
+        const handler = this.formFieldHandlers[section];
+        return handler ? handler(data) : [];
+    }
+
+    static createFormSection(section, data) {
+        const { title, icon, description } = section;
+
+        return [
+            {
+                type: "rowHeader",
+                label: title,
+                icon: icon,
+                description,
+            },
+            ...this.getFormFieldsBySection(section.title, data),
+            { type: "divider" },
         ];
     }
 }

@@ -1,4 +1,3 @@
-import { endPointsApiService } from "@/services/api/sampleEndPoints";
 import VirtualMachinesApiService from "@/services/api/virtualMachines";
 import { useLoading } from "@/services/context/loading";
 import { useNotification } from "@/services/context/notification";

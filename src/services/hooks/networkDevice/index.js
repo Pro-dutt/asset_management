@@ -1,27 +1,27 @@
-import WebApplicationApiService from "@/services/api/webApplications";
+import NetworkDeviceApiService from "@/services/api/networkDevices";
 import { useLoading } from "@/services/context/loading";
 import { useNotification } from "@/services/context/notification";
 import apiConstants from "@/services/utils/constants";
 import { useCallback } from "react";
 
-export const useWebApplicationCreate = () => {
+export const useNetworkDeviceCreate = () => {
     const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
 
     const { isLoading, setLoading } = useLoading();
 
-    const CREATE_WEB_APPLICATION_KEY = apiConstants.loadingStateKeys.CREATE_WEB_APPLICATION;
+    const CREATE_NETWORK_DEVICE_KEY = apiConstants.loadingStateKeys.CREATE_NETWORK_DEVICE;
 
-    const executeWebApplicationCreation = useCallback(
+    const executeNetworkDeviceCreation = useCallback(
         async ({ payload, onSuccess, onError, options }) => {
-            setLoading(CREATE_WEB_APPLICATION_KEY, true);
+            setLoading(CREATE_NETWORK_DEVICE_KEY, true);
             const controller = new AbortController();
 
             try {
-                const data = await WebApplicationApiService.create(payload, controller.signal);
+                const data = await NetworkDeviceApiService.create(payload, controller.signal);
 
                 if (options?.showNotification) {
                     showSuccessNotification({
-                        key: CREATE_WEB_APPLICATION_KEY,
+                        key: CREATE_NETWORK_DEVICE_KEY,
                         value: data,
                         hideNotification: true,
                     });
@@ -31,24 +31,24 @@ export const useWebApplicationCreate = () => {
                 return data;
             } catch (error) {
                 showErrorNotification({
-                    key: CREATE_WEB_APPLICATION_KEY,
+                    key: CREATE_NETWORK_DEVICE_KEY,
                     value: error || "Failed to complete creation",
                 });
 
                 onError?.();
                 throw error;
             } finally {
-                setLoading(CREATE_WEB_APPLICATION_KEY, false);
+                setLoading(CREATE_NETWORK_DEVICE_KEY, false);
             }
         },
-        [CREATE_WEB_APPLICATION_KEY, showErrorNotification, showSuccessNotification, setLoading]
+        [CREATE_NETWORK_DEVICE_KEY, showErrorNotification, showSuccessNotification, setLoading]
     );
     return {
-        webApplicationCreation: {
-            execute: executeWebApplicationCreation,
-            isLoading: isLoading(CREATE_WEB_APPLICATION_KEY) || false,
-            successMessages: successMessages?.[CREATE_WEB_APPLICATION_KEY],
-            errorMessages: errorMessages?.[CREATE_WEB_APPLICATION_KEY],
+        networkDeviceCreation: {
+            execute: executeNetworkDeviceCreation,
+            isLoading: isLoading(CREATE_NETWORK_DEVICE_KEY) || false,
+            successMessages: successMessages?.[CREATE_NETWORK_DEVICE_KEY],
+            errorMessages: errorMessages?.[CREATE_NETWORK_DEVICE_KEY],
         },
     };
 };

@@ -10,9 +10,16 @@ const apiConstants = {
     virtualMachines: {
         BASE_ROUTE: "/virtual-machines",
     },
+    webApplications: {
+        BASE_ROUTE: "/web-applications",
+    },
+    networkDevices: {
+        BASE_ROUTE: "/network-devices",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         CREATE_WEB_APPLICATION: "createWebApplication",
+        CREATE_NETWORK_DEVICE: "createNetworkDevice",
         SIGN_UP: "signup",
         VERIFY_EMAIL: "verifyEmail",
         SETUP_BASE_INFO: "setupBaseInfo",

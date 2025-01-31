@@ -151,13 +151,13 @@ export const ICON = {
     FILL_CHECKBOX: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="v-icon notranslate v-theme--light v-icon--size-default">
             <path fill="currentColor" d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path>
-            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.5 12 2.5 2.5 5-5"></path>
+            <path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m8.5 12 2.5 2.5 5-5"></path>
         </svg>
     ),
     EMPTY_CHECKBOX: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="v-icon notranslate v-theme--light v-icon--size-default">
             <g clip-path="url(#a)">
-                <path stroke="currentColor" stroke-opacity=".4" stroke-width="2" d="M4 7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"></path>
+                <path stroke="currentColor" stroke-opacity=".4" strokeWidth="2" d="M4 7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"></path>
             </g>
             <defs>
                 <clipPath id="a">

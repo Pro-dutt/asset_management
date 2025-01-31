@@ -1,8 +1,8 @@
 import DynamicForm from "@/components/form";
-import { useWebApplicationInfoForm } from "../../hooks/useForm";
+import { useVirtualMachineInfoForm } from "./hooks/useForm";
 
-export const WebApplicationInfoForm = () => {
-    const { formConfig, handleFormSubmit, isLoading, WebApplicationInfoFormErrors } = useWebApplicationInfoForm();
+export const VirtualMachineInfoForm = () => {
+    const { formConfig, handleFormSubmit, isLoading, virtualMachineInfoFormErrors } = useVirtualMachineInfoForm();
 
     const getFormButtons = (isLoading = false) => {
         return [
@@ -24,12 +24,12 @@ export const WebApplicationInfoForm = () => {
     return (
         <div className="" style={{ paddingInline: "1rem" }}>
             <DynamicForm
-                key="web-application-form"
-                formId="web-application"
+                key="virtual-machine-form"
+                formId="virtual-machine"
                 formData={formConfig}
                 formButtons={getFormButtons(isLoading)}
                 onSubmit={handleFormSubmit}
-                responseErrors={WebApplicationInfoFormErrors}
+                responseErrors={virtualMachineInfoFormErrors}
             />
         </div>
     );

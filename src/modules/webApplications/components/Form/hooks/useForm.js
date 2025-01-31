@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import virtualMachineConstants from "../utils/constants";
 import { useWebApplication } from "@/services/context/webApplication";
 import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";

@@ -3,6 +3,7 @@ import { LoadingProvider } from "./loading";
 import { EndPointsProvider } from "./sampleEndPoints";
 import { VirtualMachinesProvider } from "./virtualMachines";
 import { WebApplicationProvider } from "./webApplication";
+import { NetworkDeviceProvider } from "./networkDevice";
 
 const ContextProviders = ({ children }) => {
     return (
@@ -10,7 +11,9 @@ const ContextProviders = ({ children }) => {
             <NotificationProvider>
                 <VirtualMachinesProvider>
                     <WebApplicationProvider>
-                        <EndPointsProvider>{children}</EndPointsProvider>
+                        <NetworkDeviceProvider>
+                            <EndPointsProvider>{children}</EndPointsProvider>
+                        </NetworkDeviceProvider>
                     </WebApplicationProvider>
                 </VirtualMachinesProvider>
             </NotificationProvider>

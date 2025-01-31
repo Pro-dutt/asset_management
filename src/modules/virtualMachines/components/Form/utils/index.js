@@ -1,68 +1,7 @@
-import GlobalICONS from "@/lib/utils/icons";
 import virtualMachineConstants from "./constants";
-import boardingConstants from "./constants";
 import globalConstants from "@/lib/utils/contants";
 
 class VirtualMachineUtils {
-    static capitalizeSentence(sentence, capitalizeAll = true) {
-        if (typeof sentence !== "string") {
-            throw new TypeError("Input must be a string");
-        }
-
-        const trimmedSentence = sentence.trim();
-
-        if (capitalizeAll) {
-            const words = trimmedSentence.split(/\s+/);
-            const capitalizedWords = words.map((word) => {
-                if (word.length === 0) return "";
-                return word[0].toUpperCase() + word.slice(1).toLowerCase();
-            });
-            return capitalizedWords.join(" ");
-        } else {
-            if (trimmedSentence.length === 0) return "";
-            return trimmedSentence[0].toUpperCase() + trimmedSentence.slice(1).toLowerCase();
-        }
-    }
-
-    static getStatusOptions() {
-        return Object.values(virtualMachineConstants.INSTITUTE_TYPES || {}).map((instituteType) => ({ value: instituteType, label: this.capitalizeSentence(instituteType) }));
-    }
-    static getGenericOptions() {
-        return Object.values(boardingConstants.GENDER_TYPE || {}).map((genderType) => ({ value: genderType, label: this.capitalizeSentence(genderType) }));
-    }
-
-    static formFieldHandlers = {
-        [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS.title]: this.getVMDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS.title]: this.getHostDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION.title]: this.getResourceAllocationFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS.title]: this.getAuthenticationDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.BACKUP_RESTORATION.title]: this.getBackupRestorationDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.COMPLIANCE_SECURITY.title]: this.getComplianceDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT.title]: this.getAccountabilityDetailsFormFields,
-        [virtualMachineConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
-    };
-
-    static getFormFieldsBySection(section, data) {
-        const handler = this.formFieldHandlers[section];
-        return handler ? handler(data) : [];
-    }
-
-    static createFormSection(section, data) {
-        const { title, icon, description } = section;
-
-        return [
-            {
-                type: "rowHeader",
-                label: title,
-                icon: icon,
-                description,
-            },
-            ...this.getFormFieldsBySection(section.title, data),
-            { type: "divider" },
-        ];
-    }
-
     static getVMDetailsFormFields(data) {
         return [
             {
@@ -445,6 +384,38 @@ class VirtualMachineUtils {
                 validationRules: {},
                 validateOnChange: true,
             },
+        ];
+    }
+
+    static formFieldHandlers = {
+        [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS.title]: this.getVMDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS.title]: this.getHostDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION.title]: this.getResourceAllocationFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS.title]: this.getAuthenticationDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.BACKUP_RESTORATION.title]: this.getBackupRestorationDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.COMPLIANCE_SECURITY.title]: this.getComplianceDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT.title]: this.getAccountabilityDetailsFormFields,
+        [virtualMachineConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
+    };
+
+    static getFormFieldsBySection(section, data) {
+        const handler = this.formFieldHandlers[section];
+        return handler ? handler(data) : [];
+    }
+
+    static createFormSection(section, data) {
+        const { title, icon, description } = section;
+
+        return [
+            {
+                type: "rowHeader",
+                label: title,
+                icon: icon,
+                description,
+            },
+            ...this.getFormFieldsBySection(section.title, data),
+            { type: "divider" },
         ];
     }
 }

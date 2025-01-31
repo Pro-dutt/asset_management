@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import styles from "./styles/index.module.css";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
-import VirtualMachine from "@/modules/VirtualMachines";
+import VirtualMachine from "@/modules/virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import desktopsTableConstants from "./utils/constants";
 import DesktopsTableUtils from "./utils";
