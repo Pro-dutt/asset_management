@@ -42,7 +42,7 @@ const webApplicationConstants = {
     FORM_SECTIONS: Object.freeze({
         GENERAL_INFORMATION: {
             title: "General Information",
-            icon: GlobalICONS.DESKTOP,
+            icon: GlobalICONS.INFORMATION,
             description: "Configure the general details of your web application",
         },
         ENVIRONMENT_DETAILS: {

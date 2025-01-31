@@ -1,14 +1,14 @@
 import apiConstants from "@/services/utils/constants";
 import apiClient from "../config";
 
-const webApplicationApiClient = apiClient.create({
-    baseURL: `${apiClient.defaults.baseURL}${apiConstants.webApplications.BASE_ROUTE}`,
+const networkDeviceApiClient = apiClient.create({
+    baseURL: `${apiClient.defaults.baseURL}${apiConstants.networkDevices.BASE_ROUTE}`,
     headers: {
         ...apiClient.defaults.headers,
     },
 });
 
-// webApplicationApiClient.interceptors.request.use(
+// networkDeviceApiClient.interceptors.request.use(
 //     (config) => {
 //         const token = localStorage.getItem("virtutalMachines_token");
 //         if (token) {
@@ -20,7 +20,7 @@ const webApplicationApiClient = apiClient.create({
 //     (error) => Promise.reject(error)
 // );
 
-// webApplicationApiClient.interceptors.response.use(
+// networkDeviceApiClient.interceptors.response.use(
 //     (response) => {
 //         console.log("Institute module response:", response);
 //         return response;
@@ -28,4 +28,4 @@ const webApplicationApiClient = apiClient.create({
 //     (error) => Promise.reject(error)
 // );
 
-export default webApplicationApiClient;
+export default networkDeviceApiClient;

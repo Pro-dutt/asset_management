@@ -1,7 +1,7 @@
-import WebApplicationApiClient from "./config";
+import networkDeviceApiClient from "./config";
 
-class WebApplicationApiService {
-    constructor(apiClient = WebApplicationApiClient) {
+class NetworkDeviceApiService {
+    constructor(apiClient = networkDeviceApiClient) {
         this.apiClient = apiClient;
     }
 
@@ -13,4 +13,4 @@ class WebApplicationApiService {
     }
 }
 
-export default WebApplicationApiService;
+export default NetworkDeviceApiService;

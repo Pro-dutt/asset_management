@@ -4,7 +4,7 @@ import TableUtils from "@/components/table/utils";
 import TableIcon from "@/components/table/utils/icon";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
-import VirtualMachine from "@/modules/VirtualMachines";
+import VirtualMachine from "@/modules/virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import desktopTableData from "./data";
 

@@ -4,12 +4,12 @@ import { useWebApplicationCreate } from "../hooks/webApplication";
 const WebApplicationContext = createContext(null);
 
 export const WebApplicationProvider = ({ children, initialData = { WebApplicationList: [] } }) => {
-    const virtualMachineCreationState = useWebApplicationCreate();
+    const webApplicationCreationState = useWebApplicationCreate();
 
     return (
         <WebApplicationContext.Provider
             value={{
-                ...virtualMachineCreationState,
+                ...webApplicationCreationState,
             }}
         >
             {children}

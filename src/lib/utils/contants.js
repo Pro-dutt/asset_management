@@ -78,7 +78,7 @@ const globalConstants = {
         AUTHENTICATION_ACCESS: {
             title: "Authentication & Access",
             icon: GlobalICONS.AUTHENTICATION,
-            description: "Configure authentication and access settings.",
+            description: "Configure authentication and access settings",
         },
         NETWORK_CONNECTIVITY: {
             title: "Network & Connectivity",
@@ -88,22 +88,22 @@ const globalConstants = {
         ACCOUNTABILITY_CONTACT: {
             title: "Accountability & Contact",
             icon: GlobalICONS.USERS,
-            description: "Provide accountability details and contact information.",
+            description: "Provide accountability details and contact information",
         },
         COMPLIANCE_SECURITY: {
             title: "Security & Compliance",
             icon: GlobalICONS.SECURITY,
-            description: "Define security policies and compliance configurations.",
+            description: "Define security policies and compliance configurations",
         },
         BACKUP_RESTORATION: {
             title: "Backup & Restoration",
             icon: GlobalICONS.BACKUP,
-            description: "Set preferences for data backup and restoration.",
+            description: "Set preferences for data backup and restoration",
         },
         ASSOCIATED_FILES: {
             title: "Associated Files",
             icon: GlobalICONS.ATTACHMENT,
-            description: "Manage and link associated files to configurations.",
+            description: "Manage and link associated files to configurations",
         },
     },
 };
