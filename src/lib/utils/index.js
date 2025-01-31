@@ -235,7 +235,7 @@ class GlobalUtils {
         return !isEqual(normalizedPayload, normalizedExisting);
     }
 
-    static pieChartOptions = (title, data, toolTipText = "") => {
+    static doughnutChartOptions = (title, data, toolTipText = "") => {
         const pieOptionsStatus = {
             title: {
                 text: title,
@@ -326,6 +326,174 @@ class GlobalUtils {
                 containLabel: true,
             },
         };
+    };
+
+    static pieChartOptions = (options) => {
+        const data = options.data;
+        const title = options.title;
+        const subtitle = options.subtitle;
+        // const data = data.map((item) => item.category);
+        // const values = data.map((item) => item.value);
+        return {
+            title: {
+                text: title,
+                subtext: subtitle,
+                left: 'center'
+              },
+              tooltip: {
+                trigger: 'item'
+              },
+            //   legend: {
+            //     orient: 'vertical',
+            //     left: 'left'
+            //   },
+              series: [
+                {
+                //   name: unit,
+                  type: 'pie',
+                  radius: '50%',
+               data: data,
+                // data: values,
+                  emphasis: {
+                    itemStyle: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                  }
+                }
+              ]
+        };
+    };
+
+
+    static pieNestChartOptions = (options) => {
+        const innerChartdata = options.innerChartdata;
+        const outerChartdata = options.outerChartdata;
+        // Merging and returning name array
+        const legendLabels = [...innerChartdata, ...outerChartdata].map(item => item.name);
+
+        const title = options.title;
+        const subtitle = options.subtitle;
+        // const data = data.map((item) => item.category);
+        // const values = data.map((item) => item.value);
+        return {
+            title: {
+                text: title,
+                left: "center",
+            },
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+              data: legendLabels
+            },
+            series: [
+              {
+                name: 'Status',
+                type: 'pie',
+                selectedMode: 'single',
+                radius: [0, '30%'],
+                label: {
+                  position: 'inner',
+                  fontSize: 14
+                },
+                labelLine: {
+                  show: false
+                },
+                data: innerChartdata,
+              },
+              {
+                name: 'Asset Status',
+                type: 'pie',
+                radius: ['45%', '60%'],
+                labelLine: {
+                  length: 30
+                },
+                label: {
+                  formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                  backgroundColor: '#F6F8FC',
+                  borderColor: '#8C8D8E',
+                  borderWidth: 1,
+                  borderRadius: 4,
+                  rich: {
+                    a: {
+                      color: '#6E7079',
+                      lineHeight: 22,
+                      align: 'center'
+                    },
+                    hr: {
+                      borderColor: '#8C8D8E',
+                      width: '100%',
+                      borderWidth: 1,
+                      height: 0
+                    },
+                    b: {
+                      color: '#4C5058',
+                      fontSize: 10,
+                      fontWeight: 'bold',
+                      lineHeight: 33
+                    },
+                    per: {
+                      color: '#fff',
+                      backgroundColor: '#4C5058',
+                      padding: [3, 4],
+                      borderRadius: 4
+                    }
+                  }
+                },
+                data: outerChartdata,
+              }
+            ]
+          };
+    };
+
+    static basicBarChartOptions = (options) => {
+        const title = options.title;
+
+        const names = options.data.map((item) => item.name);
+        const values = options.data.map((item) => item.value);
+        return {
+            title: {
+                text: title,
+                left: "center",
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: names,
+                axisTick: {
+                  alignWithLabel: true
+                }
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value'
+              }
+            ],
+            series: [
+              {
+                name: 'Direct',
+                type: 'bar',
+                barWidth: '60%',
+                data: values
+              }
+            ]
+          };
     };
 }
 
