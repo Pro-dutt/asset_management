@@ -7,7 +7,7 @@ import GlobalUtils from "@/lib/utils";
 import endPointsICONS from "../../utils/icons";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
-import StatCard from "@/components/Card/StatCard";
+import StatCard from "@/components/Card/ProgressCard";
 import GlobalICONS from "@/lib/utils/icons";
 
 const AnalyticsTable = () => {
