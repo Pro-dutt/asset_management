@@ -87,6 +87,10 @@ const InputField = ({ formField, formValues, maskedValues, errors, ...restProps 
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        setSuggestions(autoSuggestion.initialData);
+    }, [autoSuggestion]);
+
     // Update value when prop changes
     useEffect(() => {
         if (value !== undefined) {

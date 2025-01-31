@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "./styles/index.module.css";
 // import { useRouter, useSearchParams } from "next/navigation";
 import DataNotFound from "../DataNotFound";
@@ -12,17 +12,17 @@ import TableError from "./components/tableError";
 import TableView from "./components/tableView";
 import { useLocation } from "react-router-dom";
 import useCustomRouter from "./hooks/useCustomRouter";
-
-// Custom hook to replicate Next.js useSearchParams
 export const useSearchParams = () => {
     const location = useLocation();
     return new URLSearchParams(location.search);
 };
 
 const Table = ({ tableData }) => {
-    const router = useCustomRouter(); // Instead of useRouter
+    const router = useCustomRouter();
     const searchParams = useSearchParams();
-    const initialValues = React.useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams]);
+
+    // Memoizing initialValues to avoid unnecessary re-renders
+    const initialValues = useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams.toString()]);
 
     const [data, setData] = useState(tableData);
     const [dataView, setDataView] = useState({ table: true });
@@ -30,26 +30,28 @@ const Table = ({ tableData }) => {
     const [error, setError] = useState(null);
     const [checkboxState, setCheckboxState] = useState({});
 
-    // Function to fetch paginated data
     const fetchData = useCallback(
         async (payload) => {
+            const url = tableData?.url;
+            if (!url) return;
+
             setIsLoading(true);
             setError(null);
+
             try {
-                // const response = await apiClient.get(data.url, { params: payload });
-                // const newData = data.getTableData(response.data);
+                const response = await apiClient.get(url, { params: payload });
+                const newData = tableData.getTableData(response.data);
                 setData(newData);
             } catch (err) {
                 console.error("Error fetching data:", err);
-                // setError("Failed to fetch data. Please try again later.");
+                setError("Failed to fetch data. Please try again later.");
             } finally {
                 setIsLoading(false);
             }
         },
-        [initialValues]
+        [tableData?.url]
     );
 
-    // Update data when tableData changes
     useEffect(() => {
         if (tableData) {
             setData(tableData);
@@ -57,8 +59,10 @@ const Table = ({ tableData }) => {
     }, [tableData]);
 
     useEffect(() => {
-        fetchData(initialValues);
-    }, [initialValues]);
+        if (initialValues && tableData?.url) {
+            fetchData(initialValues);
+        }
+    }, [initialValues, tableData?.url]);
 
     return (
         <div className={styles.table_container}>

@@ -26,7 +26,7 @@ const DesktopTable = ({ tableData, onDelete, onView, onEdit, onRowClick, externa
                 Id: "Id",
             },
         ],
-        url: "/get-desktop-list",
+        url: "/desktop",
         pagination: {
             totalPage: tableData.totalPages || "0",
             totalItemCount: tableData.totalDocuments || "0",

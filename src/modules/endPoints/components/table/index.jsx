@@ -1,25 +1,13 @@
-import React, { useState, useMemo } from "react";
-import styles from "./index.module.css";
+import React, { useState, useMemo, useCallback } from "react";
+import styles from "./styles/index.module.css";
 import TableUtils from "@/components/table/utils";
 import TableIcon from "@/components/table/utils/icon";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "@/modules/VirtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
-import desktopTableData from "./data";
-
-const FILTER_OPTIONS = {
-    deviceStatus: ["In Use", "In Storage", "Assigned", "Inactive"],
-    oem: ["Dell", "HP", "Lenovo", "Apple"],
-    ram: ["8", "16", "32"],
-};
-
-const TABLE_LIMITS = {
-    defaultValue: "20",
-    limitStart: "10",
-    limitEnd: "50",
-    multipleOf: "10",
-};
+import "./styles/index.css";
+import desktopsTableConstants from "./utils/constants";
 
 const EndPointsTable = () => {
     const [show, setShow] = useState({});
@@ -27,64 +15,54 @@ const EndPointsTable = () => {
 
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
-    const externalFilters = {
-        title: "Device List",
-        filterFields: Object.keys(FILTER_OPTIONS).map((key) => ({
-            type: "select",
-            name: key,
-            grid: 3,
-            options: FILTER_OPTIONS[key].map((value) => ({ label: value, value })),
-            placeholder: `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
-        })),
-        parentPayloadKey: `[search][filters]`,
-    };
-
-    const tableHeader = {
-        limit: TABLE_LIMITS,
-        actionButtons: [
-            {
-                variant: "primary",
-                icon: TableIcon.PLUS,
-                label: "Add New Desktop",
-                onClick: () => setShow({ add: true }),
-            },
-            {
-                variant: "secondary",
-                flat: true,
-                className: styles.export,
-                icon: TableIcon.EXPORT,
-                label: "Export",
-                onClick: () => console.log("Exporting data..."),
-            },
-        ],
-        filters: [
-            {
-                type: "text",
-                name: "searchText",
-                grid: 2,
-                placeholder: "Search desktop",
-                autoSuggestion: {
-                    initialData: TableUtils.formatDataForAutoSuggestion(desktopTableData.data, ["Product Name", "Serial Number", "Service Tag"]),
-                    autoSuggestionUrl: "/api/suggestions",
-                    minChars: 1,
-                    maxSuggestions: 5,
+    const tableHeader = (data) => {
+        const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        return {
+            limit: desktopsTableConstants.TABLE_LIMITS,
+            actionButtons: [
+                {
+                    variant: "primary",
+                    icon: TableIcon.PLUS,
+                    label: "Add New Desktop",
+                    onClick: () => setShow({ add: true }),
                 },
-                className: styles.search_field,
-            },
-        ],
+                {
+                    variant: "secondary",
+                    flat: true,
+                    className: styles.export,
+                    icon: TableIcon.EXPORT,
+                    label: "Export",
+                    onClick: () => console.log("Exporting data..."),
+                },
+            ],
+            filters: [
+                {
+                    type: "text",
+                    name: "searchText",
+                    grid: 2,
+                    placeholder: "Search desktop",
+                    autoSuggestion: {
+                        initialData: autoSuggestionData,
+                        autoSuggestionUrl: "/api/suggestions",
+                        minChars: 1,
+                        maxSuggestions: 5,
+                    },
+                    className: styles.search_field,
+                },
+            ],
+        };
     };
 
     const getTableData = (data) => ({
-        title: "Active Employees List",
         rows: data?.data?.map((item) => ({
-            Id: { key: "_id", value: item._id, type: "hidden" },
-            "Asset ID": { key: "Asset ID", value: item["Asset ID"] },
-            "Product Name": { key: "Product Name", value: item["Product Name"] },
-            Model: { key: "Model", value: item.Model },
-            "Serial Number": { key: "Serial Number", value: item["Serial Number"] },
-            Processor: { key: "Processor", value: item["Processor"] },
-            "RAM (GB)": { key: "RAM (GB)", value: item["RAM (GB)"] },
-            "Device Status": { key: "Device Status", value: item["Device Status"] },
+            id: { key: "id", value: item._id, type: "hidden" },
+            "Asset Id": { key: "assetId", value: item.assetId },
+            "Product Name": { key: "productName", value: item.productName },
+            Model: { key: "model", value: item.model },
+            "Serial Number": { key: "serialNumber", value: item.serialNumber },
+            Processor: { key: "processor", value: item.processor },
+            "Ram [Gb]": { key: "ramGb", value: item.ramGb },
+            "Device Status": { key: "deviceStatus", value: item.deviceStatus },
         })),
         actionData: [
             {
@@ -109,23 +87,20 @@ const EndPointsTable = () => {
                 Id: "Id",
             },
         ],
-        url: `/get-desktop-list`,
+        url: desktopsTableConstants.TABLE_API_URL,
         pagination: {
             totalPage: data.totalPages || "0",
             totalItemCount: data.totalDocuments || "0",
         },
-        sorting: {
-            initialSort: "Asset ID",
-            initialSortOrder: "asc",
-        },
+        sorting: desktopsTableConstants.TABLE_SORTING,
         getTableData,
         rowClickHandler: (row) => console.log(row),
-        externalFilters,
-        tableHeader,
+        externalFilters: desktopsTableConstants.externalFilters,
+        tableHeader: tableHeader(data),
         checkbox: true,
     });
 
-    const tableData = useMemo(() => getTableData(desktopTableData), []);
+    const tableData = useMemo(() => getTableData({}), []);
 
     return (
         <div className={styles.container}>
