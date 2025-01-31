@@ -12,19 +12,48 @@ const DetailsBody = ({ data }) => {
             .replace(/\b\w/g, (char) => char.toUpperCase())
             .replace(/\b(Ip|ip)\b/g, "IP");
     };
+
+    const renderValue = (value) => {
+        if (typeof value === "object" && value !== null && "label" in value && "value" in value) {
+            // If the value is an object with "label" and "value" keys
+            return (
+                <span>
+                    {formatText(value.label)}: {value.value || "N/A"}
+                </span>
+            );
+        } else if (typeof value === "string" || typeof value === "number") {
+            // If the value is a string or number
+            return <span>{String(value).replace(/wazuh/gi, "")}</span>;
+        }
+        return null;
+    };
+
+    const renderListItems = () => {
+        if (Array.isArray(data)) {
+            // If data is an array of objects with "label" and "value"
+            return data.map((item, index) => (
+                <li key={index}>
+                    <span>{item.label || "Unknown Label"}</span> <span>{item.value || "N/A"}</span>
+                </li>
+            ));
+        } else if (typeof data === "object" && data !== null) {
+            // If data is an object
+            return Object.entries(data)
+                .map(([key, value]) =>
+                    key !== "_id" ? (
+                        <li key={key}>
+                            <span>{formatText(key)}</span> {renderValue(value)}
+                        </li>
+                    ) : null
+                )
+                .filter(Boolean);
+        }
+        return null;
+    };
+
     return (
         <div className={styles.container}>
-            <ul>
-                {Object.entries(data || {})
-                    .map(([key, value]) =>
-                        (typeof value === "string" || typeof value === "number") && key !== "_id" ? (
-                            <li key={key}>
-                                <span>{formatText(key)}</span> <span>{String(value).replace(/wazuh/gi, "")}</span>
-                            </li>
-                        ) : null
-                    )
-                    .filter(Boolean)}
-            </ul>
+            <ul>{renderListItems()}</ul>
         </div>
     );
 };

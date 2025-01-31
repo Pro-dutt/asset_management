@@ -25,26 +25,25 @@ const Details = () => {
         },
         {
             heading: {
-                label: "VM Details",
-                icon: GlobalICONS.DESKTOP,
-                description: "Configure the basic details of your virtual machine",
+                label: "Host Details",
+                icon: GlobalICONS.WEBSITE,
+                description: "Configure the host machine details",
             },
             body: {
                 vmName: "CentOS",
-                vmStatus: "Running",
-                osVersion: "V.21.04",
+                osVersion: { label: "OS VERSION ABC", value: "V.11.05" },
                 environment: "Production",
                 evmAssetId: "ASSET456",
                 hypervisorPlatform: "VMware",
                 businessImpact: "High Priority",
             },
-            grid: 2,
+            grid: 3,
         },
         {
             heading: {
-                label: "VM Details",
-                icon: GlobalICONS.DESKTOP,
-                description: "Configure the basic details of your virtual machine",
+                label: "Resource Allocation",
+                icon: GlobalICONS.DATA_CENTER,
+                description: "Configure resource allocation for your virtual machine",
             },
             body: {
                 vmName: "Windows",
@@ -55,7 +54,7 @@ const Details = () => {
                 hypervisorPlatform: "Hyper-V",
                 businessImpact: "Low Priority",
             },
-            grid: 2,
+            grid: 3,
         },
         {
             heading: {
