@@ -383,7 +383,7 @@ class VirtualMachineUtils {
             },
             {
                 type: "date",
-                name: "lastAuditDate",
+                name: "lastAuditDatcreateEnume",
                 label: "Last Audit Date",
                 grid: 4,
                 defaultValue: data?.lastAuditDate,

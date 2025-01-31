@@ -59,9 +59,7 @@ const Table = ({ tableData }) => {
     }, [tableData]);
 
     useEffect(() => {
-        if (initialValues && tableData?.url) {
-            fetchData(initialValues);
-        }
+        fetchData(initialValues);
     }, [initialValues, tableData?.url]);
 
     return (

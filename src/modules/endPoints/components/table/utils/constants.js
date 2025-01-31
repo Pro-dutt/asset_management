@@ -35,7 +35,7 @@ const desktopsTableConstants = {
             type: "select",
             name: key,
             grid: 3,
-            options: FILTER_OPTIONS[key], // ✅ Fixed reference
+            options: FILTER_OPTIONS[key],
             placeholder: `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
         })),
         parentPayloadKey: `[search][filters]`,
