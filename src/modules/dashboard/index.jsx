@@ -8,8 +8,9 @@ const Dashboard = () => {
   return (
     <div className={styles.main_container}>
       <Stats/>
-      <Stats/>
+      {/* <Stats/> */}
       <Charts/>
+
       <AnalyticsTable/>
     </div>
   )

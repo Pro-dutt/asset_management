@@ -12,6 +12,7 @@ const apiConstants = {
     },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
+        CREATE_WEB_APPLICATION: "createWebApplication",
         SIGN_UP: "signup",
         VERIFY_EMAIL: "verifyEmail",
         SETUP_BASE_INFO: "setupBaseInfo",

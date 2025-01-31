@@ -1,4 +1,5 @@
 import { endPointsApiService } from "@/services/api/sampleEndPoints";
+import VirtualMachinesApiService from "@/services/api/virtualMachines";
 import { useLoading } from "@/services/context/loading";
 import { useNotification } from "@/services/context/notification";
 import apiConstants from "@/services/utils/constants";
@@ -20,12 +21,12 @@ export const useVirtutalMachinesCreate = () => {
      */
 
     const executeVirtualMahinesCreation = useCallback(
-        async ({ payload, onSuccess, onError, options }, params) => {
+        async ({ payload, onSuccess, onError, options }) => {
             setLoading(CREATE_VIRTUAL_MACHINE_KEY, true);
             const controller = new AbortController();
 
             try {
-                const data = await endPointsApiService.createSignup(payload, params, controller.signal);
+                const data = await VirtualMachinesApiService.create(payload, controller.signal);
 
                 if (options?.showNotification) {
                     showSuccessNotification({

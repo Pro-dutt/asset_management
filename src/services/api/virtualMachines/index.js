@@ -12,9 +12,8 @@ class VirtualMachinesApiService {
         this.apiClient = apiClient;
     }
 
-    async create(payload, params, signal) {
+    static async create(payload, signal) {
         const response = await this.apiClient.post(virtutalMachinesApiEndpoints.CREATE, payload, {
-            params,
             signal,
         });
         return response.data;

@@ -234,6 +234,99 @@ class GlobalUtils {
 
         return !isEqual(normalizedPayload, normalizedExisting);
     }
+
+    static pieChartOptions = (title, data, toolTipText = "") => {
+        const pieOptionsStatus = {
+            title: {
+                text: title,
+                left: "center",
+            },
+            tooltip: {
+                trigger: "item",
+                formatter: function (params) {
+                    return `${params.name}: ${params.value} ${toolTipText}`;
+                },
+            },
+            legend: {
+                orient: "horizontal",
+                left: "left", // Align the legend to the left
+                // top: "center",
+            },
+            grid: {
+                left: "20%", // Adjust the grid to ensure the pie chart isn't overlapped by the legend
+            },
+            series: [
+                {
+                    name: "Status",
+                    type: "pie",
+                    radius: ["40%", "70%"],
+                    // center: ["50%", "40%"],
+                    data: data?.map((item) => ({ value: item.value, name: item.category })),
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                    },
+                    labelLine: {
+                        show: false,
+                    },
+                },
+            ],
+        };
+        return pieOptionsStatus;
+    };
+
+    // utils.js or utils/index.js
+    static barChartOptions = (title, data, unit) => {
+        const categories = data.map((item) => item.category);
+        const values = data.map((item) => item.value);
+
+        return {
+            title: {
+                text: title,
+                subtext: `Unit: ${unit}`,
+                left: "center",
+            },
+            tooltip: {
+                trigger: "axis",
+            },
+            xAxis: {
+                type: "category",
+                data: categories,
+                axisLabel: {
+                    interval: 0, // Show all labels
+                    rotate: 45, // Rotate labels if needed
+                },
+            },
+            yAxis: {
+                type: "value",
+                name: unit,
+                nameLocation: "middle",
+                nameGap: 30,
+            },
+            series: [
+                {
+                    name: title,
+                    type: "bar",
+                    data: values,
+                    itemStyle: {
+                        color: "#5470C6", // Example color, adjust as needed
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: "#91CC75", // Highlight color
+                        },
+                    },
+                },
+            ],
+            // Optional: Add additional configurations for better UX
+            grid: {
+                left: "3%",
+                right: "4%",
+                bottom: "3%",
+                containLabel: true,
+            },
+        };
+    };
 }
 
 export default GlobalUtils;

@@ -6,6 +6,7 @@ import VirtualMachine from "./modules/VirtualMachines";
 import EndPointsTable from "./modules/endPoints/components/table";
 import Dashboard from "./modules/dashboard";
 import Endpoints from "./modules/endPoints";
+import WebApplication from "./modules/WebApplications";
 
 function App() {
     return (
@@ -24,6 +25,14 @@ function App() {
                     element={
                         <React.Suspense fallback={""}>
                             <VirtualMachine />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path="/web-applications"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <WebApplication />
                         </React.Suspense>
                     }
                 />
