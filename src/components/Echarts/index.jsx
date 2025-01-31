@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import * as echarts from "echarts";
 import styles from "./index.module.css";
 
-const EChartsComponent = ({ options, style = {} }) => {
+const EChartsComponent = ({ options, content, style = {} }) => {
     const chartRef = useRef(null);
     const [theme, setTheme] = useState(document.documentElement.getAttribute("data-theme") || "light");
 
@@ -50,6 +50,7 @@ const EChartsComponent = ({ options, style = {} }) => {
                 </h2>
             )}
             <div ref={chartRef} className={styles.chart} style={style} />
+            {content}
         </div>
     );
 };

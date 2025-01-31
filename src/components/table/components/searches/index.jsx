@@ -41,7 +41,7 @@ const TableSearch = ({ data, initialValues, router, searchParams }) => {
                 setQueryParam(name, value);
             },
             defaultValue: formValues?.[item.name],
-            inputStyle: { paddingBlock: "0.65rem",marginTop:"0.1rem" },
+            inputStyle: { paddingBlock: "0.65rem", marginTop: "0.1rem" },
         }));
     };
 

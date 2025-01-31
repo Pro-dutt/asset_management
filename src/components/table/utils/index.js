@@ -124,6 +124,7 @@ class TableUtils {
         return false;
     };
     static formatDataForAutoSuggestion(data, fields) {
+        console.log("data>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
         if (!Array.isArray(data) || !Array.isArray(fields)) {
             throw new Error("Both data and fields must be arrays");
         }

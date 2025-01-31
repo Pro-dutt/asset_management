@@ -1,4 +1,4 @@
-const desktopTableData = {
+const sampleDesktopTableData = {
     totalPages: 16,
     totalDocuments: 156,
     data: [
@@ -424,4 +424,4 @@ const desktopTableData = {
     ],
 };
 
-export default desktopTableData;
+export default sampleDesktopTableData;
