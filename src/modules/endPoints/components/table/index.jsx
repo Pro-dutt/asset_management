@@ -54,7 +54,14 @@ const EndPointsTable = () => {
             >
                 <VirtualMachine data={desktopDetails} />
             </Modal>
-            <Modal show={show.view} onClose={closeModal} title="View Details" maxWidth="1400px">
+            <Modal
+                show={show.view}
+                onClose={closeModal}
+                title={"Desktop Details"}
+                maxWidth={"1600px"}
+                icon={GlobalICONS.DESKTOP}
+                description="Provide the required details to configure and register a new desktop"
+            >
                 <Details data={desktopDetails} />
             </Modal>
         </div>

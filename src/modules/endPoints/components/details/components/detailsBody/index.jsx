@@ -1,30 +1,45 @@
 import React from "react";
 import styles from "./index.module.css";
+import DetailsUtils from "../../utils";
 
 const DetailsBody = ({ data }) => {
-    const formatText = (input) => {
-        return input
-            .replace(/wazuh/gi, "")
-            .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
-            .replace(/([a-z\d])([A-Z])/g, "$1 $2")
-            .replace(/_/g, " ")
-            .replace(/^\s*/, "")
-            .replace(/\b\w/g, (char) => char.toUpperCase())
-            .replace(/\b(Ip|ip)\b/g, "IP");
+    const renderValue = (value) => {
+        if (typeof value === "object" && value !== null && "label" in value && "value" in value) {
+            return (
+                <span>
+                    { DetailsUtils.formatText(value.label)}: {value.value || "N/A"}
+                </span>
+            );
+        } else if (typeof value === "string" || typeof value === "number") {
+            return <span>{String(value).replace(/wazuh/gi, "")}</span>;
+        }
+        return null;
     };
+
+    const renderListItems = () => {
+        if (Array.isArray(data)) {
+            return data.map((item, index) => (
+                <li key={index}>
+                    <span>{item.label || "Unknown Label"}</span> <span>{item.value || "N/A"}</span>
+                </li>
+            ));
+        } else if (typeof data === "object" && data !== null) {
+            return Object.entries(data)
+                .map(([key, value]) =>
+                    key !== "_id" ? (
+                        <li key={key}>
+                            <span>{DetailsUtils.formatText(key)}</span> {renderValue(value)}
+                        </li>
+                    ) : null
+                )
+                .filter(Boolean);
+        }
+        return null;
+    };
+
     return (
         <div className={styles.container}>
-            <ul>
-                {Object.entries(data || {})
-                    .map(([key, value]) =>
-                        (typeof value === "string" || typeof value === "number") && key !== "_id" ? (
-                            <li key={key}>
-                                <span>{formatText(key)}</span> <span>{String(value).replace(/wazuh/gi, "")}</span>
-                            </li>
-                        ) : null
-                    )
-                    .filter(Boolean)}
-            </ul>
+            <ul>{renderListItems()}</ul>
         </div>
     );
 };

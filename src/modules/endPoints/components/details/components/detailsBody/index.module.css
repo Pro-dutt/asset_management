@@ -12,13 +12,14 @@
     gap: 1rem;
 }
 .container ul li span {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 .container ul li span:first-of-type {
     min-width: 250px;
     font-weight: 450;
 }
 .container ul li span:last-of-type {
-    font-weight: 400;
+    font-weight: 350;
+    font-size: 0.85rem;
     color: rgb(71, 69, 69);
 }
