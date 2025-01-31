@@ -14,7 +14,7 @@ const Stats = () => {
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                iconColor: "orange"
+                color: "orange"
 
             },
             {
@@ -25,7 +25,7 @@ const Stats = () => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                iconColor: "blue"
+                color: "violet"
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -35,7 +35,7 @@ const Stats = () => {
                 icon: GlobalICONS.NETWORKING_DEVICE,
                 hasDecrement: true,
                 hasIncrement: false,
-                iconColor: "red"
+                color: "red"
 
             },
             {
@@ -46,7 +46,7 @@ const Stats = () => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: false,
-                iconColor: "green"
+                color: "green"
 
             },
         ],
