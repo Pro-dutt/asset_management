@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import styles from "./index.module.css";
-import StatCard from "@/components/Card/StatCard";
+import { useMemo } from "react";
+import sampleDesktopsStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
-const Stats = () => {
-    const StatData = {
-        data: [
+
+const useDesktopsStats = (data = sampleDesktopsStatsData) => {
+    const desktopsStatsConfig = useMemo(
+        () => [
             {
-                _id: "6486cae1284e1728606f902c",
                 title: "Laptop",
-                value: "567",
+                value: data.laptops,
                 subTitle: "Total Laptops",
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
@@ -20,7 +19,7 @@ const Stats = () => {
             {
                 _id: "6486cae1284e1728606f902c",
                 title: "Desktop",
-                value: "100",
+                value: data?.desktops,
                 subTitle: "Total Desktop",
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
@@ -30,7 +29,7 @@ const Stats = () => {
             {
                 _id: "6486cae1284e1728606f902c",
                 title: "Network Device",
-                value: "50",
+                value: data.networkDevices,
                 subTitle: "Total Network Device",
                 icon: GlobalICONS.NETWORKING_DEVICE,
                 hasDecrement: true,
@@ -41,7 +40,7 @@ const Stats = () => {
             {
                 _id: "6486cae1284e1728606f902c",
                 title: "Virtual Machine",
-                value: "50",
+                value: data?.virtualMachines,
                 subTitle: "Total Virtual Machine",
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
@@ -50,15 +49,12 @@ const Stats = () => {
 
             },
         ],
-    };
-
-    return (
-            <div className={styles.stats_cards}>
-                {StatData.data.map((item) => (
-                    <StatCard key={item._id} data={item} />
-                ))}
-            </div>
+        [data]
     );
+    console.log(data);
+    return {
+        desktopsStatsConfig,
+    };
 };
 
-export default Stats;
+export default useDesktopsStats;

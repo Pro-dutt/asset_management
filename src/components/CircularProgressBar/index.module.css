@@ -14,7 +14,23 @@
   }
   
   .progress_circle_foreground {
-    stroke: #4db8ff;
+    stroke: rgb(var(--theme-violet));
+    transition: stroke-dashoffset 0.3s ease;
+  }
+  .progress_circle_foreground_violet {
+    stroke: rgb(var(--theme-violet));
+    transition: stroke-dashoffset 0.3s ease;
+  }
+  .progress_circle_foreground_red {
+    stroke: rgb(var(--theme-red));
+    transition: stroke-dashoffset 0.3s ease;
+  }
+  .progress_circle_foreground_green {
+    stroke: rgb(var(--theme-green));
+    transition: stroke-dashoffset 0.3s ease;
+  }
+  .progress_circle_foreground_orange {
+    stroke: rgb(var(--theme-orange));
     transition: stroke-dashoffset 0.3s ease;
   }
   

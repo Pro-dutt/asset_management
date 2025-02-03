@@ -5,6 +5,8 @@ import VirtualMachine from "../virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import DesktopDetails from "./components/details";
 import { DesktopInfoForm } from "./components/Form";
+import DesktopsStats from "./components/stats";
+import styles from "./styles/index.module.css";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -12,7 +14,8 @@ const Desktops = () => {
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
     return (
-        <div id="desktops_module">
+        <div id="desktops_module" className={styles.container}>
+            <DesktopsStats />
             <DesktopsTable setShow={setShow} setDesktopDetails={setDesktopDetails} />
             <Modal
                 show={show.add}
