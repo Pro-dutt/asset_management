@@ -1,8 +1,8 @@
 import DynamicForm from "@/components/form";
-import { useDataCenterInfoForm } from "./hooks/useForm";
+import { useDesktopInfoForm } from "./hooks/useForm";
 
-export const DataCenterInfoForm = () => {
-    const { formConfig, handleFormSubmit, isLoading, DataCenterInfoFormErrors } = useDataCenterInfoForm();
+export const DesktopInfoForm = () => {
+    const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm();
 
     const getFormButtons = (isLoading = false) => {
         return [
@@ -23,14 +23,7 @@ export const DataCenterInfoForm = () => {
 
     return (
         <div className="" style={{ paddingInline: "1rem" }}>
-            <DynamicForm
-                key="web-application-form"
-                formId="web-application"
-                formData={formConfig}
-                formButtons={getFormButtons(isLoading)}
-                onSubmit={handleFormSubmit}
-                responseErrors={DataCenterInfoFormErrors}
-            />
+            <DynamicForm key="desktop-form" formId="desktop" formData={formConfig} formButtons={getFormButtons(isLoading)} onSubmit={handleFormSubmit} responseErrors={DesktopInfoFormErrors} />
         </div>
     );
 };

@@ -1,7 +1,22 @@
 import globalConstants from "@/lib/utils/contants";
-import dataCenterConstants from "./constants";
+import desktopConstants from "./constants";
 
-class DataCenterUtils {
+class DesktopUtils {
+    static getAssetTypeFormFields(data) {
+        return [
+            {
+                type: "select",
+                name: "assetTypeName",
+                label: "Asset Type",
+                grid: 4,
+                defaultValue: data?.assetTypeName,
+                options: desktopConstants.ASSET_TYPE.getOptions(),
+                validationRules: {},
+                validateOnChange: true,
+            },
+        ];
+    }
+
     static getDevicePropertiesFormFields(data) {
         return [
             {
@@ -307,7 +322,7 @@ class DataCenterUtils {
                 label: "Antivirus Status",
                 grid: 4,
                 defaultValue: data?.antivirusStatus,
-                options: dataCenterConstants.ANTIVIRUS_STATUS.getOptions(),
+                options: desktopConstants.ANTIVIRUS_STATUS.getOptions(),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -412,59 +427,6 @@ class DataCenterUtils {
         ];
     }
 
-    static getBackupRestorationDetailsFormFields(data) {
-        return [
-            {
-                type: "select",
-                name: "backupEnabled",
-                label: "Backup Enabled",
-                grid: 4,
-                defaultValue: data?.backupEnabled,
-                options: globalConstants.BACKUP_STATUS.getOptions(),
-                validationRules: {},
-                validateOnChange: true,
-            },
-            {
-                type: "select",
-                name: "backupFrequency",
-                label: "Backup Frequency",
-                grid: 4,
-                defaultValue: data?.backupFrequency,
-                options: globalConstants.BACKUP_FREQUENCIES.getOptions(),
-                validateOnChange: true,
-                validationRules: {},
-            },
-            {
-                type: "date",
-                name: "lastBackupDate",
-                label: "Last Backup Date",
-                grid: 4,
-                defaultValue: data?.lastBackupDate,
-                validationRules: {},
-                validateOnChange: true,
-            },
-            {
-                type: "select",
-                name: "backupLocation",
-                label: "Backup Location",
-                grid: 4,
-                defaultValue: data?.backupLocation,
-                options: globalConstants.BACKUP_LOCATIONS.getOptions(),
-                validateOnChange: true,
-                validationRules: {},
-            },
-            {
-                type: "text",
-                name: "recoveryTime",
-                label: "Recovery Time Objective (RTO)",
-                grid: 4,
-                defaultValue: data?.recoveryTime,
-                validateOnChange: true,
-                validationRules: {},
-            },
-        ];
-    }
-
     static getAssociatedFilesFormFields(data) {
         return [
             {
@@ -481,14 +443,14 @@ class DataCenterUtils {
     }
 
     static formFieldHandlers = {
-        [dataCenterConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
-        [dataCenterConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
-        [dataCenterConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,
-        [dataCenterConstants.FORM_SECTIONS.ASSIGNMENT_DETAILS.title]: this.getAssignmentDetailsFormFields,
-        [dataCenterConstants.FORM_SECTIONS.PROCUREMENT_DETAILS.title]: this.getProcurementDetailsFormFields,
-        [dataCenterConstants.FORM_SECTIONS.OPERATION_DETAILS.title]: this.getOperationsDetailsFormFields,
-        [dataCenterConstants.FORM_SECTIONS.BACKUP_RESTORATION.title]: this.getBackupRestorationDetailsFormFields,
-        [dataCenterConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
+        [desktopConstants.FORM_SECTIONS.ASSET_TYPE.title]: this.getAssetTypeFormFields,
+        [desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
+        [desktopConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
+        [desktopConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,
+        [desktopConstants.FORM_SECTIONS.ASSIGNMENT_DETAILS.title]: this.getAssignmentDetailsFormFields,
+        [desktopConstants.FORM_SECTIONS.PROCUREMENT_DETAILS.title]: this.getProcurementDetailsFormFields,
+        [desktopConstants.FORM_SECTIONS.OPERATION_DETAILS.title]: this.getOperationsDetailsFormFields,
+        [desktopConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
     };
 
     static getFormFieldsBySection(section, data) {
@@ -512,4 +474,4 @@ class DataCenterUtils {
     }
 }
 
-export default DataCenterUtils;
+export default DesktopUtils;

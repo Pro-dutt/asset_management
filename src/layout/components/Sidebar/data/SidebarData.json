@@ -24,8 +24,8 @@
         ]
     },
     {
-        "name": "Data Center",
-        "link": "/data-center",
+        "name": "Servers",
+        "link": "/servers",
         "permission": ["admin", "auditor"],
         "icon": "data_center"
     },

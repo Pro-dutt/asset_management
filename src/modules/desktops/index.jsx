@@ -4,6 +4,7 @@ import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "../virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import DesktopDetails from "./components/details";
+import { DesktopInfoForm } from "./components/Form";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -21,7 +22,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <VirtualMachine />
+                <DesktopInfoForm />
             </Modal>
             <Modal
                 show={show.edit}
@@ -31,7 +32,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <VirtualMachine data={desktopDetails} />
+                <DesktopInfoForm data={desktopDetails} />
             </Modal>
             <Modal
                 show={show.view}

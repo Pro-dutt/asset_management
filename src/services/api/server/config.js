@@ -1,14 +1,14 @@
 import apiConstants from "@/services/utils/constants";
 import apiClient from "../config";
 
-const dataCenterApiClient = apiClient.create({
-    baseURL: `${apiClient.defaults.baseURL}${apiConstants.dataCenter.BASE_ROUTE}`,
+const serverApiClient = apiClient.create({
+    baseURL: `${apiClient.defaults.baseURL}${apiConstants.server.BASE_ROUTE}`,
     headers: {
         ...apiClient.defaults.headers,
     },
 });
 
-// dataCenterApiClient.interceptors.request.use(
+// serverApiClient.interceptors.request.use(
 //     (config) => {
 //         const token = localStorage.getItem("virtutalMachines_token");
 //         if (token) {
@@ -20,7 +20,7 @@ const dataCenterApiClient = apiClient.create({
 //     (error) => Promise.reject(error)
 // );
 
-// dataCenterApiClient.interceptors.response.use(
+// serverApiClient.interceptors.response.use(
 //     (response) => {
 //         console.log("Institute module response:", response);
 //         return response;
@@ -28,4 +28,4 @@ const dataCenterApiClient = apiClient.create({
 //     (error) => Promise.reject(error)
 // );
 
-export default dataCenterApiClient;
+export default serverApiClient;

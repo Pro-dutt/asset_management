@@ -4,21 +4,24 @@ import { EndPointsProvider } from "./sampleEndPoints";
 import { VirtualMachinesProvider } from "./virtualMachines";
 import { WebApplicationProvider } from "./webApplication";
 import { NetworkDeviceProvider } from "./networkDevice";
-import { DataCenterProvider } from "./dataCenter";
+import { ServerProvider } from "./server";
+import { DesktopProvider } from "./desktop";
 
 const ContextProviders = ({ children }) => {
     return (
         <LoadingProvider>
             <NotificationProvider>
-                <VirtualMachinesProvider>
-                    <WebApplicationProvider>
-                        <NetworkDeviceProvider>
-                            <DataCenterProvider>
-                                <EndPointsProvider>{children}</EndPointsProvider>
-                            </DataCenterProvider>
-                        </NetworkDeviceProvider>
-                    </WebApplicationProvider>
-                </VirtualMachinesProvider>
+                <DesktopProvider>
+                    <VirtualMachinesProvider>
+                        <WebApplicationProvider>
+                            <NetworkDeviceProvider>
+                                <ServerProvider>
+                                    <EndPointsProvider>{children}</EndPointsProvider>
+                                </ServerProvider>
+                            </NetworkDeviceProvider>
+                        </WebApplicationProvider>
+                    </VirtualMachinesProvider>
+                </DesktopProvider>
             </NotificationProvider>
         </LoadingProvider>
     );
