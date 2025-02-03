@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DesktopsTable from "./components/table";
 import Modal from "@/components/Popup/Popup";
-import VirtualMachine from "../virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import DesktopDetails from "./components/details";
 import { DesktopInfoForm } from "./components/form";
@@ -25,7 +24,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <DesktopInfoForm />
+                <DesktopInfoForm onCancel={closeModal} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -35,7 +34,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <DesktopInfoForm data={desktopDetails} />
+                <DesktopInfoForm data={desktopDetails} onCancel={closeModal} />
             </Modal>
             <Modal
                 show={show.view}
