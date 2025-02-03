@@ -43,7 +43,7 @@ const Stats = () => {
                 title: "Virtual Machine",
                 value: "50",
                 subTitle: "Total Virtual Machine",
-                icon: GlobalICONS.DESKTOP,
+                icon: GlobalICONS.VIRTUAL_MACHINE,
                 hasDecrement: false,
                 hasIncrement: false,
                 color: "green"

@@ -49,14 +49,6 @@ function App() {
                     }
                 />
                 <Route
-                    path="/servers"
-                    element={
-                        <React.Suspense fallback={""}>
-                            <Server />
-                        </React.Suspense>
-                    }
-                />
-                <Route
                     path="/desktops"
                     element={
                         <React.Suspense fallback={""}>
@@ -69,6 +61,14 @@ function App() {
                     element={
                         <React.Suspense fallback={""}>
                             <Laptops />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path="/servers"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <Server />
                         </React.Suspense>
                     }
                 />

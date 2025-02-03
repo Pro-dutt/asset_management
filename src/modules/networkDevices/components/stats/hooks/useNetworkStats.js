@@ -27,7 +27,7 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
             {
                 title: "Not in support",
                 value: data?.notInSupport,
-                subTitle: "Total Not in support",
+                subTitle: "Total not in support",
                 icon: GlobalICONS.NOT_IN_SUPPORT,
                 hasDecrement: false,
                 hasIncrement: false,

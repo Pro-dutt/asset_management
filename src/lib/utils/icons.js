@@ -60,29 +60,30 @@ const GlobalICONS = {
         </svg>
     ),
     NETWORKING_DEVICE: (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="icon icon-tabler icons-tabler-outline icon-tabler-topology-star"
-        >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M8 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M20 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M8 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M20 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M7.5 7.5l3 3" />
-            <path d="M7.5 16.5l3 -3" />
-            <path d="M13.5 13.5l3 3" />
-            <path d="M16.5 7.5l-3 3" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="currentColor" d="M232 108h-92V92h4a20 20 0 0 0 20-20V40a20 20 0 0 0-20-20h-32a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h4v16H24a12 12 0 0 0 0 24h28v24h-4a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h32a20 20 0 0 0 20-20v-32a20 20 0 0 0-20-20h-4v-24h104v24h-4a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h32a20 20 0 0 0 20-20v-32a20 20 0 0 0-20-20h-4v-24h28a12 12 0 0 0 0-24M116 44h24v24h-24ZM76 204H52v-24h24Zm128 0h-24v-24h24Z"/></svg>
+        // <svg
+        //     xmlns="http://www.w3.org/2000/svg"
+        //     width="24"
+        //     height="24"
+        //     viewBox="0 0 24 24"
+        //     fill="none"
+        //     stroke="currentColor"
+        //     strokeWidth="2"
+        //     strokeLinecap="round"
+        //     strokeLinejoin="round"
+        //     className="icon icon-tabler icons-tabler-outline icon-tabler-topology-star"
+        // >
+        //     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        //     <path d="M8 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M20 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M8 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M20 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M7.5 7.5l3 3" />
+        //     <path d="M7.5 16.5l3 -3" />
+        //     <path d="M13.5 13.5l3 3" />
+        //     <path d="M16.5 7.5l-3 3" />
+        // </svg>
     ),
     DESKTOP: (
         <svg
@@ -1170,6 +1171,55 @@ const GlobalICONS = {
             />
         </svg>
     ),
+    SERVER: (
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14 21H5C4.06812 21 3.60218 21 3.23463 20.8478C2.74458 20.6448 2.35523 20.2554 2.15224 19.7654C2 19.3978 2 18.9319 2 18C2 17.0681 2 16.6022 2.15224 16.2346C2.35523 15.7446 2.74458 15.3552 3.23463 15.1522C3.60218 15 4.06812 15 5 15H19C19.9319 15 20.3978 15 20.7654 15.1522C21.2554 15.3552 21.6448 15.7446 21.8478 16.2346C22 16.6022 22 17.0681 22 18C22 18.9319 22 19.3978 21.8478 19.7654C21.6448 20.2554 21.2554 20.6448 20.7654 20.8478C20.3978 21 19.9319 21 19 21H18"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+            />
+            <path
+                d="M2 12C2 11.0681 2 10.6022 2.15224 10.2346C2.35523 9.74458 2.74458 9.35523 3.23463 9.15224C3.60218 9 4.06812 9 5 9H19C19.9319 9 20.3978 9 20.7654 9.15224C21.2554 9.35523 21.6448 9.74458 21.8478 10.2346C22 10.6022 22 11.0681 22 12C22 12.9319 22 13.3978 21.8478 13.7654C21.6448 14.2554 21.2554 14.6448 20.7654 14.8478C20.3978 15 19.9319 15 19 15H5C4.06812 15 3.60218 15 3.23463 14.8478C2.74458 14.6448 2.35523 14.2554 2.15224 13.7654C2 13.3978 2 12.9319 2 12Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+            />
+            <path
+                d="M10 3H19C19.9319 3 20.3978 3 20.7654 3.15224C21.2554 3.35523 21.6448 3.74458 21.8478 4.23463C22 4.60218 22 5.06812 22 6C22 6.93188 22 7.39782 21.8478 7.76537C21.6448 8.25542 21.2554 8.64477 20.7654 8.84776C20.3978 9 19.9319 9 19 9H5C4.06812 9 3.60218 9 3.23463 8.84776C2.74458 8.64477 2.35523 8.25542 2.15224 7.76537C2 7.39782 2 6.93188 2 6C2 5.06812 2 4.60218 2.15224 4.23463C2.35523 3.74458 2.74458 3.35523 3.23463 3.15224C3.60218 3 4.06812 3 5 3H6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+            />
+            <circle cx="5" cy="12" r="1" fill="currentColor" />
+            <circle cx="5" cy="6" r="1" fill="currentColor" />
+            <circle cx="5" cy="18" r="1" fill="currentColor" />
+        </svg>
+    ),
+    VIRTUAL_MACHINE: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m0 14H3V4h18Z"/><path fill="currentColor" d="M6 7v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1m11 6H7V8h10Z"/></svg>
+    ),
+    PRODUCTION:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5c0-2.64-2.05-4.78-4.65-4.96M19 18H6c-2.21 0-4-1.79-4-4c0-2.05 1.53-3.76 3.56-3.97l1.07-.11l.5-.95A5.47 5.47 0 0 1 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5l1.53.11A2.98 2.98 0 0 1 22 15c0 1.65-1.35 3-3 3m-9-3.82l-2.09-2.09L6.5 13.5L10 17l6.01-6.01l-1.41-1.41z"/></svg>
+    ),
+    STAGING:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M8 4v4H4V4zM2 2v8h8V2zm16 5v4h-4V7zm-6-2v8h8V5zM8 16v4H4v-4zm-6-2v8h8v-8z"/><path fill="currentColor" d="M22 10v6h-6v6h-6v8h20V10Zm-4 8h4v4h-4Zm-2 10h-4v-4h4Zm6 0h-4v-4h4Zm6 0h-4v-4h4Zm0-6h-4v-4h4Zm-4-6v-4h4v4Z"/></svg>
+    ),
+    DEVELOPMENT:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 14 14"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"><path d="M13.5 10.5v-8A.5.5 0 0 0 13 2H1c-.265 0-.5.235-.5.5v8c0 .265.235.5.5.5h12c.265 0 .5-.235.5-.5M6 11l-1 2.5M8 11l1 2.5m-5 0h6"/><path d="M5 5L3.5 6.5L5 8m4-3l1.5 1.5L9 8"/></g></svg>
+    ),
+    RESTRICTED:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.636 5.636a9 9 0 1 0 12.728 12.728M5.636 5.636a9 9 0 1 1 12.728 12.728M5.636 5.636L12 12l6.364 6.364"/></svg>
+    ),
+    INTERNAL_FACING:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M17 3h2a2 2 0 0 1 2 2v2m-4 14h2a2 2 0 0 0 2-2v-2M7 3H5a2 2 0 0 0-2 2v2m4 14H5a2 2 0 0 1-2-2v-2"/><path fill="currentColor" d="M14.066 15.998L14 15v1.996zm4.621-1.084l-.92.392zm-4.604-1.164l-.697-.716l-.738.718l.74.716zm.749 1.268l.955-.296zm-.7-.018L14 16.996q.066.004.133.004zm3.735 0h-3.734v2h3.734zm-.1.306a.26.26 0 0 1-.013-.135a.3.3 0 0 1 .052-.125c.038-.049.07-.046.061-.046v2c.594 0 1.153-.263 1.51-.717c.371-.471.5-1.127.23-1.76zM16 14c.974 0 1.473.613 1.767 1.306l1.84-.783C19.173 13.497 18.14 12 16 12zm-1.22.467c.271-.263.643-.467 1.22-.467v-2c-1.137 0-2 .435-2.614 1.034zm-1.393.001c.239.232.394.536.49.846l1.91-.592c-.16-.515-.455-1.154-1.008-1.69zm.49.846a.3.3 0 0 1-.004-.14a.3.3 0 0 1 .058-.124a.2.2 0 0 1 .051-.044q.016-.007.018-.006l.133 1.996a1.9 1.9 0 0 0 1.343-.676a1.7 1.7 0 0 0 .31-1.598zm-3.96-1.564l.696.718l.739-.716l-.738-.718zm-4.604 1.164l.92.392zm4.62 1.084l.067.998V15zm-.765-.98l.955.296zM8 14c.577 0 .949.204 1.22.467l1.394-1.433C10 12.435 9.137 12 8 12zm-1.767 1.306C6.527 14.613 7.026 14 8 14v-2c-2.14 0-3.172 1.497-3.608 2.523zm-.1-.306c-.008 0 .023-.003.061.046a.26.26 0 0 1 .052.125a.26.26 0 0 1-.013.135l-1.84-.783a1.72 1.72 0 0 0 .23 1.76c.357.454.916.717 1.51.717zm3.734 0H6.133v2h3.734zm0 0v2q.067 0 .133-.004zM10 15q0-.002.018.006c.01.005.03.017.051.043a.3.3 0 0 1 .058.125a.3.3 0 0 1-.004.14l-1.91-.592a1.7 1.7 0 0 0 .312 1.598a1.9 1.9 0 0 0 1.343.676zm.123.314c.096-.31.251-.614.49-.846L9.22 13.032c-.553.536-.848 1.175-1.008 1.69z"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 13c1.852 0 2.56 1.143 2.832 2.018c.163.527-.28.982-.832.982h-4c-.552 0-.995-.455-.832-.982C9.44 14.143 10.148 13 12 13Z"/><circle cx="12" cy="9" r="2" fill="currentColor"/><circle cx="16" cy="9" r="2" fill="currentColor"/><circle cx="8" cy="9" r="2" fill="currentColor"/></g></svg>
+    ),
+    PUBLIC_FACING:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.5 12c0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2c0 .37-.03.73-.08 1.08c.69.1 1.33.32 1.92.64c.1-.56.16-1.13.16-1.72c0-5.5-4.5-10-10-10C6.47 2 2 6.5 2 12s4.5 10 10 10c.59 0 1.16-.06 1.72-.16A5.9 5.9 0 0 1 13 19c0-.29.03-.57.07-.85c-.32.63-.67 1.24-1.07 1.81c-.83-1.2-1.5-2.53-1.91-3.96h3.72a5.95 5.95 0 0 1 2.59-2.4c.06-.53.1-1.06.1-1.6M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm.82 2H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m6.34 6H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2m.25-9.56c1.84.63 3.37 1.9 4.33 3.56h-2.95a15.7 15.7 0 0 0-1.38-3.56m7.91 12.81L17.75 22L15 19l1.16-1.16l1.59 1.59l3.59-3.59z"/></svg>
+    ),
+    WEB_APPLICATION:(
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><g fill="none"><rect width="40" height="32" x="4" y="8" stroke="currentColor" stroke-linejoin="round" stroke-width="4" rx="3"/><path stroke="currentColor" stroke-width="4" d="M4 11a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3v9H4z"/><circle r="2" fill="currentColor" transform="matrix(0 -1 -1 0 10 14)"/><circle r="2" fill="currentColor" transform="matrix(0 -1 -1 0 16 14)"/></g></svg>
+    )
+
 };
 
 export default GlobalICONS;
