@@ -3,11 +3,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout";
 import VirtualMachine from "./modules/virtualMachines";
-import EndPointsTable from "./modules/endPoints/components/table";
 import Dashboard from "./modules/dashboard";
-import Endpoints from "./modules/endPoints";
 import WebApplication from "./modules/webApplications";
 import NetworkDevice from "./modules/networkDevices";
+import Desktops from "./modules/desktops";
 import DataCenter from "./modules/dataCenter";
 
 function App() {
@@ -58,15 +57,7 @@ function App() {
                     path="/desktops"
                     element={
                         <React.Suspense fallback={""}>
-                            <EndPointsTable />
-                        </React.Suspense>
-                    }
-                />
-                <Route
-                    path="/endpoints"
-                    element={
-                        <React.Suspense fallback={""}>
-                            <Endpoints />
+                            <Desktops />
                         </React.Suspense>
                     }
                 />

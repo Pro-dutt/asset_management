@@ -4,7 +4,7 @@ import UserAvatar from "@/components/UserAvatar";
 import TableUtils from "@/components/table/utils";
 import TableIcon from "@/components/table/utils/icon";
 import GlobalUtils from "@/lib/utils";
-import endPointsICONS from "../../utils/icons";
+import desktopsICONS from "../../utils/icons";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 
@@ -230,7 +230,7 @@ const EndPointsTable = () => {
                         key: "role",
                         value: (
                             <p className={styles.role}>
-                                <span className={styles[item.role.toLowerCase()]}>{endPointsICONS?.[item.role.toUpperCase()]}</span>
+                                <span className={styles[item.role.toLowerCase()]}>{desktopsICONS?.[item.role.toUpperCase()]}</span>
                                 <span>{item.role}</span>
                             </p>
                         ),
