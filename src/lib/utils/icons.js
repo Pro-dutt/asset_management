@@ -1018,23 +1018,62 @@ const GlobalICONS = {
             </g>
         </svg>
     ),
-    WAREHOUSE:(
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h2v2H6zm6-16L2 8v13h2v-8h16v8h2V8zm-4 8H4V9h4zm6 0h-4V9h4zm6 0h-4V9h4zM6 15h2v2H6zm4 0h2v2h-2zm0 4h2v2h-2zm4 0h2v2h-2z"/></svg> 
+    WAREHOUSE: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M6 19h2v2H6zm6-16L2 8v13h2v-8h16v8h2V8zm-4 8H4V9h4zm6 0h-4V9h4zm6 0h-4V9h4zM6 15h2v2H6zm4 0h2v2h-2zm0 4h2v2h-2zm4 0h2v2h-2z" />
+        </svg>
     ),
-    IN_USE:(
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4C4.8 4 3 5.8 3 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4m0 6c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m-7 8c0-2.2 3.1-4 7-4c1.5 0 2.9.3 4 .7V17c-.8-.5-2.2-1-4-1c-3.2 0-5 1.4-5 2h9v2H0zM22 4h-7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 14h-7V6h7z"/></svg>
+    IN_USE: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+                fill="currentColor"
+                d="M7 4C4.8 4 3 5.8 3 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4m0 6c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m-7 8c0-2.2 3.1-4 7-4c1.5 0 2.9.3 4 .7V17c-.8-.5-2.2-1-4-1c-3.2 0-5 1.4-5 2h9v2H0zM22 4h-7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 14h-7V6h7z"
+            />
+        </svg>
     ),
-    NOT_IN_SUPPORT:(
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m21.71 20.29l-18-18a1 1 0 0 0-1.42 1.42l1 1A3 3 0 0 0 3 6v8a3 3 0 0 0 3 3h3v2H6a1 1 0 0 0 0 2h12a1 1 0 0 0 .93-.66l1.36 1.37a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42M5 6.41L9.59 11H5ZM13 19h-2v-2h2Zm-7-4a1 1 0 0 1-1-1v-1h6.59l2 2Zm9 4v-2h.59l2 2ZM9.66 5H18a1 1 0 0 1 1 1v5h-1.34a1 1 0 0 0 0 2H19v1a.4.4 0 0 1 0 .11a1 1 0 0 0 .78 1.18h.2a1 1 0 0 0 1-.8A3 3 0 0 0 21 14V6a3 3 0 0 0-3-3H9.66a1 1 0 0 0 0 2"/></svg>
+    NOT_IN_SUPPORT: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+                fill="currentColor"
+                d="m21.71 20.29l-18-18a1 1 0 0 0-1.42 1.42l1 1A3 3 0 0 0 3 6v8a3 3 0 0 0 3 3h3v2H6a1 1 0 0 0 0 2h12a1 1 0 0 0 .93-.66l1.36 1.37a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42M5 6.41L9.59 11H5ZM13 19h-2v-2h2Zm-7-4a1 1 0 0 1-1-1v-1h6.59l2 2Zm9 4v-2h.59l2 2ZM9.66 5H18a1 1 0 0 1 1 1v5h-1.34a1 1 0 0 0 0 2H19v1a.4.4 0 0 1 0 .11a1 1 0 0 0 .78 1.18h.2a1 1 0 0 0 1-.8A3 3 0 0 0 21 14V6a3 3 0 0 0-3-3H9.66a1 1 0 0 0 0 2"
+            />
+        </svg>
     ),
-    EXPIRED:(
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="M17 4.625H7a4 4 0 0 0-4 4v8.75a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-8.75a4 4 0 0 0-4-4m-14 5h18m-4-7v4m-10-4v4"/><path stroke-miterlimit="10" d="m14 13l-4 3.991m0-3.982L14 17"/></g></svg>
+    EXPIRED: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path stroke-linejoin="round" d="M17 4.625H7a4 4 0 0 0-4 4v8.75a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-8.75a4 4 0 0 0-4-4m-14 5h18m-4-7v4m-10-4v4" />
+                <path stroke-miterlimit="10" d="m14 13l-4 3.991m0-3.982L14 17" />
+            </g>
+        </svg>
     ),
-    FIREWALL:(
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M27 20.397v3c-1 0-2-1.5-2-4v-3c-4 5-5 7-5 9A5 5 0 0 0 23.046 30A7.53 7.53 0 0 1 25 26.397A7.53 7.53 0 0 1 26.954 30A5 5 0 0 0 30 25.397c0-2-1.125-3.571-3-5M17 28H4v-4h13v-2H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h13z"/><path fill="currentColor" d="M28 12H7a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10v-2H7v-4h21l.001 2H30v-2a2 2 0 0 0-2-2m-3-2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h21a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2M4 4v4h21V4z"/></svg>
+    FIREWALL: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+            <path
+                fill="currentColor"
+                d="M27 20.397v3c-1 0-2-1.5-2-4v-3c-4 5-5 7-5 9A5 5 0 0 0 23.046 30A7.53 7.53 0 0 1 25 26.397A7.53 7.53 0 0 1 26.954 30A5 5 0 0 0 30 25.397c0-2-1.125-3.571-3-5M17 28H4v-4h13v-2H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h13z"
+            />
+            <path
+                fill="currentColor"
+                d="M28 12H7a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10v-2H7v-4h21l.001 2H30v-2a2 2 0 0 0-2-2m-3-2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h21a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2M4 4v4h21V4z"
+            />
+        </svg>
     ),
-    SWITCH:(
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36"><path fill="currentColor" d="M33.91 18.47L30.78 8.41A2 2 0 0 0 28.87 7H7.13a2 2 0 0 0-1.91 1.41L2.09 18.48a2 2 0 0 0-.09.59V27a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2v-7.94a2 2 0 0 0-.09-.59M32 27H4v-7.94L7.13 9h21.74L32 19.06Z" class="clr-i-outline clr-i-outline-path-1"/><path fill="currentColor" d="M7.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-2"/><path fill="currentColor" d="M12.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-3"/><path fill="currentColor" d="M17.11 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-4"/><path fill="currentColor" d="M22.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-5"/><path fill="currentColor" d="M27.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-6"/><path fill="currentColor" d="M6.23 18h23.69v1.4H6.23z" class="clr-i-outline clr-i-outline-path-7"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+    SWITCH: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36">
+            <path
+                fill="currentColor"
+                d="M33.91 18.47L30.78 8.41A2 2 0 0 0 28.87 7H7.13a2 2 0 0 0-1.91 1.41L2.09 18.48a2 2 0 0 0-.09.59V27a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2v-7.94a2 2 0 0 0-.09-.59M32 27H4v-7.94L7.13 9h21.74L32 19.06Z"
+                class="clr-i-outline clr-i-outline-path-1"
+            />
+            <path fill="currentColor" d="M7.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-2" />
+            <path fill="currentColor" d="M12.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-3" />
+            <path fill="currentColor" d="M17.11 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-4" />
+            <path fill="currentColor" d="M22.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-5" />
+            <path fill="currentColor" d="M27.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-6" />
+            <path fill="currentColor" d="M6.23 18h23.69v1.4H6.23z" class="clr-i-outline clr-i-outline-path-7" />
+            <path fill="none" d="M0 0h36v36H0z" />
+        </svg>
     ),
     GREATER_THEN: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -1050,6 +1089,30 @@ const GlobalICONS = {
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
+        </svg>
+    ),
+    SERVER: (
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14 21H5C4.06812 21 3.60218 21 3.23463 20.8478C2.74458 20.6448 2.35523 20.2554 2.15224 19.7654C2 19.3978 2 18.9319 2 18C2 17.0681 2 16.6022 2.15224 16.2346C2.35523 15.7446 2.74458 15.3552 3.23463 15.1522C3.60218 15 4.06812 15 5 15H19C19.9319 15 20.3978 15 20.7654 15.1522C21.2554 15.3552 21.6448 15.7446 21.8478 16.2346C22 16.6022 22 17.0681 22 18C22 18.9319 22 19.3978 21.8478 19.7654C21.6448 20.2554 21.2554 20.6448 20.7654 20.8478C20.3978 21 19.9319 21 19 21H18"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+            />
+            <path
+                d="M2 12C2 11.0681 2 10.6022 2.15224 10.2346C2.35523 9.74458 2.74458 9.35523 3.23463 9.15224C3.60218 9 4.06812 9 5 9H19C19.9319 9 20.3978 9 20.7654 9.15224C21.2554 9.35523 21.6448 9.74458 21.8478 10.2346C22 10.6022 22 11.0681 22 12C22 12.9319 22 13.3978 21.8478 13.7654C21.6448 14.2554 21.2554 14.6448 20.7654 14.8478C20.3978 15 19.9319 15 19 15H5C4.06812 15 3.60218 15 3.23463 14.8478C2.74458 14.6448 2.35523 14.2554 2.15224 13.7654C2 13.3978 2 12.9319 2 12Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+            />
+            <path
+                d="M10 3H19C19.9319 3 20.3978 3 20.7654 3.15224C21.2554 3.35523 21.6448 3.74458 21.8478 4.23463C22 4.60218 22 5.06812 22 6C22 6.93188 22 7.39782 21.8478 7.76537C21.6448 8.25542 21.2554 8.64477 20.7654 8.84776C20.3978 9 19.9319 9 19 9H5C4.06812 9 3.60218 9 3.23463 8.84776C2.74458 8.64477 2.35523 8.25542 2.15224 7.76537C2 7.39782 2 6.93188 2 6C2 5.06812 2 4.60218 2.15224 4.23463C2.35523 3.74458 2.74458 3.35523 3.23463 3.15224C3.60218 3 4.06812 3 5 3H6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+            />
+            <circle cx="5" cy="12" r="1" fill="currentColor" />
+            <circle cx="5" cy="6" r="1" fill="currentColor" />
+            <circle cx="5" cy="18" r="1" fill="currentColor" />
         </svg>
     ),
     VIRTUAL_MACHINE: (

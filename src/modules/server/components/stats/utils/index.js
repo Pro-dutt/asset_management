@@ -1,3 +1,3 @@
-class serversStatsUtils {
+class desktopsStatsUtils {
 }
-export default serversStatsUtils
+export default desktopsStatsUtils
