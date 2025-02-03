@@ -1,2 +1,2 @@
-class LaptopsDetailsUtils {}
-export default LaptopsDetailsUtils;
+class VirtualMachinesDetailsUtils {}
+export default VirtualMachinesDetailsUtils;

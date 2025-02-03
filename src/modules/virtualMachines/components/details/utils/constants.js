@@ -1,2 +1,2 @@
-const laptopsDetailsConstants = {};
-export default laptopsDetailsConstants;
+const virtualMachinesDetailsConstants = {};
+export default virtualMachinesDetailsConstants;

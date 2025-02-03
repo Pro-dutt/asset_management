@@ -1,4 +1,4 @@
-const sampleVirtualMachinesDetails = {
+const sampleWebApplicationsDetails = {
     _id: "6486cae1284e1728606f902c",
     productName: "Dell Latitude 5420",
     serialNumber: "ABC123456789",
@@ -43,4 +43,4 @@ const sampleVirtualMachinesDetails = {
     lastAuditDateIfAny: "2023-09-01",
     patchLevel: "Latest",
 };
-export default sampleVirtualMachinesDetails;
+export default sampleWebApplicationsDetails;
