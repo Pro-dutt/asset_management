@@ -50,7 +50,7 @@ class DesktopsTableUtils {
             "Serial Number": { key: "serialNumber", value: item.serialNumber },
             Processor: { key: "processor", value: item.processor },
             "Ram [Gb]": { key: "ramGb", value: item.ramGb },
-            "Device Status": { key: "deviceStatus", value: item.deviceStatus },
+            "Device Status": { key: "deviceStatus", value: item.statusId },
         }));
     }
     static tableActionData({ data, setShow, setDesktopDetails }) {
