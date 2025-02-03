@@ -50,7 +50,7 @@ const webApplicationConstants = {
             icon: GlobalICONS.ENVIRONMENT,
             description: "Configure the environment details",
         },
-        ...globalConstants.FORM_SECTIONS,
+        ...globalConstants.CONFIGURATION_FORM_SECTIONS,
     }),
 };
 

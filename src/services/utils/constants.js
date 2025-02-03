@@ -16,10 +16,14 @@ const apiConstants = {
     networkDevices: {
         BASE_ROUTE: "/network-devices",
     },
+    dataCenter: {
+        BASE_ROUTE: "/date-centers",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         CREATE_WEB_APPLICATION: "createWebApplication",
         CREATE_NETWORK_DEVICE: "createNetworkDevice",
+        CREATE_DATA_CENTER: "createDataCenter",
         SIGN_UP: "signup",
         VERIFY_EMAIL: "verifyEmail",
         SETUP_BASE_INFO: "setupBaseInfo",

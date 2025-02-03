@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import StatCard from "@/components/Card/StatCard";
+import StatCard from "@/components/Card/ProgressCard";
 import GlobalICONS from "@/lib/utils/icons";
 import GlobalUtils from "@/lib/utils";
 import EChartsComponent from "@/components/Echarts";

@@ -4,7 +4,7 @@ import NetworkDeviceConstants from "../utils/constants";
 import { useNetworkDevice } from "@/services/context/networkDevice";
 
 export const useNetworkDeviceInfoForm = (data = {}) => {
-    const { NetworkDeviceCreation } = useNetworkDevice();
+    const { networkDeviceCreation } = useNetworkDevice();
 
     const formConfig = useMemo(
         () => [
@@ -21,7 +21,7 @@ export const useNetworkDeviceInfoForm = (data = {}) => {
     );
 
     const handleFormSubmit = (formData) => {
-        NetworkDeviceCreation.execute({
+        networkDeviceCreation.execute({
             payload: formData,
             onSuccess: () => {
                 // onboardedUser.fetch({});
@@ -29,5 +29,5 @@ export const useNetworkDeviceInfoForm = (data = {}) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: NetworkDeviceCreation?.isLoading, NetworkDeviceInfoFormErrors: NetworkDeviceCreation?.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: networkDeviceCreation?.isLoading, NetworkDeviceInfoFormErrors: networkDeviceCreation?.errorMessages };
 };

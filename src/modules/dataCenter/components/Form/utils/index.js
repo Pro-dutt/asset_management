@@ -1,7 +1,7 @@
 import globalConstants from "@/lib/utils/contants";
-import networkDeviceConstants from "./constants";
+import dataCenterConstants from "./constants";
 
-class NetworkDeviceUtils {
+class DataCenterUtils {
     static getDeviceCategoryFormFields(data) {
         return [
             {
@@ -10,7 +10,7 @@ class NetworkDeviceUtils {
                 label: "Device Category",
                 grid: 4,
                 defaultValue: data?.deviceCategory,
-                options: networkDeviceConstants.DEVICE_CATEGORIES.getOptions(),
+                options: dataCenterConstants.DEVICE_CATEGORIES.getOptions(),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -446,7 +446,7 @@ class NetworkDeviceUtils {
                 label: "Reachability Status",
                 grid: 4,
                 defaultValue: data?.reachabilityStatus,
-                options: networkDeviceConstants.REACHABILITY_STATUS.getOptions(),
+                options: dataCenterConstants.REACHABILITY_STATUS.getOptions(),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -469,14 +469,14 @@ class NetworkDeviceUtils {
     }
 
     static formFieldHandlers = {
-        [networkDeviceConstants.FORM_SECTIONS.DEVICE_CATEGORY.title]: this.getDeviceCategoryFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.ASSIGNMENT_DETAILS.title]: this.getAssignmentDetailsFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.PROCUREMENT_DETAILS.title]: this.getProcurementDetailsFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.OPERATION_DETAILS.title]: this.getOperationsDetailsFormFields,
-        [networkDeviceConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
+        [dataCenterConstants.FORM_SECTIONS.DEVICE_CATEGORY.title]: this.getDeviceCategoryFormFields,
+        [dataCenterConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
+        [dataCenterConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
+        [dataCenterConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,
+        [dataCenterConstants.FORM_SECTIONS.ASSIGNMENT_DETAILS.title]: this.getAssignmentDetailsFormFields,
+        [dataCenterConstants.FORM_SECTIONS.PROCUREMENT_DETAILS.title]: this.getProcurementDetailsFormFields,
+        [dataCenterConstants.FORM_SECTIONS.OPERATION_DETAILS.title]: this.getOperationsDetailsFormFields,
+        [dataCenterConstants.FORM_SECTIONS.ASSOCIATED_FILES.title]: this.getAssociatedFilesFormFields,
     };
 
     static getFormFieldsBySection(section, data) {
@@ -500,4 +500,4 @@ class NetworkDeviceUtils {
     }
 }
 
-export default NetworkDeviceUtils;
+export default DataCenterUtils;

@@ -1,8 +1,8 @@
 import DynamicForm from "@/components/form";
-import { useNetworkDeviceInfoForm } from "./hooks/useForm";
+import { useDataCenterInfoForm } from "./hooks/useForm";
 
-export const NetworkDeviceInfoForm = () => {
-    const { formConfig, handleFormSubmit, isLoading, NetworkDeviceInfoFormErrors } = useNetworkDeviceInfoForm();
+export const DataCenterInfoForm = () => {
+    const { formConfig, handleFormSubmit, isLoading, DataCenterInfoFormErrors } = useDataCenterInfoForm();
 
     const getFormButtons = (isLoading = false) => {
         return [
@@ -24,12 +24,12 @@ export const NetworkDeviceInfoForm = () => {
     return (
         <div className="" style={{ paddingInline: "1rem" }}>
             <DynamicForm
-                key="network-device-form"
-                formId="network-device"
+                key="web-application-form"
+                formId="web-application"
                 formData={formConfig}
                 formButtons={getFormButtons(isLoading)}
                 onSubmit={handleFormSubmit}
-                responseErrors={NetworkDeviceInfoFormErrors}
+                responseErrors={DataCenterInfoFormErrors}
             />
         </div>
     );

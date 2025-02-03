@@ -50,7 +50,7 @@ const virtualMachineConstants = {
             icon: GlobalICONS.DATA_CENTER,
             description: "Configure resource allocation for your virtual machine",
         },
-        ...globalConstants.FORM_SECTIONS,
+        ...globalConstants.CONFIGURATION_FORM_SECTIONS,
     }),
 };
 
