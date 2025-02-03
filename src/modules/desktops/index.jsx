@@ -4,8 +4,9 @@ import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "../virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import DesktopDetails from "./components/details";
+import { DesktopInfoForm } from "./components/Form";
 import DesktopsStats from "./components/stats";
-import styles from "./styles/index.module.css"
+import styles from "./styles/index.module.css";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -14,7 +15,7 @@ const Desktops = () => {
 
     return (
         <div id="desktops_module" className={styles.container}>
-            <DesktopsStats/>
+            <DesktopsStats />
             <DesktopsTable setShow={setShow} setDesktopDetails={setDesktopDetails} />
             <Modal
                 show={show.add}
@@ -24,7 +25,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <VirtualMachine />
+                <DesktopInfoForm />
             </Modal>
             <Modal
                 show={show.edit}
@@ -34,7 +35,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <VirtualMachine data={desktopDetails} />
+                <DesktopInfoForm data={desktopDetails} />
             </Modal>
             <Modal
                 show={show.view}

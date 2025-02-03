@@ -1,7 +1,7 @@
-import dataCenterApiClient from "./config";
+import desktopApiClient from "./config";
 
-class DataCenterApiService {
-    constructor(apiClient = dataCenterApiClient) {
+class DesktopApiService {
+    constructor(apiClient = desktopApiClient) {
         this.apiClient = apiClient;
     }
 
@@ -13,4 +13,4 @@ class DataCenterApiService {
     }
 }
 
-export default DataCenterApiService;
+export default DesktopApiService;

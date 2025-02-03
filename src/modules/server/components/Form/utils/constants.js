@@ -1,7 +1,7 @@
 import globalConstants, { createEnum } from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 
-const dataCenterConstants = {
+const serverConstants = {
     DEVICE_CATEGORIES: createEnum([
         { key: "FIREWALL", value: 1, label: "Firewall" },
         { key: "SWITCH", value: 2, label: "Switch" },
@@ -38,7 +38,7 @@ const dataCenterConstants = {
     }),
 };
 
-// Freeze the entire dataCenterConstants object
-Object.freeze(dataCenterConstants);
+// Freeze the entire serverConstants object
+Object.freeze(serverConstants);
 
-export default dataCenterConstants;
+export default serverConstants;

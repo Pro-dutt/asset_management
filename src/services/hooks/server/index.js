@@ -1,27 +1,27 @@
-import DataCenterApiService from "@/services/api/dataCenter";
+import ServerApiService from "@/services/api/server";
 import { useLoading } from "@/services/context/loading";
 import { useNotification } from "@/services/context/notification";
 import apiConstants from "@/services/utils/constants";
 import { useCallback } from "react";
 
-export const useDataCenterCreate = () => {
+export const useServerCreate = () => {
     const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
 
     const { isLoading, setLoading } = useLoading();
 
-    const CREATE_DATA_CENTER_KEY = apiConstants.loadingStateKeys.CREATE_DATA_CENTER;
+    const CREATE_SERVER_KEY = apiConstants.loadingStateKeys.CREATE_SERVER;
 
-    const executeDataCenterCreation = useCallback(
+    const executeServerCreation = useCallback(
         async ({ payload, onSuccess, onError, options }) => {
-            setLoading(CREATE_DATA_CENTER_KEY, true);
+            setLoading(CREATE_SERVER_KEY, true);
             const controller = new AbortController();
 
             try {
-                const data = await DataCenterApiService.create(payload, controller.signal);
+                const data = await ServerApiService.create(payload, controller.signal);
 
                 if (options?.showNotification) {
                     showSuccessNotification({
-                        key: CREATE_DATA_CENTER_KEY,
+                        key: CREATE_SERVER_KEY,
                         value: data,
                         hideNotification: true,
                     });
@@ -31,24 +31,24 @@ export const useDataCenterCreate = () => {
                 return data;
             } catch (error) {
                 showErrorNotification({
-                    key: CREATE_DATA_CENTER_KEY,
+                    key: CREATE_SERVER_KEY,
                     value: error || "Failed to complete creation",
                 });
 
                 onError?.();
                 throw error;
             } finally {
-                setLoading(CREATE_DATA_CENTER_KEY, false);
+                setLoading(CREATE_SERVER_KEY, false);
             }
         },
-        [CREATE_DATA_CENTER_KEY, showErrorNotification, showSuccessNotification, setLoading]
+        [CREATE_SERVER_KEY, showErrorNotification, showSuccessNotification, setLoading]
     );
     return {
-        dataCenterCreation: {
-            execute: executeDataCenterCreation,
-            isLoading: isLoading(CREATE_DATA_CENTER_KEY) || false,
-            successMessages: successMessages?.[CREATE_DATA_CENTER_KEY],
-            errorMessages: errorMessages?.[CREATE_DATA_CENTER_KEY],
+        serverCreation: {
+            execute: executeServerCreation,
+            isLoading: isLoading(CREATE_SERVER_KEY) || false,
+            successMessages: successMessages?.[CREATE_SERVER_KEY],
+            errorMessages: errorMessages?.[CREATE_SERVER_KEY],
         },
     };
 };
