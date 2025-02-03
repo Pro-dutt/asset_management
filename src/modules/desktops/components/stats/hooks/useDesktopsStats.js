@@ -6,7 +6,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
     const desktopsStatsConfig = useMemo(
         () => [
             {
-                title: "In Store",
+                title: "In-Store",
                 value: data.inStore,
                 subTitle: "Total In Store",
                 icon: GlobalICONS.WAREHOUSE,
@@ -15,7 +15,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 color: "green",
             },
             {
-                title: "In Use",
+                title: "In-Use",
                 value: data?.inUse,
                 subTitle: "Total In Use",
                 icon: GlobalICONS.IN_USE,
