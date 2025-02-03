@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-const CircularProgressBar = ({ progress }) => {
+const CircularProgressBar = ({ progress, color }) => {
     const radius = 20;
     const strokeWidth = 3.2;
     const circumference = 2 * Math.PI * radius;
@@ -9,6 +9,7 @@ const CircularProgressBar = ({ progress }) => {
   
     return (
       <div className={styles.progress_circle_container}>
+         {/* {` sdfs ${styles.progress_circle_foreground}_${color}`} */}
         <svg
           className={styles.progress_circle}
           width="43.2"
@@ -16,6 +17,7 @@ const CircularProgressBar = ({ progress }) => {
           viewBox="0 0 43.2 43.2"
           style={{ transform: 'rotate(-90deg)' }}
         >
+         
           <circle
             className={styles.progress_circle_background}
             cx="50%"
@@ -25,7 +27,7 @@ const CircularProgressBar = ({ progress }) => {
             fill="transparent"
           />
           <circle
-            className={styles.progress_circle_foreground}
+            className={`${styles[`progress_circle_foreground_${color}`]}`}
             cx="50%"
             cy="50%"
             r={radius}

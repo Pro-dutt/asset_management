@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-const ProgressCard = ({ data }) => {
+const StatCard = ({ data }) => {
   return (
     <div className={`${styles.main_container} ${styles[`main_container_border_${data.color}`]}`}>
       <div className={styles.inner_container}>
@@ -19,4 +19,4 @@ const ProgressCard = ({ data }) => {
   );
 };
 
-export default ProgressCard;
+export default StatCard;

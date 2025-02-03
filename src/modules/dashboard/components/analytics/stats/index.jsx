@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import StatCard from "@/components/Card/ProgressCard";
+import StatCard from "@/components/Card/StatCard";
 import GlobalICONS from "@/lib/utils/icons";
 
 const Stats = () => {
