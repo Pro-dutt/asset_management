@@ -58,15 +58,21 @@ const globalConstants = {
         { key: "OTHERS", value: 4, label: "Others" },
     ]),
 
+    PATCH_LEVELS: createEnum([
+        { key: "FULLY_PATCHED", value: 1, label: "Fully Patched" },
+        { key: "PARTIALLY_PATCHED", value: 2, label: "Partially Patched" },
+        { key: "NOT_PATCHED", value: 3, label: "Not Patched" },
+    ]),
+
     DEPARTMENTS: createEnum([
-        { key: "HR", value: 1, label: "HR" },
-        { key: "FINANCE", value: 2, label: "Finance" },
-        { key: "LEGAL", value: 3, label: "Legal" },
+        { key: "HR", value: "hr", label: "HR" },
+        { key: "FINANCE", value: "finance", label: "Finance" },
+        { key: "LEGAL", value: "legal", label: "Legal" },
     ]),
 
     IP_TYPES: createEnum([
-        { key: "STATIC", value: 1, label: "Static" },
-        { key: "DHCP", value: 2, label: "DHCP" },
+        { key: "STATIC", value: "static", label: "Static" },
+        { key: "DHCP", value: "dhcp", label: "DHCP" },
     ]),
 
     BACKUP_STATUS: createEnum([

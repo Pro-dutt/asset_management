@@ -3,11 +3,11 @@ import styles from "./index.module.css";
 import DetailsGridItem from "./components/detailsGridItem";
 import { sampleFormatData } from "./utils/seeds";
 
-const Details = () => {
+const Details = ({ data = sampleFormatData }) => {
     return (
         <div className={styles.container}>
             <div className={styles.grid}>
-                {sampleFormatData.map((item, index) => (
+                {data.map((item, index) => (
                     <DetailsGridItem key={index} data={item} grid={item.grid} />
                 ))}
             </div>

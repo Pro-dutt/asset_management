@@ -39,3 +39,7 @@ select {
     border-style: solid;
     border-color: #e5e7eb;
 }
+.stats_cards{
+    display: flex;
+    gap: 1rem;
+}

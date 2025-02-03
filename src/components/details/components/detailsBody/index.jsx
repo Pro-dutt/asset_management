@@ -7,11 +7,11 @@ const DetailsBody = ({ data }) => {
         if (typeof value === "object" && value !== null && "label" in value && "value" in value) {
             return (
                 <span>
-                    { DetailsUtils.formatText(value.label)}: {value.value || "N/A"}
+                    {DetailsUtils.formatText(value.label)}: {value.value || "N/A"}
                 </span>
             );
         } else if (typeof value === "string" || typeof value === "number") {
-            return <span>{String(value).replace(/wazuh/gi, "")}</span>;
+            return <span className={styles.value}>{String(value).replace(/wazuh/gi, "")}</span>;
         }
         return null;
     };
@@ -20,7 +20,7 @@ const DetailsBody = ({ data }) => {
         if (Array.isArray(data)) {
             return data.map((item, index) => (
                 <li key={index}>
-                    <span>{item.label || "Unknown Label"}</span> <span>{item.value || "N/A"}</span>
+                    <span className={styles.label}>{item.label || "Unknown Label"}</span> <span className={styles.value}>{item.value || "N/A"}</span>
                 </li>
             ));
         } else if (typeof data === "object" && data !== null) {
@@ -28,7 +28,7 @@ const DetailsBody = ({ data }) => {
                 .map(([key, value]) =>
                     key !== "_id" ? (
                         <li key={key}>
-                            <span>{DetailsUtils.formatText(key)}</span> {renderValue(value)}
+                            <span className={styles.label}>{DetailsUtils.formatText(key)}</span> {renderValue(value)}
                         </li>
                     ) : null
                 )

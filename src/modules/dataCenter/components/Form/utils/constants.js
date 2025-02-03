@@ -17,11 +17,22 @@ const dataCenterConstants = {
         { key: "NOT_REACHABLE", value: 2, label: "Not Reachable" },
     ]),
 
+    ANTIVIRUS_STATUS: createEnum([
+        { key: "ACTIVE", value: 1, label: "Active" },
+        { key: "INACTIVE", value: 2, label: "Inactive" },
+        { key: "NOT_INSTALLED", value: 3, label: "Not Installed" },
+    ]),
+
     FORM_SECTIONS: Object.freeze({
         DEVICE_CATEGORY: {
             title: "Device Category",
             icon: GlobalICONS.DEVICE,
             description: "Define and categorize the type of device for better management",
+        },
+        BACKUP_RESTORATION: {
+            title: "Backup & Restoration",
+            icon: GlobalICONS.BACKUP,
+            description: "Set preferences for data backup and restoration",
         },
         ...globalConstants.DEVICE_MANAGEMENT_FORM_SECTIONS,
     }),

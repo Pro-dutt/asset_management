@@ -1,10 +1,10 @@
 import React from 'react'
-import AnalyticsTable from './components/table'
 import styles from './index.module.css'
 import Stats from './components/analytics/stats'
 import Charts from './components/analytics/charts'
 import ProgressCard from '@/components/Card/ProgressCard'
 import GlobalICONS from '@/lib/utils/icons'
+import Desktops from '../desktops'
 
 const Dashboard = () => {
 
@@ -58,11 +58,12 @@ const Dashboard = () => {
     <div className={styles.main_container}>
       <Stats/>
       {/* <Stats/> */}
-      <Charts/>
+      <Charts/> 
       <ProgressCard data={ProgressData.data} cardTitle={progressCardTitle}/>
-      <AnalyticsTable/>
+      <Desktops />
     </div>
-  )
-}
 
-export default Dashboard
+    );
+};
+
+export default Dashboard;

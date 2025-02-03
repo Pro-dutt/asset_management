@@ -28,12 +28,6 @@ const virtualMachineConstants = {
         { key: "OTHERS", value: 7, label: "Others" },
     ]),
 
-    PATCH_LEVELS: createEnum([
-        { key: "FULLY_PATCHED", value: 1, label: "Fully Patched" },
-        { key: "PARTIALLY_PATCHED", value: 2, label: "Partially Patched" },
-        { key: "NOT_PATCHED", value: 3, label: "Not Patched" },
-    ]),
-
     FORM_SECTIONS: Object.freeze({
         VM_DETAILS: {
             title: "VM Details",

@@ -8,13 +8,13 @@ export const useDataCenterInfoForm = (data = {}) => {
 
     const formConfig = useMemo(
         () => [
-            ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.DEVICE_CATEGORY, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.NETWORK_DETAILS, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.ASSIGNMENT_DETAILS, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.PROCUREMENT_DETAILS, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.OPERATION_DETAILS, data),
+            ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.BACKUP_RESTORATION, data),
             ...DataCenterUtils.createFormSection(dataCenterConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
         [data]
