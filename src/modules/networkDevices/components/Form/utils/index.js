@@ -93,10 +93,10 @@ class NetworkDeviceUtils {
             },
             {
                 type: "select",
-                name: "statusName",
+                name: "statusId",
                 label: "Device Status",
                 grid: 4,
-                defaultValue: data?.statusName,
+                defaultValue: data?.statusId,
                 options: globalConstants.STATUS_CATEGORIES.getOptions(),
                 validateOnChange: true,
                 validationRules: {},

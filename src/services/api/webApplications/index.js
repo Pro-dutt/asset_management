@@ -1,12 +1,8 @@
 import WebApplicationApiClient from "./config";
 
 class WebApplicationApiService {
-    constructor(apiClient = WebApplicationApiClient) {
-        this.apiClient = apiClient;
-    }
-
     static async create(payload, signal) {
-        const response = await this.apiClient.post("/", payload, {
+        const response = await WebApplicationApiClient.post("/", payload, {
             signal,
         });
         return response.data;
