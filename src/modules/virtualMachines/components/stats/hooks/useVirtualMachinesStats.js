@@ -13,22 +13,22 @@ const useVirtualMachinesStats = (data = sampleVirtualMachinesStatsData) => {
                 icon: GlobalICONS.VIRTUAL_MACHINE,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "green"
+                color: "violet"
             },
             {
                 title: "In-Production",
                 value: data?.inProduction,
                 subTitle: "Total In-Production",
-                icon: GlobalICONS.IN_USE,
+                icon: GlobalICONS.PRODUCTION,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "violet"
+                color: "green"
             },
             {
                 title: "In-Staging",
                 value: data?.inStaging,
                 subTitle: "Total In-Staging",
-                icon: GlobalICONS.NOT_IN_SUPPORT,
+                icon: GlobalICONS.STAGING,
                 hasDecrement: true,
                 hasIncrement: false,
                 color: "orange"
@@ -38,7 +38,7 @@ const useVirtualMachinesStats = (data = sampleVirtualMachinesStatsData) => {
                 title: "In-Development",
                 value: data?.inDevelopment,
                 subTitle: "Total In-Development",
-                icon: GlobalICONS.EXPIRED,
+                icon: GlobalICONS.DEVELOPMENT,
                 hasDecrement: false,
                 hasIncrement: false,
                 color: "red"

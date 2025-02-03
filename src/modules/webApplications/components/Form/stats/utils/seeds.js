@@ -1,9 +1,9 @@
-const sampleVirtualMachinesStatsData = {
-    totalVirtualMachines: 567,
-    inProduction: 100,
-    inStaging: 50,
-    inDevelopment: 50,
+const sampleWebApplicationsStatsData = {
+    totalWebApplications: 567,
+    publicFacing: 100,
+    internalFacing: 50,
+    restricted: 50,
     // Add more data as needed...
     
 }
-export default sampleVirtualMachinesStatsData
+export default sampleWebApplicationsStatsData
