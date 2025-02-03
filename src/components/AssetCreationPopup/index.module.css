@@ -1,0 +1,76 @@
+.imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageWrapper img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.popupContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6;
+    margin-block: 0.5rem;
+}
+.popupContent h5 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.popupContent p {
+    font-size: 0.86rem;
+    color: var(--disabled-text-color);
+}
+
+.optionsList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-block: 1.5rem;
+}
+.cardWrapper {
+    /* border: 1px solid var(--light-bg-color); */
+    border: 1px solid #c7c7c79e;
+    border-radius: 0.6rem;
+    cursor: pointer;
+}
+.cardContentWrapper {
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.cardContentWrapper .cardIcon {
+    background-color: var(--light-bg-color);
+    border-radius: 50%;
+    padding: 0.9rem;
+}
+.cardIcon svg {
+    width: 27px;
+    height: 27px;
+    color: #797777;
+}
+.cardTextContent {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+}
+
+.cardTextContent h5 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.cardTextContent p {
+    font-size: 0.758rem;
+    color: var(--disabled-text-color);
+}

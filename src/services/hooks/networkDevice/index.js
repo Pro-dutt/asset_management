@@ -39,6 +39,7 @@ export const useNetworkDeviceCreate = () => {
                 throw error;
             } finally {
                 setLoading(CREATE_NETWORK_DEVICE_KEY, false);
+                return () => controller.abort();
             }
         },
         [CREATE_NETWORK_DEVICE_KEY, showErrorNotification, showSuccessNotification, setLoading]

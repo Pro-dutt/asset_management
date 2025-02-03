@@ -32,7 +32,9 @@
     --orange-text-color: rgb(247, 127, 16);
     --orange-light-color: rgb(255, 240, 225);
     --disabled-bg-color: #d3d3d3;
-    --disabled-text-color: #a0a0a0;
+    /* --disabled-text-color: #a0a0a0; */
+    --disabled-text-color: #858484;
+    --light-bg-color: #eef1f3;
 
     --theme-error: 255, 76, 81;
     --theme-success: 40, 199, 111;
