@@ -6,8 +6,8 @@ const ProgressCard = ({ data, cardTitle }) => {
   const colors = ['red', 'violet', 'orange', 'green'];
   return (
     <div className={`${styles.main_container}`}>
-      <div className={styles.inner_container}>
-        <div>{cardTitle}</div>
+      <div>{cardTitle}</div>
+
         
         {/* Make sure to use data.map() correctly */}
         {data?.map((item, index) => {
@@ -15,15 +15,19 @@ const ProgressCard = ({ data, cardTitle }) => {
           const color = colors[index % colors.length];
           // {console.log(color)}
           return (
-            <div key={item._id}>
+            <div key={index} className={styles.inner_container}>
               <CircularProgressBar progress={item.percentage} color={color} />
-              <h6>{item.title}</h6>
-              <p>{`${item.value} ${item.unit}`}</p>
+              <div className='item_details'> 
+                <h6>{item.total} {item.unit}</h6>
+                <p>{item.remaining} {item.unit}</p>
+                <p>{item.used} {item.unit}</p>
+                {/* <p>{`${item.remaining} ${item.unit}`}</p>
+                <p>{`${item.used} ${item.unit}`}</p> */}
+              </div>
               <div>{item.icon}</div>
             </div>
           );
         })}
-      </div>
     </div>
   );
 };
