@@ -495,6 +495,23 @@ class GlobalUtils {
             ]
           };
     };
+
+    static getFormButtons = (isLoading = false,onCancel) => {
+        return [
+            {
+                label: "Cancel",
+                onClick: onCancel,
+                variant: "danger",
+                flat: true,
+                outlined: true,
+            },
+            {
+                label: "Submit",
+                type: "Submit",
+                loading: isLoading,
+            },
+        ].filter(Boolean);
+    }
 }
 
 export default GlobalUtils;

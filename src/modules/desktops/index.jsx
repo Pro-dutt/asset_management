@@ -4,7 +4,7 @@ import Modal from "@/components/Popup/Popup";
 import VirtualMachine from "../virtualMachines";
 import GlobalICONS from "@/lib/utils/icons";
 import DesktopDetails from "./components/details";
-import { DesktopInfoForm } from "./components/Form";
+import { DesktopInfoForm } from "./components/form";
 import DesktopsStats from "./components/stats";
 import styles from "./styles/index.module.css";
 
