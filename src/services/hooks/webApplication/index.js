@@ -39,6 +39,7 @@ export const useWebApplicationCreate = () => {
                 throw error;
             } finally {
                 setLoading(CREATE_WEB_APPLICATION_KEY, false);
+                return () => controller.abort();
             }
         },
         [CREATE_WEB_APPLICATION_KEY, showErrorNotification, showSuccessNotification, setLoading]

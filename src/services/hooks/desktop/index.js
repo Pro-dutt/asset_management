@@ -39,6 +39,7 @@ export const useDesktopCreate = () => {
                 throw error;
             } finally {
                 setLoading(CREATE_DESKTOP_KEY, false);
+                return () => controller.abort();
             }
         },
         [CREATE_DESKTOP_KEY, showErrorNotification, showSuccessNotification, setLoading]

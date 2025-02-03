@@ -39,6 +39,7 @@ export const useServerCreate = () => {
                 throw error;
             } finally {
                 setLoading(CREATE_SERVER_KEY, false);
+                return () => controller.abort();
             }
         },
         [CREATE_SERVER_KEY, showErrorNotification, showSuccessNotification, setLoading]

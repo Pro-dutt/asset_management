@@ -1,5 +1,6 @@
 import axios from "axios";
 import apiConstants from "../utils/constants";
+import { notifyError } from "@/components/Notification";
 
 const apiClient = axios.create({
     baseURL: apiConstants.BACKEND_API_BASE_URL, // Base API path
@@ -17,6 +18,7 @@ apiClient.interceptors.request.use(
         return config;
     },
     (error) => {
+        notifyError(error);
         return Promise.reject(error);
     }
 );
@@ -29,6 +31,7 @@ apiClient.interceptors.response.use(
     (error) => {
         const errorMessage = error.response?.data?.message || error.message || "An error occurred";
         console.log(errorMessage);
+        notifyError(errorMessage);
         return Promise.reject(error);
     }
 );

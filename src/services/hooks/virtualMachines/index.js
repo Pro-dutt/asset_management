@@ -47,6 +47,7 @@ export const useVirtutalMachinesCreate = () => {
                 throw error;
             } finally {
                 setLoading(CREATE_VIRTUAL_MACHINE_KEY, false);
+                return () => controller.abort();
             }
         },
         [CREATE_VIRTUAL_MACHINE_KEY, showErrorNotification, showSuccessNotification, setLoading]
