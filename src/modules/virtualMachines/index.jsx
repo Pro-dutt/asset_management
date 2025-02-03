@@ -1,5 +1,6 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import styles from "./styles/index.module.css";
+import VirtualMachinesStats from "./components/stats";
 
 const { VirtualMachineInfoForm } = require("./components/Form");
 
@@ -14,7 +15,7 @@ const VirtualMachine = () => {
             {/* <div className={styles.breadcrumbWrapper}>
                 <Breadcrumb items={breadcrumbItems} title="Virtual Machine Managment" />
             </div> */}
-
+            <VirtualMachinesStats/>
             <VirtualMachineInfoForm />
         </div>
     );

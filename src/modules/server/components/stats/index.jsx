@@ -1,16 +1,15 @@
-import React from "react";
+import React from 'react';
 import styles from "./styles/index.module.css";
-import useDesktopsStats from "./hooks/useDesktopsStats";
+import useServersStats from './hooks/useServersStats';
 import "./styles/index.css";
-import Stats from "@/components/stats";
-const ServerStats = () => {
-    const { desktopsStatsConfig } = useDesktopsStats();
+import Stats from '@/components/stats';
+const ServersStats = () => {
+    const {serversStatsConfig} = useServersStats();
 
-    return (
-        <div className={styles.container}>
-            <Stats data={desktopsStatsConfig} />
-        </div>
-    );
-};
+  return ( <div className={styles.container}>
+     <Stats data={serversStatsConfig}/>
+  </div>
+  )
+}
 
-export default ServerStats;
+export default ServersStats

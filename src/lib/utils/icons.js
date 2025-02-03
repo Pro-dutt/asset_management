@@ -60,29 +60,30 @@ const GlobalICONS = {
         </svg>
     ),
     NETWORKING_DEVICE: (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="icon icon-tabler icons-tabler-outline icon-tabler-topology-star"
-        >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M8 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M20 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M8 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M20 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
-            <path d="M7.5 7.5l3 3" />
-            <path d="M7.5 16.5l3 -3" />
-            <path d="M13.5 13.5l3 3" />
-            <path d="M16.5 7.5l-3 3" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="currentColor" d="M232 108h-92V92h4a20 20 0 0 0 20-20V40a20 20 0 0 0-20-20h-32a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h4v16H24a12 12 0 0 0 0 24h28v24h-4a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h32a20 20 0 0 0 20-20v-32a20 20 0 0 0-20-20h-4v-24h104v24h-4a20 20 0 0 0-20 20v32a20 20 0 0 0 20 20h32a20 20 0 0 0 20-20v-32a20 20 0 0 0-20-20h-4v-24h28a12 12 0 0 0 0-24M116 44h24v24h-24ZM76 204H52v-24h24Zm128 0h-24v-24h24Z"/></svg>
+        // <svg
+        //     xmlns="http://www.w3.org/2000/svg"
+        //     width="24"
+        //     height="24"
+        //     viewBox="0 0 24 24"
+        //     fill="none"
+        //     stroke="currentColor"
+        //     strokeWidth="2"
+        //     strokeLinecap="round"
+        //     strokeLinejoin="round"
+        //     className="icon icon-tabler icons-tabler-outline icon-tabler-topology-star"
+        // >
+        //     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        //     <path d="M8 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M20 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M8 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M20 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0z" />
+        //     <path d="M7.5 7.5l3 3" />
+        //     <path d="M7.5 16.5l3 -3" />
+        //     <path d="M13.5 13.5l3 3" />
+        //     <path d="M16.5 7.5l-3 3" />
+        // </svg>
     ),
     DESKTOP: (
         <svg
@@ -1114,6 +1115,9 @@ const GlobalICONS = {
             <circle cx="5" cy="18" r="1" fill="currentColor" />
         </svg>
     ),
+    VIRTUAL_MACHINE: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m0 14H3V4h18Z"/><path fill="currentColor" d="M6 7v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1m11 6H7V8h10Z"/></svg>
+    )
 };
 
 export default GlobalICONS;

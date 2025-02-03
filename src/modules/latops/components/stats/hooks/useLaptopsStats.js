@@ -1,36 +1,38 @@
 import { useMemo } from "react";
-import sampleDesktopsStatsData from "../utils/seeds";
+import sampleLaptopsStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
-const useDesktopsStats = (data = sampleDesktopsStatsData) => {
-    const desktopsStatsConfig = useMemo(
+
+const useLaptopsStats = (data = sampleLaptopsStatsData) => {
+    const laptopsStatsConfig = useMemo(
         () => [
             {
                 title: "In-Store",
-                value: data.inStore,
-                subTitle: "Total In Store",
+                value: data?.inStore,
+                subTitle: "Total In-Store",
                 icon: GlobalICONS.WAREHOUSE,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "green",
+                color: "green"
             },
             {
                 title: "In-Use",
                 value: data?.inUse,
-                subTitle: "Total In Use",
+                subTitle: "Total In-Use",
                 icon: GlobalICONS.IN_USE,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "violet",
+                color: "violet"
             },
             {
                 title: "Not in support",
-                value: data.notInSupport,
-                subTitle: "Total not in support",
+                value: data?.notInSupport,
+                subTitle: "Total Not in support",
                 icon: GlobalICONS.NOT_IN_SUPPORT,
                 hasDecrement: true,
                 hasIncrement: false,
-                color: "orange",
+                color: "orange"
+
             },
             {
                 title: "Expired",
@@ -39,15 +41,16 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 icon: GlobalICONS.EXPIRED,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "red",
+                color: "red"
+
             },
         ],
         [data]
     );
     console.log(data);
     return {
-        desktopsStatsConfig,
+        laptopsStatsConfig,
     };
 };
 
-export default useDesktopsStats;
+export default useLaptopsStats;
