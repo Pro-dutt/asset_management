@@ -25,8 +25,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                {/* <DesktopInfoForm onCancel={closeModal} /> */}
-                <AssetCreationPopup onCancel={closeModal} />
+                <DesktopInfoForm onCancel={closeModal} />
             </Modal>
             <Modal
                 show={show.edit}

@@ -1,3 +1,7 @@
+.popupContainer
+{
+    padding-block: 2rem;
+}
 .imageWrapper {
     display: flex;
     align-items: center;
@@ -31,8 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    margin-block: 1.5rem;
+    gap: 1rem;
+    margin-block: 2rem;
 }
 .cardWrapper {
     /* border: 1px solid var(--light-bg-color); */

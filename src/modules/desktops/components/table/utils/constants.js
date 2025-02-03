@@ -30,7 +30,7 @@ const desktopsTableConstants = {
     FILTER_OPTIONS,
     TABLE_LIMITS,
     externalFilters: {
-        title: "Device List",
+        title: "Desktop List",
         filterFields: Object.keys(FILTER_OPTIONS).map((key) => ({
             type: "select",
             name: key,

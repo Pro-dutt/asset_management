@@ -8,7 +8,7 @@ const AssetCreationPopup = () => {
                 <img src="/addItem.png" alt="Add asset" />
             </div>
             <div className={styles.popupContent}>
-                <h5>Create Your First Asset</h5>
+                <h5>Create A New Asset</h5>
                 <p>Create assets in your service desk using the options below.</p>
             </div>
             <div className={styles.optionsList}>
