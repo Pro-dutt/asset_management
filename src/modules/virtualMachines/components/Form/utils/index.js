@@ -307,7 +307,7 @@ class VirtualMachineUtils {
                 label: "Patch Level",
                 grid: 4,
                 defaultValue: data?.patchLevel,
-                options: virtualMachineConstants.PATCH_LEVELS.getOptions(),
+                options: globalConstants.PATCH_LEVELS.getOptions(),
                 validationRules: {},
                 validateOnChange: true,
             },
