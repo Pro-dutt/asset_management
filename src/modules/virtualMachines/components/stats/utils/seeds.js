@@ -1,4 +1,4 @@
-const sampleLaptopsStatsData = {
+const sampleVirtualMachinesStatsData = {
     inStore: 567,
     inUse: 100,
     notInSupport: 50,
@@ -6,4 +6,4 @@ const sampleLaptopsStatsData = {
     // Add more data as needed...
     
 }
-export default sampleLaptopsStatsData
+export default sampleVirtualMachinesStatsData

@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from "./styles/index.module.css";
-import useLaptopsStats from './hooks/useLaptopsStats';
+import useServersStats from './hooks/useServersStats';
 import "./styles/index.css";
 import Stats from '@/components/stats';
-const LaptopsStats = () => {
-    const {laptopsStatsConfig} = useLaptopsStats();
+const ServersStats = () => {
+    const {serversStatsConfig} = useServersStats();
 
   return ( <div className={styles.container}>
-     <Stats data={laptopsStatsConfig}/>
+     <Stats data={serversStatsConfig}/>
   </div>
   )
 }
 
-export default LaptopsStats
+export default ServersStats
