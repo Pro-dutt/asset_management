@@ -1,35 +1,35 @@
 import { useMemo } from "react";
-import sampleDesktopsStatsData from "../utils/seeds";
+import sampleNetworkStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
 
-const useDesktopsStats = (data = sampleDesktopsStatsData) => {
-    const desktopsStatsConfig = useMemo(
+const useNetworkStats = (data = sampleNetworkStatsData) => {
+    const networkStatsConfig = useMemo(
         () => [
             {
-                title: "In-Store",
-                value: data.inStore,
-                subTitle: "Total In-Store",
-                icon: GlobalICONS.WAREHOUSE,
+                title: "Firewall",
+                value: data?.firewall,
+                subTitle: "Total Firewalls",
+                icon: GlobalICONS.FIREWALL,
                 hasDecrement: false,
-                hasIncrement: true,
+                hasIncrement: false,
                 color: "green"
             },
             {
-                title: "In-Use",
-                value: data?.inUse,
-                subTitle: "Total In-Use",
-                icon: GlobalICONS.IN_USE,
+                title: "Switches",
+                value: data?.switches,
+                subTitle: "Total Switches",
+                icon: GlobalICONS.SWITCH,
                 hasDecrement: false,
-                hasIncrement: true,
+                hasIncrement: false,
                 color: "violet"
             },
             {
                 title: "Not in support",
-                value: data.notInSupport,
+                value: data?.notInSupport,
                 subTitle: "Total Not in support",
                 icon: GlobalICONS.NOT_IN_SUPPORT,
-                hasDecrement: true,
+                hasDecrement: false,
                 hasIncrement: false,
                 color: "orange"
 
@@ -42,15 +42,14 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 hasDecrement: false,
                 hasIncrement: false,
                 color: "red"
-
             },
         ],
         [data]
     );
     console.log(data);
     return {
-        desktopsStatsConfig,
+        networkStatsConfig,
     };
 };
 
-export default useDesktopsStats;
+export default useNetworkStats;

@@ -1,8 +1,8 @@
 const sampleDesktopsStatsData = {
-    laptops: 567,
-    desktops: 100,
-    networkDevices: 50,
-    virtualMachines: 50,
+    inStore: 567,
+    inUse: 100,
+    notInSupport: 50,
+    expired: 50,
     // Add more data as needed...
     
 }
