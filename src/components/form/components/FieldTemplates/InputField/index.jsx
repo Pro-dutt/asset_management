@@ -74,9 +74,6 @@ const InputField = ({ formField, formValues, maskedValues, errors, ...restProps 
 
     // Close suggestions when clicking outside
     useEffect(() => {
-        if (autoSuggestion.initialData) {
-            setSuggestions(autoSuggestion.initialData);
-        }
         const handleClickOutside = (event) => {
             if (suggestionsRef.current && !suggestionsRef.current.contains(event.target) && inputRef.current && !inputRef.current.contains(event.target)) {
                 setShowSuggestions(false);
@@ -88,8 +85,10 @@ const InputField = ({ formField, formValues, maskedValues, errors, ...restProps 
     }, []);
 
     useEffect(() => {
-        setSuggestions(autoSuggestion.initialData);
-    }, [autoSuggestion]);
+        if (autoSuggestion.initialData?.length > 0) {
+            setSuggestions(autoSuggestion.initialData);
+        }
+    }, [autoSuggestion.initialData]);
 
     // Update value when prop changes
     useEffect(() => {
