@@ -4,7 +4,7 @@ import UserAvatar from "@/components/UserAvatar";
 import TableUtils from "@/components/table/utils";
 import TableIcon from "@/components/table/utils/icon";
 import GlobalUtils from "@/lib/utils";
-import endPointsICONS from "../../utils/icons";
+import desktopsICONS from "../../utils/icons";
 import Table from "@/components/table";
 import Modal from "@/components/Popup/Popup";
 import StatCard from "@/components/Card/StatCard";
@@ -26,8 +26,7 @@ const AnalyticsTable = () => {
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                iconColor: "orange"
-
+                iconColor: "orange",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -37,7 +36,7 @@ const AnalyticsTable = () => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                iconColor: "blue"
+                iconColor: "blue",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -47,8 +46,7 @@ const AnalyticsTable = () => {
                 icon: GlobalICONS.NETWORKING_DEVICE,
                 hasDecrement: true,
                 hasIncrement: false,
-                iconColor: "red"
-
+                iconColor: "red",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -58,12 +56,10 @@ const AnalyticsTable = () => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: false,
-                iconColor: "green"
-
+                iconColor: "green",
             },
         ],
     };
-
 
     const initializeTableData = {
         totalPages: 16,
@@ -282,7 +278,7 @@ const AnalyticsTable = () => {
                         key: "role",
                         value: (
                             <p className={styles.role}>
-                                <span className={styles[item.role.toLowerCase()]}>{endPointsICONS?.[item.role.toUpperCase()]}</span>
+                                <span className={styles[item.role.toLowerCase()]}>{desktopsICONS?.[item.role.toUpperCase()]}</span>
                                 <span>{item.role}</span>
                             </p>
                         ),
@@ -354,9 +350,6 @@ const AnalyticsTable = () => {
 
     return (
         <div className={styles.container}>
-
-           
-
             {<Table tableData={tableData} />}
 
             <Modal show={show.add} onClose={closeModel} title={"Add User"} maxWidth={"800px"}>
