@@ -1,17 +1,17 @@
 import TableUtils from "@/components/table/utils";
-import desktopsTableConstants from "./constants";
+import laptopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 
-class DesktopsTableUtils {
+class LaptopsTableUtils {
     static tableHeader({ data, setShow, styles }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
         return {
-            limit: desktopsTableConstants.TABLE_LIMITS,
+            limit: laptopsTableConstants.TABLE_LIMITS,
             actionButtons: [
                 {
                     variant: "primary",
                     icon: TableIcon.PLUS,
-                    label: "Add New Desktop",
+                    label: "Add New Laptop",
                     onClick: () => setShow({ add: true }),
                 },
                 {
@@ -28,7 +28,7 @@ class DesktopsTableUtils {
                     type: "text",
                     name: "searchText",
                     grid: 2,
-                    placeholder: "Search desktop",
+                    placeholder: "Search laptop",
                     autoSuggestion: {
                         initialData: autoSuggestionData,
                         autoSuggestionUrl: "/api/suggestions",
@@ -50,12 +50,12 @@ class DesktopsTableUtils {
             "Serial Number": { key: "serialNumber", value: item.serialNumber },
             Processor: { key: "processor", value: item.processor },
             "Ram [Gb]": { key: "ramGb", value: item.ramGb },
-            "Device Status": { key: "deviceStatus", value: item.statusId },
+            "Device Status": { key: "deviceStatus", value: item.deviceStatus },
         }));
     }
-    static tableActionData({ data, setShow, setDesktopDetails }) {
+    static tableActionData({ data, setShow, setLaptopDetails }) {
         const handleAction = (row, key) => {
-            setDesktopDetails(data?.data?.find((item) => row["Id"].value === item._id));
+            setLaptopDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
 
@@ -85,4 +85,4 @@ class DesktopsTableUtils {
         };
     }
 }
-export default DesktopsTableUtils;
+export default LaptopsTableUtils;

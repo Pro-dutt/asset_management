@@ -2,7 +2,7 @@ import DynamicForm from "@/components/form";
 import { useDesktopInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
-export const DesktopInfoForm = ({ data, onCancel }) => {
+const LaptopInfoForm = ({ data, onCancel }) => {
     const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm(data);
 
     return (
@@ -18,3 +18,5 @@ export const DesktopInfoForm = ({ data, onCancel }) => {
         </div>
     );
 };
+
+export default LaptopInfoForm;

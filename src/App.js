@@ -8,6 +8,7 @@ import WebApplication from "./modules/webApplications";
 import NetworkDevice from "./modules/networkDevices";
 import Desktops from "./modules/desktops";
 import Server from "./modules/server";
+import Laptops from "./modules/latops";
 
 function App() {
     return (
@@ -58,6 +59,14 @@ function App() {
                     element={
                         <React.Suspense fallback={""}>
                             <Desktops />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path="/laptops"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <Laptops />
                         </React.Suspense>
                     }
                 />
