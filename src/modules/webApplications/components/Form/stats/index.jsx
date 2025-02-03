@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from "./styles/index.module.css";
-import useVirtualMachinesStats from './hooks/useVirtualMachinesStats';
+import useWebApplicationsStats from './hooks/useWebApplicationsStats';
 import "./styles/index.css";
 import Stats from '@/components/stats';
 const WebApplicationsStats = () => {
-    const {virtualMachinesStatsConfig} = useVirtualMachinesStats();
+    const {webApplicationsStatsConfig} = useWebApplicationsStats();
 
   return ( <div className={styles.container}>
-     <Stats data={virtualMachinesStatsConfig}/>
+     <Stats data={webApplicationsStatsConfig}/>
   </div>
   )
 }
