@@ -2,6 +2,7 @@ import GlobalUtils from "@/lib/utils";
 import GlobalICONS from "@/lib/utils/icons";
 import React from "react";
 import styles from "./index.module.css";
+import AssetOptionCard from "../AssetsOptionCard";
 const AddAssetsOptions = ({ setForm, module }) => {
     const handleFormSelection = () => {
         setForm("manualForm");
