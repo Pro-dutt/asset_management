@@ -8,23 +8,18 @@ const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
         () => [
             {
                 heading: {
-                    label: "Device Details",
+                    label: "Virtual Machine Details",
                     icon: GlobalICONS.DESKTOP,
-                    description: "Details of the assigned desktop device",
+                    description: "Manage VM details including status, OS version, and business impact",
                 },
                 body: {
-                    productName: data.productName,
-                    serialNumber: data.serialNumber,
-                    serviceTag: data.serviceTag,
-                    model: data.model,
-                    processor: data.processor,
-                    diskSpaceGB: data.diskSpaceGB,
-                    ramGB: data.ramGB,
-                    cpuCoreCount: data.cpuCoreCount,
-                    ipAddress: data.ipAddress,
-                    macAddress: data.macAddress,
-                    nicCount: data.nicCount,
-                    operatingSystemWithVersion: data.operatingSystemWithVersion,
+                    vmName: data.vmName,
+                    status: data.status,
+                    osVersion: data.osVersion,
+                    environment: data.environment,
+                    assetId: data.assetId,
+                    virtualizationPlatform: data.virtualizationPlatform,
+                    businessImpact: data.businessImpact,
                 },
                 grid: 3,
             },
@@ -106,15 +101,15 @@ const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
                 },
                 grid: 3,
             },
-            {
-                heading: {
-                    label: "No Data Available",
-                    icon: GlobalICONS.DESKTOP,
-                    description: "No available information for this section",
-                },
-                customBody: <DataNotFound />,
-                grid: 1,
-            },
+            // {
+            //     heading: {
+            //         label: "No Data Available",
+            //         icon: GlobalICONS.DESKTOP,
+            //         description: "No available information for this section",
+            //     },
+            //     customBody: <DataNotFound />,
+            //     grid: 1,
+            // },
         ],
         [data]
     );

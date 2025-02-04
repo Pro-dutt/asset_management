@@ -4,7 +4,7 @@ import TableIcon from "@/components/table/utils/icon";
 
 class DesktopsTableUtils {
     static tableHeader({ data, setShow, styles }) {
-        const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["itemName", "serialNumber", "serviceTag"]);
         return {
             limit: desktopsTableConstants.TABLE_LIMITS,
             actionButtons: [
