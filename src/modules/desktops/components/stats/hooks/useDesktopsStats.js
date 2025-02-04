@@ -7,7 +7,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
         () => [
             {
                 title: "In-Store",
-                value: data.inStore,
+                value: data.inStore || 0,
                 subTitle: "Total In Store",
                 icon: GlobalICONS.WAREHOUSE,
                 hasDecrement: false,
@@ -16,7 +16,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
             },
             {
                 title: "In-Use",
-                value: data?.inUse,
+                value: data?.inUse || 0,
                 subTitle: "Total In Use",
                 icon: GlobalICONS.IN_USE,
                 hasDecrement: false,
@@ -25,7 +25,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
             },
             {
                 title: "Not in support",
-                value: data.notInSupport,
+                value: data.notInSupport || 0,
                 subTitle: "Total not in support",
                 icon: GlobalICONS.NOT_IN_SUPPORT,
                 hasDecrement: true,
@@ -34,7 +34,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
             },
             {
                 title: "Expired",
-                value: data?.expired,
+                value: data?.expired || 0,
                 subTitle: "Total Expired",
                 icon: GlobalICONS.EXPIRED,
                 hasDecrement: false,
