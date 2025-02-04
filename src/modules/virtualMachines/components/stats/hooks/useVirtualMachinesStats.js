@@ -7,7 +7,7 @@ const useVirtualMachinesStats = (data = sampleVirtualMachinesStatsData) => {
         () => [
             {
                 title: "Virtual Machines",
-                value: data?.totalVirtualMachines || 0,
+                value: data?.totalVm || 0,
                 subTitle: "Total Virtual Machines",
                 icon: GlobalICONS.VIRTUAL_MACHINE,
                 hasDecrement: false,
