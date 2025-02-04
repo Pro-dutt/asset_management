@@ -91,8 +91,7 @@ class GlobalUtils {
             return "";
         }
 
-        const parts = dateString.split("-");
-        return `${parts[2]}-${parts[0]}-${parts[1]}`;
+        return dateString.split("T")[0];
     };
 
     static renderJson = (json, primaryColor, secondaryColor, fontWeight) => {
@@ -338,40 +337,39 @@ class GlobalUtils {
             title: {
                 text: title,
                 subtext: subtitle,
-                left: 'center'
-              },
-              tooltip: {
-                trigger: 'item'
-              },
+                left: "center",
+            },
+            tooltip: {
+                trigger: "item",
+            },
             //   legend: {
             //     orient: 'vertical',
             //     left: 'left'
             //   },
-              series: [
+            series: [
                 {
-                //   name: unit,
-                  type: 'pie',
-                  radius: '50%',
-               data: data,
-                // data: values,
-                  emphasis: {
-                    itemStyle: {
-                      shadowBlur: 10,
-                      shadowOffsetX: 0,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                  }
-                }
-              ]
+                    //   name: unit,
+                    type: "pie",
+                    radius: "50%",
+                    data: data,
+                    // data: values,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: "rgba(0, 0, 0, 0.5)",
+                        },
+                    },
+                },
+            ],
         };
     };
-
 
     static pieNestChartOptions = (options) => {
         const innerChartdata = options.innerChartdata;
         const outerChartdata = options.outerChartdata;
         // Merging and returning name array
-        const legendLabels = [...innerChartdata, ...outerChartdata].map(item => item.name);
+        const legendLabels = [...innerChartdata, ...outerChartdata].map((item) => item.name);
 
         const title = options.title;
         const subtitle = options.subtitle;
@@ -383,70 +381,70 @@ class GlobalUtils {
                 left: "center",
             },
             tooltip: {
-              trigger: 'item',
-              formatter: '{a} <br/>{b}: {c} ({d}%)'
+                trigger: "item",
+                formatter: "{a} <br/>{b}: {c} ({d}%)",
             },
             legend: {
-              data: legendLabels
+                data: legendLabels,
             },
             series: [
-              {
-                name: 'Status',
-                type: 'pie',
-                selectedMode: 'single',
-                radius: [0, '30%'],
-                label: {
-                  position: 'inner',
-                  fontSize: 14
-                },
-                labelLine: {
-                  show: false
-                },
-                data: innerChartdata,
-              },
-              {
-                name: 'Asset Status',
-                type: 'pie',
-                radius: ['45%', '60%'],
-                labelLine: {
-                  length: 30
-                },
-                label: {
-                  formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-                  backgroundColor: '#F6F8FC',
-                  borderColor: '#8C8D8E',
-                  borderWidth: 1,
-                  borderRadius: 4,
-                  rich: {
-                    a: {
-                      color: '#6E7079',
-                      lineHeight: 22,
-                      align: 'center'
+                {
+                    name: "Status",
+                    type: "pie",
+                    selectedMode: "single",
+                    radius: [0, "30%"],
+                    label: {
+                        position: "inner",
+                        fontSize: 14,
                     },
-                    hr: {
-                      borderColor: '#8C8D8E',
-                      width: '100%',
-                      borderWidth: 1,
-                      height: 0
+                    labelLine: {
+                        show: false,
                     },
-                    b: {
-                      color: '#4C5058',
-                      fontSize: 10,
-                      fontWeight: 'bold',
-                      lineHeight: 33
-                    },
-                    per: {
-                      color: '#fff',
-                      backgroundColor: '#4C5058',
-                      padding: [3, 4],
-                      borderRadius: 4
-                    }
-                  }
+                    data: innerChartdata,
                 },
-                data: outerChartdata,
-              }
-            ]
-          };
+                {
+                    name: "Asset Status",
+                    type: "pie",
+                    radius: ["45%", "60%"],
+                    labelLine: {
+                        length: 30,
+                    },
+                    label: {
+                        formatter: "{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ",
+                        backgroundColor: "#F6F8FC",
+                        borderColor: "#8C8D8E",
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        rich: {
+                            a: {
+                                color: "#6E7079",
+                                lineHeight: 22,
+                                align: "center",
+                            },
+                            hr: {
+                                borderColor: "#8C8D8E",
+                                width: "100%",
+                                borderWidth: 1,
+                                height: 0,
+                            },
+                            b: {
+                                color: "#4C5058",
+                                fontSize: 10,
+                                fontWeight: "bold",
+                                lineHeight: 33,
+                            },
+                            per: {
+                                color: "#fff",
+                                backgroundColor: "#4C5058",
+                                padding: [3, 4],
+                                borderRadius: 4,
+                            },
+                        },
+                    },
+                    data: outerChartdata,
+                },
+            ],
+        };
     };
 
     static basicBarChartOptions = (options) => {
@@ -460,43 +458,43 @@ class GlobalUtils {
                 left: "center",
             },
             tooltip: {
-              trigger: 'axis',
-              axisPointer: {
-                type: 'shadow'
-              }
+                trigger: "axis",
+                axisPointer: {
+                    type: "shadow",
+                },
             },
             grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
-              containLabel: true
+                left: "3%",
+                right: "4%",
+                bottom: "3%",
+                containLabel: true,
             },
             xAxis: [
-              {
-                type: 'category',
-                data: names,
-                axisTick: {
-                  alignWithLabel: true
-                }
-              }
+                {
+                    type: "category",
+                    data: names,
+                    axisTick: {
+                        alignWithLabel: true,
+                    },
+                },
             ],
             yAxis: [
-              {
-                type: 'value'
-              }
+                {
+                    type: "value",
+                },
             ],
             series: [
-              {
-                name: 'Direct',
-                type: 'bar',
-                barWidth: '60%',
-                data: values
-              }
-            ]
-          };
+                {
+                    name: "Direct",
+                    type: "bar",
+                    barWidth: "60%",
+                    data: values,
+                },
+            ],
+        };
     };
 
-    static getFormButtons = (isLoading = false,onCancel) => {
+    static getFormButtons = (isLoading = false, onCancel) => {
         return [
             {
                 label: "Cancel",
@@ -511,7 +509,34 @@ class GlobalUtils {
                 loading: isLoading,
             },
         ].filter(Boolean);
-    }
+    };
+    static parseValue = (str) => {
+        return /^\d+(\s\d+)*$/.test(str) ? Number(str) : str;
+    };
+
+    static createEnum = (definitions) => {
+        const enumObject = {};
+        const labels = {};
+
+        // Create enum values and labels
+        definitions.forEach(({ key, value, label }) => {
+            enumObject[key] = value;
+            labels[value] = label;
+        });
+        return Object.freeze({
+            ...enumObject,
+            labels,
+            getLabel: function (value) {
+                return this.labels[value] || "";
+            },
+            getOptions: function () {
+                return Object.entries(this.labels).map(([value, label]) => ({
+                    value: GlobalUtils.parseValue(value),
+                    label,
+                }));
+            },
+        });
+    };
 }
 
 export default GlobalUtils;

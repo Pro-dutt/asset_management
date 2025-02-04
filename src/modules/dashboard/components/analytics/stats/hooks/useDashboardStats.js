@@ -12,8 +12,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "orange"
-
+                color: "orange",
             },
             {
                 title: "Desktop",
@@ -22,17 +21,16 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "violet"
+                color: "violet",
             },
             {
-                title: "Network Device",
-                value: data?.totalNetworkDevices,
-                subTitle: "Total Network Device",
-                icon: GlobalICONS.NETWORKING_DEVICE,
-                hasDecrement: true,
+                title: "Servers",
+                value: data?.totalServers,
+                subTitle: "Total Servers",
+                icon: GlobalICONS.SERVER,
+                hasDecrement: false,
                 hasIncrement: false,
-                color: "red"
-
+                color: "green",
             },
             {
                 title: "Virtual Machine",
@@ -41,8 +39,26 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
                 icon: GlobalICONS.VIRTUAL_MACHINE,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "green"
+                color: "red",
+            },
+            {
+                title: "Network Device",
+                value: data?.totalNetworkDevices,
+                subTitle: "Total Network Device",
+                icon: GlobalICONS.NETWORKING_DEVICE,
+                hasDecrement: true,
+                hasIncrement: false,
+                color: "orange",
+            },
 
+            {
+                title: "Web Applicatons",
+                value: data?.totalWebApplications,
+                subTitle: "Total Web Applicatons",
+                icon: GlobalICONS.WEB_APPLICATION,
+                hasDecrement: false,
+                hasIncrement: false,
+                color: "violet",
             },
         ],
         [data]

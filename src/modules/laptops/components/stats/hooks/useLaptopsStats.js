@@ -2,47 +2,44 @@ import { useMemo } from "react";
 import sampleLaptopsStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
-
 const useLaptopsStats = (data = sampleLaptopsStatsData) => {
     const laptopsStatsConfig = useMemo(
         () => [
             {
                 title: "In-Store",
-                value: data?.inStore,
+                value: data?.inStore || 0,
                 subTitle: "Total In-Store",
                 icon: GlobalICONS.WAREHOUSE,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "green"
+                color: "green",
             },
             {
                 title: "In-Use",
-                value: data?.inUse,
+                value: data?.inUse || 0,
                 subTitle: "Total In-Use",
                 icon: GlobalICONS.IN_USE,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "violet"
+                color: "violet",
             },
             {
                 title: "Not in support",
-                value: data?.notInSupport,
+                value: data?.notInSupport || 0,
                 subTitle: "Total Not in support",
                 icon: GlobalICONS.NOT_IN_SUPPORT,
                 hasDecrement: true,
                 hasIncrement: false,
-                color: "orange"
-
+                color: "orange",
             },
             {
                 title: "Expired",
-                value: data?.expired,
+                value: data?.expired || 0,
                 subTitle: "Total Expired",
                 icon: GlobalICONS.EXPIRED,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "red"
-
+                color: "red",
             },
         ],
         [data]

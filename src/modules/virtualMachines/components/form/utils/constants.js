@@ -1,20 +1,21 @@
-import globalConstants, { createEnum } from "@/lib/utils/contants";
+import GlobalUtils from "@/lib/utils";
+import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 
 const virtualMachineConstants = {
-    STATUS: createEnum([
+    STATUS: GlobalUtils.createEnum([
         { key: "RUNNING", value: 1, label: "Running" },
         { key: "STOPPED", value: 2, label: "Stopped" },
         { key: "SUSPENDED", value: 3, label: "Suspended" },
     ]),
 
-    USERS: createEnum([
+    USERS: GlobalUtils.createEnum([
         { key: "MANOJ", value: "manoj", label: "Manoj" },
         { key: "ANUJ", value: "anuj", label: "Anuj" },
         { key: "AAUSAF", value: "aausaf", label: "Aausaf" },
     ]),
 
-    VIRTUALIZATION_PLATFORM: createEnum([
+    VIRTUALIZATION_PLATFORM: GlobalUtils.createEnum([
         { key: "VMWARE", value: "VMWARE", label: "VMware" },
         { key: "VIRTUALBOX", value: "VIRTUALBOX", label: "VirtualBox" },
         { key: "HYPERV", value: "HYPERV", label: "Hyper-V" },
@@ -24,7 +25,7 @@ const virtualMachineConstants = {
         { key: "OTHERS", value: "OTHER", label: "Others" },
     ]),
 
-    PROTOCOLS: createEnum([
+    PROTOCOLS: GlobalUtils.createEnum([
         { key: "RDP", value: 1, label: "RDP" },
         { key: "SSH", value: 2, label: "SSH" },
         { key: "VNC", value: 3, label: "VNC" },

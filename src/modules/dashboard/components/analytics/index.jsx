@@ -7,6 +7,7 @@ import DashboardPie from "./charts/pie";
 import DashboardPieNest from "./charts/pieNest";
 import DashboardDoughnut from "./charts/doughnut";
 import DashboardBar from "./charts/bar";
+import AssetsStatusCountChart from "./AssestClassification";
 
 const DashboardAnalytics = () => {
     return (
@@ -14,16 +15,20 @@ const DashboardAnalytics = () => {
             <div className={styles.container}>
                 <DashboardStats />
             </div>
+
+            <div className={styles.dashboard_chart_row1}>
+                <AssetsStatusCountChart />
+                <DashboardProgressCard />
+            </div>
             <div className={styles.dashboard_chart_row1}>
                 <DashboardDoughnut />
 
                 <DashboardPie />
                 <DashboardBar />
             </div>
-            <div className={styles.dashboard_chart_row2}>
+            {/* <div className={styles.dashboard_chart_row2}>
                 <DashboardPieNest />
-                <DashboardProgressCard />
-            </div>
+            </div> */}
         </>
     );
 };

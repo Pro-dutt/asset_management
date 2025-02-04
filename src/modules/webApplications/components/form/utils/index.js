@@ -1,5 +1,7 @@
 import globalConstants from "@/lib/utils/contants";
+import GlobalICONS from "@/lib/utils/icons";
 import webApplicationConstants from "./constants";
+import GlobalUtils from "@/lib/utils";
 
 class WebApplicationUtils {
     static getGeneralInfoFormFields(data) {
@@ -225,7 +227,7 @@ class WebApplicationUtils {
                 name: "lastVaptDate",
                 label: "Last VAPT Date",
                 grid: 4,
-                defaultValue: data?.lastVaptDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastVaptDate),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -234,7 +236,7 @@ class WebApplicationUtils {
                 name: "lastCodeReviewDate",
                 label: "Last Code Review Date",
                 grid: 4,
-                defaultValue: data?.lastCodeReviewDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastCodeReviewDate),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -243,7 +245,7 @@ class WebApplicationUtils {
                 name: "lastAuditDate",
                 label: "Last Audit Date",
                 grid: 4,
-                defaultValue: data?.lastAuditDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastAuditDate),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -277,7 +279,7 @@ class WebApplicationUtils {
                 name: "lastBackupDate",
                 label: "Last Backup Date",
                 grid: 4,
-                defaultValue: data?.lastBackupDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastBackupDate),
                 validationRules: {},
                 validateOnChange: true,
             },

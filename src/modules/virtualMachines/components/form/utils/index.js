@@ -1,5 +1,7 @@
+import GlobalUtils from "@/lib/utils";
 import virtualMachineConstants from "./constants";
 import globalConstants from "@/lib/utils/contants";
+import GlobalICONS from "@/lib/utils/icons";
 
 class VirtualMachineUtils {
     static getVMDetailsFormFields(data) {
@@ -256,7 +258,7 @@ class VirtualMachineUtils {
                 name: "lastBackupDate",
                 label: "Last Backup Date",
                 grid: 4,
-                defaultValue: data?.lastBackupDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastBackupDate),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -285,7 +287,7 @@ class VirtualMachineUtils {
                 name: "snapshotDate",
                 label: "Latest Snapshot Date",
                 grid: 4,
-                defaultValue: data?.snapshots?.date,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.snapshots?.date),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -318,7 +320,7 @@ class VirtualMachineUtils {
                 name: "lastVaptDate",
                 label: "Last VAPT Date",
                 grid: 4,
-                defaultValue: data?.lastVaptDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastVaptDate),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -327,7 +329,7 @@ class VirtualMachineUtils {
                 name: "lastAuditDatcreateEnume",
                 label: "Last Audit Date",
                 grid: 4,
-                defaultValue: data?.lastAuditDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastAuditDate),
                 validationRules: {},
                 validateOnChange: true,
             },
