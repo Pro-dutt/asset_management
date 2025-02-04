@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
 import styles from "./styles/index.module.css";
-import useWebApplicationsStats from './hooks/useWebApplicationsStats';
+import useWebApplicationsStats from "./hooks/useWebApplicationsStats";
 import "./styles/index.css";
-import Stats from '@/components/stats';
+import StatCard from "@/components/Card/StatCard";
 const WebApplicationsStats = () => {
-    const {webApplicationsStatsConfig} = useWebApplicationsStats();
+    const { webApplicationsStatsConfig } = useWebApplicationsStats();
 
-  return ( <div className={styles.container}>
-     <Stats data={webApplicationsStatsConfig}/>
-  </div>
-  )
-}
+    return (
+        <div className={styles.statsCardsContainer}>
+            {webApplicationsStatsConfig.map((item, index) => (
+                <StatCard key={index} data={item} />
+            ))}
+        </div>
+    );
+};
 
-export default WebApplicationsStats
+export default WebApplicationsStats;

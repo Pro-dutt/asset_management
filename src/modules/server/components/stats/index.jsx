@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
 import styles from "./styles/index.module.css";
-import useServersStats from './hooks/useServersStats';
+import useServersStats from "./hooks/useServersStats";
 import "./styles/index.css";
-import Stats from '@/components/stats';
+import StatCard from "@/components/Card/StatCard";
 const ServersStats = () => {
-    const {serversStatsConfig} = useServersStats();
+    const { serversStatsConfig } = useServersStats();
 
-  return ( <div className={styles.container}>
-     <Stats data={serversStatsConfig}/>
-  </div>
-  )
-}
+    return (
+        <div className={styles.statsCardsContainer}>
+            {serversStatsConfig.map((item, index) => (
+                <StatCard key={index} data={item} />
+            ))}
+        </div>
+    );
+};
 
-export default ServersStats
+export default ServersStats;
