@@ -3,7 +3,7 @@ import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
 import { useDesktopInfoForm } from "@/modules/desktops/components/form/hooks/useForm";
 const LaptopInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm(data);
+    const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm(data, onCancel);
 
     return (
         <div className={styles.container}>

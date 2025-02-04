@@ -23,7 +23,6 @@ export const useServerCreate = () => {
                     showSuccessNotification({
                         key: CREATE_SERVER_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
 

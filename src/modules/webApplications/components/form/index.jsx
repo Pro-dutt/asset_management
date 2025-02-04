@@ -1,9 +1,9 @@
 import DynamicForm from "@/components/form";
 import { useWebApplicationInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
-import styles from "./styles/index.module.css"
+import styles from "./styles/index.module.css";
 const WebApplicationInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, WebApplicationInfoFormErrors } = useWebApplicationInfoForm(data);
+    const { formConfig, handleFormSubmit, isLoading, WebApplicationInfoFormErrors } = useWebApplicationInfoForm(data, onCancel);
 
     return (
         <div className={styles.container}>

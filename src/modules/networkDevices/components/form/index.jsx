@@ -3,7 +3,7 @@ import { useNetworkDeviceInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
 const NetworkDeviceInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, NetworkDeviceInfoFormErrors } = useNetworkDeviceInfoForm(data);
+    const { formConfig, handleFormSubmit, isLoading, NetworkDeviceInfoFormErrors } = useNetworkDeviceInfoForm(data, onCancel);
 
     return (
         <div className={styles.container}>

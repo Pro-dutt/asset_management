@@ -27,10 +27,27 @@ export const createEnum = (definitions) => {
 
 const globalConstants = {
     ENVIRONMENTS: createEnum([
-        { key: "DEVELOPMENT", value: 1, label: "Development" },
-        { key: "STAGING", value: 2, label: "Staging" },
-        { key: "TESTING", value: 3, label: "Testing" },
-        { key: "PRODUCTION", value: 4, label: "Production" },
+        { key: "DEVELOPMENT", value: "DEVELOPMENT", label: "Development" },
+        { key: "STAGING", value: "STAGING", label: "Staging" },
+        { key: "PRODUCTION", value: "PRODUCTION", label: "Production" },
+    ]),
+
+    OPERATING_SYSTEMS: createEnum([
+        { key: "WINDOWS_10_HOME", value: "WINDOWS_10_HOME", label: "Windows 10 Home" },
+        { key: "WINDOWS_10_PRO", value: "WINDOWS_10_PRO", label: "Windows 10 Pro" },
+        { key: "WINDOWS_11_HOME", value: "WINDOWS_11_HOME", label: "Windows 11 Home" },
+        { key: "WINDOWS_11_PRO", value: "WINDOWS_11_PRO", label: "Windows 11 Pro" },
+        { key: "WINDOWS_SERVER_2016", value: "WINDOWS_SERVER_2016", label: "Windows Server 2016" },
+        { key: "WINDOWS_SERVER_2019", value: "WINDOWS_SERVER_2019", label: "Windows Server 2019" },
+        { key: "WINDOWS_SERVER_2022", value: "WINDOWS_SERVER_2022", label: "Windows Server 2022" },
+        { key: "UBUNTU_2004", value: "Ubuntu_2004", label: "Ubuntu 20.04" },
+        { key: "UBUNTU_2204", value: "Ubuntu_2204", label: "Ubuntu 22.04" },
+        { key: "UBUNTU_2404", value: "Ubuntu_2404", label: "Ubuntu 24.04" },
+        { key: "REDHAT_ENTERPRISE_LINUX_7", value: "REDHAT_ENTERPRISE_LINUX_7", label: "Red Hat Enterprise Linux 7" },
+        { key: "REDHAT_ENTERPRISE_LINUX_8", value: "REDHAT_ENTERPRISE_LINUX_8", label: "Red Hat Enterprise Linux 8" },
+        { key: "REDHAT_ENTERPRISE_LINUX_9", value: "REDHAT_ENTERPRISE_LINUX_9", label: "Red Hat Enterprise Linux 9" },
+        { key: "KALI_LINUX", value: "KALI_LINUX", label: "Kali Linux" },
+        { key: "OTHER", value: "OTHER", label: "Other" },
     ]),
 
     BUSINESS_IMPACT: createEnum([

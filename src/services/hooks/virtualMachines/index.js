@@ -31,7 +31,6 @@ export const useVirtutalMachinesCreate = () => {
                     showSuccessNotification({
                         key: CREATE_VIRTUAL_MACHINE_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
 

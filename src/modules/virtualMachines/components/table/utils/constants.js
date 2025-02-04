@@ -26,7 +26,7 @@ const TABLE_LIMITS = {
 };
 
 const virtualMachinesTableConstants = {
-    TABLE_API_URL: "/virtual-machines",
+    TABLE_API_URL: "/virtual-machine",
     FILTER_OPTIONS,
     TABLE_LIMITS,
     externalFilters: {

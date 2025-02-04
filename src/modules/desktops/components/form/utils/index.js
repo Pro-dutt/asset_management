@@ -213,7 +213,7 @@ class DesktopUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
+                type: "number",
                 name: "nicCount",
                 label: "Number of Interfaces",
                 grid: 4,
@@ -253,10 +253,11 @@ class DesktopUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
+                type: "select",
                 name: "operatingSystem",
                 label: "Operating System (with version)",
                 grid: 4,
+                options: globalConstants.OPERATING_SYSTEMS.getOptions(),
                 defaultValue: data?.operatingSystem,
                 validationRules: {},
                 validateOnChange: true,

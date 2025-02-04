@@ -23,7 +23,6 @@ export const useNetworkDeviceCreate = () => {
                     showSuccessNotification({
                         key: CREATE_NETWORK_DEVICE_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
 

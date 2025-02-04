@@ -3,7 +3,7 @@ import virtualMachineConstants from "../utils/constants";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
 import VirtualMachineUtils from "../utils";
 
-export const useVirtualMachineInfoForm = (data = {}) => {
+export const useVirtualMachineInfoForm = (data = {}, onCancel) => {
     const { virtualMachineCreation } = useVirtualMachines();
 
     const formConfig = useMemo(
@@ -22,10 +22,29 @@ export const useVirtualMachineInfoForm = (data = {}) => {
     );
 
     const handleFormSubmit = (formData) => {
+        const updatedFormData = {
+            ...formData,
+            runningServices: [
+                {
+                    serviceName: formData?.serviceName || "",
+                    port: formData?.port || 0,
+                },
+            ],
+            snapshots: [
+                {
+                    snapshotName: formData?.snapshotName || "",
+                    date: formData?.snapshotDate || "",
+                },
+            ],
+        };
+
         virtualMachineCreation.execute({
-            payload: formData,
+            payload: updatedFormData,
             onSuccess: () => {
-                // onboardedUser.fetch({});
+                onCancel?.();
+            },
+            options: {
+                showNotification: true,
             },
         });
     };

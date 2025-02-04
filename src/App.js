@@ -41,7 +41,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/networking-devices"
+                    path="/network-devices"
                     element={
                         <React.Suspense fallback={""}>
                             <NetworkDevice />

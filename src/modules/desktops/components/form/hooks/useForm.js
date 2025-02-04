@@ -3,7 +3,7 @@ import DesktopUtils from "../utils";
 import { useDesktop } from "@/services/context/desktop";
 import desktopConstants from "../utils/constants";
 
-export const useDesktopInfoForm = (data = {}) => {
+export const useDesktopInfoForm = (data = {}, onCancel) => {
     const { desktopCreation } = useDesktop();
 
     const formConfig = useMemo(
@@ -23,7 +23,7 @@ export const useDesktopInfoForm = (data = {}) => {
         desktopCreation.execute({
             payload: formData,
             onSuccess: () => {
-                // onboardedUser.fetch({});
+                onCancel?.();
             },
             options: {
                 showNotification: true,

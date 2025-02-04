@@ -31,7 +31,7 @@
     },
     {
         "name": "Networking Devices",
-        "link": "/networking-devices",
+        "link": "/network-devices",
         "permission": ["admin", "auditor"],
         "icon": "networking_device"
     },

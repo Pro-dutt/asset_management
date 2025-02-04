@@ -8,14 +8,20 @@ const virtualMachineConstants = {
         { key: "SUSPENDED", value: 3, label: "Suspended" },
     ]),
 
+    USERS: createEnum([
+        { key: "MANOJ", value: "manoj", label: "Manoj" },
+        { key: "ANUJ", value: "anuj", label: "Anuj" },
+        { key: "AAUSAF", value: "aausaf", label: "Aausaf" },
+    ]),
+
     VIRTUALIZATION_PLATFORM: createEnum([
-        { key: "VMWARE", value: 1, label: "VMware" },
-        { key: "VIRTUALBOX", value: 2, label: "VirtualBox" },
-        { key: "HYPERV", value: 3, label: "Hyper-V" },
-        { key: "PROXMOX", value: 4, label: "Proxmox" },
-        { key: "KVM", value: 5, label: "KVM" },
-        { key: "XENSERVER", value: 6, label: "XenServer" },
-        { key: "OTHERS", value: 7, label: "Others" },
+        { key: "VMWARE", value: "VMWARE", label: "VMware" },
+        { key: "VIRTUALBOX", value: "VIRTUALBOX", label: "VirtualBox" },
+        { key: "HYPERV", value: "HYPERV", label: "Hyper-V" },
+        { key: "PROXMOX", value: "PROXMOX", label: "Proxmox" },
+        { key: "KVM", value: "KVM", label: "KVM" },
+        { key: "XENSERVER", value: "XENSERVER", label: "XenServer" },
+        { key: "OTHERS", value: "OTHER", label: "Others" },
     ]),
 
     PROTOCOLS: createEnum([

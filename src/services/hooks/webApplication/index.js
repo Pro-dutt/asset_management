@@ -23,7 +23,6 @@ export const useWebApplicationCreate = () => {
                     showSuccessNotification({
                         key: CREATE_WEB_APPLICATION_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
 

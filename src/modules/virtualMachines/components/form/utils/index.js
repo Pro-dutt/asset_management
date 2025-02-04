@@ -25,11 +25,12 @@ class VirtualMachineUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "select",
                 name: "osVersion",
                 label: "Operating System (with version)",
                 grid: 4,
                 defaultValue: data?.osVersion,
+                options: globalConstants.OPERATING_SYSTEMS.getOptions(),
                 placeholder: "V.19.0.1",
                 validationRules: {},
                 validateOnChange: true,
@@ -80,7 +81,7 @@ class VirtualMachineUtils {
     static getHostDetailsFormFields(data) {
         return [
             {
-                type: "text",
+                type: "number",
                 name: "hostServerID",
                 label: "Host Machine Asset ID",
                 grid: 4,
@@ -125,7 +126,7 @@ class VirtualMachineUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
+                type: "number",
                 name: "memory",
                 label: "RAM (GB)",
                 grid: 4,
@@ -135,7 +136,7 @@ class VirtualMachineUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
+                type: "number",
                 name: "cpuCores",
                 label: "CPU Core Count",
                 grid: 4,
@@ -181,7 +182,7 @@ class VirtualMachineUtils {
             },
             {
                 type: "text",
-                name: "runningServices.serviceName",
+                name: "serviceName",
                 label: "Running Services",
                 grid: 4,
                 defaultValue: data?.runningServices?.serviceName,
@@ -191,7 +192,7 @@ class VirtualMachineUtils {
             },
             {
                 type: "text",
-                name: "runningServices.port",
+                name: "port",
                 label: "Service Ports",
                 grid: 4,
                 defaultValue: data?.runningServices?.port,
@@ -205,12 +206,13 @@ class VirtualMachineUtils {
     static getAuthenticationDetailsFormFields(data) {
         return [
             {
-                type: "text",
+                type: "select",
                 name: "accessControl",
                 label: "User Access List",
                 grid: 4,
+                options: virtualMachineConstants.USERS.getOptions(),
                 defaultValue: data?.accessControl,
-                placeholder: "i.e. admin",
+                placeholder: "",
                 validationRules: {},
                 validateOnChange: true,
             },
