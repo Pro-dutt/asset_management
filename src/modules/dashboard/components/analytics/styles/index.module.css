@@ -1,0 +1,11 @@
+.dashboard_chart_row1{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+.dashboard_chart_row2{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}

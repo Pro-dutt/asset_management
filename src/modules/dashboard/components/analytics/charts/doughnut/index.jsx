@@ -7,10 +7,7 @@ import useDashboardDoughnut from './hooks/useDashboardDoughnut';
 const DashboardDoughnut = () => {
     const {dashboardDoughnutConfig} = useDashboardDoughnut();
   return ( 
-  <div className={styles.container}>
-
      <EChartsDoughnut options={dashboardDoughnutConfig}/>
-  </div>
   )
 }
 

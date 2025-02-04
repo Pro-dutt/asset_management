@@ -15,15 +15,13 @@ const DashboardAnalytics = () => {
       <div className={styles.container}>
         <DashboardStats />
       </div>
-      <div style={{ width: "100%", display: "flex", flexDirection: "row"}}>
+      <div className={styles.dashboard_chart_row1}>
         <DashboardPie/>
         <DashboardDoughnut/>
         <DashboardBar/>
       </div>
-  
+      <div className={styles.dashboard_chart_row2}>
         <DashboardPieNest/>
-
-      <div style={{ display: "flex" }}>
         <DashboardProgressCard />
       </div>
     </>

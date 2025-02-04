@@ -6,6 +6,7 @@ import { WebApplicationProvider } from "./webApplication";
 import { NetworkDeviceProvider } from "./networkDevice";
 import { ServerProvider } from "./server";
 import { DesktopProvider } from "./desktop";
+import { StatsProvider } from "./stats";
 
 const ContextProviders = ({ children }) => {
     return (
@@ -16,7 +17,9 @@ const ContextProviders = ({ children }) => {
                         <WebApplicationProvider>
                             <NetworkDeviceProvider>
                                 <ServerProvider>
-                                    <EndPointsProvider>{children}</EndPointsProvider>
+                                    <StatsProvider>
+                                        <EndPointsProvider>{children}</EndPointsProvider>
+                                    </StatsProvider>
                                 </ServerProvider>
                             </NetworkDeviceProvider>
                         </WebApplicationProvider>

@@ -7,10 +7,9 @@ import useDashboardPieNest from './hooks/useDashboardPieNest';
 const DashboardPieNest = () => {
     const {dashboardPieNestConfig} = useDashboardPieNest();
   return ( 
-  <div className={styles.container}>
 
-     <EChartsPieNest options={dashboardPieNestConfig}/>
-  </div>
+     <EChartsPieNest options={dashboardPieNestConfig} />
+
   )
 }
 
