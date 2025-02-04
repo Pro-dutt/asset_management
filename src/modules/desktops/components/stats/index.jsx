@@ -10,7 +10,7 @@ const DesktopsStats = () => {
 
     useEffect(() => {
         statsCount.execute({
-            params: { module: "desktops" },
+            params: { module: "desktop" },
         });
     }, []);
 

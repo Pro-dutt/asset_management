@@ -9,7 +9,7 @@ const LaptopsStats = () => {
     const { laptopsStatsConfig } = useLaptopsStats(statsCount.data);
     useEffect(() => {
         statsCount.execute({
-            params: { module: "laptops" },
+            params: { module: "laptop" },
         });
     }, []);
     return (
