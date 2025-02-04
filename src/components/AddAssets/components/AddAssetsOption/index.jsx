@@ -23,7 +23,12 @@ const AddAssetsOptions = ({ setForm, module }) => {
                     subtitle={`Automatically detect and record new ${module.name}`}
                 />
                 <AssetOptionCard icon={GlobalICONS.IMPORT} title="Import Using CSV" subtitle={`Upload ${module.name} information in bulk`} />
-                <AssetOptionCard onClick={handleFormSelection} icon={GlobalICONS.CREATE} title={`Create ${module.name} Manually`} subtitle={`Use an ${module.name} form to add ${module.name}`} />
+                <AssetOptionCard
+                    onClick={handleFormSelection}
+                    icon={GlobalICONS.CREATE}
+                    title={`Create ${GlobalUtils.capitalizeEachWord(module.name)} Manually`}
+                    subtitle={`Use an ${module.name} form to add ${module.name}`}
+                />
             </div>
         </div>
     );

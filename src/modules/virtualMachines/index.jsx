@@ -6,6 +6,7 @@ import VirtualMachineDetails from "./components/details";
 import VirtualMachineInfoForm from "./components/form";
 import VirtualMachineStats from "./components/stats";
 import styles from "./styles/index.module.css";
+import AddAssets from "@/components/AddAssets";
 
 const VirtualMachine = () => {
     const [show, setShow] = useState({});
@@ -24,7 +25,7 @@ const VirtualMachine = () => {
                 icon={GlobalICONS.VIRTUAL_MACHINE}
                 description="Provide the required details to configure and register a new Virtual Machine"
             >
-                <VirtualMachineInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "virtual machine", form: <VirtualMachineInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
