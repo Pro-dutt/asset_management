@@ -26,7 +26,7 @@ const TABLE_LIMITS = {
 };
 
 const networkingDevicesTableConstants = {
-    TABLE_API_URL: "/networking-device",
+    TABLE_API_URL: "/network-device",
     FILTER_OPTIONS,
     TABLE_LIMITS,
     externalFilters: {

@@ -3,7 +3,7 @@ import ServerUtils from "../utils";
 import { useServer } from "@/services/context/server";
 import serverConstants from "../utils/constants";
 
-export const useServerInfoForm = (data = {}) => {
+export const useServerInfoForm = (data = {}, onCancel) => {
     const { serverCreation } = useServer();
 
     const formConfig = useMemo(
@@ -24,7 +24,10 @@ export const useServerInfoForm = (data = {}) => {
         serverCreation.execute({
             payload: formData,
             onSuccess: () => {
-                // onboardedUser.fetch({});
+                onCancel();
+            },
+            options: {
+                showNotification: true,
             },
         });
     };

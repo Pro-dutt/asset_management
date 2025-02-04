@@ -24,7 +24,6 @@ export const useStatsCount = () => {
                     showSuccessNotification({
                         key: GET_STATS_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
                 setStats(data);

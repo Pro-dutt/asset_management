@@ -214,7 +214,7 @@ class NetworkDeviceUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
+                type: "number",
                 name: "nicCount",
                 label: "Number of Interfaces",
                 grid: 4,
@@ -365,6 +365,7 @@ class NetworkDeviceUtils {
                 validateOnChange: true,
             },
             {
+                type: "number",
                 name: "capEx",
                 label: "Capital Expenditure (CapEx)",
                 grid: 4,
@@ -373,6 +374,7 @@ class NetworkDeviceUtils {
                 validateOnChange: true,
             },
             {
+                type: "number",
                 name: "opEx",
                 label: "Operational Expenditure (OpEx)",
                 grid: 4,

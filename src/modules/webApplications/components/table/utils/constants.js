@@ -26,7 +26,7 @@ const TABLE_LIMITS = {
 };
 
 const webApplicationsTableConstants = {
-    TABLE_API_URL: "/web-applications",
+    TABLE_API_URL: "/web-application",
     FILTER_OPTIONS,
     TABLE_LIMITS,
     externalFilters: {

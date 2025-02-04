@@ -3,7 +3,7 @@ import { useWebApplication } from "@/services/context/webApplication";
 import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";
 
-export const useWebApplicationInfoForm = (data = {}) => {
+export const useWebApplicationInfoForm = (data = {}, onCancel) => {
     const { webApplicationCreation } = useWebApplication();
 
     const formConfig = useMemo(
@@ -24,7 +24,10 @@ export const useWebApplicationInfoForm = (data = {}) => {
         webApplicationCreation.execute({
             payload: formData,
             onSuccess: () => {
-                // onboardedUser.fetch({});
+                onCancel?.();
+            },
+            options: {
+                showNotification: true,
             },
         });
     };
