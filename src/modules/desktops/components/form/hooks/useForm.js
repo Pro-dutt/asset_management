@@ -5,7 +5,6 @@ import desktopConstants from "../utils/constants";
 
 export const useDesktopInfoForm = (data = {}, onCancel) => {
     const { desktopCreation } = useDesktop();
-
     const formConfig = useMemo(
         () => [
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),

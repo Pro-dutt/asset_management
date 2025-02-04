@@ -1,8 +1,9 @@
-import globalConstants, { createEnum } from "@/lib/utils/contants";
+import GlobalUtils from "@/lib/utils";
+import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 
 const networkDeviceConstants = {
-    DEVICE_CATEGORIES: createEnum([
+    DEVICE_CATEGORIES: GlobalUtils.createEnum([
         { key: "FIREWALL", value: "firewall", label: "Firewall" },
         { key: "SWITCH", value: "switch", label: "Switch" },
         { key: "ACCESS_POINT", value: "access-point", label: "Access Point (AP)" },
@@ -12,7 +13,7 @@ const networkDeviceConstants = {
         { key: "LOAD_BALANCER", value: "load-balancer", label: "Load Balancer" },
     ]),
 
-    REACHABILITY_STATUS: createEnum([
+    REACHABILITY_STATUS: GlobalUtils.createEnum([
         { key: "REACHABLE", value: 1, label: "Reachable" },
         { key: "NOT_REACHABLE", value: 2, label: "Not Reachable" },
     ]),

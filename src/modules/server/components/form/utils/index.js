@@ -1,5 +1,7 @@
 import globalConstants from "@/lib/utils/contants";
+import GlobalICONS from "@/lib/utils/icons";
 import serverConstants from "./constants";
+import GlobalUtils from "@/lib/utils";
 
 class ServerUtils {
     static getDevicePropertiesFormFields(data) {
@@ -114,7 +116,7 @@ class ServerUtils {
                 name: "procurementDate",
                 label: "Procurement Date",
                 grid: 4,
-                defaultValue: data?.procurementDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.procurementDate),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -123,7 +125,7 @@ class ServerUtils {
                 name: "receivedOn",
                 label: "Acquisition Date",
                 grid: 4,
-                defaultValue: data?.receivedOn,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.receivedOn),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -132,7 +134,7 @@ class ServerUtils {
                 name: "warrantyEndDate",
                 label: "Warranty Expiry",
                 grid: 4,
-                defaultValue: data?.warrantyEndDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.warrantyEndDate),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -141,7 +143,7 @@ class ServerUtils {
                 name: "endOfSupport",
                 label: "End of Support",
                 grid: 4,
-                defaultValue: data?.endOfSupport,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.endOfSupport),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -150,7 +152,7 @@ class ServerUtils {
                 name: "endOfLife",
                 label: "End of Life",
                 grid: 4,
-                defaultValue: data?.endOfLife,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.endOfLife),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -216,7 +218,7 @@ class ServerUtils {
                 name: "assetHandoverDate",
                 label: "Assigned Date",
                 grid: 4,
-                defaultValue: data?.assetHandoverDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.assetHandoverDate),
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -348,7 +350,7 @@ class ServerUtils {
                 name: "billOrderDate",
                 label: "Bill Order Date",
                 grid: 4,
-                defaultValue: data?.billOrderDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.billOrderDate),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -398,7 +400,7 @@ class ServerUtils {
                 name: "lastAuditDate",
                 label: "Last Audit Date (If Any)",
                 grid: 4,
-                defaultValue: data?.lastAuditDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastAuditDate),
                 validateOnChange: true,
                 validationRules: {},
             },
@@ -442,7 +444,7 @@ class ServerUtils {
                 name: "lastBackupDate",
                 label: "Last Backup Date",
                 grid: 4,
-                defaultValue: data?.lastBackupDate,
+                defaultValue: GlobalUtils.formatDateForDateInput(data?.lastBackupDate),
                 validationRules: {},
                 validateOnChange: true,
             },

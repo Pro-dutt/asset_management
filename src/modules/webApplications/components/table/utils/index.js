@@ -44,13 +44,12 @@ class WebApplicationTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
-            "Asset Id": { key: "assetId", value: item.assetId },
-            "Product Name": { key: "itemName", value: item.itemName },
-            Model: { key: "model", value: item.model },
-            "Serial Number": { key: "serialNumber", value: item.serialNumber },
-            Processor: { key: "processor", value: item.processor },
-            "Ram [Gb]": { key: "ram", value: item.ram },
-            "Device Status": { key: "statusName", value: item.statusName },
+            "Host Asset Id": { key: "hostAssetId", value: item.hostAssetId },
+            "Application Name": { key: "applicationName", value: item.applicationName },
+            Version: { key: "version", value: item.version },
+            URL: { key: "url", value: item.url },
+            IP: { key: "ip", value: item.ip },
+            Responsible: { key: "responsible", value: item.responsible },
         }));
     }
     static tableActionData({ data, setShow, setWebApplicationDetails }) {

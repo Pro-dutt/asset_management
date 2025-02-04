@@ -1,15 +1,16 @@
-import globalConstants, { createEnum } from "@/lib/utils/contants";
+import GlobalUtils from "@/lib/utils";
+import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 
 const webApplicationConstants = {
-    STATUS: createEnum([
+    STATUS: GlobalUtils.createEnum([
         { key: "ACTIVE", value: 1, label: "Active" },
         { key: "INACTIVE", value: 2, label: "Inactive" },
         { key: "UNDER_MAINTENANCE", value: 3, label: "Under Maintenance" },
         { key: "DECOMISSIONED", value: 4, label: "Decomissioned" },
     ]),
 
-    CLIENT_AUTH_METHODS: createEnum([
+    CLIENT_AUTH_METHODS: GlobalUtils.createEnum([
         { key: "ANONYMOUS", value: 1, label: "Anonymous" },
         { key: "PASSWORD", value: 2, label: "Password" },
         { key: "SSO", value: 3, label: "SSO" },
@@ -22,7 +23,7 @@ const webApplicationConstants = {
         { key: "OTHER", value: 10, label: "Other" },
     ]),
 
-    USER_ACCESS_PROFILES: createEnum([
+    USER_ACCESS_PROFILES: GlobalUtils.createEnum([
         { key: "END_USER", value: 1, label: "End User" },
         { key: "MANAGEMENT", value: 2, label: "Management" },
         { key: "DEVELOPER", value: 3, label: "Developer" },
@@ -32,7 +33,7 @@ const webApplicationConstants = {
         { key: "OTHERS", value: 7, label: "Others" },
     ]),
 
-    FACE_LEVELS: createEnum([
+    FACE_LEVELS: GlobalUtils.createEnum([
         { key: "PUBLIC", value: 1, label: "Public" },
         { key: "INTERNAL", value: 2, label: "Internal" },
         { key: "RESTRICTED", value: 3, label: "Restricted" },

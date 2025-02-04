@@ -48,8 +48,8 @@ class NetworkingDevicesTableUtils {
             "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },
             "Serial Number": { key: "serialNumber", value: item.serialNumber },
-            Processor: { key: "processor", value: item.processor },
-            "Ram [Gb]": { key: "ram", value: item.ram },
+            "Mac Address": { key: "macAddress", value: item.macAddress },
+            "Ip Address": { key: "ipAddress", value: item.ipAddress },
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }

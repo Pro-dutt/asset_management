@@ -1,38 +1,14 @@
+import GlobalUtils from ".";
 import GlobalICONS from "./icons";
 
-export const createEnum = (definitions) => {
-    const enumObject = {};
-    const labels = {};
-
-    // Create enum values and labels
-    definitions.forEach(({ key, value, label }) => {
-        enumObject[key] = value;
-        labels[value] = label;
-    });
-
-    return Object.freeze({
-        ...enumObject,
-        labels,
-        getLabel: function (value) {
-            return this.labels[value] || "";
-        },
-        getOptions: function () {
-            return Object.entries(this.labels).map(([value, label]) => ({
-                value: Number(value),
-                label,
-            }));
-        },
-    });
-};
-
 const globalConstants = {
-    ENVIRONMENTS: createEnum([
+    ENVIRONMENTS: GlobalUtils.createEnum([
         { key: "DEVELOPMENT", value: "DEVELOPMENT", label: "Development" },
         { key: "STAGING", value: "STAGING", label: "Staging" },
         { key: "PRODUCTION", value: "PRODUCTION", label: "Production" },
     ]),
 
-    OPERATING_SYSTEMS: createEnum([
+    OPERATING_SYSTEMS: GlobalUtils.createEnum([
         { key: "WINDOWS_10_HOME", value: "WINDOWS_10_HOME", label: "Windows 10 Home" },
         { key: "WINDOWS_10_PRO", value: "WINDOWS_10_PRO", label: "Windows 10 Pro" },
         { key: "WINDOWS_11_HOME", value: "WINDOWS_11_HOME", label: "Windows 11 Home" },
@@ -50,7 +26,7 @@ const globalConstants = {
         { key: "OTHER", value: "OTHER", label: "Other" },
     ]),
 
-    BUSINESS_IMPACT: createEnum([
+    BUSINESS_IMPACT: GlobalUtils.createEnum([
         { key: "AFFECTS_BUSINESS", value: 1, label: "Affects Business" },
         { key: "AFFECTS_DEPARTMENT", value: 2, label: "Affects Department" },
         { key: "AFFECTS_USER", value: 3, label: "Affects User" },
@@ -58,7 +34,7 @@ const globalConstants = {
         { key: "LOW", value: 5, label: "Low" },
     ]),
 
-    BACKUP_FREQUENCIES: createEnum([
+    BACKUP_FREQUENCIES: GlobalUtils.createEnum([
         { key: "REAL_TIME", value: 1, label: "Real-Time" },
         { key: "HOURLY", value: 2, label: "Hourly" },
         { key: "DAILY", value: 3, label: "Daily" },
@@ -68,36 +44,36 @@ const globalConstants = {
         { key: "ON_DEMAND", value: 7, label: "On-Demand" },
     ]),
 
-    BACKUP_LOCATIONS: createEnum([
+    BACKUP_LOCATIONS: GlobalUtils.createEnum([
         { key: "EXTERNAL_DISK", value: 1, label: "External Disk" },
         { key: "UNIFIED_STORAGE", value: 2, label: "Unified Storage (NAS/SAN)" },
         { key: "CLOUD", value: 3, label: "Cloud" },
         { key: "OTHERS", value: 4, label: "Others" },
     ]),
 
-    PATCH_LEVELS: createEnum([
+    PATCH_LEVELS: GlobalUtils.createEnum([
         { key: "FULLY_PATCHED", value: 1, label: "Fully Patched" },
         { key: "PARTIALLY_PATCHED", value: 2, label: "Partially Patched" },
         { key: "NOT_PATCHED", value: 3, label: "Not Patched" },
     ]),
 
-    DEPARTMENTS: createEnum([
+    DEPARTMENTS: GlobalUtils.createEnum([
         { key: "HR", value: "hr", label: "HR" },
         { key: "FINANCE", value: "finance", label: "Finance" },
         { key: "LEGAL", value: "legal", label: "Legal" },
     ]),
 
-    IP_TYPES: createEnum([
+    IP_TYPES: GlobalUtils.createEnum([
         { key: "STATIC", value: "static", label: "Static" },
         { key: "DHCP", value: "dhcp", label: "DHCP" },
     ]),
 
-    BACKUP_STATUS: createEnum([
+    BACKUP_STATUS: GlobalUtils.createEnum([
         { key: "YES", value: true, label: "Yes" },
         { key: "NO", value: false, label: "No" },
     ]),
 
-    STATUS_CATEGORIES: createEnum([
+    STATUS_CATEGORIES: GlobalUtils.createEnum([
         { key: "IN_STORE", value: 1, label: "In-Store" },
         { key: "IN_USE", value: 2, label: "In-Use" },
         { key: "IN_MAINTENANCE", value: 3, label: "In-Maintenance" },
@@ -106,7 +82,7 @@ const globalConstants = {
         { key: "RESERVED", value: 6, label: "Reserved" },
     ]),
 
-    DEVICE_STATES: createEnum([
+    DEVICE_STATES: GlobalUtils.createEnum([
         { key: "ACTIVE", value: 1, label: "Active" },
         { key: "ACTIVE_UNSUPPORTED", value: 2, label: "Active (Unsupported)" },
         { key: "INACTIVE", value: 3, label: "In-Active" },
