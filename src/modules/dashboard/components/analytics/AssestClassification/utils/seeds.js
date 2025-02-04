@@ -24,8 +24,9 @@ const sampleAssetsClassificationData = {
             ],
         },
     },
-    software: {
+    softwareAssets: {
         totalCount: 45,
+        count: 45,
         licences: {
             totalCount: 20,
             data: [
@@ -36,12 +37,16 @@ const sampleAssetsClassificationData = {
         },
         webApplications: {
             totalCount: 25,
-            data: [
-                { name: "publicFacing", count: 12, adIntegration: 10, agentInstall: 9, compliance: 10 },
-                { name: "backupPending", count: 8, adIntegration: 5, agentInstall: 4, compliance: 6 },
-                { name: "vaptPending", count: 3, adIntegration: 2, agentInstall: 2, compliance: 2 },
-                { name: "webAssets", count: 2, adIntegration: 1, agentInstall: 1, compliance: 1 },
-            ],
+            publicFacing: 12,
+            backupPending: 8,
+            vaptPending: 3,
+            webAssets: 2,
+            // data: [
+            //     { name: "publicFacing", count: 12, adIntegration: 10, agentInstall: 9, compliance: 10 },
+            //     { name: "backupPending", count: 8, adIntegration: 5, agentInstall: 4, compliance: 6 },
+            //     { name: "vaptPending", count: 3, adIntegration: 2, agentInstall: 2, compliance: 2 },
+            //     { name: "webAssets", count: 2, adIntegration: 1, agentInstall: 1, compliance: 1 },
+            // ],
         },
     },
     dataCenter: {
