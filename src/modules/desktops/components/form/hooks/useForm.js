@@ -25,6 +25,9 @@ export const useDesktopInfoForm = (data = {}) => {
             onSuccess: () => {
                 // onboardedUser.fetch({});
             },
+            options: {
+                showNotification: true,
+            },
         });
     };
 
