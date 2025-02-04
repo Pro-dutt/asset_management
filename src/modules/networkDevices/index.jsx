@@ -6,6 +6,7 @@ import NetworkingDevicesDetails from "./components/details";
 import NetworkingDevicesInfoForm from "./components/form";
 import NetworkingDevicesStats from "./components/stats";
 import styles from "./styles/index.module.css";
+import AddAssets from "@/components/AddAssets";
 
 const NetworkingDevices = () => {
     const [show, setShow] = useState({});
@@ -24,7 +25,7 @@ const NetworkingDevices = () => {
                 icon={GlobalICONS.NETWORKING_DEVICE}
                 description="Provide the required details to configure and register a new Networking Device"
             >
-                <NetworkingDevicesInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "networking device", form: <NetworkingDevicesInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

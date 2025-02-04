@@ -45,12 +45,12 @@ class ServersTableUtils {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
             "Asset Id": { key: "assetId", value: item.assetId },
-            "Product Name": { key: "productName", value: item.productName },
+            "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },
             "Serial Number": { key: "serialNumber", value: item.serialNumber },
             Processor: { key: "processor", value: item.processor },
-            "Ram [Gb]": { key: "ramGb", value: item.ramGb },
-            "Device Status": { key: "deviceStatus", value: item.deviceStatus },
+            "Ram [Gb]": { key: "ram", value: item.ram },
+            "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
     static tableActionData({ data, setShow, setServerDetails }) {

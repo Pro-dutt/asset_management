@@ -23,7 +23,6 @@ export const useDesktopCreate = () => {
                     showSuccessNotification({
                         key: CREATE_DESKTOP_KEY,
                         value: data,
-                        hideNotification: true,
                     });
                 }
 

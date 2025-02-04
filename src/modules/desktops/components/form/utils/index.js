@@ -445,7 +445,7 @@ class DesktopUtils {
     }
 
     static formFieldHandlers = {
-        [desktopConstants.FORM_SECTIONS.ASSET_TYPE.title]: this.getAssetTypeFormFields,
+        // [desktopConstants.FORM_SECTIONS.ASSET_TYPE.title]: this.getAssetTypeFormFields,
         [desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
         [desktopConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
         [desktopConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,

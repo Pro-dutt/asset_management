@@ -6,7 +6,8 @@ import DesktopDetails from "./components/details";
 import { DesktopInfoForm } from "./components/form";
 import DesktopsStats from "./components/stats";
 import styles from "./styles/index.module.css";
-import AssetCreationPopup from "@/components/AssetCreationPopup";
+import AssetCreationPopup from "@/components/AddAssets";
+import AddAssets from "@/components/AddAssets";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -25,7 +26,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <DesktopInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "desktop", form: <DesktopInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

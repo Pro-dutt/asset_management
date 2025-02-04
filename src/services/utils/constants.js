@@ -8,13 +8,13 @@ const apiConstants = {
         SETUP_BASE_INFO: "/setup/basic-info",
     },
     virtualMachines: {
-        BASE_ROUTE: "/virtual-machines",
+        BASE_ROUTE: "/virtual-machine",
     },
     webApplications: {
-        BASE_ROUTE: "/web-applications",
+        BASE_ROUTE: "/web-application",
     },
     networkDevices: {
-        BASE_ROUTE: "/network-devices",
+        BASE_ROUTE: "/network-device",
     },
     server: {
         BASE_ROUTE: "/server",

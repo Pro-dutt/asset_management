@@ -6,6 +6,7 @@ import WebApplicationsDetails from "./components/details";
 import WebApplicationsInfoForm from "./components/form";
 import WebApplicationsStats from "./components/stats";
 import styles from "./styles/index.module.css";
+import AddAssets from "@/components/AddAssets";
 
 const WebApplications = () => {
     const [show, setShow] = useState({});
@@ -24,7 +25,7 @@ const WebApplications = () => {
                 icon={GlobalICONS.WEB_APPLICATION}
                 description="Provide the required details to configure and register a new web application"
             >
-                <WebApplicationsInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "web application", form: <WebApplicationsInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

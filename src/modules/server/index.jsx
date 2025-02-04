@@ -6,6 +6,7 @@ import ServersDetails from "./components/details";
 import ServersInfoForm from "./components/form";
 import ServersStats from "./components/stats";
 import styles from "./styles/index.module.css";
+import AddAssets from "@/components/AddAssets";
 
 const Servers = () => {
     const [show, setShow] = useState({});
@@ -24,7 +25,7 @@ const Servers = () => {
                 icon={GlobalICONS.SERVER}
                 description="Provide the required details to configure and register a new Server"
             >
-                <ServersInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "server", form: <ServersInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
