@@ -149,7 +149,6 @@ const InputField = ({ formField, formValues, maskedValues, errors, ...restProps 
     // Validation logic
     const validateInput = (valueToValidate) => {
         let validationError = FormUtils.validateField(valueToValidate, validationRules, formField);
-        // console.log("validationError", validationError);
         if (!validationError && customValidation) {
             validationError = customValidation(valueToValidate);
         }

@@ -92,7 +92,7 @@ class DesktopUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "core",
                 label: "CPU Core Count",
                 grid: 4,
@@ -375,6 +375,7 @@ class DesktopUtils {
                 validateOnChange: true,
             },
             {
+                type: "number",
                 name: "capEx",
                 label: "Capital Expenditure (CapEx)",
                 grid: 4,
@@ -383,6 +384,7 @@ class DesktopUtils {
                 validateOnChange: true,
             },
             {
+                type: "number",
                 name: "opEx",
                 label: "Operational Expenditure (OpEx)",
                 grid: 4,

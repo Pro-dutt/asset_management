@@ -29,7 +29,7 @@ export const useFileUpload = () => {
             } else if (value instanceof File || value instanceof Blob) {
                 formData.append(key, value);
             } else if (value !== null && value !== undefined) {
-                formData.append(key, value.toString());
+                formData.append(key, typeof value === "number" ? value.toString() : value);
             }
         });
 

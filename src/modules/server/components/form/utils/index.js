@@ -77,7 +77,7 @@ class ServerUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "core",
                 label: "CPU Core Count",
                 grid: 4,

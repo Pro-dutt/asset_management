@@ -108,7 +108,7 @@ export const useFormHandler = (formData, validate = null) => {
         (event, groupIndex, fieldName, uploadFunction) => {
             const { name, value, type, files } = event.target;
             // Determine the field value based on input type
-            const fieldValue = type === "checkbox" ? event.target.checked : type === "file" ? files[0] : value;
+            const fieldValue = type === "checkbox" ? event.target.checked : type === "file" ? files[0] : type == "number" ? parseInt(value) : value;
 
             const updateFieldValues = (prevValues) => {
                 // Handle file uploads

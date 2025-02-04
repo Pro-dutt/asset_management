@@ -5,7 +5,7 @@ class FormUtils {
         const { type = "text", label = "Field" } = field;
 
         // Convert value to string for length checks, if it exists
-        const stringValue = valueToValidate?.toString() || "";
+        const stringValue = type === "text" ? valueToValidate?.toString() ?? "" : valueToValidate ?? "";
 
         // Normalize all rules
         const rules = {
