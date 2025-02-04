@@ -1,5 +1,5 @@
 const apiConstants = {
-    BACKEND_API_BASE_URL: "http://192.168.22.16:3000/api/v1",
+    BACKEND_API_BASE_URL: "http://127.0.0.1:3000/api/v1",
     endPoints: {
         BASE_ROUTE: "/institutes",
         SIGN_UP: "/owners/register",
@@ -8,13 +8,13 @@ const apiConstants = {
         SETUP_BASE_INFO: "/setup/basic-info",
     },
     virtualMachines: {
-        BASE_ROUTE: "/virtual-machines",
+        BASE_ROUTE: "/virtual-machine",
     },
     webApplications: {
-        BASE_ROUTE: "/web-applications",
+        BASE_ROUTE: "/web-application",
     },
     networkDevices: {
-        BASE_ROUTE: "/network-devices",
+        BASE_ROUTE: "/network-device",
     },
     server: {
         BASE_ROUTE: "/server",
