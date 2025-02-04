@@ -9,23 +9,23 @@ import DashboardDoughnut from "./charts/doughnut";
 import DashboardBar from "./charts/bar";
 
 const DashboardAnalytics = () => {
- 
-  return (
-    <>
-      <div className={styles.container}>
-        <DashboardStats />
-      </div>
-      <div className={styles.dashboard_chart_row1}>
-        <DashboardPie/>
-        <DashboardDoughnut/>
-        <DashboardBar/>
-      </div>
-      <div className={styles.dashboard_chart_row2}>
-        <DashboardPieNest/>
-        <DashboardProgressCard />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className={styles.container}>
+                <DashboardStats />
+            </div>
+            <div className={styles.dashboard_chart_row1}>
+                <DashboardDoughnut />
+
+                <DashboardPie />
+                <DashboardBar />
+            </div>
+            <div className={styles.dashboard_chart_row2}>
+                <DashboardPieNest />
+                <DashboardProgressCard />
+            </div>
+        </>
+    );
 };
 
 export default DashboardAnalytics;

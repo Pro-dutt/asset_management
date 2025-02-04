@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
 import styles from "./styles/index.module.css";
-import useVirtualMachinesStats from './hooks/useVirtualMachinesStats';
+import useVirtualMachinesStats from "./hooks/useVirtualMachinesStats";
 import "./styles/index.css";
-import Stats from '@/components/stats';
+import StatCard from "@/components/Card/StatCard";
 const VirtualMachinesStats = () => {
-    const {virtualMachinesStatsConfig} = useVirtualMachinesStats();
+    const { virtualMachinesStatsConfig } = useVirtualMachinesStats();
 
-  return ( <div className={styles.container}>
-     <Stats data={virtualMachinesStatsConfig}/>
-  </div>
-  )
-}
+    return (
+        <div className={styles.statsCardsContainer}>
+            {virtualMachinesStatsConfig.map((item, index) => (
+                <StatCard key={index} data={item} />
+            ))}
+        </div>
+    );
+};
 
-export default VirtualMachinesStats
+export default VirtualMachinesStats;

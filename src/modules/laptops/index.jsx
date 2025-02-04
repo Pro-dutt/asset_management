@@ -6,6 +6,7 @@ import LaptopDetails from "./components/details";
 import LaptopInfoForm from "./components/form";
 import LaptopsStats from "./components/stats";
 import styles from "./styles/index.module.css";
+import AddAssets from "@/components/AddAssets";
 
 const Laptops = () => {
     const [show, setShow] = useState({});
@@ -24,7 +25,7 @@ const Laptops = () => {
                 icon={GlobalICONS.LAPTOP}
                 description="Provide the required details to configure and register a new Laptop"
             >
-                <LaptopInfoForm onCancel={closeModal} />
+                <AddAssets module={{ name: "laptop", form: <LaptopInfoForm onCancel={closeModal} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
