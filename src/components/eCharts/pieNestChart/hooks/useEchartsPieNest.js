@@ -20,6 +20,9 @@ const useEchartsPieNest = (data = sampleEChartsPieNestConfigData) => {
         formatter: '{a} <br/>{b}: {c} ({d}%)'
       },
       legend: {
+        orient: "horizontal", // Ensure horizontal orientation
+        bottom: 0, // Place legend at the bottom
+        left: "center", // Center it horizontally at the bottom
         data: legendLabels
       },
       series: [

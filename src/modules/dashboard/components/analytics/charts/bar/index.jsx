@@ -8,10 +8,7 @@ import EChartsBar from '@/components/eCharts/barChart';
 const DashboardBar = () => {
     const {dashboardBarConfig} = useDashboardBar();
   return ( 
-  <div className={styles.container}>
-
      <EChartsBar options={dashboardBarConfig}/>
-  </div>
   )
 }
 

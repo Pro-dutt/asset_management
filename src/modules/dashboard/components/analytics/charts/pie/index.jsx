@@ -7,9 +7,9 @@ import EChartsPie from '@/components/eCharts/pieChart';
 const DashboardPie = () => {
     const {dashboardPieConfig} = useDashboardPie();
   return ( 
-  <div className={styles.container}>
+
      <EChartsPie options={dashboardPieConfig}/>
-  </div>
+
   )
 }
 

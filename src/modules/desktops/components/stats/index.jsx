@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styles from "./styles/index.module.css";
-import useDesktopsStats from './hooks/useDesktopsStats';
+import useDesktopsStats from "./hooks/useDesktopsStats";
 import "./styles/index.css";
-import Stats from '@/components/stats';
+import Stats from "@/components/stats";
+import { useStats } from "@/services/context/stats";
 const DesktopsStats = () => {
-    const {desktopsStatsConfig} = useDesktopsStats();
+    const { statsCount } = useStats();
+    const { desktopsStatsConfig } = useDesktopsStats(statsCount.data);
 
-  return ( <div className={styles.container}>
-     <Stats data={desktopsStatsConfig}/>
-  </div>
-  )
-}
+    useEffect(() => {
+        statsCount.execute({
+            params: { module: "desktops" },
+        });
+    }, []);
 
-export default DesktopsStats
+    return (
+        <div className={styles.container}>
+            <Stats data={desktopsStatsConfig} />
+        </div>
+    );
+};
+
+export default DesktopsStats;

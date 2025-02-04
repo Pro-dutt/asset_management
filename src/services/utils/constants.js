@@ -22,6 +22,9 @@ const apiConstants = {
     desktop: {
         BASE_ROUTE: "/desktop",
     },
+    stats: {
+        BASE_ROUTE: "/stats",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         CREATE_WEB_APPLICATION: "createWebApplication",
@@ -38,6 +41,7 @@ const apiConstants = {
         FILE_UPLOAD_KEY: "fileUpload",
         CURRENT_ONBOARDED_USER: "currentOnboardedUser",
         GET_TEMPLATE_LIST: "getTemplateList",
+        GET_STATS: "getStats",
     },
 };
 export default apiConstants;
