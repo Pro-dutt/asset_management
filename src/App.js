@@ -8,7 +8,7 @@ import WebApplication from "./modules/webApplications";
 import NetworkDevice from "./modules/networkDevices";
 import Desktops from "./modules/desktops";
 import Server from "./modules/server";
-import Laptops from "./modules/latops";
+import Laptops from "./modules/laptops";
 import { ToastContainer } from "react-toastify";
 
 function App() {

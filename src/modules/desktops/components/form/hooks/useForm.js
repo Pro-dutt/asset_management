@@ -8,7 +8,6 @@ export const useDesktopInfoForm = (data = {}) => {
 
     const formConfig = useMemo(
         () => [
-            ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.ASSET_TYPE, data),
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT, data),
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.NETWORK_DETAILS, data),
