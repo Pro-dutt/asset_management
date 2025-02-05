@@ -8,6 +8,7 @@ import VirtualMachineStats from "./components/stats";
 import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
+import GlobalUtils from "@/lib/utils";
 
 const VirtualMachine = () => {
     const [show, setShow] = useState({});

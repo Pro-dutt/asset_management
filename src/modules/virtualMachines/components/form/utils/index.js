@@ -207,17 +207,17 @@ class VirtualMachineUtils {
 
     static getAuthenticationDetailsFormFields(data) {
         return [
-            {
-                type: "select",
-                name: "accessControl",
-                label: "User Access List",
-                grid: 4,
-                options: virtualMachineConstants.USERS.getOptions(),
-                defaultValue: data?.accessControl,
-                placeholder: "",
-                validationRules: {},
-                validateOnChange: true,
-            },
+            // {
+            //     type: "select",
+            //     name: "accessControl",
+            //     label: "User Access List",
+            //     grid: 4,
+            //     options: virtualMachineConstants.USERS.getOptions(),
+            //     defaultValue: data?.accessControl,
+            //     placeholder: "",
+            //     validationRules: {},
+            //     validateOnChange: true,
+            // },
             {
                 type: "select",
                 name: "remoteAccessProtocol",
@@ -272,6 +272,76 @@ class VirtualMachineUtils {
                 validateOnChange: true,
                 validationRules: {},
             },
+            // {
+            //     name: "snapshots",
+            //     label: "Snapshot Details",
+            //     grid: 2,
+            //     groupFields: [
+            //         {
+            //             type: "text",
+            //             name: "snapshotName",
+            //             label: "Latest Snapshot Name",
+            //             grid: 4,
+            //             placeholder: "i.e. test",
+            //             validationRules: {},
+            //             validateOnChange: true,
+            //         },
+            //         {
+            //             type: "date",
+            //             name: "date",
+            //             label: "Latest Snapshot Date",
+            //             grid: 4,
+            //             validateOnChange: true,
+            //             validationRules: {},
+            //         },
+            //     ],
+
+            //     defaultGroups: [
+            //         [
+            //             {
+            //                 type: "text",
+            //                 name: "snapshotName",
+            //                 label: "Latest Snapshot Name",
+            //                 grid: 4,
+            //                 defaultValue: data?.snapshots[1]?.snapshotName,
+            //                 placeholder: "i.e. test",
+            //                 validationRules: {},
+            //                 validateOnChange: true,
+            //             },
+            //             {
+            //                 type: "date",
+            //                 name: "date",
+            //                 label: "Latest Snapshot Date",
+            //                 grid: 4,
+            //                 defaultValue: GlobalUtils.formatDateForDateInput(data?.snapshots[1]?.date),
+            //                 validateOnChange: true,
+            //                 validationRules: {},
+            //             },
+            //         ],
+            //         [
+            //             {
+            //                 type: "text",
+            //                 name: "snapshotName",
+            //                 label: "Latest Snapshot Name",
+            //                 grid: 4,
+            //                 defaultValue: data?.snapshots[1]?.snapshotName,
+            //                 placeholder: "i.e. test",
+            //                 validationRules: {},
+            //                 validateOnChange: true,
+            //             },
+            //             {
+            //                 type: "date",
+            //                 name: "date",
+            //                 label: "Latest Snapshot Date",
+            //                 grid: 4,
+            //                 defaultValue: GlobalUtils.formatDateForDateInput(data?.snapshots[1]?.date),
+            //                 validateOnChange: true,
+            //                 validationRules: {},
+            //             },
+            //         ],
+            //     ],
+            // },
+
             {
                 type: "text",
                 name: "snapshotName",
