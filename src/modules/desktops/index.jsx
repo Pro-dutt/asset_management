@@ -27,7 +27,7 @@ const Desktops = () => {
                 toggleRefreshTable: setRefreshTable,
             };
             GlobalUtils.handleDelete(deletePayload);
-            setShow((prev) => ({ ...prev, delete: false }));
+            closeModal();
         }
     }, [show.delete, desktopDetails]);
 
