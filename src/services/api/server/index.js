@@ -7,6 +7,13 @@ class ServerApiService {
         });
         return response.data;
     }
+
+    static async update(id, payload, signal) {
+        const response = await serverApiClient.put("/" + id, payload, {
+            signal,
+        });
+        return response.data;
+    }
 }
 
 export default ServerApiService;

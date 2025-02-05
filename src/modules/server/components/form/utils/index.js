@@ -61,7 +61,7 @@ class ServerUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "storage",
                 label: "Disk Space (GB)",
                 grid: 4,
@@ -70,7 +70,7 @@ class ServerUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "ram",
                 label: "RAM (GB)",
                 grid: 4,
@@ -157,7 +157,6 @@ class ServerUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
                 name: "procurementPeriod",
                 label: "Procurement Period",
                 grid: 4,
@@ -175,7 +174,7 @@ class ServerUtils {
                 name: "ipAddress",
                 label: "IP Address",
                 grid: 4,
-                defaultValue: data?.ip,
+                defaultValue: data?.ipAddress,
                 placeholder: "e.g., 192.168.X.X",
                 validationRules: {},
                 validateOnChange: true,

@@ -1,6 +1,8 @@
 import TableUtils from "@/components/table/utils";
 import desktopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
+import ConfirmationAlert from "@/components/ConfirmationAlert";
+import { useDesktop } from "@/services/context/desktop";
 
 class DesktopsTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -83,6 +85,41 @@ class DesktopsTableUtils {
             totalPage: data.totalPages || "0",
             totalItemCount: data.totalDocuments || "0",
         };
+    }
+
+    static async handleDelete({ data, setDesktopDetails, desktopDeletion }) {
+        ConfirmationAlert.showDeleteConfirmation({
+            title: "Delete Item",
+            text: "Are you sure you want to delete this item?",
+            onConfirm: async () => {
+                try {
+                    if (data?.inventoryId) {
+                        await desktopDeletion.execute({
+                            id: data.inventoryId,
+                            options: { showNotification: true },
+                        });
+
+                        ConfirmationAlert.showSuccess({
+                            title: "Deleted!",
+                            text: "Your item has been deleted successfully.",
+                        });
+
+                        // Reset the selected item
+                        setDesktopDetails(null);
+                    } else {
+                        console.error("Invalid data for deletion");
+                    }
+                } catch (error) {
+                    ConfirmationAlert.showError({
+                        title: "Deletion Failed",
+                        text: error.message || "An unexpected error occurred.",
+                    });
+                }
+            },
+            onCancel: () => {
+                setDesktopDetails((prev) => ({ ...prev, delete: false }));
+            },
+        });
     }
 }
 export default DesktopsTableUtils;

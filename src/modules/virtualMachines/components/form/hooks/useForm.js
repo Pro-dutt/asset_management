@@ -4,7 +4,7 @@ import { useVirtualMachines } from "@/services/context/virtualMachines";
 import VirtualMachineUtils from "../utils";
 
 export const useVirtualMachineInfoForm = (data = {}, onCancel) => {
-    const { virtualMachineCreation } = useVirtualMachines();
+    const { virtualMachineCreation, virtualMachineUpdation } = useVirtualMachines();
 
     const formConfig = useMemo(
         () => [
@@ -21,31 +21,42 @@ export const useVirtualMachineInfoForm = (data = {}, onCancel) => {
         [data]
     );
 
-    const handleFormSubmit = (formData) => {
-        const updatedFormData = {
-            ...formData,
-            runningServices: [
-                {
-                    serviceName: formData?.serviceName || "",
-                    port: formData?.port || 0,
-                },
-            ],
-            snapshots: [
-                {
-                    snapshotName: formData?.snapshotName || "",
-                    date: formData?.snapshotDate || "",
-                },
-            ],
-        };
+    // const handleFormSubmit = (formData) => {
+    //     const updatedFormData = {
+    //         ...formData,
+    //         runningServices: [
+    //             {
+    //                 serviceName: formData?.serviceName || "",
+    //                 port: formData?.port || 0,
+    //             },
+    //         ],
+    //         snapshots: [
+    //             {
+    //                 snapshotName: formData?.snapshotName || "",
+    //                 date: formData?.snapshotDate || "",
+    //             },
+    //         ],
+    //     };
 
-        virtualMachineCreation.execute({
-            payload: updatedFormData,
-            onSuccess: () => {
-                onCancel?.();
-            },
-            options: {
-                showNotification: true,
-            },
+    //     virtualMachineCreation.execute({
+    //         payload: updatedFormData,
+    //         onSuccess: () => {
+    //             onCancel?.();
+    //         },
+    //         options: {
+    //             showNotification: true,
+    //         },
+    //     });
+    // };
+
+    const handleFormSubmit = (formData) => {
+        const operation = data?.inventoryId ? virtualMachineUpdation : virtualMachineCreation;
+
+        operation.execute({
+            ...(data?.inventoryId && { id: data.inventoryId }),
+            payload: formData,
+            onSuccess: onCancel,
+            options: { showNotification: true },
         });
     };
 

@@ -4,7 +4,7 @@ import { useServer } from "@/services/context/server";
 import serverConstants from "../utils/constants";
 
 export const useServerInfoForm = (data = {}, onCancel) => {
-    const { serverCreation } = useServer();
+    const { serverCreation, serverUpdation } = useServer();
 
     const formConfig = useMemo(
         () => [
@@ -21,14 +21,13 @@ export const useServerInfoForm = (data = {}, onCancel) => {
     );
 
     const handleFormSubmit = (formData) => {
-        serverCreation.execute({
+        const operation = data?.inventoryId ? serverUpdation : serverCreation;
+
+        operation.execute({
+            ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: () => {
-                onCancel();
-            },
-            options: {
-                showNotification: true,
-            },
+            onSuccess: onCancel,
+            options: { showNotification: true },
         });
     };
 

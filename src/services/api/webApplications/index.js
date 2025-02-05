@@ -7,6 +7,13 @@ class WebApplicationApiService {
         });
         return response.data;
     }
+
+    static async update(id, payload, signal) {
+        const response = await WebApplicationApiClient.put("/" + id, payload, {
+            signal,
+        });
+        return response.data;
+    }
 }
 
 export default WebApplicationApiService;

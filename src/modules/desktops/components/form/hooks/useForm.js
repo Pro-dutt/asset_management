@@ -4,7 +4,7 @@ import { useDesktop } from "@/services/context/desktop";
 import desktopConstants from "../utils/constants";
 
 export const useDesktopInfoForm = (data = {}, onCancel) => {
-    const { desktopCreation } = useDesktop();
+    const { desktopCreation, desktopUpdation } = useDesktop();
     const formConfig = useMemo(
         () => [
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),
@@ -19,14 +19,13 @@ export const useDesktopInfoForm = (data = {}, onCancel) => {
     );
 
     const handleFormSubmit = (formData) => {
-        desktopCreation.execute({
+        const operation = data?.inventoryId ? desktopUpdation : desktopCreation;
+
+        operation.execute({
+            ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: () => {
-                onCancel?.();
-            },
-            options: {
-                showNotification: true,
-            },
+            onSuccess: onCancel,
+            options: { showNotification: true },
         });
     };
 

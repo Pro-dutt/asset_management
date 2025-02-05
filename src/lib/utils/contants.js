@@ -69,8 +69,8 @@ const globalConstants = {
     ]),
 
     BACKUP_STATUS: GlobalUtils.createEnum([
-        { key: "YES", value: true, label: "Yes" },
-        { key: "NO", value: false, label: "No" },
+        { key: "YES", value: 1, label: "Yes" },
+        { key: "NO", value: 0, label: "No" },
     ]),
 
     STATUS_CATEGORIES: GlobalUtils.createEnum([

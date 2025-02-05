@@ -1,15 +1,17 @@
 import { createContext, useContext } from "react";
-import { useWebApplicationCreate } from "../hooks/webApplication";
+import { useWebApplicationCreate, useWebApplicationUpdate } from "../hooks/webApplication";
 
 const WebApplicationContext = createContext(null);
 
-export const WebApplicationProvider = ({ children, initialData = { WebApplicationList: [] } }) => {
+export const WebApplicationProvider = ({ children }) => {
     const webApplicationCreationState = useWebApplicationCreate();
+    const webApplicationUpdationState = useWebApplicationUpdate();
 
     return (
         <WebApplicationContext.Provider
             value={{
                 ...webApplicationCreationState,
+                ...webApplicationUpdationState,
             }}
         >
             {children}

@@ -11,14 +11,6 @@ export const useVirtutalMachinesCreate = () => {
 
     const CREATE_VIRTUAL_MACHINE_KEY = apiConstants.loadingStateKeys.CREATE_VIRTUAL_MACHINE;
 
-    /**
-     * Handles the virtual machines creation process with loading states and error handling
-     * @param {Object} payload - The machine data
-     * @param {Object} params - Additional parameters for the vm request
-     * @param {function} onSuccess - Callback to execute on successful creation
-     * @param {function} onError - Callback to execute on creation failure
-     */
-
     const executeVirtualMahinesCreation = useCallback(
         async ({ payload, onSuccess, onError, options }) => {
             setLoading(CREATE_VIRTUAL_MACHINE_KEY, true);
@@ -57,6 +49,55 @@ export const useVirtutalMachinesCreate = () => {
             isLoading: isLoading(CREATE_VIRTUAL_MACHINE_KEY) || false,
             successMessages: successMessages?.[CREATE_VIRTUAL_MACHINE_KEY],
             errorMessages: errorMessages?.[CREATE_VIRTUAL_MACHINE_KEY],
+        },
+    };
+};
+
+export const useVirtutalMachinesUpdate = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const UPDATE_VIRTUAL_MACHINE_KEY = apiConstants.loadingStateKeys.UPDATE_VIRTUAL_MACHINE;
+
+    const executeVirtualMahinesUpdation = useCallback(
+        async ({ id, payload, onSuccess, onError, options }) => {
+            setLoading(UPDATE_VIRTUAL_MACHINE_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await VirtualMachinesApiService.update(id, payload, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: UPDATE_VIRTUAL_MACHINE_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: UPDATE_VIRTUAL_MACHINE_KEY,
+                    value: error || "Failed to complete updation",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(UPDATE_VIRTUAL_MACHINE_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [UPDATE_VIRTUAL_MACHINE_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        virtualMachineUpdation: {
+            execute: executeVirtualMahinesUpdation,
+            isLoading: isLoading(UPDATE_VIRTUAL_MACHINE_KEY) || false,
+            successMessages: successMessages?.[UPDATE_VIRTUAL_MACHINE_KEY],
+            errorMessages: errorMessages?.[UPDATE_VIRTUAL_MACHINE_KEY],
         },
     };
 };

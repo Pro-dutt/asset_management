@@ -1,15 +1,18 @@
 import { createContext, useContext } from "react";
 import { useServerCreate } from "../hooks/server";
+import { useServerUpdate } from "../hooks/server";
 
 const ServerContext = createContext(null);
 
 export const ServerProvider = ({ children }) => {
     const serverCreationState = useServerCreate();
+    const serverUpdationState = useServerUpdate();
 
     return (
         <ServerContext.Provider
             value={{
                 ...serverCreationState,
+                ...serverUpdationState,
             }}
         >
             {children}

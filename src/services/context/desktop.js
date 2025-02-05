@@ -1,15 +1,19 @@
 import { createContext, useContext } from "react";
-import { useDesktopCreate } from "../hooks/desktop";
+import { useDesktopCreate, useDesktopDelete, useDesktopUpdate } from "../hooks/desktop";
 
 const DesktopContext = createContext(null);
 
 export const DesktopProvider = ({ children }) => {
     const desktopCreationState = useDesktopCreate();
+    const desktopUpdationState = useDesktopUpdate();
+    const desktopDeletionState = useDesktopDelete();
 
     return (
         <DesktopContext.Provider
             value={{
                 ...desktopCreationState,
+                ...desktopUpdationState,
+                ...desktopDeletionState,
             }}
         >
             {children}
