@@ -46,5 +46,11 @@
         "link": "/web-applications",
         "permission": ["admin", "auditor"],
         "icon": "website"
+    },
+    {
+        "name": "Logout",
+        "link": "/user/logout",
+        "permission": ["admin", "auditor"],
+        "icon": "logout"
     }
 ]
