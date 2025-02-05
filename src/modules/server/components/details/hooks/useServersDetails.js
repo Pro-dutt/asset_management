@@ -3,6 +3,8 @@ import GlobalICONS from "@/lib/utils/icons";
 import { useMemo } from "react";
 import sampleServersDetails from "../utils/seeds";
 import GlobalUtils from "@/lib/utils";
+import globalConstants from "@/lib/utils/contants";
+import serverConstants from "../../form/utils/constants";
 
 const useServersDetails = (data = sampleServersDetails) => {
     const serversDetailsConfig = useMemo(
@@ -24,7 +26,7 @@ const useServersDetails = (data = sampleServersDetails) => {
                     ram: data.ram,
                     core: data.core,
                     cpe: data.cpe,
-                    statusId: data.statusId,
+                    statusId: globalConstants.STATUS_CATEGORIES.getLabel(data.statusId),
                 },
                 grid: 3,
             },
@@ -74,9 +76,9 @@ const useServersDetails = (data = sampleServersDetails) => {
                     responsibleForItem: data.responsibleForItem,
                     custodianName: data.custodianName,
                     custodianEmail: data.custodianEmail,
-                    custodianDepartment: data.custodianDepartment,
-                    businessImpact: data.businessImpact,
-                    antivirusStatus: data.antivirusStatus,
+                    custodianDepartment: GlobalUtils.capitalizeEachWord(data.custodianDepartment),
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
+                    antivirusStatus: serverConstants.ANTIVIRUS_STATUS.getLabel(data.antivirusStatus),
                 },
                 grid: 3,
             },
@@ -104,9 +106,9 @@ const useServersDetails = (data = sampleServersDetails) => {
                     description: "Monitor device state, last audit date, and patch level",
                 },
                 body: {
-                    deviceState: data.deviceState,
+                    deviceState: globalConstants.DEVICE_STATES.getLabel(data.deviceState),
                     lastAuditDate: data.lastAuditDate,
-                    patchLevel: data.patchLevel,
+                    patchLevel: globalConstants.PATCH_LEVELS.getLabel(data.patchLevel),
                 },
                 grid: 3,
             },
@@ -117,10 +119,10 @@ const useServersDetails = (data = sampleServersDetails) => {
                     description: "Manage backup settings, frequency, and recovery objectives",
                 },
                 body: {
-                    backupEnabled: data.backupEnabled,
-                    backupFrequency: data.backupFrequency,
+                    backupEnabled: globalConstants.BACKUP_STATUS.getLabel(data.backupEnabled === 1),
+                    backupFrequency: globalConstants.BACKUP_FREQUENCIES.getLabel(data.backupFrequency),
                     lastBackupDate: GlobalUtils.formatDateForDateInput(data.lastBackupDate),
-                    backupLocation: data.backupLocation,
+                    backupLocation: globalConstants.BACKUP_LOCATIONS.getLabel(data.backupLocation),
                     recoveryTime: data.recoveryTime,
                 },
                 grid: 3,

@@ -2,6 +2,8 @@ import DataNotFound from "@/components/DataNotFound";
 import GlobalICONS from "@/lib/utils/icons";
 import { useMemo } from "react";
 import sampleNetworkingDevicesDetails from "../utils/seeds";
+import globalConstants from "@/lib/utils/contants";
+import GlobalUtils from "@/lib/utils";
 
 const useNetworkingDevicesDetails = (data = sampleNetworkingDevicesDetails) => {
     const networkingDevicesDetailsConfig = useMemo(
@@ -32,7 +34,7 @@ const useNetworkingDevicesDetails = (data = sampleNetworkingDevicesDetails) => {
                     oem: data.oem,
                     model: data.model,
                     cpe: data.cpe,
-                    statusId: data.statusId,
+                    statusId: globalConstants.STATUS_CATEGORIES.getLabel(data.statusId),
                 },
                 grid: 3,
             },
@@ -80,11 +82,11 @@ const useNetworkingDevicesDetails = (data = sampleNetworkingDevicesDetails) => {
                     assetHandoverDate: data.assetHandoverDate,
                     assetId: data.assetId,
                     assetLocation: data.assetLocation,
-                    custodianDepartment: data.custodianDepartment,
+                    custodianDepartment: GlobalUtils.capitalizeEachWord(data.custodianDepartment),
                     custodianName: data.custodianName,
                     responsibleForItem: data.responsibleForItem,
                     custodianEmail: data.custodianEmail,
-                    businessImpact: data.businessImpact,
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
                 },
                 grid: 3,
             },
@@ -112,7 +114,7 @@ const useNetworkingDevicesDetails = (data = sampleNetworkingDevicesDetails) => {
                     description: "Operational status, maintenance, and audit details",
                 },
                 body: {
-                    deviceState: data.deviceState,
+                    deviceState: globalConstants.DEVICE_STATES.getLabel(data.deviceState),
                     lastMaintenanceDate: data.lastMaintenanceDate,
                     maintenanceDate: data.maintenanceDate,
                     lastConfigurationBackupDate: data.lastConfigurationBackupDate,

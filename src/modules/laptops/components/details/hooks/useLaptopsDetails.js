@@ -2,6 +2,8 @@ import DataNotFound from "@/components/DataNotFound";
 import GlobalICONS from "@/lib/utils/icons";
 import { useMemo } from "react";
 import sampleLaptopsDetails from "../utils/seeds";
+import globalConstants from "@/lib/utils/contants";
+import desktopConstants from "@/modules/desktops/components/form/utils/constants";
 
 const useLaptopsDetails = (data = sampleLaptopsDetails) => {
     const laptopsDetailsConfig = useMemo(
@@ -73,9 +75,9 @@ const useLaptopsDetails = (data = sampleLaptopsDetails) => {
                     description: "Security status and compliance information",
                 },
                 body: {
-                    antivirusStatus: data.antivirusStatus,
-                    businessImpact: data.businessImpact,
-                    patchLevel: data.patchLevel,
+                    antivirusStatus: desktopConstants.ANTIVIRUS_STATUS.getLabel(data.antivirusStatus),
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
+                    patchLevel: globalConstants.PATCH_LEVELS.getLabel(data.patchLevel),
                     lastAuditDateIfAny: data.lastAuditDateIfAny,
                 },
                 grid: 3,
@@ -100,7 +102,7 @@ const useLaptopsDetails = (data = sampleLaptopsDetails) => {
                 },
                 body: {
                     deviceStatus: data.deviceStatus,
-                    deviceState: data.deviceState,
+                    deviceState: globalConstants.DEVICE_STATES.getLabel(data.deviceState),
                     ipAllocationType: data.ipAllocationType,
                     cpe: data.cpe,
                 },
