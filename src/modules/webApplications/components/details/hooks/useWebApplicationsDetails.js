@@ -2,6 +2,9 @@ import DataNotFound from "@/components/DataNotFound";
 import GlobalICONS from "@/lib/utils/icons";
 import { useMemo } from "react";
 import sampleWebApplicationsDetails from "../utils/seeds";
+import webApplicationConstants from "../../form/utils/constants";
+import globalConstants from "@/lib/utils/contants";
+import GlobalUtils from "@/lib/utils";
 
 const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
     const webApplicationsDetailsConfig = useMemo(
@@ -14,10 +17,10 @@ const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
                 },
                 body: {
                     applicationName: data.applicationName,
-                    status: data.status,
+                    status: webApplicationConstants.STATUS.getLabel(data.status),
                     version: data.version,
                     hostAssetId: data.hostAssetId,
-                    businessImpact: data.businessImpact,
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
                 },
                 grid: 3,
             },
@@ -28,9 +31,9 @@ const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
                     description: "Authentication-related details of the web application",
                 },
                 body: {
-                    crlClientAuthentication: data.crlClientAuthentication,
-                    userAccessMethod: data.userAccessMethod,
-                    face: data.face,
+                    crlClientAuthentication: webApplicationConstants.CLIENT_AUTH_METHODS.getLabel(data.crlClientAuthentication),
+                    userAccessMethod: webApplicationConstants.USER_ACCESS_PROFILES.getLabel(data.userAccessMethod),
+                    face: webApplicationConstants.FACE_LEVELS.getLabel(data.face),
                 },
                 grid: 3,
             },
@@ -69,7 +72,7 @@ const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
                     accountable: data.accountable,
                     responsible: data.responsible,
                     contactEmail: data.contactEmail,
-                    department: data.department,
+                    department: GlobalUtils.capitalizeEachWord(data.department),
                     escalationEmail: data.escalationEmail,
                 },
                 grid: 3,
@@ -96,10 +99,10 @@ const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
                     description: "Backup and restoration details of the web application",
                 },
                 body: {
-                    backupEnabled: data.backupEnabled,
-                    backupFrequency: data.backupFrequency,
+                    backupEnabled: globalConstants.BACKUP_STATUS.getLabel(data.backupEnabled ? 1 : 0),
+                    backupFrequency: globalConstants.BACKUP_FREQUENCIES.getLabel(data.backupFrequency),
                     lastBackupDate: data.lastBackupDate,
-                    backupLocation: data.backupLocation,
+                    backupLocation: globalConstants.BACKUP_LOCATIONS.getLabel(data.backupLocation),
                     recoveryTime: data.recoveryTime,
                 },
                 grid: 3,
