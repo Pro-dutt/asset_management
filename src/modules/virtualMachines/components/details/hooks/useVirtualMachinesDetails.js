@@ -2,6 +2,8 @@ import DataNotFound from "@/components/DataNotFound";
 import GlobalICONS from "@/lib/utils/icons";
 import { useMemo } from "react";
 import sampleVirtualMachinesDetails from "../utils/seeds";
+import globalConstants from "@/lib/utils/contants";
+import desktopConstants from "@/modules/desktops/components/form/utils/constants";
 
 const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
     const virtualMachinesDetailsConfig = useMemo(
@@ -14,12 +16,12 @@ const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
                 },
                 body: {
                     vmName: data.vmName,
-                    status: data.status,
+                    status: globalConstants.DEVICE_STATES.getLabel(data.status),
                     osVersion: data.osVersion,
                     environment: data.environment,
                     assetId: data.assetId,
                     virtualizationPlatform: data.virtualizationPlatform,
-                    businessImpact: data.businessImpact,
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
                 },
                 grid: 3,
             },
@@ -68,9 +70,9 @@ const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
                     description: "Security status and compliance information",
                 },
                 body: {
-                    antivirusStatus: data.antivirusStatus,
-                    businessImpact: data.businessImpact,
-                    patchLevel: data.patchLevel,
+                    antivirusStatus: desktopConstants.ANTIVIRUS_STATUS.getLabel(data.antivirusStatus),
+                    businessImpact: globalConstants.BUSINESS_IMPACT.getLabel(data.businessImpact),
+                    patchLevel: globalConstants.PATCH_LEVELS.getLabel(data.patchLevel),
                     lastAuditDateIfAny: data.lastAuditDateIfAny,
                 },
                 grid: 3,

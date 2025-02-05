@@ -2,6 +2,7 @@ import TableUtils from "@/components/table/utils";
 import virtualMachinesTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
+import globalConstants from "@/lib/utils/contants";
 
 class VirtualMachinesTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -48,12 +49,12 @@ class VirtualMachinesTableUtils {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
             "Asset Id": { key: "assetId", value: item.assetId },
-            "Product Name": { key: "itemName", value: item.itemName },
-            Model: { key: "model", value: item.model },
-            "Serial Number": { key: "serialNumber", value: item.serialNumber },
-            Processor: { key: "processor", value: item.processor },
-            "Ram [Gb]": { key: "ram", value: item.ram },
-            "Device Status": { key: "statusName", value: item.statusName },
+            status: { key: "status", value: globalConstants.DEVICE_STATES.getLabel(item.status) },
+            "VM Name": { key: "vmName", value: item.vmName },
+            Environment: { key: "environment", value: item.environment },
+            "MAC Address": { key: "macAddress", value: item.macAddress },
+            "OS Version": { key: "osVersion", value: item.osVersion },
+            "Backup Enabled": { key: "backupEnabled", value: globalConstants.BACKUP_STATUS.getLabel(item.backupEnabled ? 1 : 0) },
         }));
     }
     static tableActionData({ data, setShow, setVirtualMachineDetails }) {
