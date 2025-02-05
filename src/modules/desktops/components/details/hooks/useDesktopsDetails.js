@@ -13,7 +13,7 @@ const useDesktopsDetails = (data = sampleDesktopsDetails) => {
                     description: "Details of the assigned desktop device",
                 },
                 body: {
-                    productName: data.productName,
+                    productName: data.itemName,
                     serialNumber: data.serialNumber,
                     serviceTag: data.serviceTag,
                     model: data.model,
@@ -106,15 +106,15 @@ const useDesktopsDetails = (data = sampleDesktopsDetails) => {
                 },
                 grid: 3,
             },
-            {
-                heading: {
-                    label: "No Data Available",
-                    icon: GlobalICONS.DESKTOP,
-                    description: "No available information for this section",
-                },
-                customBody: <DataNotFound />,
-                grid: 1,
-            },
+            // {
+            //     heading: {
+            //         label: "No Data Available",
+            //         icon: GlobalICONS.DESKTOP,
+            //         description: "No available information for this section",
+            //     },
+            //     customBody: <DataNotFound />,
+            //     grid: 1,
+            // },
         ],
         [data]
     );

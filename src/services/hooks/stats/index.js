@@ -47,7 +47,7 @@ export const useStatsCount = () => {
     return {
         statsCount: {
             execute: executeStatsCount,
-            data: stats,
+            data: stats.data,
             isLoading: isLoading(GET_STATS_KEY) || false,
             successMessages: successMessages?.[GET_STATS_KEY],
             errorMessages: errorMessages?.[GET_STATS_KEY],
