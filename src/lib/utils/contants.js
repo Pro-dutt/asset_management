@@ -162,6 +162,14 @@ const globalConstants = {
             description: "Attach and manage files related to the device",
         },
     }),
+    AD_STATUS: GlobalUtils.createEnum([
+        { key: "YES", value: "YES", label: "Yes" },
+        { key: "NO", value: "NO", label: "No" },
+    ]),
+    AGENT_STATUS: GlobalUtils.createEnum([
+        { key: "YES", value: "YES", label: "Yes" },
+        { key: "NO", value: "NO", label: "No" },
+    ]),
 };
 
 export default globalConstants;

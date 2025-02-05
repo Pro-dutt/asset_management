@@ -13,7 +13,7 @@ const DetailsBody = ({ data }) => {
         } else if (typeof value === "string" || typeof value === "number") {
             return <span className={styles.value}>{String(value)}</span>;
         } else {
-            return <span className={styles.value}>{"............"}</span>;
+            return <span className={styles.value}>{"---------"}</span>;
         }
     };
 

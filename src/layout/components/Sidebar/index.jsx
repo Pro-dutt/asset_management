@@ -191,7 +191,7 @@ const Sidebar = ({ userRole = "admin" }) => {
     );
 
     return (
-        <div className={isSidebarOpen ? styles.overlay : ""} onClick={toggleSidebar}>
+        <div className={isSidebarOpen ? styles.overlay : styles.container} onClick={toggleSidebar}>
             <div
                 onClick={(event) => event.stopPropagation()}
                 className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed} ${!isLockedOpen ? styles.lock_open : ""}`}

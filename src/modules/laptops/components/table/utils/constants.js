@@ -1,21 +1,9 @@
+import globalConstants from "@/lib/utils/contants";
+
 const FILTER_OPTIONS = {
-    deviceStatus: [
-        { label: "In Use", value: "in_use" },
-        { label: "In Storage", value: "in_storage" },
-        { label: "Assigned", value: "assigned" },
-        { label: "Inactive", value: "inactive" },
-    ],
-    oem: [
-        { label: "Dell", value: "dell" },
-        { label: "HP", value: "hp" },
-        { label: "Lenovo", value: "lenovo" },
-        { label: "Apple", value: "apple" },
-    ],
-    ram: [
-        { label: "8 GB", value: "8" },
-        { label: "16 GB", value: "16" },
-        { label: "32 GB", value: "32" },
-    ],
+    statusId: { placeholder: "Select asset status", options: globalConstants.STATUS_CATEGORIES.getOptions() },
+    adStatus: { placeholder: "Select Ad Integrated", options: globalConstants.AD_STATUS.getOptions() },
+    agentStatus: { placeholder: "Select Agent Installed", options: globalConstants.AGENT_STATUS.getOptions() },
 };
 
 const TABLE_LIMITS = {
@@ -35,8 +23,8 @@ const laptopsTableConstants = {
             type: "select",
             name: key,
             grid: 3,
-            options: FILTER_OPTIONS[key],
-            placeholder: `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
+            options: FILTER_OPTIONS[key].options,
+            placeholder: FILTER_OPTIONS[key].placeholder || `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
         })),
         parentPayloadKey: `[search][filters]`,
     },

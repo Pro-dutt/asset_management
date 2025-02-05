@@ -1,21 +1,10 @@
+import globalConstants from "@/lib/utils/contants";
+import webApplicationConstants from "../../form/utils/constants";
+
 const FILTER_OPTIONS = {
-    deviceStatus: [
-        { label: "In Use", value: "in_use" },
-        { label: "In Storage", value: "in_storage" },
-        { label: "Assigned", value: "assigned" },
-        { label: "Inactive", value: "inactive" },
-    ],
-    oem: [
-        { label: "Dell", value: "dell" },
-        { label: "HP", value: "hp" },
-        { label: "Lenovo", value: "lenovo" },
-        { label: "Apple", value: "apple" },
-    ],
-    ram: [
-        { label: "8 GB", value: "8" },
-        { label: "16 GB", value: "16" },
-        { label: "32 GB", value: "32" },
-    ],
+    status: { options: webApplicationConstants.STATUS.getOptions(), placeholder: "Select application status" },
+    face: { options: webApplicationConstants.FACE_LEVELS.getOptions(), placeholder: "Select face/exposure level" },
+    backupEnabled: { options: globalConstants.BACKUP_STATUS.getOptions(), placeholder: "Select backup enable" },
 };
 
 const TABLE_LIMITS = {
@@ -35,8 +24,8 @@ const webApplicationsTableConstants = {
             type: "select",
             name: key,
             grid: 3,
-            options: FILTER_OPTIONS[key],
-            placeholder: `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
+            options: FILTER_OPTIONS[key].options,
+            placeholder: FILTER_OPTIONS[key].placeholder || `Select ${key.replace(/([A-Z])/g, " $1").trim()}`,
         })),
         parentPayloadKey: `[search][filters]`,
     },
