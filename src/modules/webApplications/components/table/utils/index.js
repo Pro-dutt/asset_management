@@ -1,6 +1,7 @@
 import TableUtils from "@/components/table/utils";
 import webApplicationsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
+import apiConstants from "@/services/utils/constants";
 
 class WebApplicationTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -20,6 +21,8 @@ class WebApplicationTableUtils {
                     className: styles.export,
                     icon: TableIcon.EXPORT,
                     label: "Export",
+                    href: `${apiConstants.BACKEND_API_BASE_URL}/web-application?toDownload=1`,
+                    target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
             ],
