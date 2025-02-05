@@ -3,7 +3,7 @@ import ServerUtils from "../utils";
 import { useServer } from "@/services/context/server";
 import serverConstants from "../utils/constants";
 
-export const useServerInfoForm = (data = {}, onCancel) => {
+export const useServerInfoForm = (data = {}, onSuccess) => {
     const { serverCreation, serverUpdation } = useServer();
 
     const formConfig = useMemo(
@@ -26,7 +26,7 @@ export const useServerInfoForm = (data = {}, onCancel) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: onCancel,
+            onSuccess: onSuccess,
             options: { showNotification: true },
         });
     };

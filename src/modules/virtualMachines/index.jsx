@@ -29,6 +29,11 @@ const VirtualMachine = () => {
         }
     }, [show.delete, virtualMachineDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="virtual_machines_module" className={styles.container}>
             <VirtualMachineStats />
@@ -41,7 +46,7 @@ const VirtualMachine = () => {
                 icon={GlobalICONS.VIRTUAL_MACHINE}
                 description="Provide the required details to configure and register a new Virtual Machine"
             >
-                <AddAssets module={{ name: "virtual machine", form: <VirtualMachineInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "virtual machine", form: <VirtualMachineInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -51,7 +56,7 @@ const VirtualMachine = () => {
                 icon={GlobalICONS.VIRTUAL_MACHINE}
                 description="Modify the existing details to update the Virtual Machine configuration and information."
             >
-                <VirtualMachineInfoForm data={virtualMachineDetails} onCancel={closeModal} />
+                <VirtualMachineInfoForm data={virtualMachineDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

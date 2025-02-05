@@ -3,7 +3,7 @@ import NetworkDeviceUtils from "../utils";
 import NetworkDeviceConstants from "../utils/constants";
 import { useNetworkDevice } from "@/services/context/networkDevice";
 
-export const useNetworkDeviceInfoForm = (data = {}, onCancel) => {
+export const useNetworkDeviceInfoForm = (data = {}, onSuccess) => {
     const { networkDeviceCreation, networkDeviceUpdation } = useNetworkDevice();
 
     const formConfig = useMemo(
@@ -26,7 +26,7 @@ export const useNetworkDeviceInfoForm = (data = {}, onCancel) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: onCancel,
+            onSuccess: onSuccess,
             options: { showNotification: true },
         });
     };

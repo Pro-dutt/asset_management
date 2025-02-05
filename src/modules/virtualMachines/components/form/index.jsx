@@ -3,8 +3,8 @@ import { useVirtualMachineInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
 
-const VirtualMachineInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, virtualMachineInfoFormErrors } = useVirtualMachineInfoForm(data, onCancel);
+const VirtualMachineInfoForm = ({ data, onCancel, onSuccess }) => {
+    const { formConfig, handleFormSubmit, isLoading, virtualMachineInfoFormErrors } = useVirtualMachineInfoForm(data, onSuccess);
 
     return (
         <div className={styles.container}>

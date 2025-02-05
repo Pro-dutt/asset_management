@@ -30,6 +30,11 @@ const Servers = () => {
         }
     }, [show.delete, serverDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="servers_module" className={styles.container}>
             <ServersStats />
@@ -42,7 +47,7 @@ const Servers = () => {
                 icon={GlobalICONS.SERVER}
                 description="Provide the required details to configure and register a new Server"
             >
-                <AddAssets module={{ name: "server", form: <ServersInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "server", form: <ServersInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -52,7 +57,7 @@ const Servers = () => {
                 icon={GlobalICONS.SERVER}
                 description="Modify the existing details to update the Server configuration and information."
             >
-                <ServersInfoForm data={serverDetails} onCancel={closeModal} />
+                <ServersInfoForm data={serverDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

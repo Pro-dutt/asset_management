@@ -30,6 +30,11 @@ const Laptops = () => {
         }
     }, [show.delete, laptopDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="laptops_module" className={styles.container}>
             <LaptopsStats />
@@ -42,7 +47,7 @@ const Laptops = () => {
                 icon={GlobalICONS.LAPTOP}
                 description="Provide the required details to configure and register a new Laptop"
             >
-                <AddAssets module={{ name: "laptop", form: <LaptopInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "laptop", form: <LaptopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -52,7 +57,7 @@ const Laptops = () => {
                 icon={GlobalICONS.LAPTOP}
                 description="Modify the existing details to update the Laptop configuration and information."
             >
-                <LaptopInfoForm data={laptopDetails} onCancel={closeModal} />
+                <LaptopInfoForm data={laptopDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

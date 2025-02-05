@@ -3,8 +3,8 @@ import { useServerInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
 
-const ServerInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, ServerInfoFormErrors } = useServerInfoForm(data, onCancel);
+const ServerInfoForm = ({ data, onCancel, onSuccess }) => {
+    const { formConfig, handleFormSubmit, isLoading, ServerInfoFormErrors } = useServerInfoForm(data, onSuccess);
 
     return (
         <div className={styles.container}>

@@ -2,8 +2,8 @@ import DynamicForm from "@/components/form";
 import { useNetworkDeviceInfoForm } from "./hooks/useForm";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
-const NetworkDeviceInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, NetworkDeviceInfoFormErrors } = useNetworkDeviceInfoForm(data, onCancel);
+const NetworkDeviceInfoForm = ({ data, onCancel, onSuccess }) => {
+    const { formConfig, handleFormSubmit, isLoading, NetworkDeviceInfoFormErrors } = useNetworkDeviceInfoForm(data, onSuccess);
 
     return (
         <div className={styles.container}>

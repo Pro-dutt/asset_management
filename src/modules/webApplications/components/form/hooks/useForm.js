@@ -3,7 +3,7 @@ import { useWebApplication } from "@/services/context/webApplication";
 import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";
 
-export const useWebApplicationInfoForm = (data = {}, onCancel) => {
+export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
     const { webApplicationCreation, webApplicationUpdation } = useWebApplication();
 
     const formConfig = useMemo(
@@ -26,7 +26,7 @@ export const useWebApplicationInfoForm = (data = {}, onCancel) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: onCancel,
+            onSuccess: onSuccess,
             options: { showNotification: true },
         });
     };

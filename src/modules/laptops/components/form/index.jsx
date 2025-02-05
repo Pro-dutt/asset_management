@@ -2,8 +2,8 @@ import DynamicForm from "@/components/form";
 import GlobalUtils from "@/lib/utils";
 import styles from "./styles/index.module.css";
 import { useDesktopInfoForm } from "@/modules/desktops/components/form/hooks/useForm";
-const LaptopInfoForm = ({ data, onCancel }) => {
-    const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm(data, onCancel);
+const LaptopInfoForm = ({ data, onCancel, onSuccess }) => {
+    const { formConfig, handleFormSubmit, isLoading, DesktopInfoFormErrors } = useDesktopInfoForm(data, onSuccess);
 
     return (
         <div className={styles.container}>

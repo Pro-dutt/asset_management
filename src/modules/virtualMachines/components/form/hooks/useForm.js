@@ -3,7 +3,7 @@ import virtualMachineConstants from "../utils/constants";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
 import VirtualMachineUtils from "../utils";
 
-export const useVirtualMachineInfoForm = (data = {}, onCancel) => {
+export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
     const { virtualMachineCreation, virtualMachineUpdation } = useVirtualMachines();
 
     const formConfig = useMemo(
@@ -55,7 +55,7 @@ export const useVirtualMachineInfoForm = (data = {}, onCancel) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: onCancel,
+            onSuccess: onSuccess,
             options: { showNotification: true },
         });
     };

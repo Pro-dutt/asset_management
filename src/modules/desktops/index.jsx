@@ -31,6 +31,11 @@ const Desktops = () => {
         }
     }, [show.delete, desktopDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="desktops_module" className={styles.container}>
             <DesktopsStats />
@@ -43,7 +48,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <AddAssets module={{ name: "desktop", form: <DesktopInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "desktop", form: <DesktopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -53,7 +58,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <DesktopInfoForm data={desktopDetails} onCancel={closeModal} setRefreshTable={setRefreshTable} />
+                <DesktopInfoForm data={desktopDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

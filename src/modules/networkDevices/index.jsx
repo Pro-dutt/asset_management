@@ -30,6 +30,11 @@ const NetworkingDevices = () => {
         }
     }, [show.delete, networkingDeviceDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="networking_devices_module" className={styles.container}>
             <NetworkingDevicesStats />
@@ -42,7 +47,7 @@ const NetworkingDevices = () => {
                 icon={GlobalICONS.NETWORKING_DEVICE}
                 description="Provide the required details to configure and register a new Networking Device"
             >
-                <AddAssets module={{ name: "networking device", form: <NetworkingDevicesInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "networking device", form: <NetworkingDevicesInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -52,7 +57,7 @@ const NetworkingDevices = () => {
                 icon={GlobalICONS.NETWORKING_DEVICE}
                 description="Modify the existing details to update the Networking Device configuration and information."
             >
-                <NetworkingDevicesInfoForm data={networkingDeviceDetails} onCancel={closeModal} />
+                <NetworkingDevicesInfoForm data={networkingDeviceDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

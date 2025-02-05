@@ -30,6 +30,11 @@ const WebApplications = () => {
         }
     }, [show.delete, webApplicationDetails]);
 
+    const onSuccess = () => {
+        setRefreshTable((prev) => !prev);
+        closeModal();
+    };
+
     return (
         <div id="web_applications_module" className={styles.container}>
             <WebApplicationsStats />
@@ -42,7 +47,7 @@ const WebApplications = () => {
                 icon={GlobalICONS.WEB_APPLICATION}
                 description="Provide the required details to configure and register a new web application"
             >
-                <AddAssets module={{ name: "web application", form: <WebApplicationsInfoForm onCancel={closeModal} /> }} />
+                <AddAssets module={{ name: "web application", form: <WebApplicationsInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
@@ -52,7 +57,7 @@ const WebApplications = () => {
                 icon={GlobalICONS.WEB_APPLICATION}
                 description="Modify the existing details to update the web application configuration and information."
             >
-                <WebApplicationsInfoForm data={webApplicationDetails} onCancel={closeModal} />
+                <WebApplicationsInfoForm data={webApplicationDetails} onCancel={closeModal} onSuccess={onSuccess} />
             </Modal>
             <Modal
                 show={show.view}

@@ -3,7 +3,7 @@ import DesktopUtils from "../utils";
 import { useDesktop } from "@/services/context/desktop";
 import desktopConstants from "../utils/constants";
 
-export const useDesktopInfoForm = (data = {}, onCancel, setRefreshTable) => {
+export const useDesktopInfoForm = (data = {}, onSuccess) => {
     const { desktopCreation, desktopUpdation } = useDesktop();
     const formConfig = useMemo(
         () => [
@@ -24,10 +24,7 @@ export const useDesktopInfoForm = (data = {}, onCancel, setRefreshTable) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: () => {
-                setRefreshTable();
-                onCancel();
-            },
+            onSuccess: onSuccess,
             options: { showNotification: true },
         });
     };
