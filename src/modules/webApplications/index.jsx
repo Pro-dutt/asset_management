@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WebApplicationsTable from "./components/table";
 import Modal from "@/components/Popup/Popup";
 import GlobalICONS from "@/lib/utils/icons";
@@ -7,16 +7,33 @@ import WebApplicationsInfoForm from "./components/form";
 import WebApplicationsStats from "./components/stats";
 import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
+import GlobalUtils from "@/lib/utils";
+import { useWebApplication } from "@/services/context/webApplication";
 
 const WebApplications = () => {
     const [show, setShow] = useState({});
     const [webApplicationDetails, setWebApplicationDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const { webApplicationDeletion } = useWebApplication();
+    const [refreshTable, setRefreshTable] = useState(false);
+    useEffect(() => {
+        if (show.delete && webApplicationDetails?.inventoryId) {
+            const deletePayload = {
+                recordId: webApplicationDetails?.inventoryId,
+                onShowDetails: setWebApplicationDetails,
+                deleteAction: webApplicationDeletion,
+                toggleRefreshData: setRefreshTable,
+            };
+            GlobalUtils.handleDelete(deletePayload);
+            closeModal();
+        }
+    }, [show.delete, webApplicationDetails]);
+
     return (
         <div id="web_applications_module" className={styles.container}>
             <WebApplicationsStats />
-            <WebApplicationsTable setShow={setShow} setWebApplicationDetails={setWebApplicationDetails} />
+            <WebApplicationsTable setShow={setShow} setWebApplicationDetails={setWebApplicationDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
                 onClose={closeModal}

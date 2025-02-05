@@ -5,7 +5,7 @@ import virtualMachinesTableConstants from "./utils/constants";
 import VirtualMachinesTableUtils from "./utils";
 import "./styles/index.css";
 
-const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow }) => {
+const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
         rows: VirtualMachinesTableUtils.tableRow(data),
         actionData: VirtualMachinesTableUtils.tableActionData({ data, setShow, setVirtualMachineDetails }),
@@ -17,9 +17,10 @@ const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow }) => {
         externalFilters: virtualMachinesTableConstants.externalFilters,
         tableHeader: VirtualMachinesTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
+        refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), []);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

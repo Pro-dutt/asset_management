@@ -53,7 +53,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <DesktopInfoForm data={desktopDetails} onCancel={closeModal} />
+                <DesktopInfoForm data={desktopDetails} onCancel={closeModal} setRefreshTable={setRefreshTable} />
             </Modal>
             <Modal
                 show={show.view}

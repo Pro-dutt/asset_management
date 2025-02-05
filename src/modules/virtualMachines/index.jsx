@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VirtualMachineTable from "./components/table";
 import Modal from "@/components/Popup/Popup";
 import GlobalICONS from "@/lib/utils/icons";
@@ -7,16 +7,32 @@ import VirtualMachineInfoForm from "./components/form";
 import VirtualMachineStats from "./components/stats";
 import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
+import { useVirtualMachines } from "@/services/context/virtualMachines";
 
 const VirtualMachine = () => {
     const [show, setShow] = useState({});
     const [virtualMachineDetails, setVirtualMachineDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const { virtualMachineDeletion } = useVirtualMachines();
+    const [refreshTable, setRefreshTable] = useState(false);
+    useEffect(() => {
+        if (show.delete && virtualMachineDetails?.inventoryId) {
+            const deletePayload = {
+                recordId: virtualMachineDetails?.inventoryId,
+                onShowDetails: setVirtualMachineDetails,
+                deleteAction: virtualMachineDeletion,
+                toggleRefreshData: setRefreshTable,
+            };
+            GlobalUtils.handleDelete(deletePayload);
+            closeModal();
+        }
+    }, [show.delete, virtualMachineDetails]);
+
     return (
         <div id="virtual_machines_module" className={styles.container}>
             <VirtualMachineStats />
-            <VirtualMachineTable setShow={setShow} setVirtualMachineDetails={setVirtualMachineDetails} />
+            <VirtualMachineTable setShow={setShow} setVirtualMachineDetails={setVirtualMachineDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
                 onClose={closeModal}
