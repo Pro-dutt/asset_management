@@ -1,6 +1,7 @@
 import TableUtils from "@/components/table/utils";
 import laptopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
+import apiConstants from "@/services/utils/constants";
 
 class LaptopsTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -20,6 +21,8 @@ class LaptopsTableUtils {
                     className: styles.export,
                     icon: TableIcon.EXPORT,
                     label: "Export",
+                    href: `${apiConstants.BACKEND_API_BASE_URL}/laptop?toDownload=1`,
+                    target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
             ],

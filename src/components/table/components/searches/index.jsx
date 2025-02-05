@@ -75,6 +75,8 @@ const TableSearch = ({ data, initialValues, router, searchParams }) => {
                         flat={button.flat}
                         className={`${styles?.[button.label?.toLowerCase()]} ${button.className}`}
                         icon={button.icon}
+                        href={button.href}
+                        target={button.target}
                     >
                         {button.label}
                     </Button>
