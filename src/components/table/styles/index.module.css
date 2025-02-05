@@ -7,8 +7,13 @@
     box-shadow: var(--table-box-shadow);
     max-width: var(--table-max-width);
     margin: auto;
+    overflow: auto;
 }
 .table_container table {
     width: 100%;
     border-collapse: collapse;
+}
+.table_container>div
+{
+    min-width: 968px;
 }

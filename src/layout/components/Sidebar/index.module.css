@@ -11,7 +11,6 @@
 
 .sidebar.collapsed {
     width: 68px;
-    /* position: static !important; */
 }
 .logo {
     display: flex;
@@ -147,6 +146,7 @@
     top: 0;
     z-index: 100;
 }
+
 @media (max-width: 868px) {
     .sidebar .open {
         width: 260px;
@@ -209,4 +209,10 @@
 }
 .child_menu {
     margin-left: 0.7rem !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .sidebar.collapsed {
+        position: static !important;
+    }
 }
