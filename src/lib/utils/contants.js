@@ -163,8 +163,8 @@ const globalConstants = {
         },
     }),
     AD_STATUS: GlobalUtils.createEnum([
-        { key: "YES", value: "YES", label: "Yes" },
-        { key: "NO", value: "NO", label: "No" },
+        { key: "YES", value: 1, label: "Yes" },
+        { key: "NO", value: 0, label: "No" },
     ]),
     AGENT_STATUS: GlobalUtils.createEnum([
         { key: "YES", value: "YES", label: "Yes" },
