@@ -118,7 +118,7 @@ class VirtualMachineUtils {
     static getResourceAllocationFormFields(data) {
         return [
             {
-                type: "text",
+                type: "number",
                 name: "storage",
                 label: "Disk Space (GB)",
                 grid: 4,

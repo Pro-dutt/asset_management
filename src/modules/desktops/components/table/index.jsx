@@ -5,7 +5,7 @@ import desktopsTableConstants from "./utils/constants";
 import DesktopsTableUtils from "./utils";
 import "./styles/index.css";
 
-const DesktopsTable = ({ setDesktopDetails, setShow }) => {
+const DesktopsTable = ({ setDesktopDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
         rows: DesktopsTableUtils.tableRow(data),
         actionData: DesktopsTableUtils.tableActionData({ data, setShow, setDesktopDetails }),
@@ -17,9 +17,10 @@ const DesktopsTable = ({ setDesktopDetails, setShow }) => {
         externalFilters: desktopsTableConstants.externalFilters,
         tableHeader: DesktopsTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
+        refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), []);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

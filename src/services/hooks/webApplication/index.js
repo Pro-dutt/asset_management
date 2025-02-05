@@ -52,3 +52,52 @@ export const useWebApplicationCreate = () => {
         },
     };
 };
+
+export const useWebApplicationUpdate = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const UPDATE_WEB_APPLICATION_KEY = apiConstants.loadingStateKeys.UPDATE_WEB_APPLICATION;
+
+    const executeWebApplicationUpdation = useCallback(
+        async ({ id, payload, onSuccess, onError, options }) => {
+            setLoading(UPDATE_WEB_APPLICATION_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await WebApplicationApiService.update(id, payload, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: UPDATE_WEB_APPLICATION_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: UPDATE_WEB_APPLICATION_KEY,
+                    value: error || "Failed to complete updation",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(UPDATE_WEB_APPLICATION_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [UPDATE_WEB_APPLICATION_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        webApplicationUpdation: {
+            execute: executeWebApplicationUpdation,
+            isLoading: isLoading(UPDATE_WEB_APPLICATION_KEY) || false,
+            successMessages: successMessages?.[UPDATE_WEB_APPLICATION_KEY],
+            errorMessages: errorMessages?.[UPDATE_WEB_APPLICATION_KEY],
+        },
+    };
+};

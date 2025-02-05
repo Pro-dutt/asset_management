@@ -76,7 +76,7 @@ class DesktopUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "storage",
                 label: "Disk Space (GB)",
                 grid: 4,
@@ -85,7 +85,7 @@ class DesktopUtils {
                 validationRules: {},
             },
             {
-                type: "text",
+                type: "number",
                 name: "ram",
                 label: "RAM (GB)",
                 grid: 4,
@@ -172,7 +172,6 @@ class DesktopUtils {
                 validateOnChange: true,
             },
             {
-                type: "text",
                 name: "procurementPeriod",
                 label: "Procurement Period",
                 grid: 4,

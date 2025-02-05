@@ -52,3 +52,52 @@ export const useNetworkDeviceCreate = () => {
         },
     };
 };
+
+export const useNetworkDeviceUpdate = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const UPDATE_NETWORK_DEVICE_KEY = apiConstants.loadingStateKeys.UPDATE_NETWORK_DEVICE;
+
+    const executeNetworkDeviceUpdation = useCallback(
+        async ({ id, payload, onSuccess, onError, options }) => {
+            setLoading(UPDATE_NETWORK_DEVICE_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await NetworkDeviceApiService.update(id, payload, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: UPDATE_NETWORK_DEVICE_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: UPDATE_NETWORK_DEVICE_KEY,
+                    value: error || "Failed to complete updation",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(UPDATE_NETWORK_DEVICE_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [UPDATE_NETWORK_DEVICE_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        networkDeviceUpdation: {
+            execute: executeNetworkDeviceUpdation,
+            isLoading: isLoading(UPDATE_NETWORK_DEVICE_KEY) || false,
+            successMessages: successMessages?.[UPDATE_NETWORK_DEVICE_KEY],
+            errorMessages: errorMessages?.[UPDATE_NETWORK_DEVICE_KEY],
+        },
+    };
+};

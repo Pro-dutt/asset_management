@@ -4,7 +4,7 @@ import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";
 
 export const useWebApplicationInfoForm = (data = {}, onCancel) => {
-    const { webApplicationCreation } = useWebApplication();
+    const { webApplicationCreation, webApplicationUpdation } = useWebApplication();
 
     const formConfig = useMemo(
         () => [
@@ -21,14 +21,13 @@ export const useWebApplicationInfoForm = (data = {}, onCancel) => {
     );
 
     const handleFormSubmit = (formData) => {
-        webApplicationCreation.execute({
+        const operation = data?.inventoryId ? webApplicationUpdation : webApplicationCreation;
+
+        operation.execute({
+            ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
-            onSuccess: () => {
-                onCancel?.();
-            },
-            options: {
-                showNotification: true,
-            },
+            onSuccess: onCancel,
+            options: { showNotification: true },
         });
     };
 
