@@ -7,7 +7,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
         () => [
             {
                 title: "Laptop",
-                value: data?.totalLaptops,
+                value: data?.laptop?.total || 0,
                 subTitle: "Total Laptops",
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
@@ -16,7 +16,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
             },
             {
                 title: "Desktop",
-                value: data?.totalDesktops,
+                value: data?.desktop?.total || 0,
                 subTitle: "Total Desktop",
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
@@ -25,7 +25,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
             },
             {
                 title: "Servers",
-                value: data?.totalServers,
+                value: data?.server?.total || 0,
                 subTitle: "Total Servers",
                 icon: GlobalICONS.SERVER,
                 hasDecrement: false,
@@ -34,7 +34,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
             },
             {
                 title: "Virtual Machine",
-                value: data?.totalVitualMachines,
+                value: data?.virtualMachine?.total || 0,
                 subTitle: "Total Virtual Machine",
                 icon: GlobalICONS.VIRTUAL_MACHINE,
                 hasDecrement: false,
@@ -43,7 +43,7 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
             },
             {
                 title: "Network Device",
-                value: data?.totalNetworkDevices,
+                value: data?.networkDevice?.total || 0,
                 subTitle: "Total Network Device",
                 icon: GlobalICONS.NETWORKING_DEVICE,
                 hasDecrement: true,
@@ -52,9 +52,9 @@ const useDashboardStats = (data = sampleDashboardStatsData) => {
             },
 
             {
-                title: "Web Applicatons",
-                value: data?.totalWebApplications,
-                subTitle: "Total Web Applicatons",
+                title: "Web Applications",
+                value: data?.webApplication?.total || 0,
+                subTitle: "Total Web Applications",
                 icon: GlobalICONS.WEB_APPLICATION,
                 hasDecrement: false,
                 hasIncrement: false,

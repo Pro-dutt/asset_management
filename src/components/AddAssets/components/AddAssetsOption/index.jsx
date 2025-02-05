@@ -10,7 +10,7 @@ const AddAssetsOptions = ({ setForm, module }) => {
     return (
         <div className={styles.popupContainer}>
             <div className={styles.imageWrapper}>
-                <img src="/addItem.png" alt="Add asset" />
+                <img src={require("../../assets/images/png/addItem.png")} alt="Add asset" />
             </div>
             <div className={styles.popupContent}>
                 <h5>Create A New {GlobalUtils.capitalizeEachWord(module.name)}</h5>

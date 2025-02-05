@@ -1,30 +1,29 @@
 const sampleDashboardProgressCardData = {
-    desktops: {
+    desktop: {
         total: 100,
         used: 70,
         remaining: 30,
     },
-    laptops: {
+    laptop: {
         total: 300,
         used: 175,
         remaining: 125,
     },
-    servers: {
+    server: {
         total: 10,
         used: 8,
         remaining: 2,
     },
-    networkDevices: {
+    networkDevice: {
         total: 23,
         used: 22,
         remaining: 1,
     },
-    licenses: {
+    license: {
         total: 5,
         used: 5,
         remaining: 5,
     },
     // Add more data as needed...
-    
-}
-export default sampleDashboardProgressCardData
+};
+export default sampleDashboardProgressCardData;

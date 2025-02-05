@@ -9,6 +9,7 @@ import StatusButtonCard from "./components/StatusButtonCard";
 import sampleAssetsClassificationData from "./utils/seeds";
 import "./styles/index.css";
 const AssetsStatusCountChart = ({ initialData = sampleAssetsClassificationData, title = "Assets" }) => {
+    console.log(initialData);
     const [activeChart, setActiveChart] = useState("itAssets");
     const [pieDataStatus, setPieDataStatus] = useState({});
     const [tab, setTab] = useState(1);
@@ -249,7 +250,7 @@ const AssetsStatusCountChart = ({ initialData = sampleAssetsClassificationData, 
         if (activeChart === "webApplications") {
             setPieDataStatus(initialData["softwareAssets"][activeChart]);
         } else {
-            setPieDataStatus(tab === 3 ? initialData[dataKey] : tab === 2 ? initialData[dataKey]?.[activeChart] : initialData[dataKey][activeChart]?.data || []);
+            setPieDataStatus(tab === 3 ? initialData[dataKey] : tab === 2 ? initialData[dataKey]?.[activeChart] : initialData?.[dataKey]?.[activeChart]?.data || []);
         }
     };
 
@@ -259,8 +260,8 @@ const AssetsStatusCountChart = ({ initialData = sampleAssetsClassificationData, 
 
     const statusButtonConfigs = [
         tab === 1 && [
-            { key: "itAssets", title: `IT ${title}`, count: initialData.hardware.itAssets?.totalCount, icon: dashboardICONS.IT },
-            { key: "otAssets", title: `OT ${title}`, count: initialData.hardware.otAssets?.totalCount, icon: dashboardICONS.OT },
+            { key: "itAssets", title: `IT ${title}`, count: initialData?.hardware?.itAssets?.totalCount, icon: dashboardICONS.IT },
+            { key: "otAssets", title: `OT ${title}`, count: initialData?.hardware?.otAssets?.totalCount, icon: dashboardICONS.OT },
         ],
         tab === 2 && [{ key: "license", title: `Licenses ${title}`, count: initialData?.softwareAssets?.license?.totalCount, icon: dashboardICONS.ONGOING }],
         tab === 3 && [

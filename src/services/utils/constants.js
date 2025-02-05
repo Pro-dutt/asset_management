@@ -1,5 +1,5 @@
 const apiConstants = {
-    BACKEND_API_BASE_URL: "http://192.168.22.16:3000/api/v1",
+    BACKEND_API_BASE_URL: `${process.env.REACT_APP_BACKEND_BASE_PATH}/api/v1`,
     endPoints: {
         BASE_ROUTE: "/institutes",
         SIGN_UP: "/owners/register",
@@ -25,6 +25,9 @@ const apiConstants = {
     stats: {
         BASE_ROUTE: "/stats",
     },
+    charts: {
+        BASE_ROUTE: "/charts",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         UPDATE_VIRTUAL_MACHINE: "updateVirtualMachine",
@@ -46,6 +49,7 @@ const apiConstants = {
         UPDATE_DESKTOP: "updateDesktop",
         DELETE_DESKTOP: "deleteDesktop",
         GET_STATS: "getStats",
+        GET_CHARTS: "getCharts",
     },
 };
 export default apiConstants;
