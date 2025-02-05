@@ -28,12 +28,20 @@ const apiConstants = {
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         UPDATE_VIRTUAL_MACHINE: "updateVirtualMachine",
+        DELETE_VIRTUAL_MACHINE: "deleteVirtualMachine",
+
         CREATE_WEB_APPLICATION: "createWebApplication",
         UPDATE_WEB_APPLICATION: "updateWebApplication",
+        DELETE_WEB_APPLICATION: "deleteWebApplication",
+
         CREATE_NETWORK_DEVICE: "createNetworkDevice",
         UPDATE_NETWORK_DEVICE: "updateNetworkDevice",
+        DELETE_NETWORK_DEVICE: "deleteNetworkDevice",
+
         CREATE_SERVER: "createServer",
         UPDATE_SERVER: "updateServer",
+        DELETE_SERVER: "deleteServer",
+
         CREATE_DESKTOP: "createDesktop",
         UPDATE_DESKTOP: "updateDesktop",
         DELETE_DESKTOP: "deleteDesktop",

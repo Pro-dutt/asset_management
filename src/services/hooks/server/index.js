@@ -101,3 +101,52 @@ export const useServerUpdate = () => {
         },
     };
 };
+
+export const useServerDelete = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const DELETE_SERVER_KEY = apiConstants.loadingStateKeys.DELETE_SERVER;
+
+    const executeServerDeletion = useCallback(
+        async ({ id, onSuccess, onError, options }) => {
+            setLoading(DELETE_SERVER_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await ServerApiService.delete(id, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: DELETE_SERVER_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: DELETE_SERVER_KEY,
+                    value: error || "Failed to complete deletion",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(DELETE_SERVER_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [DELETE_SERVER_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        serverDeletion: {
+            execute: executeServerDeletion,
+            isLoading: isLoading(DELETE_SERVER_KEY) || false,
+            successMessages: successMessages?.[DELETE_SERVER_KEY],
+            errorMessages: errorMessages?.[DELETE_SERVER_KEY],
+        },
+    };
+};

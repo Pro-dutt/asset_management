@@ -6,12 +6,14 @@ const NetworkDeviceContext = createContext(null);
 export const NetworkDeviceProvider = ({ children }) => {
     const networkDeviceCreationState = useNetworkDeviceCreate();
     const networkDeviceUpdationState = useNetworkDeviceUpdate();
+    const networkDeviceDeletionState = useNetworkDeviceUpdate();
 
     return (
         <NetworkDeviceContext.Provider
             value={{
                 ...networkDeviceCreationState,
                 ...networkDeviceUpdationState,
+                ...networkDeviceDeletionState,
             }}
         >
             {children}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ServersTable from "./components/table";
 import Modal from "@/components/Popup/Popup";
 import GlobalICONS from "@/lib/utils/icons";
@@ -7,16 +7,33 @@ import ServersInfoForm from "./components/form";
 import ServersStats from "./components/stats";
 import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
+import GlobalUtils from "@/lib/utils";
+import { useServer } from "@/services/context/server";
 
 const Servers = () => {
     const [show, setShow] = useState({});
     const [serverDetails, setServerDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const { serverDeletion } = useServer();
+    const [refreshTable, setRefreshTable] = useState(false);
+    useEffect(() => {
+        if (show.delete && serverDetails?.inventoryId) {
+            const deletePayload = {
+                recordId: serverDetails?.inventoryId,
+                onShowDetails: setServerDetails,
+                deleteAction: serverDeletion,
+                toggleRefreshData: setRefreshTable,
+            };
+            GlobalUtils.handleDelete(deletePayload);
+            closeModal();
+        }
+    }, [show.delete, serverDetails]);
+
     return (
         <div id="servers_module" className={styles.container}>
             <ServersStats />
-            <ServersTable setShow={setShow} setServerDetails={setServerDetails} />
+            <ServersTable setShow={setShow} setServerDetails={setServerDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
                 onClose={closeModal}

@@ -539,7 +539,7 @@ class GlobalUtils {
         });
     };
 
-    static async handleDelete({ recordId, onShowDetails, deleteAction, toggleRefreshTable }) {
+    static async handleDelete({ recordId, onShowDetails, deleteAction, toggleRefreshData }) {
         ConfirmationAlert.showDeleteConfirmation({
             title: "Delete Item",
             text: "Are you sure you want to delete this item?",
@@ -557,7 +557,7 @@ class GlobalUtils {
                         });
 
                         onShowDetails?.(null);
-                        toggleRefreshTable((prev) => !prev);
+                        toggleRefreshData((prev) => !prev);
                     } else {
                         console.error("Invalid record ID for deletion");
                     }

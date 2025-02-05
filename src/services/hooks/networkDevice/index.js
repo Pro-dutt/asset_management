@@ -101,3 +101,52 @@ export const useNetworkDeviceUpdate = () => {
         },
     };
 };
+
+export const useNetworkDeviceDelete = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const DELETE_NETWORK_DEVICE_KEY = apiConstants.loadingStateKeys.DELETE_NETWORK_DEVICE;
+
+    const executeNetworkDeviceDelete = useCallback(
+        async ({ id, onSuccess, onError, options }) => {
+            setLoading(DELETE_NETWORK_DEVICE_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await NetworkDeviceApiService.delete(id, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: DELETE_NETWORK_DEVICE_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: DELETE_NETWORK_DEVICE_KEY,
+                    value: error || "Failed to complete deletion",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(DELETE_NETWORK_DEVICE_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [DELETE_NETWORK_DEVICE_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        networkDeviceDeletion: {
+            execute: executeNetworkDeviceDelete,
+            isLoading: isLoading(DELETE_NETWORK_DEVICE_KEY) || false,
+            successMessages: successMessages?.[DELETE_NETWORK_DEVICE_KEY],
+            errorMessages: errorMessages?.[DELETE_NETWORK_DEVICE_KEY],
+        },
+    };
+};

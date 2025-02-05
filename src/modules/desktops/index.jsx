@@ -13,21 +13,21 @@ import GlobalUtils from "@/lib/utils";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
-    const { desktopDeletion } = useDesktop();
     const [desktopDetails, setDesktopDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const { desktopDeletion } = useDesktop();
     const [refreshTable, setRefreshTable] = useState(false);
     useEffect(() => {
-        if (show.delete && desktopDetails) {
+        if (show.delete && desktopDetails?.inventoryId) {
             const deletePayload = {
                 recordId: desktopDetails?.inventoryId,
                 onShowDetails: setDesktopDetails,
                 deleteAction: desktopDeletion,
-                toggleRefreshTable: setRefreshTable,
+                toggleRefreshData: setRefreshTable,
             };
             GlobalUtils.handleDelete(deletePayload);
-            setShow((prev) => ({ ...prev, delete: false }));
+            closeModal();
         }
     }, [show.delete, desktopDetails]);
 
