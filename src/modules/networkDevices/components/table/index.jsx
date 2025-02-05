@@ -5,7 +5,7 @@ import networkingDevicesTableConstants from "./utils/constants";
 import NetworkingDevicesTableUtils from "./utils";
 import "./styles/index.css";
 
-const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow }) => {
+const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
         rows: NetworkingDevicesTableUtils.tableRow(data),
         actionData: NetworkingDevicesTableUtils.tableActionData({ data, setShow, setNetworkingDeviceDetails }),
@@ -17,9 +17,10 @@ const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow }) => {
         externalFilters: networkingDevicesTableConstants.externalFilters,
         tableHeader: NetworkingDevicesTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
+        refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), []);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

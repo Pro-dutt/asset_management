@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NetworkingDevicesTable from "./components/table";
 import Modal from "@/components/Popup/Popup";
 import GlobalICONS from "@/lib/utils/icons";
@@ -7,16 +7,33 @@ import NetworkingDevicesInfoForm from "./components/form";
 import NetworkingDevicesStats from "./components/stats";
 import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
+import { useNetworkDevice } from "@/services/context/networkDevice";
+import GlobalUtils from "@/lib/utils";
 
 const NetworkingDevices = () => {
     const [show, setShow] = useState({});
     const [networkingDeviceDetails, setNetworkingDeviceDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const { networkDeviceDeletion } = useNetworkDevice();
+    const [refreshTable, setRefreshTable] = useState(false);
+    useEffect(() => {
+        if (show.delete && networkingDeviceDetails?.inventoryId) {
+            const deletePayload = {
+                recordId: networkingDeviceDetails?.inventoryId,
+                onShowDetails: setNetworkingDeviceDetails,
+                deleteAction: networkDeviceDeletion,
+                toggleRefreshData: setRefreshTable,
+            };
+            GlobalUtils.handleDelete(deletePayload);
+            closeModal();
+        }
+    }, [show.delete, networkingDeviceDetails]);
+
     return (
         <div id="networking_devices_module" className={styles.container}>
             <NetworkingDevicesStats />
-            <NetworkingDevicesTable setShow={setShow} setNetworkingDeviceDetails={setNetworkingDeviceDetails} />
+            <NetworkingDevicesTable setShow={setShow} setNetworkingDeviceDetails={setNetworkingDeviceDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
                 onClose={closeModal}

@@ -1,12 +1,12 @@
 import { createContext, useContext } from "react";
-import { useNetworkDeviceCreate, useNetworkDeviceUpdate } from "../hooks/networkDevice";
+import { useNetworkDeviceCreate, useNetworkDeviceDelete, useNetworkDeviceUpdate } from "../hooks/networkDevice";
 
 const NetworkDeviceContext = createContext(null);
 
 export const NetworkDeviceProvider = ({ children }) => {
     const networkDeviceCreationState = useNetworkDeviceCreate();
     const networkDeviceUpdationState = useNetworkDeviceUpdate();
-    const networkDeviceDeletionState = useNetworkDeviceUpdate();
+    const networkDeviceDeletionState = useNetworkDeviceDelete();
 
     return (
         <NetworkDeviceContext.Provider
