@@ -5,7 +5,7 @@ import laptopsTableConstants from "./utils/constants";
 import LaptopsTableUtils from "./utils";
 import "./styles/index.css";
 
-const LaptopsTable = ({ setLaptopDetails, setShow }) => {
+const LaptopsTable = ({ setLaptopDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
         rows: LaptopsTableUtils.tableRow(data),
         actionData: LaptopsTableUtils.tableActionData({ data, setShow, setLaptopDetails }),
@@ -17,9 +17,10 @@ const LaptopsTable = ({ setLaptopDetails, setShow }) => {
         externalFilters: laptopsTableConstants.externalFilters,
         tableHeader: LaptopsTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
+        refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), []);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

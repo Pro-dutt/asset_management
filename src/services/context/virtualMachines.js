@@ -1,17 +1,19 @@
 import { createContext, useContext } from "react";
-import { useVirtutalMachinesCreate, useVirtutalMachinesUpdate } from "../hooks/virtualMachines";
+import { useVirtutalMachinesCreate, useVirtutalMachinesDelete, useVirtutalMachinesUpdate } from "../hooks/virtualMachines";
 
 const VirtualMachinesContext = createContext(null);
 
 export const VirtualMachinesProvider = ({ children }) => {
     const virtualMachineCreationState = useVirtutalMachinesCreate();
     const virtualMachineUpdationState = useVirtutalMachinesUpdate();
+    const virtualMachineDeletionState = useVirtutalMachinesDelete();
 
     return (
         <VirtualMachinesContext.Provider
             value={{
                 ...virtualMachineCreationState,
                 ...virtualMachineUpdationState,
+                ...virtualMachineDeletionState,
             }}
         >
             {children}

@@ -14,6 +14,13 @@ class ServerApiService {
         });
         return response.data;
     }
+
+    static async delete(id, signal) {
+        const response = await serverApiClient.delete("/" + id, {
+            signal,
+        });
+        return response.data;
+    }
 }
 
 export default ServerApiService;

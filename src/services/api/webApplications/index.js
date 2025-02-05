@@ -14,6 +14,13 @@ class WebApplicationApiService {
         });
         return response.data;
     }
+
+    static async delete(id, signal) {
+        const response = await WebApplicationApiClient.delete("/" + id, {
+            signal,
+        });
+        return response.data;
+    }
 }
 
 export default WebApplicationApiService;

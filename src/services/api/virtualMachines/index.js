@@ -14,6 +14,13 @@ class VirtualMachinesApiService {
         });
         return response.data;
     }
+
+    static async delete(id, signal) {
+        const response = await virtutalMachinesApiClient.delete("/" + id, {
+            signal,
+        });
+        return response.data;
+    }
 }
 
 export default VirtualMachinesApiService;

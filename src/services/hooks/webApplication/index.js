@@ -101,3 +101,52 @@ export const useWebApplicationUpdate = () => {
         },
     };
 };
+
+export const useWebApplicationDelete = () => {
+    const { showErrorNotification, showSuccessNotification, successMessages, errorMessages } = useNotification();
+
+    const { isLoading, setLoading } = useLoading();
+
+    const DELETE_WEB_APPLICATION_KEY = apiConstants.loadingStateKeys.DELETE_WEB_APPLICATION;
+
+    const executeWebApplicationDeletion = useCallback(
+        async ({ id, onSuccess, onError, options }) => {
+            setLoading(DELETE_WEB_APPLICATION_KEY, true);
+            const controller = new AbortController();
+
+            try {
+                const data = await WebApplicationApiService.delete(id, controller.signal);
+
+                if (options?.showNotification) {
+                    showSuccessNotification({
+                        key: DELETE_WEB_APPLICATION_KEY,
+                        value: data,
+                    });
+                }
+
+                onSuccess?.();
+                return data;
+            } catch (error) {
+                showErrorNotification({
+                    key: DELETE_WEB_APPLICATION_KEY,
+                    value: error || "Failed to complete deletion",
+                });
+
+                onError?.();
+                throw error;
+            } finally {
+                setLoading(DELETE_WEB_APPLICATION_KEY, false);
+                return () => controller.abort();
+            }
+        },
+        [DELETE_WEB_APPLICATION_KEY, showErrorNotification, showSuccessNotification, setLoading]
+    );
+    return {
+        webApplicationDeletion: {
+            execute: executeWebApplicationDeletion,
+            isLoading: isLoading(DELETE_WEB_APPLICATION_KEY) || false,
+            successMessages: successMessages?.[DELETE_WEB_APPLICATION_KEY],
+            errorMessages: errorMessages?.[DELETE_WEB_APPLICATION_KEY],
+        },
+    };
+};

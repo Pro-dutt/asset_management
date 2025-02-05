@@ -5,7 +5,7 @@ import serversTableConstants from "./utils/constants";
 import ServersTableUtils from "./utils";
 import "./styles/index.css";
 
-const ServersTable = ({ setServerDetails, setShow }) => {
+const ServersTable = ({ setServerDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
         rows: ServersTableUtils.tableRow(data),
         actionData: ServersTableUtils.tableActionData({ data, setShow, setServerDetails }),
@@ -17,9 +17,10 @@ const ServersTable = ({ setServerDetails, setShow }) => {
         externalFilters: serversTableConstants.externalFilters,
         tableHeader: ServersTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
+        refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), []);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };
