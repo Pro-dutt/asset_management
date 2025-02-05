@@ -1,3 +1,4 @@
+import ConfirmationAlert from "@/components/ConfirmationAlert";
 import axios from "axios";
 
 class GlobalUtils {
@@ -537,6 +538,41 @@ class GlobalUtils {
             },
         });
     };
+
+    static async handleDelete({ recordId, onShowDetails, deleteAction, toggleRefreshTable }) {
+        ConfirmationAlert.showDeleteConfirmation({
+            title: "Delete Item",
+            text: "Are you sure you want to delete this item?",
+            onConfirm: async () => {
+                try {
+                    if (recordId) {
+                        await deleteAction.execute({
+                            id: recordId,
+                            options: { showNotification: true },
+                        });
+
+                        ConfirmationAlert.showSuccess({
+                            title: "Deleted!",
+                            text: "Your item has been deleted successfully.",
+                        });
+
+                        onShowDetails?.(null);
+                        toggleRefreshTable((prev) => !prev);
+                    } else {
+                        console.error("Invalid record ID for deletion");
+                    }
+                } catch (error) {
+                    ConfirmationAlert.showError({
+                        title: "Deletion Failed",
+                        text: error.message || "An unexpected error occurred.",
+                    });
+                }
+            },
+            onCancel: () => {
+                onShowDetails?.((prev) => ({ ...prev, delete: false }));
+            },
+        });
+    }
 }
 
 export default GlobalUtils;

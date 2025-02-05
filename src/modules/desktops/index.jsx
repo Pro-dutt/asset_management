@@ -9,6 +9,7 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import DesktopsTableUtils from "./components/table/utils";
 import { useDesktop } from "@/services/context/desktop";
+import GlobalUtils from "@/lib/utils";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -16,9 +17,16 @@ const Desktops = () => {
     const [desktopDetails, setDesktopDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
+    const [refreshTable, setRefreshTable] = useState(false);
     useEffect(() => {
         if (show.delete && desktopDetails) {
-            DesktopsTableUtils.handleDelete({ data: desktopDetails, setDesktopDetails, desktopDeletion });
+            const deletePayload = {
+                recordId: desktopDetails?.inventoryId,
+                onShowDetails: setDesktopDetails,
+                deleteAction: desktopDeletion,
+                toggleRefreshTable: setRefreshTable,
+            };
+            GlobalUtils.handleDelete(deletePayload);
             setShow((prev) => ({ ...prev, delete: false }));
         }
     }, [show.delete, desktopDetails]);
@@ -26,7 +34,7 @@ const Desktops = () => {
     return (
         <div id="desktops_module" className={styles.container}>
             <DesktopsStats />
-            <DesktopsTable setShow={setShow} setDesktopDetails={setDesktopDetails} />
+            <DesktopsTable setShow={setShow} setDesktopDetails={setDesktopDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
                 onClose={closeModal}

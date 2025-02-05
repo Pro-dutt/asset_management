@@ -60,7 +60,7 @@ const Table = ({ tableData }) => {
 
     useEffect(() => {
         fetchData(initialValues);
-    }, [initialValues, tableData?.url]);
+    }, [initialValues, tableData?.url, tableData?.refreshTable]);
 
     return (
         <div className={styles.table_container}>
