@@ -36,3 +36,11 @@
 .filepond--credits {
     display: none;
 }
+
+[data-theme="dark"] {
+    --transparent: #2f3349;
+    --initial-field-background-color: var(--transparent);
+    --active-field-background-color: var(--transparent);
+    --disabled-field-background-color: var(--transparent);
+    --text-color: white;
+}

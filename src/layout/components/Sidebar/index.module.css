@@ -1,6 +1,6 @@
 .sidebar {
     width: 260px;
-    background-color: white;
+    background-color: var(--whiteBackground);
     color: #444050;
     transition: width 0.3s ease;
     overflow: hidden;
@@ -31,6 +31,7 @@
 }
 .brandName p:nth-child(1) {
     font-weight: 550;
+    color: var(--text-black);
 }
 .brandName p:nth-child(2) {
     font-size: 0.7rem;

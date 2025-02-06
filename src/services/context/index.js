@@ -8,28 +8,31 @@ import { ServerProvider } from "./server";
 import { DesktopProvider } from "./desktop";
 import { StatsProvider } from "./stats";
 import { ChartsProvider } from "./charts";
+import { ThemeProvider } from "./ThemeContext";
 
 const ContextProviders = ({ children }) => {
     return (
-        <LoadingProvider>
-            <NotificationProvider>
-                <DesktopProvider>
-                    <VirtualMachinesProvider>
-                        <WebApplicationProvider>
-                            <NetworkDeviceProvider>
-                                <ServerProvider>
-                                    <StatsProvider>
-                                        <ChartsProvider>
-                                            <EndPointsProvider>{children}</EndPointsProvider>
-                                        </ChartsProvider>
-                                    </StatsProvider>
-                                </ServerProvider>
-                            </NetworkDeviceProvider>
-                        </WebApplicationProvider>
-                    </VirtualMachinesProvider>
-                </DesktopProvider>
-            </NotificationProvider>
-        </LoadingProvider>
+        <ThemeProvider>
+            <LoadingProvider>
+                <NotificationProvider>
+                    <DesktopProvider>
+                        <VirtualMachinesProvider>
+                            <WebApplicationProvider>
+                                <NetworkDeviceProvider>
+                                    <ServerProvider>
+                                        <StatsProvider>
+                                            <ChartsProvider>
+                                                <EndPointsProvider>{children}</EndPointsProvider>
+                                            </ChartsProvider>
+                                        </StatsProvider>
+                                    </ServerProvider>
+                                </NetworkDeviceProvider>
+                            </WebApplicationProvider>
+                        </VirtualMachinesProvider>
+                    </DesktopProvider>
+                </NotificationProvider>
+            </LoadingProvider>
+        </ThemeProvider>
     );
 };
 export default ContextProviders;

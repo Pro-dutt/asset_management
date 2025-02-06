@@ -5,6 +5,7 @@
 
 :root {
     --backgroundColor: #f8f8fa;
+    --whiteBackground: white;
     --foreground: #171717;
     --v-global-theme-primary: 115, 103, 240;
     --primary-hover-color: rgba(211, 206, 207, 0.2);
@@ -16,6 +17,7 @@
     --text-active-color: white;
     --bg-warning-color: #ff9f43;
     --primary-font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --text-black: black;
     --text-white: white;
     --text-muted: #6d6b77;
     --violet-color: rgb(115, 103, 240);
@@ -47,6 +49,13 @@
     --max-width: 1800px;
     --white-color: #ffffff;
     --border-color: #f0f0f0;
+}
+[data-theme="dark"] {
+    --transparent: #2f3349;
+    --backgroundColor: #25293c;
+    --whiteBackground: var(--transparent);
+    --text-color: white !important;
+    --text-black: white;
 }
 /* :root {
     --background: #ffffff;

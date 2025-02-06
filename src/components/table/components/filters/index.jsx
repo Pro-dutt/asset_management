@@ -64,7 +64,7 @@ const TableFilter = ({ data, initialValues, router, searchParams }) => {
 
         return [...updatedInitialButtons, ...additionalButtons];
     };
-    console.log(formValues);
+
     return (
         <div className={styles.container}>
             <div className={styles.heading}>
