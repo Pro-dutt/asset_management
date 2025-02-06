@@ -42,7 +42,7 @@ const Dropdown = ({ trigger, content, dropDownContainerStyle, dropDownContainerC
             <div onClick={toggleDropdown} className={styles.dropdown_trigger}>
                 {trigger}
             </div>
-            {isOpen && (
+            {isOpen && content && (
                 <div className={`${styles.dropdown_content} ${dropDownContainerClass || ""}`} style={dropDownContainerStyle}>
                     {renderChildren()}
                 </div>

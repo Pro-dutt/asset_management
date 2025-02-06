@@ -1,10 +1,10 @@
+import DesktopUtils from "@/modules/desktops/components/form/utils";
+import desktopConstants from "@/modules/desktops/components/form/utils/constants";
+import { useLaptop } from "@/services/context/laptop";
 import { useMemo } from "react";
-import DesktopUtils from "../utils";
-import { useDesktop } from "@/services/context/desktop";
-import desktopConstants from "../utils/constants";
 
-export const useDesktopInfoForm = (data = {}, onSuccess) => {
-    const { desktopCreation, desktopUpdation } = useDesktop();
+export const useLaptopInfoForm = (data = {}, onSuccess) => {
+    const { laptopCreation, laptopUpdation } = useLaptop();
     const formConfig = useMemo(
         () => [
             ...DesktopUtils.createFormSection(desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),
@@ -18,7 +18,8 @@ export const useDesktopInfoForm = (data = {}, onSuccess) => {
         [data]
     );
 
-    const operation = data?.inventoryId ? desktopUpdation : desktopCreation;
+    const operation = data?.inventoryId ? laptopUpdation : laptopCreation;
+
     const handleFormSubmit = (formData) => {
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),

@@ -9,7 +9,6 @@
     --active-box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);
     --primary-box-shadow: rgba(245, 134, 52, 0.3);
     --text-color: rgb(47, 43, 61, 0.9);
-
     --error-color: rgb(255, 76, 81);
 
     --label-font-size: 0.8125rem;
@@ -35,4 +34,12 @@
 }
 .filepond--credits {
     display: none;
+}
+
+[data-theme="dark"] {
+    --transparent: #2f3349;
+    --initial-field-background-color: var(--transparent);
+    --active-field-background-color: var(--transparent);
+    --disabled-field-background-color: var(--transparent);
+    --text-color: white;
 }

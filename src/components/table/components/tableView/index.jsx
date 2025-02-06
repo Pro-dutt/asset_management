@@ -5,7 +5,7 @@ import TableRow from "../tableRow";
 import DataNotFound from "@/components/DataNotFound";
 import TableLoading from "../tableLoading";
 
-const TableView = ({ isLoading, checkboxState, setCheckboxState, data, router, initialValues, searchParams }) => {
+const TableView = ({ isLoading, checkboxState, setCheckboxState, data, router, initialValues }) => {
     if (isLoading) {
         return <TableLoading />;
     }
@@ -14,7 +14,7 @@ const TableView = ({ isLoading, checkboxState, setCheckboxState, data, router, i
         <>
             {data?.rows?.length > 0 ? (
                 <table className="table">
-                    <TableHeader checkboxState={checkboxState} setCheckboxState={setCheckboxState} data={data} router={router} initialValues={initialValues} searchParams={searchParams} />
+                    <TableHeader checkboxState={checkboxState} setCheckboxState={setCheckboxState} data={data} router={router} initialValues={initialValues} />
                     <TableRow checkboxState={checkboxState} setCheckboxState={setCheckboxState} data={data} initialValues={initialValues} />
                 </table>
             ) : (

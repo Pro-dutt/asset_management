@@ -22,6 +22,9 @@ const apiConstants = {
     desktop: {
         BASE_ROUTE: "/desktop",
     },
+    laptop: {
+        BASE_ROUTE: "/laptop",
+    },
     stats: {
         BASE_ROUTE: "/stats",
     },
@@ -48,6 +51,11 @@ const apiConstants = {
         CREATE_DESKTOP: "createDesktop",
         UPDATE_DESKTOP: "updateDesktop",
         DELETE_DESKTOP: "deleteDesktop",
+
+        CREATE_LAPTOP: "createLaptop",
+        UPDATE_LAPTOP: "updateLaptop",
+        DELETE_LAPTOP: "deleteLaptop",
+
         GET_STATS: "getStats",
         GET_CHARTS: "getCharts",
     },

@@ -20,9 +20,8 @@ export const useNetworkDeviceInfoForm = (data = {}, onSuccess) => {
         [data]
     );
 
+    const operation = data?.inventoryId ? networkDeviceUpdation : networkDeviceCreation;
     const handleFormSubmit = (formData) => {
-        const operation = data?.inventoryId ? networkDeviceUpdation : networkDeviceCreation;
-
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
@@ -31,5 +30,5 @@ export const useNetworkDeviceInfoForm = (data = {}, onSuccess) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: networkDeviceCreation?.isLoading, NetworkDeviceInfoFormErrors: networkDeviceCreation?.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: operation?.isLoading, NetworkDeviceInfoFormErrors: operation?.errorMessages };
 };

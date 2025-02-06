@@ -20,9 +20,8 @@ export const useServerInfoForm = (data = {}, onSuccess) => {
         [data]
     );
 
+    const operation = data?.inventoryId ? serverUpdation : serverCreation;
     const handleFormSubmit = (formData) => {
-        const operation = data?.inventoryId ? serverUpdation : serverCreation;
-
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
@@ -31,5 +30,5 @@ export const useServerInfoForm = (data = {}, onSuccess) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: serverCreation?.isLoading, serverInfoFormErrors: serverCreation?.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: operation?.isLoading, serverInfoFormErrors: operation?.errorMessages };
 };

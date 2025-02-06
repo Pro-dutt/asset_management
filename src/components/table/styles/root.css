@@ -9,3 +9,9 @@
     --table-max-width: 1500px;
     --table-error-color: 255, 76, 81;
 }
+
+[data-theme="dark"] {
+    --transparent: #2f3349;
+    --table-background-color: var(--transparent);
+    --text-theme: 255, 255, 255;
+}

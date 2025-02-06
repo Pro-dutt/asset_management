@@ -2,6 +2,11 @@ import GlobalUtils from ".";
 import GlobalICONS from "./icons";
 
 const globalConstants = {
+    THEME: {
+        LIGHT: "light",
+        DARK: "dark",
+    },
+
     ENVIRONMENTS: GlobalUtils.createEnum([
         { key: "DEVELOPMENT", value: "DEVELOPMENT", label: "Development" },
         { key: "STAGING", value: "STAGING", label: "Staging" },
