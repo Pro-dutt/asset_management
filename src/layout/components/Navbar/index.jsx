@@ -15,13 +15,12 @@ const Navbar = () => {
     return (
         <div className={styles.container__wrapper}>
             <header className={styles.navbar}>
-                <div className={styles.search_bar}>
+                {/* <div className={styles.search_bar}>
                     <span>{ICONS.SEARCH}</span>
-                    {/* <img src={searchIcon} alt="" /> */}
                     <p>
                         Search <span>⌘K</span>
                     </p>
-                </div>
+                </div> */}
                 <ul className={styles.left_icon}>
                     <li>
                         <Dropdown
@@ -32,7 +31,7 @@ const Navbar = () => {
                             }
                         />
                     </li>
-                    <li>
+                    {/* <li>
                         <Dropdown
                             trigger={<p className={styles.menu_list_icon}>{ICONS.GRID}</p>}
                             content={
@@ -52,8 +51,8 @@ const Navbar = () => {
                                 </div>
                             }
                         />
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Dropdown
                             dropDownContainerClass={styles.dropdownContent}
                             trigger={<img src={profileIcon} alt="" />}
@@ -97,7 +96,7 @@ const Navbar = () => {
                                 </div>
                             }
                         />
-                    </li>
+                    </li> */}
                 </ul>
             </header>
         </div>

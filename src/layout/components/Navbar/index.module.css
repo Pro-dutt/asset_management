@@ -41,6 +41,8 @@
 }
 .left_icon {
     display: flex;
+    margin-left: auto;
+    margin-right: 1rem;
 }
 
 .userIcon img {
