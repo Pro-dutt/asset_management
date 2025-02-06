@@ -49,9 +49,8 @@ export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
     //     });
     // };
 
+    const operation = data?.inventoryId ? virtualMachineUpdation : virtualMachineCreation;
     const handleFormSubmit = (formData) => {
-        const operation = data?.inventoryId ? virtualMachineUpdation : virtualMachineCreation;
-
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
@@ -60,5 +59,5 @@ export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: virtualMachineCreation.isLoading, virtualMachineInfoFormErrors: virtualMachineCreation.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: operation.isLoading, virtualMachineInfoFormErrors: operation.errorMessages };
 };

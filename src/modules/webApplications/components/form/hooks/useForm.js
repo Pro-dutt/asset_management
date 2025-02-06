@@ -20,9 +20,8 @@ export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
         [data]
     );
 
+    const operation = data?.inventoryId ? webApplicationUpdation : webApplicationCreation;
     const handleFormSubmit = (formData) => {
-        const operation = data?.inventoryId ? webApplicationUpdation : webApplicationCreation;
-
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
@@ -31,5 +30,5 @@ export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: webApplicationCreation?.isLoading, WebApplicationInfoFormErrors: webApplicationCreation?.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: operation?.isLoading, WebApplicationInfoFormErrors: operation?.errorMessages };
 };
