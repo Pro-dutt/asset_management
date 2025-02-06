@@ -47,7 +47,7 @@ const Laptops = () => {
                 icon={GlobalICONS.LAPTOP}
                 description="Provide the required details to configure and register a new Laptop"
             >
-                <AddAssets module={{ name: "laptop", form: <LaptopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "laptop", onSuccess, form: <LaptopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

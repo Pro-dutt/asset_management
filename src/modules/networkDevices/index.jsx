@@ -47,7 +47,7 @@ const NetworkingDevices = () => {
                 icon={GlobalICONS.NETWORKING_DEVICE}
                 description="Provide the required details to configure and register a new Networking Device"
             >
-                <AddAssets module={{ name: "networking device", form: <NetworkingDevicesInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "networking device", onSuccess, form: <NetworkingDevicesInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

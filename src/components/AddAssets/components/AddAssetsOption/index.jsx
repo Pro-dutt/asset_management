@@ -4,8 +4,8 @@ import React from "react";
 import styles from "./index.module.css";
 import AssetOptionCard from "../AssetsOptionCard";
 const AddAssetsOptions = ({ setForm, module }) => {
-    const handleFormSelection = () => {
-        setForm("manualForm");
+    const handleFormSelection = (formType) => {
+        setForm(formType || "manualForm");
     };
     return (
         <div className={styles.popupContainer}>
@@ -22,9 +22,9 @@ const AddAssetsOptions = ({ setForm, module }) => {
                     title={`Scan and Discover ${GlobalUtils.capitalizeEachWord(module.name)}`}
                     subtitle={`Automatically detect and record new ${module.name}`}
                 />
-                <AssetOptionCard icon={GlobalICONS.IMPORT} title="Import Using CSV" subtitle={`Upload ${module.name} information in bulk`} />
+                <AssetOptionCard onClick={() => handleFormSelection("bulkUploadForm")} icon={GlobalICONS.IMPORT} title="Import Using CSV" subtitle={`Upload ${module.name} information in bulk`} />
                 <AssetOptionCard
-                    onClick={handleFormSelection}
+                    onClick={() => handleFormSelection("manualForm")}
                     icon={GlobalICONS.CREATE}
                     title={`Create ${GlobalUtils.capitalizeEachWord(module.name)} Manually`}
                     subtitle={`Use an ${module.name} form to add ${module.name}`}
