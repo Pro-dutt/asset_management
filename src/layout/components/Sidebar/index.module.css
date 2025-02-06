@@ -15,7 +15,7 @@
 .logo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0.8rem;
     padding-left: 0.6rem;
     padding-top: 0.9rem;
@@ -25,10 +25,22 @@
     height: auto;
 }
 
+.brandName {
+    margin-left: 0.1rem;
+    line-height: 1.25;
+}
+.brandName p:nth-child(1) {
+    font-size: 1.02rem;
+}
+.brandName p:nth-child(2) {
+    font-size: 0.7rem;
+    color: var(--disabled-text-color);
+}
+
 .logoText {
     color: #444050;
     font-size: 1.375rem;
-    margin-left: 0.75rem;
+    margin-left: auto;
     font-weight: 700 !important;
     display: flex;
     align-items: center;
