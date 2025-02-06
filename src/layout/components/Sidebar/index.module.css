@@ -51,7 +51,8 @@
     max-height: calc(100% - 4.5rem);
     overflow: auto;
 }
-.nav li {
+.nav li,
+.nav ul > a {
     display: flex;
     align-items: center;
     padding: 7px 12px;
@@ -63,7 +64,9 @@
     min-height: 33px;
     /* padding: 0.5rem 0.75rem; */
     text-transform: capitalize;
+    text-decoration: none;
 }
+
 .nav li a {
     text-decoration: none;
     color: var(--text-color);

@@ -168,9 +168,11 @@ const Sidebar = ({ userRole = "admin" }) => {
                     </React.Fragment>
                 );
             }
+            const Comp = item.href ? "a" : "li";
 
             return (
-                <li
+                <Comp
+                    href={item.href}
                     key={item.name}
                     onClick={() => handleMenuItemClick(item.link ? item.link : "")}
                     className={`${styles.menuItem} ${isItemActive(item) ? styles.active : ""} ${!isSidebarOpen ? styles.collapsedMenuItem : ""} ${item.className ? styles[item.className] : ""} ${
@@ -184,7 +186,7 @@ const Sidebar = ({ userRole = "admin" }) => {
                         <span className={styles.circle_icon}>{ICONS.CIRCLE}</span>
                     )}
                     {isSidebarOpen && <p className={styles.title}>{item.name}</p>}
-                </li>
+                </Comp>
             );
         },
         [isSidebarOpen, expandedGroups, isItemVisible, isItemActive, toggleMenuGroup, handleMenuItemClick]

@@ -49,8 +49,9 @@
     },
     {
         "name": "Logout",
-        "link": "/user/logout",
+        "link": "/logout",
         "permission": ["admin", "auditor"],
-        "icon": "logout"
+        "icon": "logout",
+        "href": "/user/logout"
     }
 ]
