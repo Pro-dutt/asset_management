@@ -203,9 +203,15 @@ const Sidebar = ({ userRole = "admin" }) => {
                 <div className={styles.logo}>
                     <img src={logo} alt="Logo" />
                     {isSidebarOpen && (
-                        <span onClick={isLockedOpen ? unlockSidebar : lockSidebar} className={styles.logoText}>
-                            {isLockedOpen ? ICONS.SIDEBAR_LOCK : ICONS.SIDEBAR_UNLOCK}
-                        </span>
+                        <>
+                            <div className={styles.brandName}>
+                                <p>Asset Management</p>
+                                <p>Streamline Your Assets</p>
+                            </div>
+                            <span onClick={isLockedOpen ? unlockSidebar : lockSidebar} className={styles.logoText}>
+                                {isLockedOpen ? ICONS.SIDEBAR_LOCK : ICONS.SIDEBAR_UNLOCK}
+                            </span>
+                        </>
                     )}
                 </div>
 

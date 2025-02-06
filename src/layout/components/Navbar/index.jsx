@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import profileIcon from "./assets/profileIcon.png";
 import Dropdown from "@/components/DropDown";
 import ICONS from "@/lib/utils/icons";
 import { Link } from "react-router-dom";
+import { useTheme } from "@/services/context/ThemeContext";
 
 const Navbar = () => {
+    const { theme, toggleTheme } = useTheme();
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
+
     return (
         <div className={styles.container__wrapper}>
             <header className={styles.navbar}>
@@ -19,11 +25,10 @@ const Navbar = () => {
                 <ul className={styles.left_icon}>
                     <li>
                         <Dropdown
-                            trigger={<p className={styles.menu_list_icon}>{ICONS.THEME}</p>}
-                            content={
-                                <div>
-                                    <div className={styles.menuLinksContainer}>Theme Changer</div>
-                                </div>
+                            trigger={
+                                <p className={styles.menu_list_icon} onClick={toggleTheme}>
+                                    {theme === "light" ? ICONS.THEME : ICONS.MOON}
+                                </p>
                             }
                         />
                     </li>
