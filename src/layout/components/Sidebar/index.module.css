@@ -26,11 +26,11 @@
 }
 
 .brandName {
-    margin-left: 0.1rem;
+    margin-left: 0.3rem;
     line-height: 1.25;
 }
 .brandName p:nth-child(1) {
-    font-size: 1.02rem;
+    font-weight: 550;
 }
 .brandName p:nth-child(2) {
     font-size: 0.7rem;
