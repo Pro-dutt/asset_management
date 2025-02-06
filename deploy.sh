@@ -3,11 +3,11 @@
 # Variables
 REMOTE_USER="manoj"
 REMOTE_HOST="192.168.22.73"
-REMOTE_PATH="/home/manoj/development/am_drupal_frontend_v2/src/modules/custom/react_app/static"
-REMOTE_PATH_FOR_MEDIA="/home/manoj/development/am_drupal_frontend_v2/src/static/media"
+REMOTE_PATH="/home/manoj/development/am_drupal_frontend_v3/src/modules/custom/react_app/static"
+REMOTE_PATH_FOR_MEDIA="/home/manoj/development/am_drupal_frontend_v3/src/static/media"
 BUILD_PATH="./build/static"
 BUILD_PATH_FOR_MEDIA="./build/static/media"
-TWIG_FILE="/home/manoj/development/am_drupal_frontend_v2/src/modules/custom/react_app/templates/react-template.html.twig" # Update with the correct path to your Twig file
+TWIG_FILE="/home/manoj/development/am_drupal_frontend_v3/src/modules/custom/react_app/templates/react-template.html.twig" # Update with the correct path to your Twig file
 REMOTE_PASS="manojdev#321"  # You can store the password in a secure way, like an environment variable.
 
 # Build the React app

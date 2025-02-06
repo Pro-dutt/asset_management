@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import styles from "./styles/index.module.css";
 import Table from "@/components/table";
 import desktopsTableConstants from "./utils/constants";
