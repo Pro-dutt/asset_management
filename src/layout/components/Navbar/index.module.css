@@ -43,6 +43,16 @@
     display: flex;
 }
 
+.dropdownMenu {
+    width: 240px;
+    --v-overlay-anchor-origin: bottom right;
+    transform-origin: right top;
+    top: 12px;
+    left: 1514px;
+    min-width: 38px;
+    max-width: 1879px;
+    max-height: 333px;
+}
 .userIcon img {
     width: 30px;
     height: 30px;
@@ -53,7 +63,7 @@
     display: flex;
     align-items: center;
     padding-block: 1rem;
-    padding-inline: 1.5rem;
+    padding-inline: 1rem;
     border-bottom: 1px solid #77728833;
 }
 
@@ -89,7 +99,11 @@
     border-radius: 50%;
 }
 
-.menuLinksContainer a {
+.menuLinksContainer .links {
+    margin-top: 0.2rem;
+}
+
+.menuLinksContainer .links a {
     display: flex;
     text-decoration: none;
     color: #444050;
@@ -97,11 +111,12 @@
     font-size: 0.9375rem;
     font-weight: 400;
     gap: 0.5rem;
-    padding-inline: 1.8rem;
-    padding-block: 1rem;
+    padding-inline: 1.3rem;
+    padding-block: 0.5rem;
 }
 .menuLinksContainer .links a:hover {
     background-color: #f3f2f3;
+    border-radius: 0.3rem;
 }
 
 .menuLinksContainer a svg {

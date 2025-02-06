@@ -10,6 +10,7 @@ import Desktops from "./modules/desktops";
 import Server from "./modules/server";
 import Laptops from "./modules/laptops";
 import { ToastContainer } from "react-toastify";
+import ProfilePage from "./modules/userProfile";
 
 function App() {
     return (
@@ -69,6 +70,15 @@ function App() {
                     element={
                         <React.Suspense fallback={""}>
                             <Server />
+                        </React.Suspense>
+                    }
+                />
+
+                <Route
+                    path="/user-profile"
+                    element={
+                        <React.Suspense fallback={""}>
+                            <ProfilePage />
                         </React.Suspense>
                     }
                 />
