@@ -286,3 +286,6 @@
 .button.fullWidth {
     width: 100% !important;
 }
+.button a {
+    color: var(--primary-text-color);
+}

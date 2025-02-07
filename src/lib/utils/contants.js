@@ -7,6 +7,11 @@ const globalConstants = {
         DARK: "dark",
     },
 
+    ROLES: {
+        ADMIN: "Admin",
+        USER: "User",
+    },
+
     ENVIRONMENTS: GlobalUtils.createEnum([
         { key: "DEVELOPMENT", value: "DEVELOPMENT", label: "Development" },
         { key: "STAGING", value: "STAGING", label: "Staging" },

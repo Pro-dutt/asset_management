@@ -1,6 +1,7 @@
 .sidebar {
     width: 260px;
     background-color: var(--whiteBackground);
+    background-color: var(--whiteBackground);
     color: #444050;
     transition: width 0.3s ease;
     overflow: hidden;
@@ -15,6 +16,7 @@
 .logo {
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
     /* justify-content: space-between; */
     padding: 0.8rem;
     padding-left: 0.6rem;
@@ -38,9 +40,23 @@
     color: var(--disabled-text-color);
 }
 
+.brandName {
+    margin-left: 0.3rem;
+    line-height: 1.25;
+}
+.brandName p:nth-child(1) {
+    font-weight: 550;
+    color: var(--text-black);
+}
+.brandName p:nth-child(2) {
+    font-size: 0.7rem;
+    color: var(--disabled-text-color);
+}
+
 .logoText {
     color: #444050;
     font-size: 1.375rem;
+    margin-left: auto;
     margin-left: auto;
     font-weight: 700 !important;
     display: flex;

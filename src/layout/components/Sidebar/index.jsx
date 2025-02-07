@@ -202,6 +202,7 @@ const Sidebar = ({ userRole = "admin" }) => {
             >
                 <div className={styles.logo}>
                     <img src={logo} alt="Logo" />
+
                     {isSidebarOpen && (
                         <>
                             <div className={styles.brandName}>

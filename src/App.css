@@ -39,3 +39,6 @@ select {
     border-style: solid;
     border-color: #e5e7eb;
 }
+a {
+    text-decoration: none;
+}
