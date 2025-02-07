@@ -8,7 +8,9 @@ const globalConstants = {
     },
 
     ROLES: {
-        ADMIN: "Admin",
+        ADMINISTRATOR: "administrator",
+        AUTHENTICATED: "authenticated",
+        SOME: "some",
         USER: "User",
     },
 

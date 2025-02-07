@@ -8,6 +8,11 @@
     cursor: pointer;
 }
 
+.dropdown_trigger img {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+}
 .dropdown_content {
     position: absolute;
     background-color: white;

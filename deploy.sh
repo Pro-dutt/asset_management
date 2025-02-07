@@ -12,7 +12,7 @@ REMOTE_PASS="manojdev#321"  # You can store the password in a secure way, like a
 
 # Build the React app
 echo "Building the React app..."
-# npm run build
+npm run build
 
 # Check if build was successful
 if [ $? -ne 0 ]; then

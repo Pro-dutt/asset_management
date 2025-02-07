@@ -10,29 +10,32 @@ import { StatsProvider } from "./stats";
 import { ChartsProvider } from "./charts";
 import { ThemeProvider } from "./ThemeContext";
 import { LaptopProvider } from "./laptop";
+import { UserProvider } from "./user";
 
 const ContextProviders = ({ children }) => {
     return (
         <ThemeProvider>
             <LoadingProvider>
                 <NotificationProvider>
-                    <LaptopProvider>
-                        <DesktopProvider>
-                            <VirtualMachinesProvider>
-                                <WebApplicationProvider>
-                                    <NetworkDeviceProvider>
-                                        <ServerProvider>
-                                            <StatsProvider>
-                                                <ChartsProvider>
-                                                    <EndPointsProvider>{children}</EndPointsProvider>
-                                                </ChartsProvider>
-                                            </StatsProvider>
-                                        </ServerProvider>
-                                    </NetworkDeviceProvider>
-                                </WebApplicationProvider>
-                            </VirtualMachinesProvider>
-                        </DesktopProvider>
-                    </LaptopProvider>
+                    <UserProvider>
+                        <LaptopProvider>
+                            <DesktopProvider>
+                                <VirtualMachinesProvider>
+                                    <WebApplicationProvider>
+                                        <NetworkDeviceProvider>
+                                            <ServerProvider>
+                                                <StatsProvider>
+                                                    <ChartsProvider>
+                                                        <EndPointsProvider>{children}</EndPointsProvider>
+                                                    </ChartsProvider>
+                                                </StatsProvider>
+                                            </ServerProvider>
+                                        </NetworkDeviceProvider>
+                                    </WebApplicationProvider>
+                                </VirtualMachinesProvider>
+                            </DesktopProvider>
+                        </LaptopProvider>
+                    </UserProvider>
                 </NotificationProvider>
             </LoadingProvider>
         </ThemeProvider>

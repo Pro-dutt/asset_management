@@ -31,6 +31,15 @@ const apiConstants = {
     charts: {
         BASE_ROUTE: "/charts",
     },
+    user: {
+        BASE_ROUTE: "/user",
+        GET_CURRENT_USER: "/get-current-user",
+        UPDATE_USER_PICTURE: "/update-profile-picture",
+        UPDATE_USER_DETAILS: "/update-user-details",
+        UPDATE_USER_PASSWORD: "/update-password",
+        LOGIN: "/user/login",
+        LOGOUT: "/user/logout",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         UPDATE_VIRTUAL_MACHINE: "updateVirtualMachine",
@@ -58,6 +67,11 @@ const apiConstants = {
 
         GET_STATS: "getStats",
         GET_CHARTS: "getCharts",
+
+        GET_CURRENT_USER: "getCurrentUser",
+        UPDATE_USER_PICTURE: "updateUserPicture",
+        UPDATE_USER_DETAILS: "updateUser",
+        UPDATE_USER_PASSWORD: "updatePassword",
     },
 };
 export default apiConstants;

@@ -8,12 +8,21 @@ import { useTheme } from "@/services/context/ThemeContext";
 import navbarICONS from "./utils/icons";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
 import SidebarIcons from "../Sidebar/data/sidebarIcon";
+import { useUser } from "@/services/context/user";
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
+    const { getCurrentUser } = useUser();
+
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
+
+    useEffect(() => {
+        getCurrentUser.fetch({
+            params: {},
+        });
+    }, []);
 
     return (
         <div className={styles.container__wrapper}>
@@ -59,13 +68,15 @@ const Navbar = () => {
                     <li>
                         <Dropdown
                             dropDownContainerClass={styles.dropdownContent}
-                            trigger={<img src={profileIcon} alt="" />}
+                            // trigger={<img src={profileIcon} alt="" />}
+                            trigger={<img src={getCurrentUser.data.profile_picture || profileIcon} alt="User Avatar" />}
                             content={
                                 <div className={styles.dropdownMenu}>
                                     <div className={styles.userContainer}>
                                         <span>
                                             {/* <img src={"/images/profile.webp"} alt="User Profile" width={50} height={50} className={styles.profileimg} /> */}
-                                            <img src={profileIcon} alt="" />
+                                            {/* <img src={profileIcon} alt="" /> */}
+                                            <img src={getCurrentUser.data.profile_picture || profileIcon} alt="User Avatar" />
                                         </span>
                                         <div className={styles.username}>
                                             <span>{"Name"}</span>
@@ -91,7 +102,7 @@ const Navbar = () => {
                             }
                         />
                     </li>
-                    <li className={styles.userInfo}>
+                    {/* <li className={styles.userInfo}>
                         <Dropdown
                             dropDownContainerStyle={{ minWidth: "250px" }}
                             dropDownContainerClass={styles.dropdownContent}
@@ -124,7 +135,7 @@ const Navbar = () => {
                                 </div>
                             }
                         />
-                    </li>
+                    </li> */}
                 </ul>
             </header>
         </div>
