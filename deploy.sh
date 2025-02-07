@@ -9,11 +9,10 @@ BUILD_PATH="./build/static"
 BUILD_PATH_FOR_MEDIA="./build/static/media"
 TWIG_FILE="/home/manoj/development/am_drupal_frontend_v3/src/modules/custom/react_app/templates/react-template.html.twig" # Update with the correct path to your Twig file
 REMOTE_PASS="manojdev#321"  # You can store the password in a secure way, like an environment variable.
-DRUSH_CR_COMMAND="/home/manoj/development/am_drupal_frontend_v3/src/vendor/bin/drush cr"
 
 # Build the React app
 echo "Building the React app..."
-npm run build
+# npm run build
 
 # Check if build was successful
 if [ $? -ne 0 ]; then
@@ -69,9 +68,9 @@ if [ $? -eq 0 ]; then
         # Update the Twig file with new paths
         sed -i "s|{{ file_url('modules/custom/react_app/static/css/main.*.css') }}|{{ file_url('modules/custom/react_app/static/css/main.\$NEW_CSS_VERSION.css') }}|g" $TWIG_FILE
         sed -i "s|{{ file_url('modules/custom/react_app/static/js/main.*.js') }}|{{ file_url('modules/custom/react_app/static/js/main.\$NEW_JS_VERSION.js') }}|g" $TWIG_FILE
-        ./
-        sudo -S $DRUSH_CR_COMMAND
 EOF
+
 else
     echo "Deployment failed."
 fi
+
