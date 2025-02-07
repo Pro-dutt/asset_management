@@ -50,7 +50,6 @@ const AssetsStatusCountChart = ({ initialData = sampleAssetsClassificationData, 
                 return key;
         }
     };
-    const togglePackageList = () => setShowPackageList((pre) => !pre);
     const getOptions = () => {
         if (activeChart === "license") {
             const seriesData = [
@@ -289,7 +288,7 @@ const AssetsStatusCountChart = ({ initialData = sampleAssetsClassificationData, 
                             { label: "Hardware Assets", totalCount: initialData?.hardware?.count || 0, value: 1 },
                             {
                                 label: "Software Assets",
-                                totalCount: parseInt(initialData?.softwareAssets?.license?.totalCount || "0") + parseInt(initialData.softwareAssets?.sbom?.totalCount || "0"),
+                                totalCount: parseInt(initialData?.softwareAssets?.license?.totalCount || "0"),
                                 value: 2,
                             },
                             {

@@ -18,9 +18,8 @@ export const useDesktopInfoForm = (data = {}, onSuccess) => {
         [data]
     );
 
+    const operation = data?.inventoryId ? desktopUpdation : desktopCreation;
     const handleFormSubmit = (formData) => {
-        const operation = data?.inventoryId ? desktopUpdation : desktopCreation;
-
         operation.execute({
             ...(data?.inventoryId && { id: data.inventoryId }),
             payload: formData,
@@ -29,5 +28,5 @@ export const useDesktopInfoForm = (data = {}, onSuccess) => {
         });
     };
 
-    return { formConfig, handleFormSubmit, isLoading: desktopCreation?.isLoading, desktopInfoFormErrors: desktopCreation?.errorMessages };
+    return { formConfig, handleFormSubmit, isLoading: operation?.isLoading, desktopInfoFormErrors: operation?.errorMessages };
 };

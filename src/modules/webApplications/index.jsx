@@ -47,7 +47,7 @@ const WebApplications = () => {
                 icon={GlobalICONS.WEB_APPLICATION}
                 description="Provide the required details to configure and register a new web application"
             >
-                <AddAssets module={{ name: "web application", form: <WebApplicationsInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "web application", onSuccess, form: <WebApplicationsInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

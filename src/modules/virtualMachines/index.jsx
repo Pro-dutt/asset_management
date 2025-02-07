@@ -47,7 +47,7 @@ const VirtualMachine = () => {
                 icon={GlobalICONS.VIRTUAL_MACHINE}
                 description="Provide the required details to configure and register a new Virtual Machine"
             >
-                <AddAssets module={{ name: "virtual machine", form: <VirtualMachineInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "virtual machine", onSuccess, form: <VirtualMachineInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

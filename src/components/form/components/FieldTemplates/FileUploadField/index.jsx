@@ -33,6 +33,8 @@ const fileTypeMapping = {
     pdf: "application/pdf",
     doc: "application/msword",
     docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    xls: "application/vnd.ms-excel",
+    xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 };
 
 const FileUploadField = ({ formField, errors }) => {
@@ -128,31 +130,10 @@ const FileUploadField = ({ formField, errors }) => {
 
         try {
             isProcessingRef.current = true;
-            await fileUpload.execute({
-                url: url || "/owners/documents/identity-proof/upload",
-                payload: {
-                    [name]: file.file,
-                },
-                options: {
-                    showNotification: true,
-                    onProgress: (percentage) => {
-                        console.log(`Upload progress: ${percentage}%`);
-                    },
-                },
-                onSuccess: (data) => {
-                    console.log("Upload successful:", data);
-                    onChange({
-                        target: {
-                            value: {
-                                fileId: data.fileId,
-                            },
-                            name,
-                        },
-                    });
-                },
-                onError: (error) => {
-                    console.error("Upload failed:", error);
-                    setError("Upload failed: " + (error.message || "Unknown error"));
+            onChange({
+                target: {
+                    value: file.file,
+                    name,
                 },
             });
         } catch (error) {

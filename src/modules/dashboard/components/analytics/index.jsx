@@ -25,13 +25,7 @@ const DashboardAnalytics = () => {
             </div>
 
             <div className={styles.dashboard_chart_row1}>
-                <AssetsStatusCountChart
-                    initialData={{
-                        hardware: chartsData.data?.procurement?.hardware,
-                        software: chartsData.data?.software?.hardware,
-                        dataCenter: chartsData.data?.dataCenter,
-                    }}
-                />
+                <AssetsStatusCountChart initialData={chartsData.data} />
 
                 <DashboardProgressCard />
             </div>

@@ -48,7 +48,7 @@ const Desktops = () => {
                 icon={GlobalICONS.DESKTOP}
                 description="Provide the required details to configure and register a new desktop"
             >
-                <AddAssets module={{ name: "desktop", form: <DesktopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "desktop", onSuccess, form: <DesktopInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}

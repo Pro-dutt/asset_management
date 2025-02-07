@@ -47,7 +47,7 @@ const Servers = () => {
                 icon={GlobalICONS.SERVER}
                 description="Provide the required details to configure and register a new Server"
             >
-                <AddAssets module={{ name: "server", form: <ServersInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
+                <AddAssets module={{ name: "server", onSuccess, form: <ServersInfoForm onCancel={closeModal} onSuccess={onSuccess} /> }} />
             </Modal>
             <Modal
                 show={show.edit}
