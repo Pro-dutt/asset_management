@@ -69,6 +69,8 @@ if [ $? -eq 0 ]; then
         sed -i "s|{{ file_url('modules/custom/react_app/static/css/main.*.css') }}|{{ file_url('modules/custom/react_app/static/css/main.\$NEW_CSS_VERSION.css') }}|g" $TWIG_FILE
         sed -i "s|{{ file_url('modules/custom/react_app/static/js/main.*.js') }}|{{ file_url('modules/custom/react_app/static/js/main.\$NEW_JS_VERSION.js') }}|g" $TWIG_FILE
 EOF
+
 else
     echo "Deployment failed."
 fi
+

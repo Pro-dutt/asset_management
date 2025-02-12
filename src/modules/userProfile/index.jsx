@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles/index.module.css";
 import userProfileUtilsICONS from "./utils/constants";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
@@ -6,10 +6,12 @@ import GlobalUtils from "@/lib/utils";
 import DynamicForm from "@/components/form";
 import { notifyError } from "@/components/Notification";
 import globalConstants from "@/lib/utils/contants";
+import { useUser } from "@/services/context/user";
 
 const ProfilePage = () => {
     const [activeTab, setActiveTab] = useState("account");
-    // const { currentUser, updateUserProfilePicture, updateUserPassword, modifyUserDetails } = useUser();
+
+    const { getCurrentUser, updateUserProfilePicture, updateUserPassword, updateUserDetails } = useUser();
 
     const currentUser = {};
     const handleTabChange = (tab) => {
@@ -33,6 +35,12 @@ const ProfilePage = () => {
         numberSymbol: false,
         confirmPass: false,
     });
+
+    useEffect(() => {
+        getCurrentUser.fetch({
+            params: {},
+        });
+    }, []);
 
     const handlePasswordChange = (e) => {
         const { id, value } = e.target;
@@ -71,7 +79,7 @@ const ProfilePage = () => {
                 required: true,
                 disabled: true,
                 grid: 2,
-                defaultValue: currentUser?.full_name || "",
+                defaultValue: getCurrentUser?.data?.full_name || "",
             },
             {
                 type: "email",
@@ -80,7 +88,7 @@ const ProfilePage = () => {
                 required: true,
                 disabled: true,
                 grid: 2,
-                defaultValue: currentUser?.mail || "",
+                defaultValue: getCurrentUser?.data?.mail || "",
             },
             {
                 type: "text",
@@ -89,7 +97,7 @@ const ProfilePage = () => {
                 required: true,
                 disabled: true,
                 grid: 2,
-                defaultValue: currentUser?.designation || "",
+                defaultValue: getCurrentUser?.data?.designation || "",
             },
             {
                 type: "select",
@@ -102,22 +110,23 @@ const ProfilePage = () => {
                 options: Object.entries(globalConstants.ROLES || {}).map(([key, value]) => {
                     return { label: key, value: value };
                 }),
-                defaultValue: currentUser?.roles || "",
+                defaultValue: getCurrentUser?.data?.roles || "",
             },
             {
                 type: "checkbox",
                 name: "mailNotification",
                 label: "Enable email notification",
                 grid: 2,
-                defaultValue: currentUser?.mailNotification == 0 ? false : true,
+                defaultValue: getCurrentUser?.data?.mailNotification == 0 ? false : true,
             },
         ];
         return formItems;
-    }, [currentUser]);
+    }, [getCurrentUser.data]);
 
     const handleSubmit = (formData) => {
-        console.log(formData);
         // modifyUserDetails({ mailNotification: formData.mailNotification });
+        updateUserDetails.execute({ payload: { mailNotification: formData.mailNotification } });
+        getCurrentUser.fetch({ params: {} });
     };
     const fileInputRef = useRef(null);
 
@@ -149,11 +158,12 @@ const ProfilePage = () => {
     };
     const handlePasswordSubmit = (event) => {
         event.preventDefault();
-        console.log(passwords);
-        // updateUserPassword({
-        //     current_password: passwords.current,
-        //     new_password: passwords.new,
-        // });
+        updateUserPassword.execute({
+            payload: {
+                current_password: passwords.current,
+                new_password: passwords.new,
+            },
+        });
         setPasswords({
             current: "",
             new: "",
@@ -164,12 +174,12 @@ const ProfilePage = () => {
     async function uploadProfilePicture(file) {
         const formData = new FormData();
         formData.append("picture", file);
-        // updateUserProfilePicture(formData);
+        updateUserProfilePicture.execute({ payload: formData });
     }
 
     const handleFileUpload = async () => {
-        // await uploadProfilePicture(file);
-        // fetchCurrentUser();
+        await uploadProfilePicture(file);
+        getCurrentUser.fetch({ params: {} });
     };
 
     const handleReset = () => {
@@ -179,7 +189,6 @@ const ProfilePage = () => {
             confirm: "",
         });
     };
-
     return (
         <>
             <ul className={styles.navBar}>
@@ -194,7 +203,8 @@ const ProfilePage = () => {
                 {activeTab === "account" && (
                     <div className={styles.profileContainer}>
                         <div className={styles.profilePhoto}>
-                            <img src={previewUrl || currentUser.profile_picture || require("./Assets/profile.webp")} alt="User Avatar" />
+                            {/* <img src={previewUrl || getCurrentUser.data.profile_picture || require("./Assets/profile.webp")} alt="User Avatar" /> */}
+                            <img src={previewUrl || getCurrentUser.data.profile_picture} alt="User Avatar" />
                             <input accept=".jpg,.jpeg,.png" onChange={handleFileChange} type="file" ref={fileInputRef} style={{ display: "none" }} />
                             <div className={styles.button_wrapper}>
                                 <div className={styles.button_wrapper_two}>
@@ -283,7 +293,9 @@ const ProfilePage = () => {
                             </div>
 
                             <div className={styles.buttonRow}>
-                                <Button disabled={!isValid}>Save changes</Button>
+                                <Button type="submit" disabled={!isValid}>
+                                    Save changes
+                                </Button>
                                 <Button onClick={handleReset}>Reset</Button>
                             </div>
                         </form>
