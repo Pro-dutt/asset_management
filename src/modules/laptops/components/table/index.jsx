@@ -18,6 +18,7 @@ const LaptopsTable = ({ setLaptopDetails, setShow, refreshTable }) => {
         tableHeader: LaptopsTableUtils.tableHeader({ data, setShow, styles }),
         checkbox: true,
         refreshTable: refreshTable || false,
+        kanbanComponent: () => <h1>qjsgfydagfudagufydavguy gasyufgsat f</h1>,
     });
 
     const tableData = useMemo(() => getTableData({}), [refreshTable]);

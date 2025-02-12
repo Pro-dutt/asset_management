@@ -3,10 +3,10 @@ import styles from "./index.module.css";
 import SelectField from "@/components/form/components/FieldTemplates/SelectField";
 import InputField from "@/components/form/components/FieldTemplates/InputField";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
-import ICON from "../../utils/icon";
+import ICON, { TableIcon } from "../../utils/icon";
 import DynamicForm from "@/components/form";
 
-const TableSearch = ({ data, initialValues, router, searchParams }) => {
+const TableSearch = ({ showDataViewButton, dataView, setDataView, data, initialValues, router, searchParams }) => {
     const [formValues, setFormValues] = useState(initialValues);
 
     const setQueryParam = (key, value) => {
@@ -81,6 +81,26 @@ const TableSearch = ({ data, initialValues, router, searchParams }) => {
                         {button.label}
                     </Button>
                 ))}
+                {showDataViewButton && (
+                    <Button
+                        key={"data-view"}
+                        onClick={() => {
+                            setDataView((prev) => {
+                                if (prev.table) {
+                                    return { kanban: true };
+                                } else {
+                                    return { table: true, kanban: false };
+                                }
+                            });
+                        }}
+                        tonal={true}
+                        icon={dataView.table ? TableIcon.KANBAN : TableIcon.TABLE}
+                        iconOnly={true}
+                        tooltip={dataView.table ? "Kanban View" : "Table View"}
+                    >
+                        {dataView.table ? "Kanban View" : "Table View"}
+                    </Button>
+                )}
             </div>
         </div>
     );

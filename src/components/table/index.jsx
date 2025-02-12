@@ -66,7 +66,15 @@ const Table = ({ tableData }) => {
         <div className={styles.table_container}>
             {/* Filters and Search */}
             <TableFilter router={router} initialValues={initialValues} data={data.externalFilters} searchParams={searchParams} />
-            <TableSearch initialValues={initialValues} router={router} data={data.tableHeader} searchParams={searchParams} />
+            <TableSearch
+                dataView={dataView}
+                showDataViewButton={data.gridComponent || data.kanbanComponent ? true : false}
+                setDataView={setDataView}
+                initialValues={initialValues}
+                router={router}
+                data={data.tableHeader}
+                searchParams={searchParams}
+            />
 
             <TableError error={error} />
 
