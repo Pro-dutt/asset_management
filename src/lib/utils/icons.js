@@ -1119,8 +1119,8 @@ const GlobalICONS = {
     ),
     EXPIRED: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
-                <path stroke-linejoin="round" d="M17 4.625H7a4 4 0 0 0-4 4v8.75a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-8.75a4 4 0 0 0-4-4m-14 5h18m-4-7v4m-10-4v4" />
+            <g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5">
+                <path strokeLinejoin="round" d="M17 4.625H7a4 4 0 0 0-4 4v8.75a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-8.75a4 4 0 0 0-4-4m-14 5h18m-4-7v4m-10-4v4" />
                 <path stroke-miterlimit="10" d="m14 13l-4 3.991m0-3.982L14 17" />
             </g>
         </svg>
@@ -1142,20 +1142,20 @@ const GlobalICONS = {
             <path
                 fill="currentColor"
                 d="M33.91 18.47L30.78 8.41A2 2 0 0 0 28.87 7H7.13a2 2 0 0 0-1.91 1.41L2.09 18.48a2 2 0 0 0-.09.59V27a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2v-7.94a2 2 0 0 0-.09-.59M32 27H4v-7.94L7.13 9h21.74L32 19.06Z"
-                class="clr-i-outline clr-i-outline-path-1"
+                className="clr-i-outline clr-i-outline-path-1"
             />
-            <path fill="currentColor" d="M7.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-2" />
-            <path fill="currentColor" d="M12.12 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-3" />
-            <path fill="currentColor" d="M17.11 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-4" />
-            <path fill="currentColor" d="M22.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-5" />
-            <path fill="currentColor" d="M27.1 22h1.8v3h-1.8z" class="clr-i-outline clr-i-outline-path-6" />
-            <path fill="currentColor" d="M6.23 18h23.69v1.4H6.23z" class="clr-i-outline clr-i-outline-path-7" />
+            <path fill="currentColor" d="M7.12 22h1.8v3h-1.8z" className="clr-i-outline clr-i-outline-path-2" />
+            <path fill="currentColor" d="M12.12 22h1.8v3h-1.8z" className="clr-i-outline clr-i-outline-path-3" />
+            <path fill="currentColor" d="M17.11 22h1.8v3h-1.8z" className="clr-i-outline clr-i-outline-path-4" />
+            <path fill="currentColor" d="M22.1 22h1.8v3h-1.8z" className="clr-i-outline clr-i-outline-path-5" />
+            <path fill="currentColor" d="M27.1 22h1.8v3h-1.8z" className="clr-i-outline clr-i-outline-path-6" />
+            <path fill="currentColor" d="M6.23 18h23.69v1.4H6.23z" className="clr-i-outline clr-i-outline-path-7" />
             <path fill="none" d="M0 0h36v36H0z" />
         </svg>
     ),
     GREATER_THEN: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 6l6 6l-6 6" />
+            <path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m9 6l6 6l-6 6" />
         </svg>
     ),
     LAPTOP: (
@@ -1163,9 +1163,9 @@ const GlobalICONS = {
             <path
                 d="M10 18H14M7.20003 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V11.8C20 12.9201 20 13.4802 19.782 13.908C19.5903 14.2843 19.2843 14.5903 18.908 14.782C18.4802 15 17.9201 15 16.8 15H7.20003C6.07992 15 5.51987 15 5.09205 14.782C4.71572 14.5903 4.40976 14.2843 4.21801 13.908C4.00003 13.4802 4.00003 12.9201 4.00003 11.8V6.2C4.00003 5.0799 4.00003 4.51984 4.21801 4.09202C4.40976 3.71569 4.71572 3.40973 5.09205 3.21799C5.51987 3 6.07992 3 7.20003 3ZM4.58888 21H19.4112C20.2684 21 20.697 21 20.9551 20.8195C21.1805 20.6618 21.3311 20.4183 21.3713 20.1462C21.4173 19.8345 21.2256 19.4512 20.8423 18.6845L20.3267 17.6534C19.8451 16.6902 19.6043 16.2086 19.2451 15.8567C18.9274 15.5456 18.5445 15.309 18.1241 15.164C17.6488 15 17.1103 15 16.0335 15H7.96659C6.88972 15 6.35128 15 5.87592 15.164C5.45554 15.309 5.07266 15.5456 4.75497 15.8567C4.39573 16.2086 4.15493 16.6902 3.67334 17.6534L3.1578 18.6845C2.77444 19.4512 2.58276 19.8345 2.6288 20.1462C2.669 20.4183 2.81952 20.6618 3.04492 20.8195C3.30306 21 3.73166 21 4.58888 21Z"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             />
         </svg>
     ),
@@ -1174,19 +1174,19 @@ const GlobalICONS = {
             <path
                 d="M14 21H5C4.06812 21 3.60218 21 3.23463 20.8478C2.74458 20.6448 2.35523 20.2554 2.15224 19.7654C2 19.3978 2 18.9319 2 18C2 17.0681 2 16.6022 2.15224 16.2346C2.35523 15.7446 2.74458 15.3552 3.23463 15.1522C3.60218 15 4.06812 15 5 15H19C19.9319 15 20.3978 15 20.7654 15.1522C21.2554 15.3552 21.6448 15.7446 21.8478 16.2346C22 16.6022 22 17.0681 22 18C22 18.9319 22 19.3978 21.8478 19.7654C21.6448 20.2554 21.2554 20.6448 20.7654 20.8478C20.3978 21 19.9319 21 19 21H18"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
             />
             <path
                 d="M2 12C2 11.0681 2 10.6022 2.15224 10.2346C2.35523 9.74458 2.74458 9.35523 3.23463 9.15224C3.60218 9 4.06812 9 5 9H19C19.9319 9 20.3978 9 20.7654 9.15224C21.2554 9.35523 21.6448 9.74458 21.8478 10.2346C22 10.6022 22 11.0681 22 12C22 12.9319 22 13.3978 21.8478 13.7654C21.6448 14.2554 21.2554 14.6448 20.7654 14.8478C20.3978 15 19.9319 15 19 15H5C4.06812 15 3.60218 15 3.23463 14.8478C2.74458 14.6448 2.35523 14.2554 2.15224 13.7654C2 13.3978 2 12.9319 2 12Z"
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
             />
             <path
                 d="M10 3H19C19.9319 3 20.3978 3 20.7654 3.15224C21.2554 3.35523 21.6448 3.74458 21.8478 4.23463C22 4.60218 22 5.06812 22 6C22 6.93188 22 7.39782 21.8478 7.76537C21.6448 8.25542 21.2554 8.64477 20.7654 8.84776C20.3978 9 19.9319 9 19 9H5C4.06812 9 3.60218 9 3.23463 8.84776C2.74458 8.64477 2.35523 8.25542 2.15224 7.76537C2 7.39782 2 6.93188 2 6C2 5.06812 2 4.60218 2.15224 4.23463C2.35523 3.74458 2.74458 3.35523 3.23463 3.15224C3.60218 3 4.06812 3 5 3H6"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
             />
             <circle cx="5" cy="12" r="1" fill="currentColor" />
             <circle cx="5" cy="6" r="1" fill="currentColor" />
@@ -1215,7 +1215,7 @@ const GlobalICONS = {
     ),
     DEVELOPMENT: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 14 14">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+            <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1">
                 <path d="M13.5 10.5v-8A.5.5 0 0 0 13 2H1c-.265 0-.5.235-.5.5v8c0 .265.235.5.5.5h12c.265 0 .5-.235.5-.5M6 11l-1 2.5M8 11l1 2.5m-5 0h6" />
                 <path d="M5 5L3.5 6.5L5 8m4-3l1.5 1.5L9 8" />
             </g>
@@ -1226,9 +1226,9 @@ const GlobalICONS = {
             <path
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M5.636 5.636a9 9 0 1 0 12.728 12.728M5.636 5.636a9 9 0 1 1 12.728 12.728M5.636 5.636L12 12l6.364 6.364"
             />
         </svg>
@@ -1236,15 +1236,15 @@ const GlobalICONS = {
     INTERNAL_FACING: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <g fill="none">
-                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M17 3h2a2 2 0 0 1 2 2v2m-4 14h2a2 2 0 0 0 2-2v-2M7 3H5a2 2 0 0 0-2 2v2m4 14H5a2 2 0 0 1-2-2v-2" />
+                <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M17 3h2a2 2 0 0 1 2 2v2m-4 14h2a2 2 0 0 0 2-2v-2M7 3H5a2 2 0 0 0-2 2v2m4 14H5a2 2 0 0 1-2-2v-2" />
                 <path
                     fill="currentColor"
                     d="M14.066 15.998L14 15v1.996zm4.621-1.084l-.92.392zm-4.604-1.164l-.697-.716l-.738.718l.74.716zm.749 1.268l.955-.296zm-.7-.018L14 16.996q.066.004.133.004zm3.735 0h-3.734v2h3.734zm-.1.306a.26.26 0 0 1-.013-.135a.3.3 0 0 1 .052-.125c.038-.049.07-.046.061-.046v2c.594 0 1.153-.263 1.51-.717c.371-.471.5-1.127.23-1.76zM16 14c.974 0 1.473.613 1.767 1.306l1.84-.783C19.173 13.497 18.14 12 16 12zm-1.22.467c.271-.263.643-.467 1.22-.467v-2c-1.137 0-2 .435-2.614 1.034zm-1.393.001c.239.232.394.536.49.846l1.91-.592c-.16-.515-.455-1.154-1.008-1.69zm.49.846a.3.3 0 0 1-.004-.14a.3.3 0 0 1 .058-.124a.2.2 0 0 1 .051-.044q.016-.007.018-.006l.133 1.996a1.9 1.9 0 0 0 1.343-.676a1.7 1.7 0 0 0 .31-1.598zm-3.96-1.564l.696.718l.739-.716l-.738-.718zm-4.604 1.164l.92.392zm4.62 1.084l.067.998V15zm-.765-.98l.955.296zM8 14c.577 0 .949.204 1.22.467l1.394-1.433C10 12.435 9.137 12 8 12zm-1.767 1.306C6.527 14.613 7.026 14 8 14v-2c-2.14 0-3.172 1.497-3.608 2.523zm-.1-.306c-.008 0 .023-.003.061.046a.26.26 0 0 1 .052.125a.26.26 0 0 1-.013.135l-1.84-.783a1.72 1.72 0 0 0 .23 1.76c.357.454.916.717 1.51.717zm3.734 0H6.133v2h3.734zm0 0v2q.067 0 .133-.004zM10 15q0-.002.018.006c.01.005.03.017.051.043a.3.3 0 0 1 .058.125a.3.3 0 0 1-.004.14l-1.91-.592a1.7 1.7 0 0 0 .312 1.598a1.9 1.9 0 0 0 1.343.676zm.123.314c.096-.31.251-.614.49-.846L9.22 13.032c-.553.536-.848 1.175-1.008 1.69z"
                 />
                 <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeWidth="2"
                     d="M12 13c1.852 0 2.56 1.143 2.832 2.018c.163.527-.28.982-.832.982h-4c-.552 0-.995-.455-.832-.982C9.44 14.143 10.148 13 12 13Z"
                 />
                 <circle cx="12" cy="9" r="2" fill="currentColor" />
@@ -1264,8 +1264,8 @@ const GlobalICONS = {
     WEB_APPLICATION: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
             <g fill="none">
-                <rect width="40" height="32" x="4" y="8" stroke="currentColor" stroke-linejoin="round" stroke-width="4" rx="3" />
-                <path stroke="currentColor" stroke-width="4" d="M4 11a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3v9H4z" />
+                <rect width="40" height="32" x="4" y="8" stroke="currentColor" strokeLinejoin="round" strokeWidth="4" rx="3" />
+                <path stroke="currentColor" strokeWidth="4" d="M4 11a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3v9H4z" />
                 <circle r="2" fill="currentColor" transform="matrix(0 -1 -1 0 10 14)" />
                 <circle r="2" fill="currentColor" transform="matrix(0 -1 -1 0 16 14)" />
             </g>

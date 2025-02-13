@@ -13,7 +13,13 @@
     width: 100%;
     border-collapse: collapse;
 }
-.table_container>div
-{
+.table_container > div {
     min-width: 968px;
 }
+
+.grid_view_container {
+    background-color: var(--backgroundColor);
+}
+/* .grid_view_container > div > div {
+    background-color: white;
+} */

@@ -11,6 +11,7 @@ import { useDesktop } from "@/services/context/desktop";
 import GlobalUtils from "@/lib/utils";
 
 const Laptops = () => {
+
     const [show, setShow] = useState({});
     const [laptopDetails, setLaptopDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });

@@ -4,21 +4,30 @@ import Table from "@/components/table";
 import serversTableConstants from "./utils/constants";
 import ServersTableUtils from "./utils";
 import "./styles/index.css";
+import GridView from "@/components/GridView";
+import serverGridConfig from "../../grid/config/serverGridConfig";
 
 const ServersTable = ({ setServerDetails, setShow, refreshTable }) => {
-    const getTableData = (data) => ({
-        rows: ServersTableUtils.tableRow(data),
-        actionData: ServersTableUtils.tableActionData({ data, setShow, setServerDetails }),
-        url: serversTableConstants.TABLE_API_URL,
-        pagination: ServersTableUtils.tablePagination(data),
-        sorting: serversTableConstants.TABLE_SORTING,
-        getTableData,
-        rowClickHandler: (row) => console.log(row),
-        externalFilters: serversTableConstants.externalFilters,
-        tableHeader: ServersTableUtils.tableHeader({ data, setShow, styles }),
-        checkbox: true,
-        refreshTable: refreshTable || false,
-    });
+    const getTableData = (data) => {
+        const rows = ServersTableUtils.tableRow(data);
+        const actionData = ServersTableUtils.tableActionData({ data, setShow, setServerDetails });
+        const gridConfig = serverGridConfig(rows);
+
+        return {
+            rows,
+            actionData,
+            url: serversTableConstants.TABLE_API_URL,
+            pagination: ServersTableUtils.tablePagination(data),
+            sorting: serversTableConstants.TABLE_SORTING,
+            getTableData,
+            rowClickHandler: (row) => console.log(row),
+            externalFilters: serversTableConstants.externalFilters,
+            tableHeader: ServersTableUtils.tableHeader({ data, setShow, styles }),
+            checkbox: true,
+            refreshTable: refreshTable || false,
+            kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,
+        };
+    };
 
     const tableData = useMemo(() => getTableData({}), [refreshTable]);
 

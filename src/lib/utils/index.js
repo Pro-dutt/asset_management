@@ -516,8 +516,10 @@ class GlobalUtils {
     };
 
     static createEnum = (definitions) => {
+
         const enumObject = {};
         const labels = {};
+
 
         // Create enum values and labels
         definitions.forEach(({ key, value, label }) => {
@@ -528,8 +530,8 @@ class GlobalUtils {
             ...enumObject,
             labels,
             getLabel: function (value) {
-                return this.labels[value] || "";
-            },
+             return this.labels?.[value] || this.labels?.[enumObject?.[value]] || ""
+            },            
             getOptions: function () {
                 return Object.entries(this.labels).map(([value, label]) => ({
                     value: GlobalUtils.parseValue(value),
