@@ -5,7 +5,7 @@ import serversTableConstants from "./utils/constants";
 import ServersTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
-import serverGridConfig from "../../grid/config/serverGridConfig";
+import serverGridConfig from "../grid/config/serverGridConfig";
 
 const ServersTable = ({ setServerDetails, setShow, refreshTable }) => {
     const getTableData = (data) => {

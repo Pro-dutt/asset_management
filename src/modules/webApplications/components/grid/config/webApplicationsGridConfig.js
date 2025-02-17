@@ -1,7 +1,7 @@
 import GlobalICONS from "@/lib/utils/icons";
 import globalConstants from "@/lib/utils/contants";
 import { statusWiseData } from "../utils/gridUtils";
-import webApplicationConstants from "../../components/form/utils/constants";
+import webApplicationConstants from "../../form/utils/constants";
 
 const webApplicationsGridConfig = (rowsData) => {
     const columns = {
@@ -9,18 +9,18 @@ const webApplicationsGridConfig = (rowsData) => {
             id: webApplicationConstants.STATUS.getLabel("ACTIVE"),
             data: statusWiseData(rowsData, webApplicationConstants.STATUS.getLabel("ACTIVE")),
             title: "Active",
-            color: "var(--orange-color)",
-            bgColor: "var(--orange-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            color: "var(--green-color)",
+            bgColor: "var(--green-light-color)",
+            icon: GlobalICONS.ACTIVE,
             cards: [],
         },
         Inactive: {
             id: webApplicationConstants.STATUS.getLabel("INACTIVE"),
             data: statusWiseData(rowsData, webApplicationConstants.STATUS.getLabel("INACTIVE")),
             title: "Inactive",
-            color: "var(--green-color)",
-            bgColor: "var(--green-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            color: "var(--orange-color)",
+            bgColor: "var(--orange-light-color)",
+            icon: GlobalICONS.INACTIVE,
             cards: [],
         },
         "Under-Maintenance": {
@@ -29,7 +29,7 @@ const webApplicationsGridConfig = (rowsData) => {
             title: "Under Maintenance",
             color: "var(--blue-color)",
             bgColor: "var(--blue-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.UNDER_MAINTENANCE,
             cards: [],
         },
         Decomissioned: {
@@ -38,7 +38,7 @@ const webApplicationsGridConfig = (rowsData) => {
             title: "Decomissioned",
             color: "var(--red-color)",
             bgColor: "var(--red-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.DECOMMISSIONED,
             cards: [],
         },
     };

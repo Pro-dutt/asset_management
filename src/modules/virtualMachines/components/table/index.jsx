@@ -5,7 +5,7 @@ import virtualMachinesTableConstants from "./utils/constants";
 import VirtualMachinesTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
-import virtualMachinesGridConfig from "../../grid/config/virtualMachinesGridConfig";
+import virtualMachinesGridConfig from "../grid/config/virtualMachinesGridConfig";
 
 const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow, refreshTable }) => {
     const getTableData = (data) => {

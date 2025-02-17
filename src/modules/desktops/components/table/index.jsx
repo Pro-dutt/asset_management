@@ -4,8 +4,8 @@ import Table from "@/components/table";
 import desktopsTableConstants from "./utils/constants";
 import DesktopsTableUtils from "./utils";
 import "./styles/index.css";
-import desktopGridConfig from "../../grid/config/desktopGridConfig";
 import GridView from "@/components/GridView";
+import desktopGridConfig from "../grid/config/desktopGridConfig";
 
 const DesktopsTable = ({ setDesktopDetails, setShow, refreshTable }) => {
     const getTableData = (data) => {

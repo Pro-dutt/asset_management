@@ -4,8 +4,8 @@ import Table from "@/components/table";
 import networkingDevicesTableConstants from "./utils/constants";
 import NetworkingDevicesTableUtils from "./utils";
 import "./styles/index.css";
-import networkDevicesGridConfig from "../../grid/config/desktopGridConfig";
 import GridView from "@/components/GridView";
+import networkDevicesGridConfig from "../grid/config/netowrkGridConfig";
 
 const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow, refreshTable }) => {
     const getTableData = (data) => {

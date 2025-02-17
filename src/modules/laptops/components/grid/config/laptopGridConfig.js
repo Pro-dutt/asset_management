@@ -10,7 +10,7 @@ const laptopGridConfig = (rowsData) => {
             title: "In Store",
             color: "var(--orange-color)",
             bgColor: "var(--orange-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.WAREHOUSE,
             cards: [],
         },
         "In-Use": {
@@ -19,7 +19,7 @@ const laptopGridConfig = (rowsData) => {
             title: "In Use",
             color: "var(--green-color)",
             bgColor: "var(--green-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.IN_USE,
             cards: [],
         },
         "In-Maintenance": {
@@ -28,7 +28,7 @@ const laptopGridConfig = (rowsData) => {
             title: "In Maintenance",
             color: "var(--blue-color)",
             bgColor: "var(--blue-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.UNDER_MAINTENANCE,
             cards: [],
         },
         Disposed: {
@@ -37,7 +37,7 @@ const laptopGridConfig = (rowsData) => {
             title: "Disposed",
             color: "var(--red-color)",
             bgColor: "var(--red-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.DISPOSE,
             cards: [],
         },
         Missing: {
@@ -46,7 +46,7 @@ const laptopGridConfig = (rowsData) => {
             title: "Missing",
             color: "var(--violet-color)",
             bgColor: "var(--violet-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.MISSING,
             cards: [],
         },
         Reserved: {
@@ -55,7 +55,7 @@ const laptopGridConfig = (rowsData) => {
             title: "Reserved",
             color: "var(--pink-color)",
             bgColor: "var(--pink-light-color)",
-            icon: GlobalICONS.PROCUREMENT,
+            icon: GlobalICONS.RESERVED,
             cards: [],
         },
     };

@@ -4,8 +4,8 @@ import Table from "@/components/table";
 import webApplicationsTableConstants from "./utils/constants";
 import WebApplicationsTableUtils from "./utils";
 import "./styles/index.css";
-import webApplicationsGridConfig from "../../grid/config/webApplicationsGridConfig";
 import GridView from "@/components/GridView";
+import webApplicationsGridConfig from "../grid/config/webApplicationsGridConfig";
 
 const WebApplicationsTable = ({ setWebApplicationDetails, setShow, refreshTable }) => {
     const getTableData = (data) => {
