@@ -57,6 +57,12 @@ export default [
         routes: ["/user"],
     },
     {
+        name: "Tenants",
+        link: "/tenant",
+        icon: "multi_tenant",
+        routes: ["/tenant"],
+    },
+    {
         name: "Roles",
         link: "/roles",
         icon: "role",

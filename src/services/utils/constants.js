@@ -64,6 +64,9 @@ const apiConstants = {
         FORGOT_PASSWORD: "forgot-password",
         CHANGE_PASSWORD: "reset-password",
     },
+    tenant: {
+        BASE_ROUTE: "/tenant",
+    },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
         UPDATE_VIRTUAL_MACHINE: "updateVirtualMachine",
@@ -121,6 +124,12 @@ const apiConstants = {
         DETAILS_USERS: "detailsUsers",
         UPDATE_USERS: "updateUsers",
         DELETE_USERS: "deleteUsers",
+
+        GET_DROPDOWN_LIST_TENANT: "getDropdownListTenant",
+        CREATE_TENANT: "createTenant",
+        DETAILS_TENANT: "detailsTenant",
+        UPDATE_TENANT: "updateTenant",
+        DELETE_TENANT: "deleteTenant",
     },
 };
 export default apiConstants;

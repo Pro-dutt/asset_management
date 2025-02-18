@@ -15,6 +15,7 @@ import { PermissionProvider } from "./permission";
 import { RouteProvider } from "./route";
 import { RoleProvider } from "./role";
 import { UsersProvider } from "./users";
+import { TenantProvider } from "./tenant";
 
 const ContextProviders = ({ children }) => {
     return (
@@ -26,23 +27,25 @@ const ContextProviders = ({ children }) => {
                             <RoleProvider>
                                 <UsersProvider>
                                     <AuthProvider>
-                                        <LaptopProvider>
-                                            <DesktopProvider>
-                                                <VirtualMachinesProvider>
-                                                    <WebApplicationProvider>
-                                                        <NetworkDeviceProvider>
-                                                            <ServerProvider>
-                                                                <StatsProvider>
-                                                                    <ChartsProvider>
-                                                                        <EndPointsProvider>{children}</EndPointsProvider>
-                                                                    </ChartsProvider>
-                                                                </StatsProvider>
-                                                            </ServerProvider>
-                                                        </NetworkDeviceProvider>
-                                                    </WebApplicationProvider>
-                                                </VirtualMachinesProvider>
-                                            </DesktopProvider>
-                                        </LaptopProvider>
+                                        <TenantProvider>
+                                            <LaptopProvider>
+                                                <DesktopProvider>
+                                                    <VirtualMachinesProvider>
+                                                        <WebApplicationProvider>
+                                                            <NetworkDeviceProvider>
+                                                                <ServerProvider>
+                                                                    <StatsProvider>
+                                                                        <ChartsProvider>
+                                                                            <EndPointsProvider>{children}</EndPointsProvider>
+                                                                        </ChartsProvider>
+                                                                    </StatsProvider>
+                                                                </ServerProvider>
+                                                            </NetworkDeviceProvider>
+                                                        </WebApplicationProvider>
+                                                    </VirtualMachinesProvider>
+                                                </DesktopProvider>
+                                            </LaptopProvider>
+                                        </TenantProvider>
                                     </AuthProvider>
                                 </UsersProvider>
                             </RoleProvider>
