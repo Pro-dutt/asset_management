@@ -119,7 +119,7 @@ const useWebApplicationsDetails = (data = sampleWebApplicationsDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         webApplicationsDetailsConfig,
     };

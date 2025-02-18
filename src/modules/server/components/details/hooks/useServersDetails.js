@@ -139,7 +139,7 @@ const useServersDetails = (data = sampleServersDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         serversDetailsConfig,
     };

@@ -44,7 +44,7 @@ const useLaptopsStats = (data = sampleLaptopsStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         laptopsStatsConfig,
     };

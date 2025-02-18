@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
 import SelectField from "@/components/form/components/FieldTemplates/SelectField";
-import InputField from "@/components/form/components/FieldTemplates/InputField";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
-import ICON, { TableIcon } from "../../utils/icon";
+import { TableIcon } from "../../utils/icon";
 import DynamicForm from "@/components/form";
 
 const TableSearch = ({ showDataViewButton, dataView, setDataView, data, initialValues, router, searchParams }) => {
     const [formValues, setFormValues] = useState(initialValues);
-
     const setQueryParam = (key, value) => {
         const params = new URLSearchParams(searchParams.toString());
         if (value) {

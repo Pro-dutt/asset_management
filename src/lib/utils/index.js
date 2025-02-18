@@ -1,4 +1,5 @@
 import ConfirmationAlert from "@/components/ConfirmationAlert";
+import { useAuth } from "@/services/context/auth";
 import axios from "axios";
 
 class GlobalUtils {
@@ -516,10 +517,8 @@ class GlobalUtils {
     };
 
     static createEnum = (definitions) => {
-
         const enumObject = {};
         const labels = {};
-
 
         // Create enum values and labels
         definitions.forEach(({ key, value, label }) => {
@@ -530,8 +529,8 @@ class GlobalUtils {
             ...enumObject,
             labels,
             getLabel: function (value) {
-             return this.labels?.[value] || this.labels?.[enumObject?.[value]] || ""
-            },            
+                return this.labels?.[value] || this.labels?.[enumObject?.[value]] || "";
+            },
             getOptions: function () {
                 return Object.entries(this.labels).map(([value, label]) => ({
                     value: GlobalUtils.parseValue(value),
@@ -575,6 +574,13 @@ class GlobalUtils {
             },
         });
     }
+
+    static hasPermission = (path, method, getCurrentUser) => {
+        const routes = [...getCurrentUser.data?.routes, ...getCurrentUser.data?.extraPermissionsRoutes];
+        console.log(routes)
+        const isRouteIncluded = routes.find((route) => route.path.startsWith(`/api/v1${path}`) && route.method === method);
+        return isRouteIncluded;
+    };
 }
 
 export default GlobalUtils;

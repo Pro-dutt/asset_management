@@ -44,7 +44,7 @@ const useWebApplicationsStats = (data = sampleWebApplicationsStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         webApplicationsStatsConfig,
     };

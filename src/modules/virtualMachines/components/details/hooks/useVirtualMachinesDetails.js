@@ -115,7 +115,7 @@ const useVirtualMachinesDetails = (data = sampleVirtualMachinesDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         virtualMachinesDetailsConfig,
     };

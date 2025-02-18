@@ -5,7 +5,7 @@ export default [
         name: "dashboard",
         link: "/",
         icon: "dashboard",
-        routes: ["/dashboard"],
+        routes: ["/stats/dashboard", "/chart/dashboard"],
     },
     {
         name: "End Points",

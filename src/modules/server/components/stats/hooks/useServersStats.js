@@ -44,7 +44,7 @@ const useServersStats = (data = sampleServersStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         serversStatsConfig,
     };

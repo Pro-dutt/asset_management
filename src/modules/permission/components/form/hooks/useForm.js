@@ -7,7 +7,7 @@ import { useRoute } from "@/services/context/route";
 export const usePermissionInfoForm = (data = {}, onSuccess) => {
     const { routeDropdownList } = useRoute();
     const { permissionCreation, permissionUpdating } = usePermission();
-    console.log(data);
+    //console.log(data);
     const formConfig = useMemo(
         () => [
             {

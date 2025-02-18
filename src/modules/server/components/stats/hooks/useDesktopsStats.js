@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import sampleDesktopsStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
-
 const useDesktopsStats = (data = sampleDesktopsStatsData) => {
     const desktopsStatsConfig = useMemo(
         () => [
@@ -13,8 +12,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 icon: GlobalICONS.LAPTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "orange"
-
+                color: "orange",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -24,7 +22,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: true,
-                color: "violet"
+                color: "violet",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -34,8 +32,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 icon: GlobalICONS.NETWORKING_DEVICE,
                 hasDecrement: true,
                 hasIncrement: false,
-                color: "red"
-
+                color: "red",
             },
             {
                 _id: "6486cae1284e1728606f902c",
@@ -45,13 +42,12 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
                 icon: GlobalICONS.DESKTOP,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "green"
-
+                color: "green",
             },
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         desktopsStatsConfig,
     };
