@@ -3,6 +3,7 @@ import virtualMachinesTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 import globalConstants from "@/lib/utils/contants";
+import virtualMachineConstants from "../../form/utils/constants";
 
 class VirtualMachinesTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -49,7 +50,7 @@ class VirtualMachinesTableUtils {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
             "Asset Id": { key: "assetId", value: item.assetId },
-            status: { key: "status", value: globalConstants.DEVICE_STATES.getLabel(item.status) },
+            Status: { key: "statusName", value: virtualMachineConstants.STATUS.getLabel(item.status) },
             "VM Name": { key: "vmName", value: item.vmName },
             Environment: { key: "environment", value: item.environment },
             "MAC Address": { key: "macAddress", value: item.macAddress },

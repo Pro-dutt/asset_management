@@ -2,6 +2,7 @@ import TableUtils from "@/components/table/utils";
 import webApplicationsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
+import webApplicationConstants from "../../form/utils/constants";
 
 class WebApplicationTableUtils {
     static tableHeader({ data, setShow, styles }) {
@@ -53,6 +54,7 @@ class WebApplicationTableUtils {
             URL: { key: "url", value: item.url },
             IP: { key: "ip", value: item.ip },
             Responsible: { key: "responsible", value: item.responsible },
+            Status: { key: "statusName", value: webApplicationConstants.STATUS.getLabel(item.status) },
         }));
     }
     static tableActionData({ data, setShow, setWebApplicationDetails }) {

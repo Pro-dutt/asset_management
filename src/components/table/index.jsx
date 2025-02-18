@@ -51,7 +51,7 @@ const Table = ({ tableData }) => {
         },
         [tableData?.url]
     );
-
+    console.log(data);
     useEffect(() => {
         if (tableData) {
             setData(tableData);
