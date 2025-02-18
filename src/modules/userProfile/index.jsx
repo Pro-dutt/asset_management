@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import styles from "./styles/index.module.css";
 import userProfileUtilsICONS from "./utils/constants";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
@@ -6,7 +6,6 @@ import GlobalUtils from "@/lib/utils";
 import DynamicForm from "@/components/form";
 import { notifyError } from "@/components/Notification";
 import { useAuth } from "@/services/context/auth";
-import DetailsUtils from "@/components/details/utils";
 
 const ProfilePage = () => {
     const [activeTab, setActiveTab] = useState("account");
@@ -129,7 +128,7 @@ const ProfilePage = () => {
             },
             {
                 type: "select",
-                name: "extraPermissions",
+                name: "permissions",
                 label: "Permissions",
                 required: true,
                 disabled: true,
@@ -161,40 +160,40 @@ const ProfilePage = () => {
                         return extraPermission._id;
                     }) || [],
             },
-            {
-                type: "select",
-                name: "routes",
-                label: "Routes",
-                required: true,
-                disabled: true,
-                grid: 1,
-                multiple: true,
-                options:
-                    getCurrentUser.data?.routes?.map((route) => {
-                        return { label: `${DetailsUtils.formatText(route.label || "")}  [${route.path}]`, value: route._id };
-                    }) || [],
-                defaultValue:
-                    getCurrentUser.data?.routes?.map((route) => {
-                        return route._id;
-                    }) || [],
-            },
-            {
-                type: "select",
-                name: "extraPermissionsRoutes",
-                label: "Extra Permissions Routes",
-                required: true,
-                disabled: true,
-                grid: 1,
-                multiple: true,
-                options:
-                    getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
-                        return { label: `${DetailsUtils.formatText(extraPermissionsRoute.label || "")}  [${extraPermissionsRoute.path}]`, value: extraPermissionsRoute._id };
-                    }) || [],
-                defaultValue:
-                    getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
-                        return extraPermissionsRoute._id;
-                    }) || [],
-            },
+            // {
+            //     type: "select",
+            //     name: "routes",
+            //     label: "Routes",
+            //     required: true,
+            //     disabled: true,
+            //     grid: 1,
+            //     multiple: true,
+            //     options:
+            //         getCurrentUser.data?.routes?.map((route) => {
+            //             return { label: `${DetailsUtils.formatText(route.label || "")}  [${route.path}]`, value: route._id };
+            //         }) || [],
+            //     defaultValue:
+            //         getCurrentUser.data?.routes?.map((route) => {
+            //             return route._id;
+            //         }) || [],
+            // },
+            // {
+            //     type: "select",
+            //     name: "extraPermissionsRoutes",
+            //     label: "Extra Permissions Routes",
+            //     required: true,
+            //     disabled: true,
+            //     grid: 1,
+            //     multiple: true,
+            //     options:
+            //         getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
+            //             return { label: `${DetailsUtils.formatText(extraPermissionsRoute.label || "")}  [${extraPermissionsRoute.path}]`, value: extraPermissionsRoute._id };
+            //         }) || [],
+            //     defaultValue:
+            //         getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
+            //             return extraPermissionsRoute._id;
+            //         }) || [],
+            // },
             // {
             //     type: "checkbox",
             //     name: "mailNotification",

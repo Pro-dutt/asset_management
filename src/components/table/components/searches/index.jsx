@@ -75,6 +75,8 @@ const TableSearch = ({ showDataViewButton, dataView, setDataView, data, initialV
                         icon={button.icon}
                         href={button.href}
                         target={button.target}
+                        tonal={button.tonal}
+                        outlined={button.outlined}
                     >
                         {button.label}
                     </Button>

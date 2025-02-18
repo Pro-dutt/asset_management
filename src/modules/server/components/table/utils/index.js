@@ -16,11 +16,10 @@ class ServersTableUtils {
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
                     icon: TableIcon.EXPORT,
-                    label: "Export",
+                    label: "Exports",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/server?toDownload=1`,
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),

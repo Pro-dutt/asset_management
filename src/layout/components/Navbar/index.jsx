@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./index.module.css";
-import profileIcon from "./assets/profileIcon.png";
+import profileIcon from "./assets/profileIcon.svg";
 import Dropdown from "@/components/DropDown";
 import ICONS from "@/lib/utils/icons";
 import { Link } from "react-router-dom";
@@ -62,7 +62,7 @@ const Navbar = () => {
                     <li>
                         <Dropdown
                             dropDownContainerClass={styles.dropdownContent}
-                            trigger={<img src={getCurrentUser.data.profile_picture || profileIcon} alt="User Avatar" />}
+                            trigger={<img src={getCurrentUser.data.profile_picture || profileIcon} className={styles.profile_icon} alt="User Avatar" />}
                             content={
                                 <div className={styles.dropdownMenu}>
                                     <div className={styles.userContainer}>

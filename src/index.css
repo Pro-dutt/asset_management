@@ -59,7 +59,8 @@
     --theme-green: 40, 199, 111;
     --theme-violet: 115, 103, 240;
     --theme-red: 255, 76, 81;
-    --theme-primary: 245 134 52;
+    /* --theme-primary:  245 134 52; */
+    --theme-primary: 52 112 228;
 
     --max-width: 1800px;
     --white-color: #ffffff;

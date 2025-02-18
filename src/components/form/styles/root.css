@@ -4,10 +4,11 @@
     --initial-border-color: #dfdfdf;
     --hover-border-color: #9b9b9b;
 
-    --active-color: rgb(245 134 52);
-    --active-border-color: rgb(245 134 52);
+    /* --active-color: rgb(245 134 52); */
+    --active-color: rgb(52, 112, 228);
+    --active-border-color: rgb(52, 112, 228);
     --active-box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);
-    --primary-box-shadow: rgba(245, 134, 52, 0.3);
+    --primary-box-shadow: rgba(52, 112, 228, 0.3);
     --text-color: rgb(47, 43, 61, 0.9);
     --error-color: rgb(255, 76, 81);
 

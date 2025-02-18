@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState, memo, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./index.module.css";
-import logo from "./assets/logo.svg";
+import logo from "./assets/c3ihub.svg";
 import feather from "feather-icons";
 import menuData from "./data/SidebarData.js";
 import ICONS from "@/lib/utils/icons";
