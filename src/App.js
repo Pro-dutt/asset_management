@@ -16,6 +16,7 @@ import Permission from "./modules/permission";
 import Role from "./modules/role";
 import User from "./modules/user";
 import Auth from "./modules/auth";
+import Tenant from "./modules/tenant";
 
 function App() {
     return (
@@ -124,6 +125,14 @@ function App() {
                                     element={
                                         <React.Suspense fallback={""}>
                                             <User />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/tenant"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <Tenant />
                                         </React.Suspense>
                                     }
                                 />
