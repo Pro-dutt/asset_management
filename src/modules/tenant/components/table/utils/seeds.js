@@ -1,9 +1,9 @@
-const sampleDesktopTableData = {
+const sampleTenantTableData = {
     totalPages: 10,
     totalDocuments: 10,
     data: [
         {
-            id: 1,
+            _id: 1,
             name: "Acme Corporation",
             address: "123 Acme St, Suite 400",
             country: "USA",
@@ -15,7 +15,7 @@ const sampleDesktopTableData = {
             remarks: "Main office located in California.",
         },
         {
-            id: 2,
+            _id: 2,
             name: "Global Enterprises",
             address: "456 Global Rd, Building 5",
             country: "Canada",
@@ -27,7 +27,7 @@ const sampleDesktopTableData = {
             remarks: "Global headquarters in Ontario, Canada.",
         },
         {
-            id: 3,
+            _id: 3,
             name: "Tech Innovators Inc.",
             address: "789 Innovation Dr, Tech Park",
             country: "UK",
@@ -39,7 +39,7 @@ const sampleDesktopTableData = {
             remarks: "A leading technology firm in London.",
         },
         {
-            id: 4,
+            _id: 4,
             name: "Green Energy Solutions",
             address: "101 Greenway Blvd, Green District",
             country: "Germany",
@@ -48,10 +48,10 @@ const sampleDesktopTableData = {
             contact: "+49 30 1234567",
             email: "contact@greenenergy.com",
             status: "active",
-            remarks: "Sustainable energy solutions provider.",
+            remarks: "Sustainable energy solutions prov_ider.",
         },
         {
-            id: 5,
+            _id: 5,
             name: "Retail Giant Group",
             address: "202 Mall St, Retail Plaza",
             country: "USA",
@@ -63,7 +63,7 @@ const sampleDesktopTableData = {
             remarks: "Leading retail chain in North America.",
         },
         {
-            id: 6,
+            _id: 6,
             name: "Blue Ocean Technologies",
             address: "303 Ocean Ave, Blue Tech Building",
             country: "Australia",
@@ -75,7 +75,7 @@ const sampleDesktopTableData = {
             remarks: "Focus on ocean technologies and research.",
         },
         {
-            id: 7,
+            _id: 7,
             name: "Apex Logistics",
             address: "404 Apex Rd, Logistics Hub",
             country: "India",
@@ -87,7 +87,7 @@ const sampleDesktopTableData = {
             remarks: "Efficient supply chain and logistics services.",
         },
         {
-            id: 8,
+            _id: 8,
             name: "Digital Creatives Studio",
             address: "505 Pixel Ln, Design Tower",
             country: "USA",
@@ -99,7 +99,7 @@ const sampleDesktopTableData = {
             remarks: "Creative digital marketing and design studio.",
         },
         {
-            id: 9,
+            _id: 9,
             name: "Smart Solutions Pvt Ltd.",
             address: "606 Smart St, Techno Park",
             country: "Singapore",
@@ -108,7 +108,7 @@ const sampleDesktopTableData = {
             contact: "+65 1234 5678",
             email: "contact@smartsolutions.sg",
             status: "inactive",
-            remarks: "Providing IT and business solutions across Asia.",
+            remarks: "Prov_iding IT and business solutions across Asia.",
         },
         {
             id: 10,
@@ -125,4 +125,4 @@ const sampleDesktopTableData = {
     ],
 };
 
-export default sampleDesktopTableData;
+export default sampleTenantTableData;

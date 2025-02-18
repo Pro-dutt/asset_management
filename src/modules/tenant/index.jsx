@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Modal from "@/components/Popup/Popup";
 import GlobalICONS from "@/lib/utils/icons";
-import { UserInfoForm } from "./components/form";
+import { TenantInfoForm } from "./components/form";
 import styles from "./styles/index.module.css";
 import GlobalUtils from "@/lib/utils";
-import UserDetails from "./components/details";
-import { useUsers } from "@/services/context/users";
 import TenantTable from "./components/table";
+import { useTenant } from "@/services/context/tenant";
+import TenantDetails from "./components/details";
 
 const Tenant = () => {
     const [show, setShow] = useState({});
@@ -41,7 +41,7 @@ const Tenant = () => {
                 onClose={closeModal}
                 title={"Add Tenant"}
                 maxWidth={"800px"}
-                icon={GlobalICONS.PERMISSION}
+                icon={GlobalICONS.ADD_TENANT}
                 description="Provide the required details to configure and register a new tenant"
             >
                 <TenantInfoForm onCancel={closeModal} onSuccess={onSuccess} />

@@ -4,6 +4,7 @@ import Table from "@/components/table";
 import "./styles/index.css";
 import TenantTableUtils from "./utils";
 import tenantTableConstants from "./utils/constants";
+import sampleTenantTableData from "./utils/seeds";
 
 const TenantTable = ({ setTenantDetails, setShow, refreshTable }) => {
     const getTableData = (data) => ({
@@ -20,7 +21,7 @@ const TenantTable = ({ setTenantDetails, setShow, refreshTable }) => {
         refreshTable: refreshTable || false,
     });
 
-    const tableData = useMemo(() => getTableData({}), [refreshTable]);
+    const tableData = useMemo(() => getTableData(sampleTenantTableData), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

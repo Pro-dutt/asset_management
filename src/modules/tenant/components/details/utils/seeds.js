@@ -1,14 +1,13 @@
 const sampleTenantDetails = {
-    id: 3,
-    name: "Tech Innovators Inc.",
-    address: "789 Innovation Dr, Tech Park",
-    country: "UK",
-    state: "London",
-    pincode: "EC1A 1BB",
-    contact: "+44 20 7946 0958",
-    email: "info@techinnovators.com",
-    remarks: "A leading technology firm in London.",
+    _id: 7,
+    name: "Apex Logistics",
+    address: "404 Apex Rd, Logistics Hub",
+    country: "India",
+    state: "Maharashtra",
+    pincode: "400001",
+    contact: "+91 22 2345 6789",
+    email: "logistics@apex.com",
+    remarks: "Efficient supply chain and logistics services.",
     status: "inactive",
-    statusName: "Inactive",
 };
 export default sampleTenantDetails;

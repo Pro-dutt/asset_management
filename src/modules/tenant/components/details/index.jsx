@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./styles/index.module.css";
 import "./styles/index.css";
-import useRolesDetails from "./hooks/useRoleDetails";
 import Details from "@/components/details";
+import useTenantDetails from "./hooks/useTenantDetails";
 
-const RoleDetails = ({ data }) => {
-    const { roleDetailsConfig } = useRolesDetails(data);
+const TenantDetails = ({ data }) => {
+    const { tenantDetailsConfig } = useTenantDetails(data);
 
     return (
         <div className={styles.container}>
-            <Details data={roleDetailsConfig} />
+            <Details data={tenantDetailsConfig} />
         </div>
     );
 };
 
-export default RoleDetails;
+export default TenantDetails;

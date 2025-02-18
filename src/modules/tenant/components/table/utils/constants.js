@@ -16,7 +16,7 @@ const TABLE_LIMITS = {
 };
 
 const tenantTableConstants = {
-    TABLE_API_URL: "/user",
+    TABLE_API_URL: "/tenant",
     FILTER_OPTIONS,
     TABLE_LIMITS,
     externalFilters: {

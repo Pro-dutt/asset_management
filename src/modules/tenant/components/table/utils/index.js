@@ -39,12 +39,12 @@ class TenantTableUtils {
             Id: { key: "id", value: item._id, type: "hidden" },
             Name: { key: "name", value: item.name },
             Email: { key: "email", value: item.email },
-            Address: { key: "address", value: item.address },
+            // Address: { key: "address", value: item.address },
             Country: { key: "country", value: item.country },
             State: { key: "state", value: item.state },
             Pincode: { key: "pincode", value: item.pincode },
-            Contact: { key: "contact", value: item.contact },
-            Remarks: { key: "remarks", value: item.remarks },
+            // Contact: { key: "contact", value: item.contact },
+            // Remarks: { key: "remarks", value: item.remarks },
             Status: { key: "status", value: item.status },
         }));
     }
@@ -60,11 +60,11 @@ class TenantTableUtils {
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
             },
-            // {
-            //     name: "View",
-            //     functions: (row) => handleAction(row, "view"),
-            //     label: "View Details",
-            // },
+            {
+                name: "View",
+                functions: (row) => handleAction(row, "view"),
+                label: "View Details",
+            },
             {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
