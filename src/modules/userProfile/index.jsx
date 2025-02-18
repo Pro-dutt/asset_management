@@ -5,15 +5,14 @@ import Button from "@/components/form/components/FieldTemplates/ButtonField";
 import GlobalUtils from "@/lib/utils";
 import DynamicForm from "@/components/form";
 import { notifyError } from "@/components/Notification";
-import globalConstants from "@/lib/utils/contants";
-import { useUser } from "@/services/context/user";
+import { useAuth } from "@/services/context/auth";
+import DetailsUtils from "@/components/details/utils";
 
 const ProfilePage = () => {
     const [activeTab, setActiveTab] = useState("account");
 
-    const { getCurrentUser, updateUserProfilePicture, updateUserPassword, updateUserDetails } = useUser();
+    const { getCurrentUser, updateUserProfilePicture, updateUserPassword, updateUserDetails } = useAuth();
 
-    const currentUser = {};
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     };
@@ -35,12 +34,6 @@ const ProfilePage = () => {
         numberSymbol: false,
         confirmPass: false,
     });
-
-    useEffect(() => {
-        getCurrentUser.fetch({
-            params: {},
-        });
-    }, []);
 
     const handlePasswordChange = (e) => {
         const { id, value } = e.target;
@@ -68,27 +61,45 @@ const ProfilePage = () => {
         }));
     };
 
-    const buttons = GlobalUtils.getFormButtons();
+    const buttons = [] || GlobalUtils.getFormButtons();
 
     const formData = useMemo(() => {
         const formItems = [
             {
                 type: "text",
-                name: "full_name",
+                name: "name",
                 label: "Name",
                 required: true,
                 disabled: true,
                 grid: 2,
-                defaultValue: getCurrentUser?.data?.full_name || "",
+                defaultValue: getCurrentUser?.data?.name || "",
             },
             {
                 type: "email",
-                name: "mail",
+                name: "email",
                 label: "Email Address",
                 required: true,
                 disabled: true,
                 grid: 2,
-                defaultValue: getCurrentUser?.data?.mail || "",
+                defaultValue: getCurrentUser?.data?.email || "",
+            },
+            {
+                type: "text",
+                name: "employeeId",
+                label: "Employee Id",
+                required: true,
+                disabled: true,
+                grid: 2,
+                defaultValue: getCurrentUser?.data?.employeeId || "",
+            },
+            {
+                type: "text",
+                name: "department",
+                label: "Department",
+                required: true,
+                disabled: true,
+                grid: 2,
+                defaultValue: getCurrentUser?.data?.department || "",
             },
             {
                 type: "text",
@@ -105,20 +116,92 @@ const ProfilePage = () => {
                 label: "Roles",
                 required: true,
                 disabled: true,
-                grid: 2,
+                grid: 1,
                 multiple: true,
-                options: Object.entries(globalConstants.ROLES || {}).map(([key, value]) => {
-                    return { label: key, value: value };
-                }),
-                defaultValue: getCurrentUser?.data?.roles || "",
+                options:
+                    getCurrentUser.data?.roles?.map((role) => {
+                        return { label: role.name, value: role._id };
+                    }) || [],
+                defaultValue:
+                    getCurrentUser.data?.roles?.map((role) => {
+                        return role._id;
+                    }) || [],
             },
             {
-                type: "checkbox",
-                name: "mailNotification",
-                label: "Enable email notification",
-                grid: 2,
-                defaultValue: getCurrentUser?.data?.mailNotification == 0 ? false : true,
+                type: "select",
+                name: "extraPermissions",
+                label: "Permissions",
+                required: true,
+                disabled: true,
+                grid: 1,
+                multiple: true,
+                options:
+                    getCurrentUser.data?.permissions?.map((permission) => {
+                        return { label: permission.name, value: permission._id };
+                    }) || [],
+                defaultValue:
+                    getCurrentUser.data?.permissions?.map((permission) => {
+                        return permission._id;
+                    }) || [],
             },
+            {
+                type: "select",
+                name: "extraPermissions",
+                label: "Extra Permissions",
+                required: true,
+                disabled: true,
+                grid: 1,
+                multiple: true,
+                options:
+                    getCurrentUser.data?.extraPermissions?.map((extraPermission) => {
+                        return { label: extraPermission.name, value: extraPermission._id };
+                    }) || [],
+                defaultValue:
+                    getCurrentUser.data?.extraPermissions?.map((extraPermission) => {
+                        return extraPermission._id;
+                    }) || [],
+            },
+            {
+                type: "select",
+                name: "routes",
+                label: "Routes",
+                required: true,
+                disabled: true,
+                grid: 1,
+                multiple: true,
+                options:
+                    getCurrentUser.data?.routes?.map((route) => {
+                        return { label: `${DetailsUtils.formatText(route.label || "")}  [${route.path}]`, value: route._id };
+                    }) || [],
+                defaultValue:
+                    getCurrentUser.data?.routes?.map((route) => {
+                        return route._id;
+                    }) || [],
+            },
+            {
+                type: "select",
+                name: "extraPermissionsRoutes",
+                label: "Extra Permissions Routes",
+                required: true,
+                disabled: true,
+                grid: 1,
+                multiple: true,
+                options:
+                    getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
+                        return { label: `${DetailsUtils.formatText(extraPermissionsRoute.label || "")}  [${extraPermissionsRoute.path}]`, value: extraPermissionsRoute._id };
+                    }) || [],
+                defaultValue:
+                    getCurrentUser.data?.extraPermissionsRoutes?.map((extraPermissionsRoute) => {
+                        return extraPermissionsRoute._id;
+                    }) || [],
+            },
+            // {
+            //     type: "checkbox",
+            //     name: "mailNotification",
+            //     label: "Enable email notification",
+            //     grid: 2,
+            //     defaultValue: getCurrentUser?.data?.mailNotification == 0 ? false : true,
+            // },
         ];
         return formItems;
     }, [getCurrentUser.data]);
@@ -160,8 +243,11 @@ const ProfilePage = () => {
         event.preventDefault();
         updateUserPassword.execute({
             payload: {
-                current_password: passwords.current,
-                new_password: passwords.new,
+                currentPassword: passwords.current,
+                newPassword: passwords.new,
+            },
+            options: {
+                showNotification: true,
             },
         });
         setPasswords({
@@ -204,7 +290,7 @@ const ProfilePage = () => {
                     <div className={styles.profileContainer}>
                         <div className={styles.profilePhoto}>
                             {/* <img src={previewUrl || getCurrentUser.data.profile_picture || require("./Assets/profile.webp")} alt="User Avatar" /> */}
-                            <img src={previewUrl || getCurrentUser.data.profile_picture} alt="User Avatar" />
+                            <img src={previewUrl || getCurrentUser.data.profile_picture || require("./Assets/profile.webp")} alt="User Avatar" />
                             <input accept=".jpg,.jpeg,.png" onChange={handleFileChange} type="file" ref={fileInputRef} style={{ display: "none" }} />
                             <div className={styles.button_wrapper}>
                                 <div className={styles.button_wrapper_two}>

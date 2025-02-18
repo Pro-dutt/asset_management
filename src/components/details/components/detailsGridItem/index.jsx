@@ -6,7 +6,7 @@ const DetailsGridItem = ({ data = {}, grid }) => {
     const gridClass = `grid-${grid}`;
     return (
         <div className={`${styles[gridClass]} ${styles.container}`}>
-            <DetailsHeader data={data.heading} />
+            {data.heading && <DetailsHeader data={data.heading} />}
             {data.customBody ? data.customBody : <DetailsBody data={data.body} />}
         </div>
     );

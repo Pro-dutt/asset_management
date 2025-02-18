@@ -8,32 +8,26 @@ import { useTheme } from "@/services/context/ThemeContext";
 import navbarICONS from "./utils/icons";
 import Button from "@/components/form/components/FieldTemplates/ButtonField";
 import SidebarIcons from "../Sidebar/data/sidebarIcon";
-import { useUser } from "@/services/context/user";
+import { useAuth } from "@/services/context/auth";
+import apiConstants from "@/services/utils/constants";
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
-    const { getCurrentUser } = useUser();
+    const { getCurrentUser } = useAuth();
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
 
-    useEffect(() => {
-        getCurrentUser.fetch({
-            params: {},
-        });
-    }, []);
-
     return (
         <div className={styles.container__wrapper}>
             <header className={styles.navbar}>
-                <div className={styles.search_bar}>
+                {/* <div className={styles.search_bar}>
                     <span>{ICONS.SEARCH}</span>
-                    {/* <img src={searchIcon} alt="" /> */}
                     <p>
                         Search <span>⌘K</span>
                     </p>
-                </div>
+                </div> */}
                 <ul className={styles.left_icon}>
                     <li>
                         <Dropdown
@@ -44,7 +38,7 @@ const Navbar = () => {
                             }
                         />
                     </li>
-                    <li>
+                    {/* <li>
                         <Dropdown
                             trigger={<p className={styles.menu_list_icon}>{ICONS.GRID}</p>}
                             content={
@@ -53,8 +47,8 @@ const Navbar = () => {
                                 </div>
                             }
                         />
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Dropdown
                             dropDownContainerClass={styles.dropdownContent}
                             trigger={<p className={styles.menu_list_icon}>{ICONS.NOTIFICATION}</p>}
@@ -64,23 +58,20 @@ const Navbar = () => {
                                 </div>
                             }
                         />
-                    </li>
+                    </li> */}
                     <li>
                         <Dropdown
                             dropDownContainerClass={styles.dropdownContent}
-                            // trigger={<img src={profileIcon} alt="" />}
                             trigger={<img src={getCurrentUser.data.profile_picture || profileIcon} alt="User Avatar" />}
                             content={
                                 <div className={styles.dropdownMenu}>
                                     <div className={styles.userContainer}>
                                         <span>
-                                            {/* <img src={"/images/profile.webp"} alt="User Profile" width={50} height={50} className={styles.profileimg} /> */}
-                                            {/* <img src={profileIcon} alt="" /> */}
                                             <img src={getCurrentUser.data.profile_picture || profileIcon} alt="User Avatar" />
                                         </span>
                                         <div className={styles.username}>
-                                            <span>{"Name"}</span>
-                                            <span>{"Role"}</span>
+                                            <span>{getCurrentUser.data.name || "Name"}</span>
+                                            <span>{getCurrentUser.data.employeeId || "Employee Id"}</span>
                                         </div>
                                     </div>
                                     <div className={styles.menuLinksContainer}>
@@ -93,8 +84,16 @@ const Navbar = () => {
                                         </div>
                                         <div>
                                             <hr className={styles.vDivider} aria-orientation="horizontal" role="separator"></hr>
-                                            <Button fullWidth={true} icon={SidebarIcons.LOGOUT} iconPosition={"right"}>
-                                                <a href="/user/logout">Logout</a>
+                                            <Button
+                                                onClick={() => {
+                                                    localStorage.removeItem(apiConstants.AUTH_TOKEN_KEY);
+                                                    window.location.href = "/auth/login";
+                                                }}
+                                                fullWidth={true}
+                                                icon={SidebarIcons.LOGOUT}
+                                                iconPosition={"right"}
+                                            >
+                                                Logout
                                             </Button>
                                         </div>
                                     </div>
@@ -102,40 +101,6 @@ const Navbar = () => {
                             }
                         />
                     </li>
-                    {/* <li className={styles.userInfo}>
-                        <Dropdown
-                            dropDownContainerStyle={{ minWidth: "250px" }}
-                            dropDownContainerClass={styles.dropdownContent}
-                            trigger={<span className={styles.userIcon}></span>}
-                            content={
-                                <div className={styles.dropdownMenu}>
-                                    <div className={styles.userContainer}>
-                                        <span>
-                                            <img src={"/images/profile.webp"} alt="User Profile" width={50} height={50} className={styles.profileimg} />
-                                        </span>
-                                        <div className={styles.username}>
-                                            <span>{"Name"}</span>
-                                            <span>{"Role"}</span>
-                                        </div>
-                                    </div>
-                                    <div className={styles.menuLinksContainer}>
-                                        <div className={styles.links}>
-                                            <Link to="/user-profile">
-                                                <span>{ICONS.USER}</span>
-                                                <span>Profile</span>
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <hr className={styles.vDivider} aria-orientation="horizontal" role="separator"></hr>
-                                            <Link to="/user/logout" className={styles.logoutBtn}>
-                                                <span>Logout</span>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        />
-                    </li> */}
                 </ul>
             </header>
         </div>

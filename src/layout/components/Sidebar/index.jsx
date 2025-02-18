@@ -4,15 +4,18 @@ import { useLocation } from "react-router-dom";
 import styles from "./index.module.css";
 import logo from "./assets/logo.svg";
 import feather from "feather-icons";
-import menuData from "./data/SidebarData.json";
+import menuData from "./data/SidebarData.js";
 import ICONS from "@/lib/utils/icons";
 import SidebarIcons from "./data/sidebarIcon";
 import { useNavigate } from "react-router";
+import { useAuth } from "@/services/context/auth";
 
-const Sidebar = ({ userRole = "admin" }) => {
+const Sidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const [isLockedOpen, setIsLockedOpen] = useState(true); // New state to track if sidebar is locked open
-
+    const [isLockedOpen, setIsLockedOpen] = useState(true);
+    const { getCurrentUser } = useAuth();
+    const routes = [...getCurrentUser.data?.routes, ...getCurrentUser.data?.extraPermissionsRoutes];
+    console.log(routes);
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
@@ -105,9 +108,13 @@ const Sidebar = ({ userRole = "admin" }) => {
 
     const isItemVisible = useCallback(
         (item) => {
-            return !item.permission || item.permission.includes(userRole);
+            if (!item.routes) return true;
+
+            const isRouteIncluded = item.routes.some((sidebarRoute) => routes.find((route) => route.path.startsWith(`/api/v1${sidebarRoute}`)));
+
+            return isRouteIncluded;
         },
-        [userRole]
+        [routes]
     );
 
     const toggleMenuGroup = useCallback((groupName) => {
@@ -174,7 +181,7 @@ const Sidebar = ({ userRole = "admin" }) => {
                 <Comp
                     href={item.href}
                     key={item.name}
-                    onClick={() => handleMenuItemClick(item.link ? item.link : "")}
+                    onClick={() => item.function?.() || handleMenuItemClick(item.link ? item.link : "")}
                     className={`${styles.menuItem} ${isItemActive(item) ? styles.active : ""} ${!isSidebarOpen ? styles.collapsedMenuItem : ""} ${item.className ? styles[item.className] : ""} ${
                         isChildMenu ? styles.child_menu : ""
                     }`}

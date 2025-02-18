@@ -10,32 +10,44 @@ import { StatsProvider } from "./stats";
 import { ChartsProvider } from "./charts";
 import { ThemeProvider } from "./ThemeContext";
 import { LaptopProvider } from "./laptop";
-import { UserProvider } from "./user";
+import { AuthProvider } from "./auth";
+import { PermissionProvider } from "./permission";
+import { RouteProvider } from "./route";
+import { RoleProvider } from "./role";
+import { UsersProvider } from "./users";
 
 const ContextProviders = ({ children }) => {
     return (
         <ThemeProvider>
             <LoadingProvider>
                 <NotificationProvider>
-                    <UserProvider>
-                        <LaptopProvider>
-                            <DesktopProvider>
-                                <VirtualMachinesProvider>
-                                    <WebApplicationProvider>
-                                        <NetworkDeviceProvider>
-                                            <ServerProvider>
-                                                <StatsProvider>
-                                                    <ChartsProvider>
-                                                        <EndPointsProvider>{children}</EndPointsProvider>
-                                                    </ChartsProvider>
-                                                </StatsProvider>
-                                            </ServerProvider>
-                                        </NetworkDeviceProvider>
-                                    </WebApplicationProvider>
-                                </VirtualMachinesProvider>
-                            </DesktopProvider>
-                        </LaptopProvider>
-                    </UserProvider>
+                    <RouteProvider>
+                        <PermissionProvider>
+                            <RoleProvider>
+                                <UsersProvider>
+                                    <AuthProvider>
+                                        <LaptopProvider>
+                                            <DesktopProvider>
+                                                <VirtualMachinesProvider>
+                                                    <WebApplicationProvider>
+                                                        <NetworkDeviceProvider>
+                                                            <ServerProvider>
+                                                                <StatsProvider>
+                                                                    <ChartsProvider>
+                                                                        <EndPointsProvider>{children}</EndPointsProvider>
+                                                                    </ChartsProvider>
+                                                                </StatsProvider>
+                                                            </ServerProvider>
+                                                        </NetworkDeviceProvider>
+                                                    </WebApplicationProvider>
+                                                </VirtualMachinesProvider>
+                                            </DesktopProvider>
+                                        </LaptopProvider>
+                                    </AuthProvider>
+                                </UsersProvider>
+                            </RoleProvider>
+                        </PermissionProvider>
+                    </RouteProvider>
                 </NotificationProvider>
             </LoadingProvider>
         </ThemeProvider>

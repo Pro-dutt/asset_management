@@ -1,5 +1,6 @@
 const apiConstants = {
     BACKEND_API_BASE_URL: `${process.env.REACT_APP_BACKEND_BASE_PATH}/api/v1`,
+    AUTH_TOKEN_KEY: "AssetsManagementToken",
     endPoints: {
         BASE_ROUTE: "/institutes",
         SIGN_UP: "/owners/register",
@@ -31,6 +32,18 @@ const apiConstants = {
     charts: {
         BASE_ROUTE: "/charts",
     },
+    route: {
+        BASE_ROUTE: "/route",
+    },
+    permission: {
+        BASE_ROUTE: "/permission",
+    },
+    role: {
+        BASE_ROUTE: "/role",
+    },
+    users: {
+        BASE_ROUTE: "/user",
+    },
     user: {
         BASE_ROUTE: "/user",
         GET_CURRENT_USER: "/get-current-user",
@@ -39,6 +52,17 @@ const apiConstants = {
         UPDATE_USER_PASSWORD: "/update-password",
         LOGIN: "/user/login",
         LOGOUT: "/user/logout",
+    },
+    auth: {
+        BASE_ROUTE: "/auth",
+        GET_CURRENT_USER: "/logged-in",
+        UPDATE_USER_PICTURE: "/update-profile-picture",
+        UPDATE_USER_DETAILS: "/update-user-details",
+        UPDATE_USER_PASSWORD: "/change-password",
+        LOGIN: "/login",
+        LOGOUT: "/logout",
+        FORGOT_PASSWORD: "forgot-password",
+        CHANGE_PASSWORD: "reset-password",
     },
     loadingStateKeys: {
         CREATE_VIRTUAL_MACHINE: "createVirtualMachine",
@@ -68,10 +92,35 @@ const apiConstants = {
         GET_STATS: "getStats",
         GET_CHARTS: "getCharts",
 
+        LOGIN_AUTH: "loginAuth",
+        FORGOT_PASSWORD: "forgotPassword",
         GET_CURRENT_USER: "getCurrentUser",
         UPDATE_USER_PICTURE: "updateUserPicture",
         UPDATE_USER_DETAILS: "updateUser",
         UPDATE_USER_PASSWORD: "updatePassword",
+        CHANGE_PASSWORD: "changePassword",
+
+        GET_DROPDOWN_LIST_ROUTE: "getDropdownListRoute",
+        CREATE_ROUTE: "createRoute",
+        UPDATE_ROUTE: "updateRoute",
+        DELETE_ROUTE: "deleteRoute",
+
+        GET_DROPDOWN_LIST_PERMISSION: "getDropdownListPermission",
+        CREATE_PERMISSION: "createPermission",
+        UPDATE_PERMISSION: "updatePermission",
+        DELETE_PERMISSION: "deletePermission",
+
+        GET_DROPDOWN_LIST_ROLE: "getDropdownListRole",
+        CREATE_ROLE: "createRole",
+        DETAILS_ROLE: "detailsRole",
+        UPDATE_ROLE: "updateRole",
+        DELETE_ROLE: "deleteRole",
+
+        GET_DROPDOWN_LIST_USERS: "getDropdownListUsers",
+        CREATE_USERS: "createUsers",
+        DETAILS_USERS: "detailsUsers",
+        UPDATE_USERS: "updateUsers",
+        DELETE_USERS: "deleteUsers",
     },
 };
 export default apiConstants;
