@@ -120,7 +120,7 @@ const useLaptopsDetails = (data = sampleLaptopsDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         laptopsDetailsConfig,
     };

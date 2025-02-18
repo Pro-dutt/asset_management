@@ -45,6 +45,11 @@ const Role = () => {
                 description="Provide the required details to configure and register a new role"
             >
                 <RoleInfoForm onCancel={closeModal} onSuccess={onSuccess} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </Modal>
             <Modal
                 show={show.edit}
@@ -55,6 +60,11 @@ const Role = () => {
                 description="Provide the required details to configure and register a new role"
             >
                 <RoleInfoForm data={roleDetails} onCancel={closeModal} onSuccess={onSuccess} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </Modal>
             <Modal
                 show={show.view}

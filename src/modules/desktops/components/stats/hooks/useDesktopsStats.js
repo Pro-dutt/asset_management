@@ -44,7 +44,7 @@ const useDesktopsStats = (data = sampleDesktopsStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         desktopsStatsConfig,
     };

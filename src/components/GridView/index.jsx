@@ -7,7 +7,7 @@ import globalConstants from "@/lib/utils/contants";
 
 const GridView = ({ data, actionData }) => {
     // Console log to verify the incoming data
-    console.log(data);
+    //console.log(data);
 
     return (
         <>

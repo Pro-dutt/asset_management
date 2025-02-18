@@ -44,7 +44,7 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         networkStatsConfig,
     };

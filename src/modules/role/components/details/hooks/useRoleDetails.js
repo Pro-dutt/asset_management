@@ -17,7 +17,7 @@ const useRolesDetails = (data = sampleRolesDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         roleDetailsConfig,
     };

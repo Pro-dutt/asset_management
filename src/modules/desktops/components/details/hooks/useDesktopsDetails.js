@@ -120,7 +120,7 @@ const useDesktopsDetails = (data = sampleDesktopsDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         desktopsDetailsConfig,
     };

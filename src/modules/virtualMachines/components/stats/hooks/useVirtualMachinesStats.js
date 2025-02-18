@@ -44,7 +44,7 @@ const useVirtualMachinesStats = (data = sampleVirtualMachinesStatsData) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         virtualMachinesStatsConfig,
     };

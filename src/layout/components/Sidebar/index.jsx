@@ -15,7 +15,7 @@ const Sidebar = () => {
     const [isLockedOpen, setIsLockedOpen] = useState(true);
     const { getCurrentUser } = useAuth();
     const routes = [...getCurrentUser.data?.routes, ...getCurrentUser.data?.extraPermissionsRoutes];
-    console.log(routes);
+    //console.log(routes);
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
@@ -108,8 +108,13 @@ const Sidebar = () => {
 
     const isItemVisible = useCallback(
         (item) => {
-            if (!item.routes) return true;
-
+            if (!item.routes) {
+                return true;
+            }
+            const isSuperAdmin = getCurrentUser?.data?.roles?.find((role) => role.name === "Super Admin");
+            if (isSuperAdmin) {
+                return true;
+            }
             const isRouteIncluded = item.routes.some((sidebarRoute) => routes.find((route) => route.path.startsWith(`/api/v1${sidebarRoute}`)));
 
             return isRouteIncluded;

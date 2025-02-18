@@ -41,7 +41,7 @@ const Table = ({ tableData }) => {
             try {
                 const response = await apiClient.get(url, { params: payload });
                 const newData = tableData.getTableData(response.data);
-                setData(newData);
+                setData((prev) => newData);
             } catch (err) {
                 console.error("Error fetching data:", err);
                 setError("Failed to fetch data. Please try again later.");
@@ -51,17 +51,16 @@ const Table = ({ tableData }) => {
         },
         [tableData?.url]
     );
-    console.log(data);
     useEffect(() => {
         if (tableData) {
-            setData(tableData);
+            const { rows, ...restTableData } = tableData;
+            setData((prev) => ({ ...prev, ...restTableData }));
         }
     }, [tableData]);
 
     useEffect(() => {
         fetchData(initialValues);
-    }, [initialValues, tableData?.url, tableData?.refreshTable]);
-
+    }, [initialValues, tableData]);
     return (
         <div className={styles.table_container}>
             {/* Filters and Search */}

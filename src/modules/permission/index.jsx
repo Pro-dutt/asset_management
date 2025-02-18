@@ -44,6 +44,11 @@ const Permission = () => {
                 description="Provide the required details to configure and register a new permission"
             >
                 <PermissionInfoForm onCancel={closeModal} onSuccess={onSuccess} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </Modal>
             <Modal
                 show={show.edit}
@@ -54,6 +59,11 @@ const Permission = () => {
                 description="Provide the required details to configure and register a new permission"
             >
                 <PermissionInfoForm data={permissionDetails} onCancel={closeModal} onSuccess={onSuccess} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </Modal>
         </div>
     );

@@ -136,7 +136,7 @@ const useNetworkingDevicesDetails = (data = sampleNetworkingDevicesDetails) => {
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         networkingDevicesDetailsConfig,
     };

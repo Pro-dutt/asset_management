@@ -2,14 +2,15 @@ import TableUtils from "@/components/table/utils";
 import desktopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
+import GlobalUtils from "@/lib/utils";
 
 class DesktopsTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, getCurrentUser }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["itemName", "serialNumber", "serviceTag"]);
         return {
             limit: desktopsTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                GlobalUtils.hasPermission("/desktop", "POST", getCurrentUser) && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Desktop",
@@ -25,7 +26,7 @@ class DesktopsTableUtils {
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -56,14 +57,20 @@ class DesktopsTableUtils {
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
-    static tableActionData({ data, setShow, setDesktopDetails }) {
+    static tableActionData({ data, setShow, setDesktopDetails, getCurrentUser }) {
         const handleAction = (row, key) => {
+            console.log(row);
+            console.log(
+                "row>>>>>>>>>>>>>>>>>>>>>>",
+
+                data?.data?.find((item) => row["Id"].value === item._id)
+            );
             setDesktopDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
 
         return [
-            {
+            GlobalUtils.hasPermission("/desktop", "DELETE", getCurrentUser) && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -73,12 +80,12 @@ class DesktopsTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            GlobalUtils.hasPermission("/desktop", "PUT", getCurrentUser) && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

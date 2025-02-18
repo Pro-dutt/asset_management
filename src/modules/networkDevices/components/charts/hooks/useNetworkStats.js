@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import sampleNetworkStatsData from "../utils/seeds";
 import GlobalICONS from "@/lib/utils/icons";
 
-
 const useNetworkStats = (data = sampleNetworkStatsData) => {
     const networkStatsConfig = useMemo(
         () => [
@@ -13,7 +12,7 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
                 icon: GlobalICONS.FIREWALL,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "green"
+                color: "green",
             },
             {
                 title: "Switches",
@@ -22,7 +21,7 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
                 icon: GlobalICONS.SWITCH,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "violet"
+                color: "violet",
             },
             {
                 title: "Not in support",
@@ -31,8 +30,7 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
                 icon: GlobalICONS.NOT_IN_SUPPORT,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "orange"
-
+                color: "orange",
             },
             {
                 title: "Expired",
@@ -41,12 +39,12 @@ const useNetworkStats = (data = sampleNetworkStatsData) => {
                 icon: GlobalICONS.EXPIRED,
                 hasDecrement: false,
                 hasIncrement: false,
-                color: "red"
+                color: "red",
             },
         ],
         [data]
     );
-    console.log(data);
+    //console.log(data);
     return {
         networkStatsConfig,
     };
