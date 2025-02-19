@@ -6,6 +6,8 @@ import { PermissionInfoForm } from "./components/form";
 import styles from "./styles/index.module.css";
 import { usePermission } from "@/services/context/permission";
 import GlobalUtils from "@/lib/utils";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const Permission = () => {
     const [show, setShow] = useState({});
@@ -33,7 +35,7 @@ const Permission = () => {
     };
 
     return (
-        <div id="permissions_module" className={styles.container}>
+        <CanAccess path={apiConstants.permission.BASE_ROUTE} id="permissions_module" className={styles.container}>
             <PermissionsTable setShow={setShow} setPermissionDetails={setPermissionDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
@@ -65,7 +67,7 @@ const Permission = () => {
                 <br />
                 <br />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

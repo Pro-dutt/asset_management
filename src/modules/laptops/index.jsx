@@ -9,9 +9,10 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import { useDesktop } from "@/services/context/desktop";
 import GlobalUtils from "@/lib/utils";
+import apiConstants from "@/services/utils/constants";
+import CanAccess from "@/components/CanAccess";
 
 const Laptops = () => {
-
     const [show, setShow] = useState({});
     const [laptopDetails, setLaptopDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
@@ -37,7 +38,7 @@ const Laptops = () => {
     };
 
     return (
-        <div id="laptops_module" className={styles.container}>
+        <CanAccess path={apiConstants.laptop.BASE_ROUTE} id="laptops_module" className={styles.container}>
             <LaptopsStats />
             <LaptopsTable setShow={setShow} setLaptopDetails={setLaptopDetails} refreshTable={refreshTable} />
             <Modal
@@ -70,7 +71,7 @@ const Laptops = () => {
             >
                 <LaptopDetails data={laptopDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

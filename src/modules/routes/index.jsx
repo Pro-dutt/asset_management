@@ -1,12 +1,13 @@
 import React from "react";
 import RoutesTable from "./components/table";
 import styles from "./styles/index.module.css";
+import apiConstants from "@/services/utils/constants";
 
 const ApiRoutes = () => {
     return (
-        <div id="routes_module" className={styles.container}>
+        <CanAccess path={apiConstants.role.BASE_ROUTE} id="routes_module" className={styles.container}>
             <RoutesTable />
-        </div>
+        </CanAccess>
     );
 };
 

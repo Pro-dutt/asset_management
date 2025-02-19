@@ -4,12 +4,13 @@ import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 
 class ServersTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const url = serversTableConstants.TABLE_API_URL;
         return {
             limit: serversTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Server",
@@ -18,13 +19,14 @@ class ServersTableUtils {
                 {
                     flat: true,
                     outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
-                    label: "Exports",
+                    label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/server?toDownload=1`,
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -55,14 +57,14 @@ class ServersTableUtils {
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
-    static tableActionData({ data, setShow, setServerDetails }) {
+    static tableActionData({ data, setShow, setServerDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setServerDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = serversTableConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -72,12 +74,12 @@ class ServersTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

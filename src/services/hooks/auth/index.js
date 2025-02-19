@@ -162,13 +162,13 @@ export const useGetCurrentUser = () => {
             try {
                 const data = await AuthApiService.getCurrentUser(params, controller.signal);
 
-                if (options?.showNotification) {
-                    showSuccessNotification({
-                        key: GET_CURRENT_USER_KEY,
-                        value: data,
-                    });
-                }
-                setCurrentUser(data);
+                showSuccessNotification({
+                    key: GET_CURRENT_USER_KEY,
+                    value: data,
+                    hideNotification: true,
+                });
+
+                setCurrentUser(data.data);
                 onSuccess?.(data);
                 return data;
             } catch (error) {

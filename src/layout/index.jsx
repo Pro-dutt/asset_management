@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
             <Sidebar />
             <div className={styles.body}>
                 <Navbar />
-                <div className={styles.content}>{children}</div>
+                {getCurrentUser.successMessages?.length > 0 && <div className={styles.content}>{children}</div>}
             </div>
         </div>
     );

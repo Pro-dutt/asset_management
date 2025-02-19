@@ -4,21 +4,22 @@ import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 
 class NetworkingDevicesTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const url = networkingDevicesTableConstants.TABLE_API_URL;
         return {
             limit: networkingDevicesTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Networking Device",
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
                     label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/network-device?toDownload=1`,
@@ -40,7 +41,7 @@ class NetworkingDevicesTableUtils {
                     },
                     className: styles.search_field,
                 },
-            ],
+            ].filter(Boolean),
         };
     }
 
@@ -56,14 +57,14 @@ class NetworkingDevicesTableUtils {
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
-    static tableActionData({ data, setShow, setNetworkingDeviceDetails }) {
+    static tableActionData({ data, setShow, setNetworkingDeviceDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setNetworkingDeviceDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = networkingDevicesTableConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -73,12 +74,12 @@ class NetworkingDevicesTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

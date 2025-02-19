@@ -6,15 +6,15 @@ import DesktopsTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import desktopGridConfig from "../grid/config/desktopGridConfig";
-import { useAuth } from "@/services/context/auth";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const DesktopsTable = ({ setDesktopDetails, setShow, refreshTable }) => {
-    const { getCurrentUser } = useAuth();
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = DesktopsTableUtils.tableRow(data);
-        const actionData = DesktopsTableUtils.tableActionData({ data, setShow, setDesktopDetails, getCurrentUser });
+        const actionData = DesktopsTableUtils.tableActionData({ data, setShow, setDesktopDetails, hasPermission });
         const gridConfig = desktopGridConfig(rows);
-        
+
         return {
             rows,
             actionData,
@@ -24,14 +24,14 @@ const DesktopsTable = ({ setDesktopDetails, setShow, refreshTable }) => {
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: desktopsTableConstants.externalFilters,
-            tableHeader: DesktopsTableUtils.tableHeader({ data, setShow, styles, getCurrentUser }),
+            tableHeader: DesktopsTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,
         };
     };
 
-    const tableData = useMemo(() => getTableData({}), [refreshTable, getCurrentUser]);
+    const tableData = useMemo(() => getTableData({}), [refreshTable]);
 
     return <div className={styles.container}>{<Table tableData={tableData} />}</div>;
 };

@@ -9,6 +9,8 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
 import GlobalUtils from "@/lib/utils";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const VirtualMachine = () => {
     const [show, setShow] = useState({});
@@ -36,7 +38,7 @@ const VirtualMachine = () => {
     };
 
     return (
-        <div id="virtual_machines_module" className={styles.container}>
+        <CanAccess path={apiConstants.virtualMachines.BASE_ROUTE} id="virtual_machines_module" className={styles.container}>
             <VirtualMachineStats />
             <VirtualMachineTable setShow={setShow} setVirtualMachineDetails={setVirtualMachineDetails} refreshTable={refreshTable} />
             <Modal
@@ -69,7 +71,7 @@ const VirtualMachine = () => {
             >
                 <VirtualMachineDetails data={virtualMachineDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

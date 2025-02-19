@@ -5,18 +5,19 @@ import styles from "../styles/index.module.css";
 import DetailsUtils from "@/components/details/utils";
 
 class PermissionsTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["name"]);
+        const url = permissionsTableConstants.TABLE_API_URL;
         return {
             limit: permissionsTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Permission",
                     onClick: () => setShow({ add: true }),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -53,24 +54,24 @@ class PermissionsTableUtils {
             },
         }));
     }
-    static tableActionData({ data, setShow, setPermissionDetails }) {
+    static tableActionData({ data, setShow, setPermissionDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setPermissionDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = permissionsTableConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
             },
-            {
+            hasPermission(url, "PATCH") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

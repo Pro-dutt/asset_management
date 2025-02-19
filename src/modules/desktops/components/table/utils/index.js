@@ -5,21 +5,22 @@ import apiConstants from "@/services/utils/constants";
 import GlobalUtils from "@/lib/utils";
 
 class DesktopsTableUtils {
-    static tableHeader({ data, setShow, styles, getCurrentUser }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["itemName", "serialNumber", "serviceTag"]);
+        const url = desktopsTableConstants.TABLE_API_URL;
         return {
             limit: desktopsTableConstants.TABLE_LIMITS,
             actionButtons: [
-                GlobalUtils.hasPermission("/desktop", "POST", getCurrentUser) && {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Desktop",
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
                     label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/desktop?toDownload=1`,
@@ -57,20 +58,15 @@ class DesktopsTableUtils {
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
-    static tableActionData({ data, setShow, setDesktopDetails, getCurrentUser }) {
+    static tableActionData({ data, setShow, setDesktopDetails, hasPermission }) {
         const handleAction = (row, key) => {
             console.log(row);
-            console.log(
-                "row>>>>>>>>>>>>>>>>>>>>>>",
-
-                data?.data?.find((item) => row["Id"].value === item._id)
-            );
             setDesktopDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = desktopsTableConstants.TABLE_API_URL;
         return [
-            GlobalUtils.hasPermission("/desktop", "DELETE", getCurrentUser) && {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -80,7 +76,7 @@ class DesktopsTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            GlobalUtils.hasPermission("/desktop", "PUT", getCurrentUser) && {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",

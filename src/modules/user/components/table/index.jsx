@@ -4,18 +4,20 @@ import Table from "@/components/table";
 import userTableConstants from "./utils/constants";
 import UserTableUtils from "./utils";
 import "./styles/index.css";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const UserTable = ({ setUserDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => ({
         rows: UserTableUtils.tableRow(data),
-        actionData: UserTableUtils.tableActionData({ data, setShow, setUserDetails }),
+        actionData: UserTableUtils.tableActionData({ data, setShow, setUserDetails, hasPermission }),
         url: userTableConstants.TABLE_API_URL,
         pagination: UserTableUtils.tablePagination(data),
         sorting: userTableConstants.TABLE_SORTING,
         getTableData,
         rowClickHandler: (row) => console.log(row),
         externalFilters: userTableConstants.externalFilters,
-        tableHeader: UserTableUtils.tableHeader({ data, setShow, styles }),
+        tableHeader: UserTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
         checkbox: true,
         refreshTable: refreshTable || false,
     });

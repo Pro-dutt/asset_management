@@ -5,28 +5,29 @@ import apiConstants from "@/services/utils/constants";
 import webApplicationConstants from "../../form/utils/constants";
 
 class WebApplicationTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const url = webApplicationsTableConstants.TABLE_API_URL;
         return {
             limit: webApplicationsTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Web Application",
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
                     label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/web-application?toDownload=1`,
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -57,14 +58,14 @@ class WebApplicationTableUtils {
             Status: { key: "statusName", value: webApplicationConstants.STATUS.getLabel(item.status) },
         }));
     }
-    static tableActionData({ data, setShow, setWebApplicationDetails }) {
+    static tableActionData({ data, setShow, setWebApplicationDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setWebApplicationDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = webApplicationsTableConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -74,12 +75,12 @@ class WebApplicationTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

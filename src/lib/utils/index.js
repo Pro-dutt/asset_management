@@ -574,13 +574,6 @@ class GlobalUtils {
             },
         });
     }
-
-    static hasPermission = (path, method, getCurrentUser) => {
-        const routes = [...getCurrentUser.data?.routes, ...getCurrentUser.data?.extraPermissionsRoutes];
-        console.log(routes)
-        const isRouteIncluded = routes.find((route) => route.path.startsWith(`/api/v1${path}`) && route.method === method);
-        return isRouteIncluded;
-    };
 }
 
 export default GlobalUtils;

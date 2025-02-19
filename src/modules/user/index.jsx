@@ -7,6 +7,8 @@ import styles from "./styles/index.module.css";
 import GlobalUtils from "@/lib/utils";
 import UserDetails from "./components/details";
 import { useUsers } from "@/services/context/users";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const User = () => {
     const [show, setShow] = useState({});
@@ -34,7 +36,7 @@ const User = () => {
     };
 
     return (
-        <div id="users_module" className={styles.container}>
+        <CanAccess path={apiConstants.user.BASE_ROUTE} id="users_module" className={styles.container}>
             <UsersTable setShow={setShow} setUserDetails={setUserDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
@@ -66,7 +68,7 @@ const User = () => {
             >
                 <UserDetails data={userDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

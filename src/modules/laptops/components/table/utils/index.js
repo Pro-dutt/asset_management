@@ -4,28 +4,29 @@ import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 
 class LaptopsTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const url = laptopsTableConstants.TABLE_API_URL;
         return {
             limit: laptopsTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New Laptop",
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
                     label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/laptop?toDownload=1`,
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -56,14 +57,14 @@ class LaptopsTableUtils {
             "Device Status": { key: "statusName", value: item.statusName },
         }));
     }
-    static tableActionData({ data, setShow, setLaptopDetails }) {
+    static tableActionData({ data, setShow, setLaptopDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setLaptopDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = laptopsTableConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -73,12 +74,12 @@ class LaptopsTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

@@ -17,6 +17,7 @@ import Role from "./modules/role";
 import User from "./modules/user";
 import Auth from "./modules/auth";
 import Tenant from "./modules/tenant";
+import AccessDenied from "./components/CanAccess";
 
 function App() {
     return (
@@ -140,6 +141,8 @@ function App() {
                         </Layout>
                     }
                 />
+
+                <Route path="/access-denied" element={<AccessDenied />} />
             </Routes>
         </>
     );

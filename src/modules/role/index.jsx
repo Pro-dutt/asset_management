@@ -7,6 +7,8 @@ import styles from "./styles/index.module.css";
 import { useRole } from "@/services/context/role";
 import GlobalUtils from "@/lib/utils";
 import RoleDetails from "./components/details";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const Role = () => {
     const [show, setShow] = useState({});
@@ -34,7 +36,7 @@ const Role = () => {
     };
 
     return (
-        <div id="roles_module" className={styles.container}>
+        <CanAccess path={apiConstants.role.BASE_ROUTE} id="roles_module" className={styles.container}>
             <RolesTable setShow={setShow} setRoleDetails={setRoleDetails} refreshTable={refreshTable} />
             <Modal
                 show={show.add}
@@ -76,7 +78,7 @@ const Role = () => {
             >
                 <RoleDetails data={roleDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

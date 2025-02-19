@@ -6,11 +6,13 @@ import LaptopsTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import laptopGridConfig from "../grid/config/laptopGridConfig";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const LaptopsTable = ({ setLaptopDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = LaptopsTableUtils.tableRow(data);
-        const actionData = LaptopsTableUtils.tableActionData({ data, setShow, setLaptopDetails });
+        const actionData = LaptopsTableUtils.tableActionData({ data, setShow, setLaptopDetails, hasPermission });
         const gridConfig = laptopGridConfig(rows);
 
         return {
@@ -22,7 +24,7 @@ const LaptopsTable = ({ setLaptopDetails, setShow, refreshTable }) => {
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: laptopsTableConstants.externalFilters,
-            tableHeader: LaptopsTableUtils.tableHeader({ data, setShow, styles }),
+            tableHeader: LaptopsTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,

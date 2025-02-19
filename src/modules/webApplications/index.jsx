@@ -9,6 +9,8 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import GlobalUtils from "@/lib/utils";
 import { useWebApplication } from "@/services/context/webApplication";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const WebApplications = () => {
     const [show, setShow] = useState({});
@@ -36,7 +38,7 @@ const WebApplications = () => {
     };
 
     return (
-        <div id="web_applications_module" className={styles.container}>
+        <CanAccess path={apiConstants.webApplications.BASE_ROUTE} id="web_applications_module" className={styles.container}>
             <WebApplicationsStats />
             <WebApplicationsTable setShow={setShow} setWebApplicationDetails={setWebApplicationDetails} refreshTable={refreshTable} />
             <Modal
@@ -69,7 +71,7 @@ const WebApplications = () => {
             >
                 <WebApplicationsDetails data={webApplicationDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

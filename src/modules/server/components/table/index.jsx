@@ -6,11 +6,13 @@ import ServersTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import serverGridConfig from "../grid/config/serverGridConfig";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const ServersTable = ({ setServerDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = ServersTableUtils.tableRow(data);
-        const actionData = ServersTableUtils.tableActionData({ data, setShow, setServerDetails });
+        const actionData = ServersTableUtils.tableActionData({ data, setShow, setServerDetails, hasPermission });
         const gridConfig = serverGridConfig(rows);
 
         return {
@@ -22,7 +24,7 @@ const ServersTable = ({ setServerDetails, setShow, refreshTable }) => {
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: serversTableConstants.externalFilters,
-            tableHeader: ServersTableUtils.tableHeader({ data, setShow, styles }),
+            tableHeader: ServersTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,

@@ -6,28 +6,29 @@ import globalConstants from "@/lib/utils/contants";
 import virtualMachineConstants from "../../form/utils/constants";
 
 class VirtualMachinesTableUtils {
-    static tableHeader({ data, setShow, styles }) {
+    static tableHeader({ data, setShow, styles, hasPermission }) {
         const autoSuggestionData = TableUtils.formatDataForAutoSuggestion(data.data || [], ["productName", "serialNumber", "serviceTag"]);
+        const url = virtualMachinesTableConstants.TABLE_API_URL;
         return {
             limit: virtualMachinesTableConstants.TABLE_LIMITS,
             actionButtons: [
-                {
+                hasPermission(url, "POST") && {
                     variant: "primary",
                     icon: TableIcon.PLUS,
                     label: "Add New virtual Machine",
                     onClick: () => setShow({ add: true }),
                 },
                 {
-                    variant: "secondary",
                     flat: true,
-                    className: styles.export,
+                    outlined: true,
+                    tonal: true,
                     icon: TableIcon.EXPORT,
                     label: "Export",
                     href: `${apiConstants.BACKEND_API_BASE_URL}/virtual-machine?toDownload=1`,
                     target: "_blank",
                     onClick: () => console.log("Exporting data..."),
                 },
-            ],
+            ].filter(Boolean),
             filters: [
                 {
                     type: "text",
@@ -58,14 +59,14 @@ class VirtualMachinesTableUtils {
             "Backup Enabled": { key: "backupEnabled", value: globalConstants.BACKUP_STATUS.getLabel(item.backupEnabled ? 1 : 0) },
         }));
     }
-    static tableActionData({ data, setShow, setVirtualMachineDetails }) {
+    static tableActionData({ data, setShow, setVirtualMachineDetails, hasPermission }) {
         const handleAction = (row, key) => {
             setVirtualMachineDetails(data?.data?.find((item) => row["Id"].value === item._id));
             setShow({ [key]: true });
         };
-
+        const url = virtualMachineConstants.TABLE_API_URL;
         return [
-            {
+            hasPermission(url, "DELETE") && {
                 name: "Delete",
                 functions: (row) => handleAction(row, "delete"),
                 label: "Delete Entry",
@@ -75,12 +76,12 @@ class VirtualMachinesTableUtils {
                 functions: (row) => handleAction(row, "view"),
                 label: "View Details",
             },
-            {
+            hasPermission(url, "PUT") && {
                 name: "Edit",
                 functions: (row) => handleAction(row, "edit"),
                 label: "Edit Details",
             },
-        ];
+        ].filter(Boolean);
     }
 
     static tablePagination(data) {

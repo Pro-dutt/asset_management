@@ -6,11 +6,13 @@ import WebApplicationsTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import webApplicationsGridConfig from "../grid/config/webApplicationsGridConfig";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const WebApplicationsTable = ({ setWebApplicationDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = WebApplicationsTableUtils.tableRow(data);
-        const actionData = WebApplicationsTableUtils.tableActionData({ data, setShow, setWebApplicationDetails });
+        const actionData = WebApplicationsTableUtils.tableActionData({ data, setShow, setWebApplicationDetails, hasPermission });
         const gridConfig = webApplicationsGridConfig(rows);
 
         return {
@@ -22,7 +24,7 @@ const WebApplicationsTable = ({ setWebApplicationDetails, setShow, refreshTable 
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: webApplicationsTableConstants.externalFilters,
-            tableHeader: WebApplicationsTableUtils.tableHeader({ data, setShow, styles }),
+            tableHeader: WebApplicationsTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,

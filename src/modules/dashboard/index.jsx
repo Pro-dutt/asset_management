@@ -1,18 +1,13 @@
-import React from 'react'
-import styles from './index.module.css'
-import DashboardAnalytics from './components/analytics'
-// import Desktops from '../desktops';
+import React from "react";
+import styles from "./index.module.css";
+import DashboardAnalytics from "./components/analytics";
+import CanAccess from "@/components/CanAccess";
 
 const Dashboard = () => {
-
-
-  return (
-    <div className={styles.main_container}>
-      <DashboardAnalytics/>
-
-      {/* <Desktops /> */}
-    </div>
-
+    return (
+        <CanAccess path={["/stats/dashboard", "/chats/dashboard"]} className={styles.main_container}>
+            <DashboardAnalytics />
+        </CanAccess>
     );
 };
 

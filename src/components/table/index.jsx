@@ -21,7 +21,6 @@ const Table = ({ tableData }) => {
     const router = useCustomRouter();
     const searchParams = useSearchParams();
 
-    // Memoizing initialValues to avoid unnecessary re-renders
     const initialValues = useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams.toString()]);
 
     const [data, setData] = useState(tableData);
@@ -41,7 +40,7 @@ const Table = ({ tableData }) => {
             try {
                 const response = await apiClient.get(url, { params: payload });
                 const newData = tableData.getTableData(response.data);
-                setData((prev) => newData);
+                setData(newData);
             } catch (err) {
                 console.error("Error fetching data:", err);
                 setError("Failed to fetch data. Please try again later.");
@@ -60,7 +59,7 @@ const Table = ({ tableData }) => {
 
     useEffect(() => {
         fetchData(initialValues);
-    }, [initialValues, tableData]);
+    }, [initialValues, tableData?.url, tableData?.refreshTable]);
     return (
         <div className={styles.table_container}>
             {/* Filters and Search */}

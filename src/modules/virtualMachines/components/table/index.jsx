@@ -6,11 +6,13 @@ import VirtualMachinesTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import virtualMachinesGridConfig from "../grid/config/virtualMachinesGridConfig";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = VirtualMachinesTableUtils.tableRow(data);
-        const actionData = VirtualMachinesTableUtils.tableActionData({ data, setShow, setVirtualMachineDetails });
+        const actionData = VirtualMachinesTableUtils.tableActionData({ data, setShow, setVirtualMachineDetails, hasPermission });
         const gridConfig = virtualMachinesGridConfig(rows);
 
         return {
@@ -22,7 +24,7 @@ const VirtualMachinesTable = ({ setVirtualMachineDetails, setShow, refreshTable 
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: virtualMachinesTableConstants.externalFilters,
-            tableHeader: VirtualMachinesTableUtils.tableHeader({ data, setShow, styles }),
+            tableHeader: VirtualMachinesTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,

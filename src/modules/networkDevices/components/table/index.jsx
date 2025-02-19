@@ -6,11 +6,13 @@ import NetworkingDevicesTableUtils from "./utils";
 import "./styles/index.css";
 import GridView from "@/components/GridView";
 import networkDevicesGridConfig from "../grid/config/netowrkGridConfig";
+import useHasPermission from "@/lib/hooks/useHasPermission";
 
 const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow, refreshTable }) => {
+    const { hasPermission } = useHasPermission();
     const getTableData = (data) => {
         const rows = NetworkingDevicesTableUtils.tableRow(data);
-        const actionData = NetworkingDevicesTableUtils.tableActionData({ data, setShow, setNetworkingDeviceDetails });
+        const actionData = NetworkingDevicesTableUtils.tableActionData({ data, setShow, setNetworkingDeviceDetails, hasPermission });
         const gridConfig = networkDevicesGridConfig(rows);
 
         return {
@@ -22,7 +24,7 @@ const NetworkingDevicesTable = ({ setNetworkingDeviceDetails, setShow, refreshTa
             getTableData,
             rowClickHandler: (row) => console.log(row),
             externalFilters: networkingDevicesTableConstants.externalFilters,
-            tableHeader: NetworkingDevicesTableUtils.tableHeader({ data, setShow, styles }),
+            tableHeader: NetworkingDevicesTableUtils.tableHeader({ data, setShow, styles, hasPermission }),
             checkbox: true,
             refreshTable: refreshTable || false,
             kanbanComponent: () => <GridView data={gridConfig} actionData={actionData} />,

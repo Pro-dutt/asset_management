@@ -9,6 +9,8 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import { useNetworkDevice } from "@/services/context/networkDevice";
 import GlobalUtils from "@/lib/utils";
+import apiConstants from "@/services/utils/constants";
+import CanAccess from "@/components/CanAccess";
 
 const NetworkingDevices = () => {
     const [show, setShow] = useState({});
@@ -36,7 +38,7 @@ const NetworkingDevices = () => {
     };
 
     return (
-        <div id="networking_devices_module" className={styles.container}>
+        <CanAccess path={apiConstants.networkDevices.BASE_ROUTE} id="networking_devices_module" className={styles.container}>
             <NetworkingDevicesStats />
             <NetworkingDevicesTable setShow={setShow} setNetworkingDeviceDetails={setNetworkingDeviceDetails} refreshTable={refreshTable} />
             <Modal
@@ -69,7 +71,7 @@ const NetworkingDevices = () => {
             >
                 <NetworkingDevicesDetails data={networkingDeviceDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

@@ -9,6 +9,8 @@ import styles from "./styles/index.module.css";
 import AddAssets from "@/components/AddAssets";
 import GlobalUtils from "@/lib/utils";
 import { useServer } from "@/services/context/server";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const Servers = () => {
     const [show, setShow] = useState({});
@@ -36,7 +38,7 @@ const Servers = () => {
     };
 
     return (
-        <div id="servers_module" className={styles.container}>
+        <CanAccess path={apiConstants.server.BASE_ROUTE} id="servers_module" className={styles.container}>
             <ServersStats />
             <ServersTable setShow={setShow} setServerDetails={setServerDetails} refreshTable={refreshTable} />
             <Modal
@@ -69,7 +71,7 @@ const Servers = () => {
             >
                 <ServersDetails data={serverDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 

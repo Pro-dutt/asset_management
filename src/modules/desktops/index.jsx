@@ -10,6 +10,8 @@ import AddAssets from "@/components/AddAssets";
 import DesktopsTableUtils from "./components/table/utils";
 import { useDesktop } from "@/services/context/desktop";
 import GlobalUtils from "@/lib/utils";
+import CanAccess from "@/components/CanAccess";
+import apiConstants from "@/services/utils/constants";
 
 const Desktops = () => {
     const [show, setShow] = useState({});
@@ -37,7 +39,7 @@ const Desktops = () => {
     };
 
     return (
-        <div id="desktops_module" className={styles.container}>
+        <CanAccess path={apiConstants.desktop.BASE_ROUTE} id="desktops_module" className={styles.container}>
             <DesktopsStats />
             <DesktopsTable setShow={setShow} setDesktopDetails={setDesktopDetails} refreshTable={refreshTable} />
             <Modal
@@ -70,7 +72,7 @@ const Desktops = () => {
             >
                 <DesktopDetails data={desktopDetails} />
             </Modal>
-        </div>
+        </CanAccess>
     );
 };
 
