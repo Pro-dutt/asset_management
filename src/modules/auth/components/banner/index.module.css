@@ -16,6 +16,8 @@
 
 .illustration {
     @apply max-w-[620px] h-auto mt-auto mb-[4rem];
+    max-width: 950px;
+    mix-blend-mode: darken;
 }
 
 .illustrationMask {

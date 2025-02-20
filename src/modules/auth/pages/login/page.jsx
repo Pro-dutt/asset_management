@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function LoginPage() {
     return (
         <div className="auth_container">
-            <AuthBanner />
+            <AuthBanner bannerMainImage={require("./assets/images/4103163_1032.jpg")} />
             <div className="form_side">
                 <div className="auth_form_container">
                     <AuthHeader subHeading={"Please sign-in to your account and start the adventure"} />

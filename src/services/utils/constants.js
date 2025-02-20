@@ -44,6 +44,9 @@ const apiConstants = {
     users: {
         BASE_ROUTE: "/user",
     },
+    department: {
+        BASE_ROUTE: "/department",
+    },
     user: {
         BASE_ROUTE: "/user",
         GET_CURRENT_USER: "/get-current-user",
@@ -130,6 +133,12 @@ const apiConstants = {
         DETAILS_TENANT: "detailsTenant",
         UPDATE_TENANT: "updateTenant",
         DELETE_TENANT: "deleteTenant",
+
+        GET_DROPDOWN_LIST_DEPARTMENT: "getDropdownListDepartment",
+        CREATE_DEPARTMENT: "createDepartment",
+        DETAILS_DEPARTMENT: "detailsDepartment",
+        UPDATE_DEPARTMENT: "updateDepartment",
+        DELETE_DEPARTMENT: "deleteDepartment",
     },
 };
 export default apiConstants;

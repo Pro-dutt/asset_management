@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import defaultBannerMainImage from "../../assets/images/defaultBannerMain.png";
 import defaultBannerFooterImage from "../../assets/images/defaultBannerFooter.png";
-import logo from "../../../../layout/components/Sidebar/assets/logo.svg";
+import logo from "../../../../layout/components/Sidebar/assets/c3ihub.svg";
 
 const AuthBanner = ({ bannerMainImage, bannerFooterImage, className }) => {
     return (
