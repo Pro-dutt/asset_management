@@ -2,6 +2,8 @@ import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 import webApplicationConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import TenantUtils from "@/modules/tenant/utils";
 
 class WebApplicationUtils {
     static getGeneralInfoFormFields(data) {
@@ -321,6 +323,7 @@ class WebApplicationUtils {
     }
 
     static formFieldHandlers = {
+        [tenantConstants.FORM_TENANT_SECTION.title]: TenantUtils.getTenantFormFields,
         [webApplicationConstants.FORM_SECTIONS.GENERAL_INFORMATION.title]: this.getGeneralInfoFormFields,
         [webApplicationConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS.title]: this.getAuthenticationDetailsFormFields,
         [webApplicationConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY.title]: this.getNetworkFormFields,

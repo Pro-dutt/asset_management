@@ -138,6 +138,11 @@ const globalConstants = {
     },
 
     DEVICE_MANAGEMENT_FORM_SECTIONS: Object.freeze({
+        TENANT_ID: {
+            title: "Tenant",
+            icon: GlobalICONS.ADD_TENANT,
+            description: "Specify details of tenant",
+        },
         DEVICE_PROPERTIES: {
             title: "Device Properties",
             icon: GlobalICONS.PROPERTY,

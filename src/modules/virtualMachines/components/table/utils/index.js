@@ -50,6 +50,7 @@ class VirtualMachinesTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
+            Tenant: { key: "tenantId", value: item.tenantId.name },
             "Asset Id": { key: "assetId", value: item.assetId },
             Status: { key: "statusName", value: virtualMachineConstants.STATUS.getLabel(item.status) },
             "VM Name": { key: "vmName", value: item.vmName },

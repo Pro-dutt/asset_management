@@ -16,7 +16,7 @@ export const useDepartmentInfoForm = (data = {}, onSuccess) => {
                 validateOnChange: true,
             },
         ],
-        [data]
+        [data, tenantDropdownList.data]
     );
 
     const operation = data?._id ? departmentUpdating : departmentCreation;

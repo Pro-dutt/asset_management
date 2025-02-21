@@ -49,6 +49,7 @@ class WebApplicationTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
+            Tenant: { key: "tenantId", value: item.tenantId.name },
             "Host Asset Id": { key: "hostAssetId", value: item.hostAssetId },
             "Application Name": { key: "applicationName", value: item.applicationName },
             Version: { key: "version", value: item.version },

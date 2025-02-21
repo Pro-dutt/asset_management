@@ -41,6 +41,18 @@ class UserTableUtils {
             Name: { key: "name", value: item.name },
             Email: { key: "email", value: item.email },
             status: { key: "status", value: item.status },
+            Tenant: {
+                key: "tenantId",
+                value: (
+                    <div className={styles.routes_container}>
+                        {item.tenantId?.map((tenant) => (
+                            <div>
+                                <p>{tenant?.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                ),
+            },
             Roles: {
                 key: "roles",
                 value: (

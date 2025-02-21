@@ -2,6 +2,8 @@ import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 import serverConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import TenantUtils from "@/modules/tenant/utils";
 
 class ServerUtils {
     static getDevicePropertiesFormFields(data) {
@@ -485,6 +487,7 @@ class ServerUtils {
     }
 
     static formFieldHandlers = {
+        [tenantConstants.FORM_TENANT_SECTION.title]: TenantUtils.getTenantFormFields,
         [serverConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
         [serverConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
         [serverConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,

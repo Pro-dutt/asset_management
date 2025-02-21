@@ -47,9 +47,11 @@ class DesktopsTableUtils {
     }
 
     static tableRow(data = { data: [] }) {
+        // console.log(">>>ehre", data);
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
             "Asset Id": { key: "assetId", value: item.assetId },
+            Tenant: { key: "tenantId", value: item.tenantId.name },
             "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },
             "Serial Number": { key: "serialNumber", value: item.serialNumber },

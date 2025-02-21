@@ -2,6 +2,8 @@ import GlobalUtils from "@/lib/utils";
 import virtualMachineConstants from "./constants";
 import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import TenantUtils from "@/modules/tenant/utils";
 
 class VirtualMachineUtils {
     static getVMDetailsFormFields(data) {
@@ -462,6 +464,7 @@ class VirtualMachineUtils {
     }
 
     static formFieldHandlers = {
+        [tenantConstants.FORM_TENANT_SECTION.title]: TenantUtils.getTenantFormFields,
         [virtualMachineConstants.FORM_SECTIONS.VM_DETAILS.title]: this.getVMDetailsFormFields,
         [virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS.title]: this.getHostDetailsFormFields,
         [virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION.title]: this.getResourceAllocationFormFields,

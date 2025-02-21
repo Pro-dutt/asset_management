@@ -2,6 +2,8 @@ import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 import networkDeviceConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import TenantUtils from "@/modules/tenant/utils";
 
 class NetworkDeviceUtils {
     static getDeviceCategoryFormFields(data) {
@@ -471,6 +473,7 @@ class NetworkDeviceUtils {
     }
 
     static formFieldHandlers = {
+        [tenantConstants.FORM_TENANT_SECTION.title]: TenantUtils.getTenantFormFields,
         [networkDeviceConstants.FORM_SECTIONS.DEVICE_CATEGORY.title]: this.getDeviceCategoryFormFields,
         [networkDeviceConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
         [networkDeviceConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,

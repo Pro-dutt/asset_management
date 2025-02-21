@@ -2,6 +2,8 @@ import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 import desktopConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import TenantUtils from "@/modules/tenant/utils";
 
 class DesktopUtils {
     static getAssetTypeFormFields(data) {
@@ -447,7 +449,7 @@ class DesktopUtils {
     }
 
     static formFieldHandlers = {
-        // [desktopConstants.FORM_SECTIONS.ASSET_TYPE.title]: this.getAssetTypeFormFields,
+        [tenantConstants.FORM_TENANT_SECTION.title]: TenantUtils.getTenantFormFields,
         [desktopConstants.FORM_SECTIONS.DEVICE_PROPERTIES.title]: this.getDevicePropertiesFormFields,
         [desktopConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT.title]: this.getLifecycleManagementFormFields,
         [desktopConstants.FORM_SECTIONS.NETWORK_DETAILS.title]: this.getNetworkConnectivityFormFields,

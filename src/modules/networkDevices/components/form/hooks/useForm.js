@@ -1,13 +1,20 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import NetworkDeviceUtils from "../utils";
 import NetworkDeviceConstants from "../utils/constants";
 import { useNetworkDevice } from "@/services/context/networkDevice";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import { useTenant } from "@/services/context/tenant";
 
 export const useNetworkDeviceInfoForm = (data = {}, onSuccess) => {
     const { networkDeviceCreation, networkDeviceUpdation } = useNetworkDevice();
+    const { tenantDropdownList } = useTenant();
 
+    useEffect(() => {
+        tenantDropdownList.fetch({});
+    }, []);
     const formConfig = useMemo(
         () => [
+            ...NetworkDeviceUtils.createFormSection(tenantConstants.FORM_TENANT_SECTION, data),
             ...NetworkDeviceUtils.createFormSection(NetworkDeviceConstants.FORM_SECTIONS.DEVICE_CATEGORY, data),
             ...NetworkDeviceUtils.createFormSection(NetworkDeviceConstants.FORM_SECTIONS.DEVICE_PROPERTIES, data),
             ...NetworkDeviceUtils.createFormSection(NetworkDeviceConstants.FORM_SECTIONS.LIFECYCLE_MANAGEMENT, data),
@@ -17,7 +24,7 @@ export const useNetworkDeviceInfoForm = (data = {}, onSuccess) => {
             ...NetworkDeviceUtils.createFormSection(NetworkDeviceConstants.FORM_SECTIONS.OPERATION_DETAILS, data),
             ...NetworkDeviceUtils.createFormSection(NetworkDeviceConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data]
+        [data, tenantDropdownList.data]
     );
 
     const operation = data?.inventoryId ? networkDeviceUpdation : networkDeviceCreation;

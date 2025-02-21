@@ -1,13 +1,20 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import virtualMachineConstants from "../utils/constants";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
 import VirtualMachineUtils from "../utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import { useTenant } from "@/services/context/tenant";
 
 export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
     const { virtualMachineCreation, virtualMachineUpdation } = useVirtualMachines();
+    const { tenantDropdownList } = useTenant();
 
+    useEffect(() => {
+        tenantDropdownList.fetch({});
+    }, []);
     const formConfig = useMemo(
         () => [
+            ...VirtualMachineUtils.createFormSection(tenantConstants.FORM_TENANT_SECTION, data),
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.VM_DETAILS, data),
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.HOST_DETAILS, data),
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.RESOURCE_ALLOCATION, data),
@@ -18,7 +25,7 @@ export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT, data),
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data]
+        [data, tenantDropdownList.data]
     );
 
     // const handleFormSubmit = (formData) => {

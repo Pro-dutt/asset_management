@@ -48,6 +48,7 @@ class NetworkingDevicesTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
+            Tenant: { key: "tenantId", value: item.tenantId.name },
             "Asset Id": { key: "assetId", value: item.assetId },
             "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },
