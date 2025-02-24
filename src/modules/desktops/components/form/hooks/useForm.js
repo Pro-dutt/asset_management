@@ -1,4 +1,4 @@
-import { useEffect, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import DesktopUtils from "../utils";
 import { useDesktop } from "@/services/context/desktop";
 import desktopConstants from "../utils/constants";
