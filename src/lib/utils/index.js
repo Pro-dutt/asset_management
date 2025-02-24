@@ -574,6 +574,10 @@ class GlobalUtils {
             },
         });
     }
+
+    static formatOptionsData(data) {
+        return data.map((record) => ({ label: record.name, value: record._id }));
+    }
 }
 
 export default GlobalUtils;

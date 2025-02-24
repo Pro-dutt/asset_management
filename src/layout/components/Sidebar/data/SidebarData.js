@@ -1,3 +1,4 @@
+import tenantConstants from "@/modules/tenant/utils/constants";
 import apiConstants from "@/services/utils/constants";
 
 export default [
@@ -57,7 +58,7 @@ export default [
         routes: ["/user"],
     },
     {
-        name: "Tenants",
+        name: `${tenantConstants.TENANT_IDENTIFIER}s`,
         link: "/tenant",
         icon: "multi_tenant",
         routes: ["/tenant"],
@@ -73,6 +74,43 @@ export default [
         link: "/permissions",
         icon: "permission",
         routes: ["/permission"],
+    },
+    {
+        name: "Configurations",
+        icon: "configuration",
+        routes: ["/permission"],
+        child: [
+            {
+                name: "Departments",
+                link: "/departments",
+                icon: "department",
+                routes: ["/department"],
+            },
+            {
+                name: "Designations",
+                link: "/designations",
+                icon: "designation",
+                routes: ["/designation"],
+            },
+            {
+                name: "Operating Systems",
+                link: "/operating-systems",
+                icon: "operating_system",
+                routes: ["/operating-system"],
+            },
+            {
+                name: "Device Category",
+                link: "/device-category",
+                icon: "device_category",
+                routes: ["/device-category"],
+            },
+            {
+                name: "Device State",
+                link: "/device-state",
+                icon: "device_state",
+                routes: ["/device-state"],
+            },
+        ],
     },
     {
         name: "Logout",

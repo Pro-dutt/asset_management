@@ -3,11 +3,17 @@ import UserUtils from "../utils";
 import { usePermission } from "@/services/context/permission";
 import { useRole } from "@/services/context/role";
 import { useUsers } from "@/services/context/users";
+import TenantUtils from "@/modules/tenant/utils";
+import { useTenant } from "@/services/context/tenant";
 
 export const useUserInfoForm = (data = {}, onSuccess) => {
     const { permissionDropdownList } = usePermission();
     const { roleDropdownList } = useRole();
     const { userCreation, userUpdating } = useUsers();
+    const { tenantDropdownList } = useTenant();
+    useEffect(() => {
+        tenantDropdownList.fetch({});
+    }, []);
     const formConfig = useMemo(
         () => [
             {
@@ -85,6 +91,7 @@ export const useUserInfoForm = (data = {}, onSuccess) => {
                 grid: 2,
                 defaultValue: data?.designation || "",
             },
+            ...TenantUtils.getTenantFormFields(data, true),
             {
                 type: "select",
                 name: "roles",
@@ -112,7 +119,7 @@ export const useUserInfoForm = (data = {}, onSuccess) => {
                 validationRules: {},
             },
         ],
-        [data, permissionDropdownList.data, roleDropdownList.data]
+        [data, permissionDropdownList.data, roleDropdownList.data, tenantDropdownList.data]
     );
 
     const operation = data?._id ? userUpdating : userCreation;

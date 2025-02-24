@@ -1,6 +1,6 @@
-const roleConstants = {};
+const tenantFormConstants = {};
 
 // Freeze the entire roleConstants object
-Object.freeze(roleConstants);
+Object.freeze(tenantFormConstants);
 
-export default roleConstants;
+export default tenantFormConstants;

@@ -3,6 +3,7 @@ import { useTenant } from "@/services/context/tenant";
 
 export const useTenantInfoForm = (data = {}, onSuccess) => {
     const { tenantCreation, tenantUpdation } = useTenant();
+
     const formConfig = useMemo(
         () => [
             {
@@ -72,6 +73,18 @@ export const useTenantInfoForm = (data = {}, onSuccess) => {
                 placeholder: "Contact",
                 grid: 2,
                 defaultValue: data?.contact,
+                validationRules: {
+                    required: true,
+                },
+                validateOnChange: true,
+            },
+            {
+                type: "email",
+                name: "email",
+                label: "Email",
+                placeholder: "Email",
+                grid: 2,
+                defaultValue: data?.email,
                 validationRules: {
                     required: true,
                 },

@@ -1,13 +1,24 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useWebApplication } from "@/services/context/webApplication";
 import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";
+import tenantConstants from "@/modules/tenant/utils/constants";
+import { useTenant } from "@/services/context/tenant";
+import { useDepartment } from "@/services/context/department";
 
 export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
     const { webApplicationCreation, webApplicationUpdation } = useWebApplication();
+    const { tenantDropdownList } = useTenant();
+    const { departmentDropdownList } = useDepartment();
+
+    useEffect(() => {
+        departmentDropdownList.fetch({});
+        tenantDropdownList.fetch({});
+    }, []);
 
     const formConfig = useMemo(
         () => [
+            ...WebApplicationUtils.createFormSection(tenantConstants.FORM_TENANT_SECTION, data),
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.GENERAL_INFORMATION, data),
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.AUTHENTICATION_ACCESS, data),
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.NETWORK_CONNECTIVITY, data),
@@ -17,7 +28,7 @@ export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.BACKUP_RESTORATION, data),
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data]
+        [data, tenantDropdownList.data, departmentDropdownList.data]
     );
 
     const operation = data?.inventoryId ? webApplicationUpdation : webApplicationCreation;

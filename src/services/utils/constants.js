@@ -44,6 +44,21 @@ const apiConstants = {
     users: {
         BASE_ROUTE: "/user",
     },
+    department: {
+        BASE_ROUTE: "/department",
+    },
+    designation: {
+        BASE_ROUTE: "/designation",
+    },
+    deviceCategory: {
+        BASE_ROUTE: "/device-category",
+    },
+    operatingSystem: {
+        BASE_ROUTE: "/operating-system",
+    },
+    deviceState: {
+        BASE_ROUTE: "/device-state",
+    },
     user: {
         BASE_ROUTE: "/user",
         GET_CURRENT_USER: "/get-current-user",
@@ -130,6 +145,36 @@ const apiConstants = {
         DETAILS_TENANT: "detailsTenant",
         UPDATE_TENANT: "updateTenant",
         DELETE_TENANT: "deleteTenant",
+
+        GET_DROPDOWN_LIST_DEPARTMENT: "getDropdownListDepartment",
+        CREATE_DEPARTMENT: "createDepartment",
+        DETAILS_DEPARTMENT: "detailsDepartment",
+        UPDATE_DEPARTMENT: "updateDepartment",
+        DELETE_DEPARTMENT: "deleteDepartment",
+
+        GET_DROPDOWN_LIST_DESIGNATION: "getDropdownListDesignation",
+        CREATE_DESIGNATION: "createDesignation",
+        DETAILS_DESIGNATION: "detailsDesignation",
+        UPDATE_DESIGNATION: "updateDesignation",
+        DELETE_DESIGNATION: "deleteDesignation",
+
+        GET_DROPDOWN_LIST_OPERATING_SYSTEM: "getDropdownListOperatingSystem",
+        CREATE_OPERATING_SYSTEM: "createOperatingSystem",
+        DETAILS_OPERATING_SYSTEM: "detailsOperatingSystem",
+        UPDATE_OPERATING_SYSTEM: "updateOperatingSystem",
+        DELETE_OPERATING_SYSTEM: "deleteOperatingSystem",
+
+        GET_DROPDOWN_LIST_DEVICE_CATEGORY: "getDropdownListDeviceCategory",
+        CREATE_DEVICE_CATEGORY: "createDeviceCategory",
+        DETAILS_DEVICE_CATEGORY: "detailsDeviceCategory",
+        UPDATE_DEVICE_CATEGORY: "updateDeviceCategory",
+        DELETE_DEVICE_CATEGORY: "deleteDeviceCategory",
+
+        GET_DROPDOWN_LIST_DEVICE_STATE: "getDropdownListDeviceState",
+        CREATE_DEVICE_STATE: "createDeviceState",
+        DETAILS_DEVICE_STATE: "detailsDeviceState",
+        UPDATE_DEVICE_STATE: "updateDeviceState",
+        DELETE_DEVICE_STATE: "deleteDeviceState",
     },
 };
 export default apiConstants;

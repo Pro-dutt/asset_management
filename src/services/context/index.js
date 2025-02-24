@@ -16,6 +16,11 @@ import { RouteProvider } from "./route";
 import { RoleProvider } from "./role";
 import { UsersProvider } from "./users";
 import { TenantProvider } from "./tenant";
+import { DepartmentProvider } from "./department";
+import { DesignationProvider } from "./designation";
+import { OperatingSystemProvider } from "./operatingSystem";
+import { DeviceCategoryProvider } from "./deviceCategory";
+import { DeviceStateProvider } from "./deviceState";
 
 const ContextProviders = ({ children }) => {
     return (
@@ -36,7 +41,17 @@ const ContextProviders = ({ children }) => {
                                                                 <ServerProvider>
                                                                     <StatsProvider>
                                                                         <ChartsProvider>
-                                                                            <EndPointsProvider>{children}</EndPointsProvider>
+                                                                            <DepartmentProvider>
+                                                                                <DesignationProvider>
+                                                                                    <OperatingSystemProvider>
+                                                                                        <DeviceCategoryProvider>
+                                                                                            <DeviceStateProvider>
+                                                                                                <EndPointsProvider>{children}</EndPointsProvider>
+                                                                                            </DeviceStateProvider>
+                                                                                        </DeviceCategoryProvider>
+                                                                                    </OperatingSystemProvider>
+                                                                                </DesignationProvider>
+                                                                            </DepartmentProvider>
                                                                         </ChartsProvider>
                                                                     </StatsProvider>
                                                                 </ServerProvider>

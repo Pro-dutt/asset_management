@@ -3,6 +3,7 @@ import webApplicationsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 import webApplicationConstants from "../../form/utils/constants";
+import tenantConstants from "@/modules/tenant/utils/constants";
 
 class WebApplicationTableUtils {
     static tableHeader({ data, setShow, styles, hasPermission }) {
@@ -49,6 +50,7 @@ class WebApplicationTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
+            [tenantConstants.TENANT_IDENTIFIER]: { key: "tenantId", value: item.tenantId.name },
             "Host Asset Id": { key: "hostAssetId", value: item.hostAssetId },
             "Application Name": { key: "applicationName", value: item.applicationName },
             Version: { key: "version", value: item.version },

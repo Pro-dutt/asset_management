@@ -1,3 +1,4 @@
+import tenantConstants from "@/modules/tenant/utils/constants";
 import GlobalUtils from ".";
 import GlobalICONS from "./icons";
 
