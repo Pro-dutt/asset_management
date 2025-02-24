@@ -4,6 +4,7 @@ import webApplicationConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
 import tenantConstants from "@/modules/tenant/utils/constants";
 import TenantUtils from "@/modules/tenant/utils";
+import { useDepartment } from "@/services/context/department";
 
 class WebApplicationUtils {
     static getGeneralInfoFormFields(data) {
@@ -156,6 +157,7 @@ class WebApplicationUtils {
     }
 
     static getAccountabilityDetailsFormFields(data) {
+        const { departmentDropdownList } = useDepartment();
         return [
             {
                 name: "accountable",
@@ -188,7 +190,7 @@ class WebApplicationUtils {
                 label: "Department",
                 grid: 4,
                 defaultValue: data?.department,
-                options: globalConstants.DEPARTMENTS.getOptions(),
+                options: GlobalUtils.formatOptionsData(departmentDropdownList.data) || [],
                 validationRules: {},
                 validateOnChange: true,
             },

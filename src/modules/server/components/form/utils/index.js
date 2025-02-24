@@ -4,6 +4,8 @@ import serverConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
 import tenantConstants from "@/modules/tenant/utils/constants";
 import TenantUtils from "@/modules/tenant/utils";
+import { useDepartment } from "@/services/context/department";
+import { useOperatingSystem } from "@/services/context/operatingSystem";
 
 class ServerUtils {
     static getDevicePropertiesFormFields(data) {
@@ -213,6 +215,8 @@ class ServerUtils {
     }
 
     static getAssignmentDetailsFormFields(data) {
+        const { departmentDropdownList } = useDepartment();
+        const { operatingSystemDropdownList } = useOperatingSystem();
         return [
             {
                 type: "date",
@@ -245,7 +249,7 @@ class ServerUtils {
                 name: "operatingSystem",
                 label: "Operating System (with version)",
                 grid: 4,
-                options: globalConstants.OPERATING_SYSTEMS.getOptions(),
+                options: GlobalUtils.formatOptionsData(operatingSystemDropdownList.data) || [],
                 defaultValue: data?.operatingSystem,
                 validationRules: {},
                 validateOnChange: true,
@@ -291,7 +295,7 @@ class ServerUtils {
                 label: "Department",
                 grid: 4,
                 defaultValue: data?.custodianDepartment,
-                options: globalConstants.DEPARTMENTS.getOptions(),
+                options: GlobalUtils.formatOptionsData(departmentDropdownList.data) || [],
                 validationRules: {},
                 validateOnChange: true,
             },
@@ -385,6 +389,7 @@ class ServerUtils {
     }
 
     static getOperationsDetailsFormFields(data) {
+        const { deviceStateDropdownList } = useDevice;
         return [
             {
                 type: "select",

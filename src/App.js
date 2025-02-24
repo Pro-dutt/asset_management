@@ -18,6 +18,11 @@ import User from "./modules/user";
 import Auth from "./modules/auth";
 import Tenant from "./modules/tenant";
 import AccessDenied from "./components/CanAccess";
+import Department from "./modules/department";
+import Designation from "./modules/designation";
+import OperatingSystem from "./modules/operatingSystem";
+import DeviceCategory from "./modules/deviceCategory";
+import DeviceState from "./modules/deviceState";
 
 function App() {
     return (
@@ -134,6 +139,46 @@ function App() {
                                     element={
                                         <React.Suspense fallback={""}>
                                             <Tenant />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/departments"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <Department />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/designations"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <Designation />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/operating-systems"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <OperatingSystem />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/device-category"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <DeviceCategory />
+                                        </React.Suspense>
+                                    }
+                                />
+                                <Route
+                                    path="/device-state"
+                                    element={
+                                        <React.Suspense fallback={""}>
+                                            <DeviceState />
                                         </React.Suspense>
                                     }
                                 />

@@ -4,6 +4,7 @@ import networkDeviceConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
 import tenantConstants from "@/modules/tenant/utils/constants";
 import TenantUtils from "@/modules/tenant/utils";
+import { useDepartment } from "@/services/context/department";
 
 class NetworkDeviceUtils {
     static getDeviceCategoryFormFields(data) {
@@ -246,6 +247,7 @@ class NetworkDeviceUtils {
     }
 
     static getAssignmentDetailsFormFields(data) {
+        const { departmentDropdownList } = useDepartment();
         return [
             {
                 type: "date",
@@ -279,7 +281,7 @@ class NetworkDeviceUtils {
                 label: "Department",
                 grid: 4,
                 defaultValue: data?.custodianDepartment,
-                options: globalConstants.DEPARTMENTS.getOptions(),
+                options: GlobalUtils.formatOptionsData(departmentDropdownList.data) || [],
                 validationRules: {},
                 validateOnChange: true,
             },

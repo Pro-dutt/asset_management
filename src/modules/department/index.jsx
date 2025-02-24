@@ -8,20 +8,21 @@ import { useDepartment } from "@/services/context/department";
 import GlobalUtils from "@/lib/utils";
 import CanAccess from "@/components/CanAccess";
 import apiConstants from "@/services/utils/constants";
+import DepartmentDetails from "./components/details";
 
 const Department = () => {
     const [show, setShow] = useState({});
     const [departmentDetails, setDepartmentDetails] = useState(null);
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
-    const { DepartmentDeletion } = useDepartment();
+    const { departmentDeletion } = useDepartment();
     const [refreshTable, setRefreshTable] = useState(false);
     useEffect(() => {
         if (show.delete && departmentDetails?._id) {
             const deletePayload = {
                 recordId: departmentDetails?._id,
                 onShowDetails: setDepartmentDetails,
-                deleteAction: DepartmentDeletion,
+                deleteAction: departmentDeletion,
                 toggleRefreshData: setRefreshTable,
             };
             GlobalUtils.handleDelete(deletePayload);
@@ -61,7 +62,7 @@ const Department = () => {
                 show={show.view}
                 onClose={closeModal}
                 title={`Department Details  [${departmentDetails?.name}]`}
-                maxWidth={"1600px"}
+                maxWidth={"800px"}
                 icon={GlobalICONS.DESKTOP}
                 description={`comprehensive  details of ${departmentDetails?.name} Department`}
             >

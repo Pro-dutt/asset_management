@@ -1,17 +1,25 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useEffect, useMemo } from "react";
 import ServerUtils from "../utils";
 import { useServer } from "@/services/context/server";
 import serverConstants from "../utils/constants";
 import tenantConstants from "@/modules/tenant/utils/constants";
 import { useTenant } from "@/services/context/tenant";
+import { useDepartment } from "@/services/context/department";
+import { useOperatingSystem } from "@/services/context/operatingSystem";
 
 export const useServerInfoForm = (data = {}, onSuccess) => {
     const { serverCreation, serverUpdation } = useServer();
     const { tenantDropdownList } = useTenant();
+    const { departmentDropdownList } = useDepartment();
+    const { operatingSystemDropdownList } = useOperatingSystem();
 
     useEffect(() => {
         tenantDropdownList.fetch({});
+        departmentDropdownList.fetch({});
+        operatingSystemDropdownList.fetch({});
     }, []);
+
+    useEffect(() => {}, []);
 
     const formConfig = useMemo(
         () => [
@@ -25,7 +33,7 @@ export const useServerInfoForm = (data = {}, onSuccess) => {
             ...ServerUtils.createFormSection(serverConstants.FORM_SECTIONS.BACKUP_RESTORATION, data),
             ...ServerUtils.createFormSection(serverConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data, tenantDropdownList.data]
+        [data, tenantDropdownList.data, departmentDropdownList.data, operatingSystemDropdownList.data]
     );
 
     const operation = data?.inventoryId ? serverUpdation : serverCreation;
