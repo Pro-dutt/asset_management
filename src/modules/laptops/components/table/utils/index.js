@@ -2,6 +2,7 @@ import TableUtils from "@/components/table/utils";
 import laptopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
+import tenantConstants from "@/modules/tenant/utils/constants";
 
 class LaptopsTableUtils {
     static tableHeader({ data, setShow, styles, hasPermission }) {
@@ -48,7 +49,7 @@ class LaptopsTableUtils {
     static tableRow(data = { data: [] }) {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
-            Tenant: { key: "tenantId", value: item.tenantId.name },
+            [tenantConstants.TENANT_IDENTIFIER]: { key: "tenantId", value: item.tenantId.name },
             "Asset Id": { key: "assetId", value: item.assetId },
             "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },

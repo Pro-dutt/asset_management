@@ -3,6 +3,7 @@ import desktopsTableConstants from "./constants";
 import TableIcon from "@/components/table/utils/icon";
 import apiConstants from "@/services/utils/constants";
 import GlobalUtils from "@/lib/utils";
+import tenantConstants from "@/modules/tenant/utils/constants";
 
 class DesktopsTableUtils {
     static tableHeader({ data, setShow, styles, hasPermission }) {
@@ -51,7 +52,7 @@ class DesktopsTableUtils {
         return data?.data?.map((item) => ({
             Id: { key: "id", value: item._id, type: "hidden" },
             "Asset Id": { key: "assetId", value: item.assetId },
-            Tenant: { key: "tenantId", value: item.tenantId.name },
+            [tenantConstants.TENANT_IDENTIFIER]: { key: "tenantId", value: item.tenantId.name },
             "Product Name": { key: "itemName", value: item.itemName },
             Model: { key: "model", value: item.model },
             "Serial Number": { key: "serialNumber", value: item.serialNumber },

@@ -1,3 +1,4 @@
+import tenantConstants from "@/modules/tenant/utils/constants";
 import apiConstants from "@/services/utils/constants";
 
 export default [
@@ -57,7 +58,7 @@ export default [
         routes: ["/user"],
     },
     {
-        name: "Tenants",
+        name: `${tenantConstants.TENANT_IDENTIFIER}s`,
         link: "/tenant",
         icon: "multi_tenant",
         routes: ["/tenant"],

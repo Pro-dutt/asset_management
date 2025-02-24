@@ -1,4 +1,5 @@
 import { useTenant } from "@/services/context/tenant";
+import tenantConstants from "./constants";
 
 class TenantUtils {
     static getTenantFormFields(data, multiple = false) {
@@ -8,10 +9,10 @@ class TenantUtils {
             {
                 type: "select",
                 name: "tenantId",
-                label: "Tenant",
+                label: tenantConstants.TENANT_IDENTIFIER,
                 multiple,
                 grid: 1,
-                placeholder: "Select tenant names",
+                placeholder: `Select ${tenantConstants.TENANT_IDENTIFIER}`,
                 options: TenantUtils.formatTenantsForDropdownList(tenantDropdownList.data),
                 defaultValue: multiple ? data.tenantId?.map((tanent) => tanent._id) : data?.tenantId?._id,
                 validateOnChange: true,

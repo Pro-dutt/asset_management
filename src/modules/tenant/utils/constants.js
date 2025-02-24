@@ -1,10 +1,12 @@
 import GlobalICONS from "@/lib/utils/icons";
 
 const tenantConstants = {
+    TENANT_IDENTIFIER: "Port",
+
     FORM_TENANT_SECTION: {
-        title: "Tenant",
+        title: "Port",
         icon: GlobalICONS.ADD_TENANT,
-        description: "Specify details of tenant",
+        description: "Specify details of Port",
     },
 };
 
