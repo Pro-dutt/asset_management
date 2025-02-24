@@ -2,6 +2,8 @@ import globalConstants from "@/lib/utils/contants";
 import GlobalICONS from "@/lib/utils/icons";
 import desktopConstants from "./constants";
 import GlobalUtils from "@/lib/utils";
+import { useDepartment } from "@/services/context/department";
+import { useOperatingSystem } from "@/services/context/operatingSystem";
 
 class DesktopUtils {
     static getAssetTypeFormFields(data) {
@@ -226,6 +228,8 @@ class DesktopUtils {
     }
 
     static getAssignmentDetailsFormFields(data) {
+        const { departmentDropdownList } = useDepartment();
+        const { operatingSystemDropdownList } = useOperatingSystem();
         return [
             {
                 type: "date",
@@ -258,7 +262,7 @@ class DesktopUtils {
                 name: "operatingSystem",
                 label: "Operating System (with version)",
                 grid: 4,
-                options: globalConstants.OPERATING_SYSTEMS.getOptions(),
+                options: GlobalUtils.formatOptionsData(operatingSystemDropdownList.data) || [],
                 defaultValue: data?.operatingSystem,
                 validationRules: {},
                 validateOnChange: true,
@@ -304,7 +308,7 @@ class DesktopUtils {
                 label: "Department",
                 grid: 4,
                 defaultValue: data?.custodianDepartment,
-                options: globalConstants.DEPARTMENTS.getOptions(),
+                options: GlobalUtils.formatOptionsData(departmentDropdownList.data) || [],
                 validationRules: {},
                 validateOnChange: true,
             },

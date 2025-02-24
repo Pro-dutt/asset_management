@@ -1,10 +1,16 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useWebApplication } from "@/services/context/webApplication";
 import WebApplicationUtils from "../utils";
 import webApplicationConstants from "../utils/constants";
+import { useDepartment } from "@/services/context/department";
 
 export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
     const { webApplicationCreation, webApplicationUpdation } = useWebApplication();
+    const { departmentDropdownList } = useDepartment();
+
+    useEffect(() => {
+        departmentDropdownList.fetch({});
+    }, []);
 
     const formConfig = useMemo(
         () => [
@@ -17,7 +23,7 @@ export const useWebApplicationInfoForm = (data = {}, onSuccess) => {
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.BACKUP_RESTORATION, data),
             ...WebApplicationUtils.createFormSection(webApplicationConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data]
+        [data, departmentDropdownList.data]
     );
 
     const operation = data?.inventoryId ? webApplicationUpdation : webApplicationCreation;

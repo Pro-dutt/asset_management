@@ -1,10 +1,19 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import virtualMachineConstants from "../utils/constants";
 import { useVirtualMachines } from "@/services/context/virtualMachines";
 import VirtualMachineUtils from "../utils";
+import { useDepartment } from "@/services/context/department";
+import { useOperatingSystem } from "@/services/context/operatingSystem";
 
 export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
     const { virtualMachineCreation, virtualMachineUpdation } = useVirtualMachines();
+    const { departmentDropdownList } = useDepartment();
+    const { operatingSystemDropdownList } = useOperatingSystem();
+
+    useEffect(() => {
+        departmentDropdownList.fetch({});
+        operatingSystemDropdownList.fetch({});
+    }, []);
 
     const formConfig = useMemo(
         () => [
@@ -18,7 +27,7 @@ export const useVirtualMachineInfoForm = (data = {}, onSuccess) => {
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.ACCOUNTABILITY_CONTACT, data),
             ...VirtualMachineUtils.createFormSection(virtualMachineConstants.FORM_SECTIONS.ASSOCIATED_FILES, data),
         ],
-        [data]
+        [data, departmentDropdownList.data, operatingSystemDropdownList.data]
     );
 
     // const handleFormSubmit = (formData) => {
