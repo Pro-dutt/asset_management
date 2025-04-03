@@ -23,6 +23,8 @@ import Designation from "./modules/designation";
 import OperatingSystem from "./modules/operatingSystem";
 import DeviceCategory from "./modules/deviceCategory";
 import DeviceState from "./modules/deviceState";
+import Pagenotfound from "./components/Pagenotfound";
+import Pageaccessdenied from "./components/Pageaccessdenied";
 
 function App() {
     return (
@@ -30,10 +32,13 @@ function App() {
             <ToastContainer />
             <Routes>
                 {/* Auth Module with its own layout */}
-                <Route path="/auth/*" element={<Auth />} />
+              <Route path="/auth/*" element={<Auth />} />
+
+             {/*  <Route path="/page-not-found" element={<Pagenotfound/>} />
+              <Route path="/page-access-denied" element={<Pageaccessdenied/>} />*/}
 
                 {/* Main App Layout */}
-                <Route
+               <Route
                     path="/*"
                     element={
                         <Layout>
@@ -185,7 +190,7 @@ function App() {
                             </Routes>
                         </Layout>
                     }
-                />
+                /> 
 
                 <Route path="/access-denied" element={<AccessDenied />} />
             </Routes>

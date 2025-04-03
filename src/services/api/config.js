@@ -32,7 +32,7 @@ apiClient.interceptors.response.use(
     },
     (error) => {
         const errorMessage = error.response?.data?.message || error.message || "An error occurred";
-        console.log(errorMessage);
+        console.log("Error from frontend: ", errorMessage);
         notifyError(errorMessage);
         return Promise.reject(error);
     }

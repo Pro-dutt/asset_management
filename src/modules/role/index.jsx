@@ -11,8 +11,8 @@ import CanAccess from "@/components/CanAccess";
 import apiConstants from "@/services/utils/constants";
 
 const Role = () => {
-    const [show, setShow] = useState({});
-    const [roleDetails, setRoleDetails] = useState(null);
+    const [show, setShow] = useState({}); //show is the data that is going to change
+    const [roleDetails, setRoleDetails] = useState(null); //roleDetails  will account for the type of role
     const closeModal = () => setShow({ add: false, edit: false, delete: false });
 
     const { roleDeletion } = useRole();
