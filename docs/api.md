@@ -1,7 +1,7 @@
 # API folder
 
 ## Client Creation Approach:
-- Base Pattern: Primary `apiClient` is createed with `axios.create()`
+- Base Pattern: Primary `apiClient` is created with `axios.create()`
 - Module Pattern: Secondary clients created with `apiClient.create()` that extend the base client
 
 ## Service Class Implementation Styles

@@ -13,6 +13,9 @@ const EndPointsTable = () => {
     const [userDetails, setUserDetails] = useState(null);
 
     const closeModel = () => setShow({ add: false, edit: false, delete: false });
+
+    // The parameters that are being sent are the 
+    // i.No of pages, ii.No of Documents iii. data which is in json format having the fields-  id, name, email, role, plan, billing, status, image as its fields
     const initializeTableData = {
         totalPages: 16,
         totalDocuments: 156,
@@ -119,6 +122,10 @@ const EndPointsTable = () => {
             },
         ],
     };
+
+    // Filters that are being assigned- has a title, with the filter Fields
+    // type, name, grid, options object- which has label and value
+    // also a placeholder
     const externalFilters = {
         title: "Users Filters",
         // filterOnSubmit: true,
@@ -164,6 +171,8 @@ const EndPointsTable = () => {
         parentPayloadKey: `[search][filters]`,
     };
 
+    // The tableHeader has the defaultValur, there is a limit to the start and end and also there is a multiple of
+    // The actions of adding a user and exporting
     const tableHeader = {
         limit: {
             defaultValue: "20",

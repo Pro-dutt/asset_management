@@ -12,6 +12,7 @@ import TableError from "./components/tableError";
 import TableView from "./components/tableView";
 import { useLocation } from "react-router-dom";
 import useCustomRouter from "./hooks/useCustomRouter";
+
 export const useSearchParams = () => {
     const location = useLocation();
     return new URLSearchParams(location.search);
@@ -23,12 +24,14 @@ const Table = ({ tableData }) => {
 
     const initialValues = useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams.toString()]);
 
+    // Loading of state variables
     const [data, setData] = useState(tableData);
     const [dataView, setDataView] = useState({ table: true });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [checkboxState, setCheckboxState] = useState({});
 
+    // Fetching of data through axios
     const fetchData = useCallback(
         async (payload) => {
             const url = tableData?.url;
@@ -50,6 +53,8 @@ const Table = ({ tableData }) => {
         },
         [tableData?.url]
     );
+
+    //Load when Data is Mounted
     useEffect(() => {
         if (tableData) {
             const { rows, ...restTableData } = tableData;
@@ -57,9 +62,11 @@ const Table = ({ tableData }) => {
         }
     }, [tableData]);
 
+
+    // Functionalities
     useEffect(() => {
         fetchData(initialValues);
-    }, [initialValues, tableData?.url, tableData?.refreshTable]);
+    }, [initialValues, tableData?.url, tableData?.refreshTable]); // Component will render on initalValues, url and when table is refreshed
     return (
         <div className={styles.table_container}>
             {/* Filters and Search */}
@@ -90,10 +97,14 @@ const Table = ({ tableData }) => {
             )}
 
             {/* Grid View */}
-            {dataView.grid && <div className={styles.grid_view_container}>{data.rows?.length > 0 ? data.gridComponent() : <DataNotFound message="Empty List" />}</div>}
+            {dataView.grid && <div className={styles.grid_view_container}>{data.rows?.length > 0 
+            ? data.gridComponent() 
+            : <DataNotFound message="Empty List" />}</div>}
 
             {/* Kanban View */}
-            {dataView.kanban && <div className={styles.grid_view_container}>{data.rows?.length > 0 ? data.kanbanComponent() : <DataNotFound message="Empty List" />}</div>}
+            {dataView.kanban && <div className={styles.grid_view_container}>{data.rows?.length > 0 
+            ? data.kanbanComponent() 
+            : <DataNotFound message="Empty List" />}</div>}
 
             {/* Pagination */}
             <TablePagination data={data} router={router} initialValues={initialValues} searchParams={searchParams} />

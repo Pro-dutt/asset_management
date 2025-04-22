@@ -15,6 +15,7 @@ const TablePagination = ({ initialValues, router, data, searchParams }) => {
         setPagination((prev) => ({ ...prev, page: urlPage }));
     }, [urlPage]);
 
+
     const setQueryParam = useCallback(
         (key, value) => {
             const params = new URLSearchParams(searchParams.toString());
