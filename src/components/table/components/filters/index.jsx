@@ -57,7 +57,11 @@ const TableFilter = ({ data, initialValues, router, searchParams }) => {
 
         const updatedInitialButtons = initialButtons.map((button) => {
             const matchingButton = data.filterActionButtons?.find((actionButton) => actionButton.type === button.type);
-            return matchingButton ? { type: button.type === "clear" ? "button" : button.type, label: matchingButton.label, ...matchingButton } : button;
+            return matchingButton 
+            ? { type: button.type === "clear" 
+                ? "button" 
+                : button.type, label: matchingButton.label, ...matchingButton } 
+            : button;
         });
 
         const additionalButtons = data.filterActionButtons?.filter((actionButton) => actionButton.type !== "Submit" && actionButton.type !== "clear") || [];
@@ -76,7 +80,7 @@ const TableFilter = ({ data, initialValues, router, searchParams }) => {
             <div className={`${styles.body} ${isBodyVisible ? styles.show : ""}`}>
                 <DynamicForm
                     onSubmit={(formData) => {
-                        console.log(formData);
+                        console.log("This is the form data: ",formData);
                         const params = new URLSearchParams();
                         Object.entries(formData).forEach(([key, value]) => {
                             if (value) params.set(key, value);

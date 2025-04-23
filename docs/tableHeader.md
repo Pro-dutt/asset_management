@@ -1,98 +1,249 @@
-# TableHeader
+# Table Header Component
 
-Takes the parameters:
-1. data
-2. setCheckboxState
-3. checkboxState
-4. initiallValues
-5. router
-6. searchParams
+## Overview
+The `TableHeader` component renders the header row of the table, handling column titles, sorting controls, and the optional bulk selection checkbox. It translates user interactions into URL parameters for consistent state management.
 
-- `sort` would be a state variable
-- `sortBy` would take the initialValues. Data will be sorted according to the initialSort
-- `sortOrder` would take the initialValues or the data woud be sorted to give the initialSortOrder which would be ascending (considered default)
-- If there is no data then null would be returned.
+## Visual Example
+```
+┌────────────┬─────────────┬─────────────┬────────────┬──────────┐
+│ ☐          │ User      ↓ │ Role        │ Plan       │ Actions  │
+└────────────┴─────────────┴─────────────┴────────────┴──────────┘
+```
 
-## updateQueryParams
+## Props API
 
-Takes an object of URL query parameter `updates` and applies them to the current URL.
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `data` | Object | Yes | Table data with rows and configuration |
+| `setCheckboxState` | Function | No | Function to update checkbox selection state |
+| `checkboxState` | Object | No | Current checkbox selection state |
+| `initialValues` | Object | Yes | Values from URL parameters |
+| `router` | Object | Yes | Router object for URL manipulation |
+| `searchParams` | URLSearchParams | Yes | Current URL search parameters |
 
-1. Parameters:
-- updates: An object containing key-value pairs to update in the URL query parameters
+## Header Column Structure
+The header columns are dynamically generated from the first row of data, filtering out any columns marked with `type: "hidden"`.
 
-2. Behavior:
-- Creates a new URLSearchParms instance from the current searchParams
-- For each key-value pair in the updates object:
-	- If the value is true, sets the parameter with the key and value
-	- If the value is false, it removes the paramter with that key
-- Updates the URL using router.replace without triggering a page scroll
-- Returns the Promise from router.replace
+## Core Functions
 
-The function is memoized with useCallback to optimize performance, with dependancies on searchParams and router.
+### 1. updateQueryParams
 
-## getSortIcon
+Updates URL query parameters without causing a full page reload.
 
-Returns the appropriate sort indicator icon for a table header column.
+```javascript
+const updateQueryParams = useCallback((updates) => {
+  // Create new URLSearchParams from current params
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  
+  // Apply each update to the search params
+  Object.entries(updates).forEach(([key, value]) => {
+    if (value) {
+      newSearchParams.set(key, value);
+    } else {
+      newSearchParams.delete(key);
+    }
+  });
+  
+  // Update URL without scrolling
+  return router.replace(`?${newSearchParams.toString()}`, { scroll: false });
+}, [searchParams, router]);
+```
 
-Parameters:
-- headerItem: The identifier of the header column
+#### Parameters:
+- `updates`: Object containing key-value pairs to update in URL parameters
 
-Behavior:
-- If the current sort is not applied to the header column:
-  - Returns an arrow icon with the "initial_arrow" style
-- If the current sort is applied to the header column:
-  - For ascending sort order: Returns an arrow icon with the "up_arrow" style
-  - For descending sort order: Returns an arrow icon with the "down_arrow" style
+#### Returns:
+- Promise from router.replace operation
 
-The function is memoized with useCallback to prevent unnecessary re-creation when components re-render, with a dependency on the sort state.
+### 2. getSortIcon
 
-## handleSort function
+Returns the appropriate sort indicator icon based on current sort state.
 
-Manages the sorting behavior when a table header is clicked.
+```javascript
+const getSortIcon = useCallback((headerItem) => {
+  if (sort.sortBy !== headerItem) {
+    return <ArrowUpDown className="initial_arrow" />;
+  }
+  
+  return sort.sortOrder === 'asc' 
+    ? <ArrowUp className="up_arrow" /> 
+    : <ArrowDown className="down_arrow" />;
+}, [sort]);
+```
 
-Parameters:
-- headerItem: The identifier of the header column that was clicked
+#### Parameters:
+- `headerItem`: The column key being evaluated
 
-Behavior:
-- Toggles the sort order:
-	- If the header column is already in ascending order it switches to descending
-	- Otherwise it sts to ascending order
-- Updates the local sort state with the new sorting configuration
-- Updates the URL query parameters to reflect the new sort state
-- returns a Promise that resolbes when the URL update is complete
+#### Returns:
+- React component representing the appropriate sort icon
 
-The function is memoized with useCallback to optimize performance, with dependencies on the sort state and updateQueryParams function.
+### 3. handleSort
 
+Manages sorting behavior when a column header is clicked.
 
-## Table Header Component Rendering
+```javascript
+const handleSort = useCallback((headerItem) => {
+  // Determine new sort order
+  const newSortOrder = (sort.sortBy === headerItem && sort.sortOrder === 'asc') 
+    ? 'desc' 
+    : 'asc';
+  
+  // Update local sort state
+  setSort({
+    sortBy: headerItem,
+    sortOrder: newSortOrder
+  });
+  
+  // Update URL parameters
+  return updateQueryParams({
+    sortBy: headerItem,
+    sortOrder: newSortOrder
+  });
+}, [sort, updateQueryParams]);
+```
 
-The code renders the table header with appropriate columns and functionality:
+#### Parameters:
+- `headerItem`: The column key to sort by
 
-### Data Processing
-- firstRow: Extracts the first row from the data.rows array for header generation
-- headerItems: Creates an array of table headers byL
-	- Taking Object.entries from the firstRow
-	- Filterung out any entries where the value's type is "hidden"
-	
-### Rendered Output
-- The component returns a table header with the following structure:
+#### Returns:
+- Promise from updateQueryParams operation
 
-1. Checkbox Column(Conditional):
-- Renders if `data.checkbox` is true
-- Contains a CheckBoxField component with:
-	- ID and name based on the current page number
-	- onChange handler that updates the current page number
-		- The header checkbox itself
-		- All row checkboxes on the current page (based on page and limit values)
+## Implementation
 
-2. Data Column
-- Maps throught the filtered headerItems array
-- Each header cell contains:
-	- The header label text
-	- A sort icon (if data.sorting is enabled)
-	- Click handler to trigger sorting (id data.sorting is enabled)
+```jsx
+function TableHeader({ 
+  data, 
+  setCheckboxState, 
+  checkboxState, 
+  initialValues, 
+  router, 
+  searchParams 
+}) {
+  // Initialize sort state from URL or defaults
+  const [sort, setSort] = useState({
+    sortBy: initialValues.sortBy || data.sorting?.defaultSort || '',
+    sortOrder: initialValues.sortOrder || data.sorting?.defaultOrder || 'asc'
+  });
+  
+  // Handle bulk selection
+  const handleHeaderCheckbox = useCallback((e) => {
+    const { checked } = e.target;
+    const { page, limit } = data.pagination;
+    
+    // Calculate which items are on the current page
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const currentPageItems = data.rows.slice(startIndex, endIndex);
+    
+    // Create an object mapping IDs to selection state
+    const newSelections = {};
+    currentPageItems.forEach(row => {
+      const id = row._id.value;
+      newSelections[id] = checked;
+    });
+    
+    // Update checkbox state with new selections
+    setCheckboxState(prev => ({
+      ...prev,
+      ...newSelections,
+      allChecked: checked
+    }));
+  }, [data.rows, data.pagination, setCheckboxState]);
+  
+  // Early return if no data
+  if (!data || !data.rows || data.rows.length === 0) {
+    return null;
+  }
+  
+  // Extract header items from first row
+  const firstRow = data.rows[0];
+  const headerItems = Object.entries(firstRow)
+    .filter(([_, value]) => value.type !== "hidden");
+  
+  return (
+    <thead>
+      <tr>
+        {/* Checkbox column */}
+        {data.checkbox && (
+          <th className="checkbox-column">
+            <CheckboxField
+              id={`checkbox-page-${data.pagination?.page || 1}`}
+              name={`checkbox-page-${data.pagination?.page || 1}`}
+              onChange={handleHeaderCheckbox}
+              checked={checkboxState?.allChecked || false}
+            />
+          </th>
+        )}
+        
+        {/* Data columns */}
+        {headerItems.map(([key, value]) => (
+          <th 
+            key={key}
+            className={sort.sortBy === key ? 'sorting-active' : ''}
+            onClick={data.sorting ? () => handleSort(key) : undefined}
+            style={{ cursor: data.sorting ? 'pointer' : 'default' }}
+          >
+            <div className="th-content">
+              <span>{key}</span>
+              {data.sorting && (
+                <span className="sort-icon">{getSortIcon(key)}</span>
+              )}
+            </div>
+          </th>
+        ))}
+        
+        {/* Actions column */}
+        {data.actionData && (
+          <th className="actions-column">Actions</th>
+        )}
+      </tr>
+    </thead>
+  );
+}
+```
 
-3. Actions Column
-- Renders is `data.actionData` is true
-- Simple header cell with "Actions" label
+## Integration Example
 
+```jsx
+import React, { useState } from 'react';
+import TableHeader from './TableHeader';
+import useCustomRouter from '../hooks/useCustomRouter';
+import { useSearchParams } from 'react-router-dom';
+
+function Table({ tableData }) {
+  const [checkboxState, setCheckboxState] = useState({});
+  const router = useCustomRouter();
+  const [searchParams] = useSearchParams();
+  
+  const initialValues = React.useMemo(() => 
+    Object.fromEntries(searchParams.entries()),
+    [searchParams]
+  );
+  
+  return (
+    <table className="data-table">
+      <TableHeader
+        data={tableData}
+        setCheckboxState={setCheckboxState}
+        checkboxState={checkboxState}
+        initialValues={initialValues}
+        router={router}
+        searchParams={searchParams}
+      />
+      {/* TableBody component would go here */}
+    </table>
+  );
+}
+```
+
+## Accessibility Considerations
+
+1. **Keyboard Navigation**: Sort headers are keyboard accessible with proper tab indexing
+2. **Screen Reader Support**: Sort direction and column information are properly announced
+3. **Visual Indicators**: Sort directions have both icon and color indicators for clarity
+
+## Related Components
+
+- [Table Component](./tableComponent.md)
+- [Table Body](./tableBody.md)
+- [Table Pagination](./tablePagination.md)

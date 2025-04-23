@@ -1,62 +1,157 @@
-# Table Data
+# Table Data Structure
 
-The `tableData` object is created using the `getTableData` function, which transforms the raw data (`initializeTableData`) into a format expected by the `table component`. 
+## Overview
+The table component requires data to be transformed into a specific structure before rendering. The `getTableData` function handles this transformation, converting raw API data into the format expected by the table component.
 
-1. **Basic Table Information**:
-   - title
-   - URL info for data fetching
-   - Pagination details
-   - Sorting configuration
-   - Row click handler
-   - External filters configuration
-   - Table header configuration
+## Data Transformation Flow
+```
+Raw API Data → getTableData() → Formatted Table Data → Table Component
+```
 
-2. **The Rows Data Structure**:
-   Each item in the `rows` array (which is created by mapping over `data.data`) contains these properties:
+## Data Structure Specification
 
-   - **Id**: 
-     - `key`: "_id"
-     - `value`: Contains the actual ID value
-     - `type`: "hidden" (indicating this column should be hidden in UI)
+### Root Object Properties
+```javascript
+{
+  title: "Users Table",                 // Table title displayed in UI
+  url: "/api/users",                    // API endpoint for data fetching
+  pagination: {                         // Pagination configuration
+    page: 1,
+    limit: 10,
+    totalItems: 100,
+    totalPages: 10
+  },
+  sorting: {                           // Default sorting configuration
+    enabled: true,
+    defaultSort: "name",
+    defaultOrder: "asc"
+  },
+  rows: [...],                         // Array of row objects (detailed below)
+  actionData: [...],                   // Array of action configurations
+  onRowClick: (row) => {...},          // Row click handler function
+  externalFilters: {...},              // Filter configuration
+  header: {...}                        // Header configuration
+}
+```
 
-   - **User**: 
-     - `key`: "name"
-     - `value`: A React component (`<UserAvatar>`) displaying user info
-     - `originalValue`: Capitalized user name
-     - `suggestionValue`: Same as originalValue, used for searching/filtering
+### Row Object Structure
+Each item in the `rows` array contains key-value pairs representing columns:
 
-   - **Role**:
-     - `key`: "role"
-     - `value`: A React component showing role with an icon
+```javascript
+{
+  "_id": {
+    key: "_id",
+    value: "60d21b4667d0d8992e610c85",
+    type: "hidden"                    // Hidden columns won't display in UI
+  },
+  "name": {
+    key: "name",
+    value: <UserAvatar user={userData} />,  // Can be React component
+    originalValue: "John Smith",            // Raw value for sorting/filtering
+    suggestionValue: "John Smith"           // Value for autocomplete/search
+  },
+  "role": {
+    key: "role",
+    value: <RoleBadge role="admin" />       // Custom component
+  },
+  "plan": {
+    key: "plan",
+    value: "Enterprise"                     // Plain text value
+  },
+  "billing": {
+    key: "billing",
+    value: <span className="billing-badge">Monthly</span>
+  },
+  "status": {
+    key: "status",
+    value: <StatusIndicator status="active" />
+  }
+}
+```
 
-   - **Plan**:
-     - `key`: "plan"
-     - `value`: The plan name as plain text
+### Action Configuration
+The `actionData` array defines operations available for each row:
 
-   - **billing**: 
-     - `key`: "billing"
-     - `value`: A styled span showing billing information
+```javascript
+[
+  {
+    label: "View",
+    icon: <ViewIcon />,
+    handler: (row) => navigateToDetail(row._id.value)
+  },
+  {
+    label: "Edit", 
+    icon: <EditIcon />,
+    handler: (row) => openEditModal(row)
+  },
+  {
+    label: "Delete",
+    icon: <DeleteIcon />,
+    handler: (row) => confirmDelete(row._id.value),
+    variant: "danger"
+  }
+]
+```
 
-   - **status**:
-     - `key`: "status"
-     - `value`: A styled span showing status with appropriate CSS class
+## Implementation Example
 
-3. **Action Configuration**:
-   - The `actionData` array defines operations that can be performed on each row:
-     - Delete
-     - View
-     - Edit
-     - Duplicate
+```javascript
+// Example raw data from API
+const rawData = {
+  data: [
+    {
+      _id: "60d21b4667d0d8992e610c85",
+      name: "john smith",
+      role: "admin",
+      plan: "enterprise",
+      billing: "monthly",
+      status: "active"
+    },
+    // More user records...
+  ],
+  pagination: {
+    page: 1,
+    limit: 10,
+    totalItems: 100,
+    totalPages: 10
+  }
+};
 
-- `key`: The property name in the original data
-- `value`: What to display (can be text or a React component)
-- Additional properties like `type`, `originalValue`, etc. when needed
+// Transform raw data for table component
+const tableData = getTableData({
+  title: "Users Management",
+  data: rawData,
+  actionConfig: [
+    {
+      label: "View",
+      handler: (id) => navigate(`/users/${id}`)
+    },
+    {
+      label: "Edit",
+      handler: (id) => navigate(`/users/edit/${id}`)
+    }
+  ]
+});
 
-## Functionalities of Table Component
+// Result will have the structure expected by the table component
+```
 
-This structure allows the Table component to:
-1. Know how to display each field
-2. Handle sorting, filtering, and searching
-3. Manage row actions
-4. Connect UI interactions back to the original data
+## Field Configuration Options
 
+Each field (column) can have these properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `key` | String | Field identifier matching data source |
+| `value` | Any | Display value (text, component, etc.) |
+| `type` | String | Field type (e.g., "hidden", "text", "action") |
+| `originalValue` | Any | Raw value for sorting/filtering operations |
+| `suggestionValue` | String | Value for search/autocomplete features |
+| `sortable` | Boolean | Whether column can be sorted |
+| `filterable` | Boolean | Whether column can be filtered |
+
+## Best Practices
+1. **Consistent Keys**: Ensure field keys match across all data objects
+2. **Component Optimization**: Keep component values lightweight to prevent rendering issues
+3. **Hidden Fields**: Use `type: "hidden"` for ID fields and other data not meant for display
+4. **originalValue**: Always provide this for fields with component values to enable sorting

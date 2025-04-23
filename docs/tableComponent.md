@@ -1,106 +1,114 @@
 # Table Component
 
-## Functionalities provided by the table
+## Overview
+The Table Component is a comprehensive React solution for displaying, managing, and interacting with tabular data. It combines multiple specialized sub-components to provide a complete data management experience with minimal integration effort.
 
-In the main table component the functionalities present are:
-1. [Filtering of Data]
-2. [Searching of Data](./tableSearch.md)
-3. [Pagination of Data](./tablePagination.md)
-4. [Error Handling](./tableErrorHandling.md)
-5. [Viewing the Table Data (...check)](./tableHeader.md)
-6. Custom Routing
+## Core Features
+- **Data Filtering**: Filter records based on multiple criteria
+- **Search Functionality**: Quick text-based search across records
+- **Pagination**: Navigate through large datasets with customizable page sizes
+- **Error Handling**: Graceful management of data loading and processing errors
+- **View Switching**: Toggle between grid view and kanban view
+- **Custom Routing**: URL-based state management for shareable views
 
-The useSearchParams returns the location of the object, say if the component is on the "localhost:3000/about" then the search parameter would be "/about".
+## Component Integration Diagram
+```
+┌─────────────────────────────────┐
+│            TableComponent       │
+├─────────┬──────────┬────────────┤
+│TableHead│TableBody │TableError  │
+├─────────┴──────────┴────────────┤
+│TableFilter  │  TableSearch      │
+├─────────────┴───────────────────┤
+│TablePagination                  │
+└─────────────────────────────────┘
+```
 
-A custom router hook is present whuch uses the useNavigate and useLocation hooks from react router dom
+## Props API
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `tableData` | Object | Yes | Configuration and data for the table |
+| `url` | String | Yes | API endpoint for data fetching |
+| `initialFilters` | Object | No | Default filter values |
+| `customRouter` | Object | No | Custom router instance |
+| `errorHandler` | Function | No | Custom error handling function |
 
-The `useCustomRouter` is a custom hook that returns an object with navigation methods.
+## Custom Router Integration
 
-Inside the Hook:
-1. It calls `useNavigate()` to get the navigation function
+The table component utilizes a custom router hook for URL-based state management, making filtered and paginated views shareable via URL.
 
-Returned Methods
-- replace(searchParams): Navigates to the provided path and replaces the current history entry
-- push(searchParams): Navigates to to the provided path an adds a new entry to browser history.
+### The `useCustomRouter` Hook
 
-
-### Utilisation of the Hook
 ```javascript
-	import useCustomRouter from './path.to/useCustomRouter';
-	
-	function MyComponent() {
-	const router = useCustomRouter();
-	  
-	 const handleButtonClick = () => {
-	  // Navigate to a new page
-	  router.push('/about');
-	    
-	  // Or replace current history entry
-	  // router.replace('/contact');
-	 };
+import { useNavigate, useLocation } from 'react-router-dom';
 
-	  return (
-	    <button onClick={handleButtonClick}>Go to About</button>
-	  );
+function useCustomRouter() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  return {
+    // Replace current history entry with new URL parameters
+    replace: (searchParams) => {
+      navigate(`${location.pathname}${searchParams}`, { replace: true });
+    },
+    
+    // Add new history entry with new URL parameters
+    push: (searchParams) => {
+      navigate(`${location.pathname}${searchParams}`);
+    }
+  };
+}
+
+export default useCustomRouter;
+```
+
+### Implementation Example
+
+```javascript
+import useCustomRouter from './hooks/useCustomRouter';
+import { useSearchParams } from 'react-router-dom';
+
+function MyTableComponent() {
+  const router = useCustomRouter();
+  const [searchParams] = useSearchParams();
+  
+  // Transform URL parameters into a JavaScript object
+  const initialValues = useMemo(() => 
+    Object.fromEntries(searchParams.entries()),
+    [searchParams]
+  );
+  
+  // Example: Navigate to filtered view
+  const applyFilter = (filterName, filterValue) => {
+    router.push(`?${filterName}=${filterValue}`);
+  };
+  
+  return (
+    <Table 
+      initialValues={initialValues}
+      router={router}
+      // ...other props
+    />
+  );
 }
 ```
-The varialbles that are found:
-1. router initialized from useCustomRouter
-2. searchParams initialized from useSearchParams
-3. initialValues- which utilises memoization to ensure that it is only recalculated when the actual search parameters change. 
 
-	intitialValues uses `useMemo` to:
-	i. Convert the search parameters into regular javaScript object using
-		Object.fromEntries(searchParams.entries())
+## Error Handling
 
-	The purpose of initialValues is to take all the query parameters from the URl and transform them into a plain Javascript object.
-	For example: if the URL is "https://example.com/page?name=John&age=30"
-	initialvalues- would be the object- {name: "John", age:"30"};
-	
-### [Structure of Data](./tableData.md)
+The Table Component implements a comprehensive error handling strategy. For detailed implementation, refer to [Error Handling Documentation](./tableErrorHandling.md).
 
-### Error Handling
+Key aspects include:
+- State-based error management
+- Try-catch patterns for data operations
+- Dedicated error UI components
+- Empty state handling
 
-Error handling is implemented in a few key ways:
+## Data Structure
 
-1. Error State Management:
+The table component expects data in a specific format. For detailed information about the data structure, refer to [Table Data Documentation](./tableData.md).
 
-- There's a dedicated state variable `error` intialized with `useState(null)`
-
-- The errror state is displayed to users through the `<TableError error={error}>` component.
-
-2. Try-Catch Block in Data Fetching:
-
-- The fetchData function uses a try-catch pattern:
-
-	- It firsts sets `isLoading` to true and clears any previous errors by setting `error` to null
-
-	- In the try block, it attempts to fetch data using apiClient
-	
-	- If an error occurs, it's caught and handled in the catch block
-
-	- The catch block logs the error to the console and sets a user-friendly error message
-
-	- The finally block ensures `isLoading` is set back to false regardless of success or failure
-
-3. Error Prevention:
-
-- There's a URL existence check (if (!url) return) before attempting to fetch data
-
-- This prevents unnecessary API calls when no URL is provided
-
-4.  Error UI Presentation:
-
-- The component delegates error display to a specialized `TableError` component
-
-- Based on the imports and usage, the component likely renders error messages to the user
-
-5. Empty Data Handling:
-
-- The code has conditional rendering with `<DataNotFound message="Empty List"/>` when no rows are found in grid or kanban views.
-
-- This handles the "no data" case gracefully rather than breaking the UI
-
-
-
-
+## Related Components
+- [Table Filter](./tableFilter.md)
+- [Table Search](./tableSearch.md)
+- [Table Pagination](./tablePagination.md)
+- [Table Header](./tableHeader.md)

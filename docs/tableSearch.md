@@ -1,85 +1,350 @@
-# Table Search 
+# Table Search Component
 
-## [SetQuery](./tablePagination.md) 
-*This is a shared utility function documented in Pagiantion*
+## Overview
+The `TableSearch` component provides text-based search functionality for filtering table data. It integrates with URL parameters to create bookmarkable and shareable search results.
 
-## generateOptions function-
+## Visual Example
+```
+┌───────────────────────────┐  ┌─────────┐
+│ Search users...           │  │ Search  │
+└───────────────────────────┘  └─────────┘
+```
 
-limitConfig is the prop that is passed
-- `options`: It is intialized as an empty array
-- `start`: limitConfig?.limitStart or deafult (10,10)
-- `end`: limitConfig?.limtitEnd or default (50,10)
-- `step`: limitConfig?.multipleOf or default(10,10)
+## Props API
 
-We will use a loop to iterate from the start till the end with step being the increment value.
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `router` | Object | Yes | Router object for URL navigation |
+| `initialValues` | Object | Yes | Initial values from URL parameters |
+| `data` | Object | Yes | Search configuration object |
+| `searchParams` | URLSearchParams | Yes | Current URL search parameters |
+| `onSearch` | Function | No | Optional callback for search events |
+| `className` | String | No | Additional CSS classes |
 
-During the looping the values would be passed to the `options` array having a label and a value which are string in nature. The loop's purpose is for generating range options.
+## Core Functions
 
-The function basically creates an array of options for selecting items per page in a paginated table, with values increasing in regular steps (e.g., 10, 20, 30, 40, 50).
+### 1. setQueryParam
 
-## getFormData function-
+Updates a single URL query parameter and navigates to the updated URL.
 
-The function takes `data` as a parameter and processes its `filters` array if it exists. For each filter item, it:
+```javascript
+const setQueryParam = useCallback((key, value) => {
+  // Create a new URLSearchParams object from current params
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  
+  // Set or remove the parameter based on value
+  if (value) {
+    newSearchParams.set(key, value);
+  } else {
+    newSearchParams.delete(key);
+  }
+  
+  // Navigate to same route with updated query string
+  return router.replace(`?${newSearchParams.toString()}`);
+}, [searchParams, router]);
+```
 
-1. Spreads all existing properties of the item
-2. Adds **clearOption:true** to enable clearing the filter
-3. Adds a customOnChange handler that:
-    - Extracts `name` and `value` from the event target
-    - Updates form values in state by preserving previous balues and setting the new name-value pair
+### 2. generateOptions Function
 
-4. Sets `defaultValue` to the current value from the `formValues` for the field (if it exists)
-5. Adds styling to the input with specific padding and margin values
-6. Returns the new array with enhanced filter objects
+Generates a range of options for the items-per-page dropdown.
 
-The key purpose is to enhance filter items with additional properties needed for: 
-- handling
-- state management
-- URL parameter synchronization
+```javascript
+const generateOptions = (limitConfig) => {
+  const options = [];
+  const start = limitConfig?.limitStart || 10;
+  const end = limitConfig?.limitEnd || 50;
+  const step = limitConfig?.multipleOf || 10;
+  
+  for (let i = start; i <= end; i += step) {
+    options.push({
+      label: String(i),
+      value: String(i)
+    });
+  }
+  
+  return options;
+};
+```
 
-## Passing of props-
+### 3. getFormData Function
 
-### SelectField Component
+Processes and enhances filter configuration objects with necessary event handlers and state connections.
 
-The SelectField component is receiving a prop called `formField` that contains these properties:
+```javascript
+const getFormData = (data) => {
+  if (!data?.filters) return [];
+  
+  return data.filters.map(item => ({
+    ...item,
+    clearOption: true,
+    customOnChange: (e) => {
+      const { name, value } = e.target;
+      setFormValues(prev => ({ ...prev, [name]: value }));
+      
+      // If searchOnChange is enabled, update URL parameters immediately
+      if (data.searchOnChange) {
+        setQueryParam(name, value);
+        
+        // Reset to first page when search criteria changes
+        setQueryParam("page", 1);
+      }
+    },
+    defaultValue: formValues?.[item.name] || "",
+    style: { padding: "8px 12px", marginRight: "12px" }
+  }));
+};
+```
 
-1. `id`: "limit" - A unique identifier for the field
-2. `name`: "limit" - The name attribute for the form field
-3. `options`: The result of calling `generateOptions(data.limit)` - Creates an array of options with label/value pairs
-4. `defaultValue`: Uses a fallback chain:
-   - First tries `formValues?.["limit"]`
-   - Then `data.limit?.defaultValue`
-   - Falls back to "10" if neither exists
-5. `onChange`: An event handler function that:
-   - Extracts the `name` and `value` from `event.target`
-   - Updates form values using the state setter function
-   - Updates URL query parameters using the `setQueryParam` function
+## Implementation
 
-This is a dropdown field for selecting the number of tems to display per page in a a table or list.
+```jsx
+function TableSearch({ 
+  router, 
+  initialValues, 
+  data, 
+  searchParams,
+  onSearch,
+  className
+}) {
+  // Get initial search query from URL or default to empty
+  const initialSearch = searchParams.get('search') || initialValues?.search || '';
+  
+  // State for form values
+  const [formValues, setFormValues] = useState({
+    search: initialSearch,
+    limit: initialValues?.limit || "10"
+  });
+  
+  // Handle search form submission
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    
+    // Update URL with search parameter
+    setQueryParam("search", formValues.search);
+    
+    // Reset to first page on new search
+    setQueryParam("page", 1);
+    
+    // Call optional callback if provided
+    if (onSearch) {
+      onSearch(formValues.search);
+    }
+  }, [formValues.search, setQueryParam, onSearch]);
+  
+  // Handle search input change
+  const handleSearchChange = useCallback((e) => {
+    const { value } = e.target;
+    setFormValues(prev => ({ ...prev, search: value }));
+    
+    // If immediate search is enabled, update URL parameters
+    if (data?.searchOnChange) {
+      setQueryParam("search", value);
+      setQueryParam("page", 1);
+    }
+  }, [data?.searchOnChange, setQueryParam]);
+  
+  // Handle clearing search
+  const handleClearSearch = useCallback(() => {
+    setFormValues(prev => ({ ...prev, search: '' }));
+    setQueryParam("search", null);
+    
+    // Call optional callback if provided
+    if (onSearch) {
+      onSearch('');
+    }
+  }, [setQueryParam, onSearch]);
+  
+  return (
+    <div className={`table-search ${className || ''}`}>
+      <form onSubmit={handleSubmit} className="search-form">
+        {/* Search input field */}
+        <div className="search-input-container">
+          <input
+            type="text"
+            name="search"
+            placeholder={data.placeholder || "Search..."}
+            value={formValues.search}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          {formValues.search && (
+            <button
+              type="button"
+              onClick={handleClearSearch}
+              className="clear-search"
+              aria-label="Clear search"
+            >
+              <X size={16} />
+            </button>
+          )}
+        </div>
+        
+        {/* Search button */}
+        <button 
+          type="submit" 
+          className="search-button"
+          disabled={data.disableSearch}
+        >
+          <Search size={16} />
+          <span>Search</span>
+        </button>
+      </form>
+      
+      {/* Additional filters */}
+      {data.filters && data.filters.length > 0 && (
+        <div className="search-filters">
+          <DynamicForm
+            formData={getFormData(data)}
+            formButtons={[]}
+          />
+        </div>
+      )}
+      
+      {/* Custom action buttons */}
+      {data.actionButtons && data.actionButtons.length > 0 && (
+        <div className="search-actions">
+          {data.actionButtons.map(button => (
+            <Button
+              key={button.label}
+              onClick={button.onClick}
+              variant={button.variant}
+              flat={button.flat}
+              className={`action-button ${button.className || ''}`}
+              icon={button.icon}
+              href={button.href}
+            >
+              {button.label}
+            </Button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+```
 
-### SelectField Component Prop
+## Search Configuration Object
 
-1. `formField`: An object containing:
-   -`id`: Unique identifier for the field
-   - `name`: Name attribute for the form field
-   - `options`: Result of generateOptions- Array of dropdown options
-   - `defaultValue`: Uses fallback chain (formValues?.["limit"] || data.limit?.defaultValue || "10")
-   - `onChange`: Event handler function that updates form state and URL query params
+```javascript
+const searchConfig = {
+  placeholder: "Search users...",        // Custom placeholder text
+  searchOnChange: false,                 // Enable immediate search on typing
+  disableSearch: false,                  // Disable search functionality
+  filters: [                            // Additional filter fields
+    {
+      type: "select",                   // Field type
+      name: "department",               // Field name (must be unique)
+      options: [                        // Options for select fields
+        { label: "All Departments", value: "" },
+        { label: "Engineering", value: "engineering" },
+        { label: "Marketing", value: "marketing" },
+        { label: "Sales", value: "sales" }
+      ],
+      placeholder: "Department",        // Placeholder text
+    }
+  ],
+  actionButtons: [                      // Custom action buttons
+    {
+      label: "Add User",                // Button text
+      variant: "primary",               // Button style variant
+      icon: <PlusCircle />,            // Button icon
+      onClick: () => openAddUserModal() // Click handler
+    }
+  ]
+};
+```
 
-### DynamicForm Component Props
+## Search Modes
 
-- `formData`: Result of getFormData- Enhanced filter items with additional properties
-- `formButtons`: An empty array- Likely controls which form buttons to display
+### Standard Mode (Default)
+- Search is applied when the user clicks the search button or presses Enter
+- Best for complex searches or when you want to avoid excessive API calls
 
-### Button Component Props
+### Immediate Mode
+- Search is applied as the user types
+- Best for small datasets or when you want instant feedback
+- Enable with `searchOnChange: true` in the configuration
 
-- `key`: button.label- React key prop for list rendering
-- `onClick`: button.onClick- Click handler function
-- `variant`: button.variant- Button style variant
-- `flat`: button.flat- Wheter the button has a flat style
-- `className`: Combined classes for styling (component-specific and custom classes)
-- `icon`:button.icon- Icon to display in the button
-- `href`: button.href- URL for the button (makes it act as a link)
+## Integration Example
 
+```jsx
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+import useCustomRouter from '../hooks/useCustomRouter';
+import TableSearch from './TableSearch';
 
+function UserTable() {
+  const router = useCustomRouter();
+  const [searchParams] = useSearchParams();
+  
+  const initialValues = React.useMemo(() => 
+    Object.fromEntries(searchParams.entries()),
+    [searchParams]
+  );
+  
+  const searchConfig = {
+    placeholder: "Search users by name or email...",
+    searchOnChange: false,
+    filters: [
+      {
+        type: "select",
+        name: "status",
+        options: [
+          { label: "All Statuses", value: "" },
+          { label: "Active", value: "active" },
+          { label: "Inactive", value: "inactive" }
+        ],
+        placeholder: "Status"
+      }
+    ],
+    actionButtons: [
+      {
+        label: "Add User",
+        variant: "primary",
+        icon: <PlusCircle />,
+        onClick: () => console.log("Add user clicked")
+      }
+    ]
+  };
+  
+  const handleSearch = (searchTerm) => {
+    console.log(`Searching for: ${searchTerm}`);
+  };
+  
+  return (
+    <div className="user-table">
+      <TableSearch
+        router={router}
+        initialValues={initialValues}
+        data={searchConfig}
+        searchParams={searchParams}
+        onSearch={handleSearch}
+        className="user-search"
+      />
+      {/* Table component would go here */}
+    </div>
+  );
+}
+```
 
+## URL Parameter Integration
 
+The search component manages these URL parameters:
+
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `search` | Current search query | `?search=john` |
+| Custom filter names | Additional filter criteria | `?department=sales` |
+
+## Accessibility Features
+
+1. **Keyboard Support**: Form is fully navigable and submittable via keyboard
+2. **Clear Button**: Provides a way to quickly clear search input
+3. **ARIA Labels**: Proper labeling for screen readers
+4. **Focus Management**: Proper focus handling on form interaction
+
+## Related Components
+
+- [Table Component](./tableComponent.md)
+- [Table Filter](./tableFilter.md)
+- [Table Pagination](./tablePagination.md)
